@@ -2,12 +2,28 @@
 authors = ["x06lan"]
 language = "en"
 multilingual = false
-src = "./"
+src = "src"
 title = "something"
 
 [output.html]
-mathjax-support = true
 
 [output.html.playground]
 editable = true
+
+[preprocessor.katex]
+command = "./mdbook-katex"
+output = "html"
+leqno = false
+fleqn = false
+throw-on-error = true
+error-color = "#cc0000"
+min-rule-thickness = -1.0
+max-size = "Infinity"
+max-expand = 1000
+trust = false
+# Extra options.
+no-css = false
+include-src = false
+block-delimiter = { left = "$$", right = "$$" }
+inline-delimiter = { left = "$", right = "$" }
 
