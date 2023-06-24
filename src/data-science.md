@@ -74,7 +74,7 @@ $a=\bar{y}-b\bar{x}$
 
 ## naive bayes 
 $$P(h|\{a,b,a,c\})=P(h)*P(a|h)^2P(b|h)P(c|h)$$
-$$P(\text{~}h|\{a,b,a,c\})=P(\text{~}h)*P(a|\text{~}h)^2P(b|\text{~}h)P(c|\text{~}h)$$
+$$P(\lnot h|\{a,b,a,c\})=P(\lnot h)*P(a|\lnot h)^2P(b|\lnot h)P(c|\lnot h)$$
 ### zero conditional 
 
 t :possible condition number<br>
