@@ -10,6 +10,8 @@
 
 * [computer science](computer-science/README.md)
   * [data science](computer-science/data-science.md)
+  * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
 
 * [tool](tool/README.md)
   * [ffmpeg](tool/ffmpeg.md)
+  * [shields.io](tool/shields.io.md)
