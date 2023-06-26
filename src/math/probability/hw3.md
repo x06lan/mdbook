@@ -1,6 +1,6 @@
 # hw3 110590049
 
-[2023PB_HW3.pdf](hw3%20110590049%201861376df49b4d009c0f617d532bd96c/2023PB_HW3.pdf)
+[2023PB_HW3.pdf](../../assets/2023PB_HW3.pdf)
 
 ## 1.a
 

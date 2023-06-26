@@ -1,6 +1,6 @@
 # hw2 110590049
 
-[2023PB_HW2.pdf](hw2%20110590049%20a91383977b4d48828d84e8099cd804d6/2023PB_HW2.pdf)
+[2023PB_HW2.pdf](../../assets/2023PB_HW2.pdf)
 
 # problem 1
 

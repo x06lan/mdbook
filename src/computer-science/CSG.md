@@ -1,6 +1,9 @@
 tags: `3D` `js`
 
 # CSG (Constructive Solid Geometry) note
+
+CSG is a methodology for constructing geometries by mesh, using algorithms capable of performing boolean operations like union or difference (A-B), among others.
+
 # vector
 > ## values
 > x,y,z for a point or normal
@@ -33,8 +36,8 @@ tags: `3D` `js`
 > ## cross
 > 降階值
 > ```javascript
-> [[x  ,y   ,z  ],
-> [a.x,a.y ,a.z]]
+> [[x   ,y   ,z  ],
+>  [a.x ,a.y ,a.z ]]
 > ```
 
 
@@ -74,8 +77,8 @@ tags: `3D` `js`
 > 4. EPSILON(對於點是否在面上的容忍值)
 > ## clone
 > ## flip
-> flip vertex
-> flip plane
+> * flip vertex
+> * flip plane
 
 # node
 > bsp:binary space partitioning tree
@@ -92,10 +95,10 @@ tags: `3D` `js`
 > 4. polygons=[]
 > ## clone
 > ## invert
-> flip polygons
-> flip plane
-> flip back and front
-> and change back to front 、 change front to back
+> * flip polygons
+> * flip plane
+> * flip back and front
+> * and change back to front 、 change front to back
 > ## clip Polygons
 > ## clipTo(bsp)
 
