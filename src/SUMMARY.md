@@ -19,5 +19,7 @@
 
 * [tool](tool/README.md)
   * [git](tool/git.md)
+  * [vim](tool/vim.md)
+  * [shorcut](tool/shortcut.md)
   * [ffmpeg](tool/ffmpeg.md)
   * [shields.io](tool/shields.io.md)
