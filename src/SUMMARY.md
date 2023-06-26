@@ -18,5 +18,6 @@
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
 
 * [tool](tool/README.md)
+  * [git](tool/git.md)
   * [ffmpeg](tool/ffmpeg.md)
   * [shields.io](tool/shields.io.md)
