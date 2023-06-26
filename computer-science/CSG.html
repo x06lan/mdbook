@@ -4,7 +4,7 @@
 <head>
     <!-- Book generated using mdBook -->
     <meta charset="UTF-8">
-    <title>computer science - something</title>
+    <title>CSG(Constructive Solid Geometry) mesh boolean - something</title>
 
 
     <!-- Custom HTML head -->
@@ -94,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../math/index.html"><strong aria-hidden="true">1.</strong> math</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/index.html"><strong aria-hidden="true">1.1.</strong> probability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/hw7-110590049.html"><strong aria-hidden="true">1.1.1.</strong> hw7 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw8-110590049.html"><strong aria-hidden="true">1.1.2.</strong> hw8 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw9-110590049.html"><strong aria-hidden="true">1.1.3.</strong> hw9 110590049</a></li></ol></li><li class="chapter-item expanded "><a href="../math/linear-algebra.html"><strong aria-hidden="true">1.2.</strong> linear algebra</a></li></ol></li><li class="chapter-item expanded "><a href="../computer-science/index.html" class="active"><strong aria-hidden="true">2.</strong> computer science</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../computer-science/data-science.html"><strong aria-hidden="true">2.1.</strong> data science</a></li><li class="chapter-item expanded "><a href="../computer-science/CSG.html"><strong aria-hidden="true">2.2.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li></ol></li><li class="chapter-item expanded "><a href="../tool/index.html"><strong aria-hidden="true">3.</strong> tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tool/ffmpeg.html"><strong aria-hidden="true">3.1.</strong> ffmpeg</a></li><li class="chapter-item expanded "><a href="../tool/shields.io.html"><strong aria-hidden="true">3.2.</strong> shields.io</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../math/index.html"><strong aria-hidden="true">1.</strong> math</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/index.html"><strong aria-hidden="true">1.1.</strong> probability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/hw7-110590049.html"><strong aria-hidden="true">1.1.1.</strong> hw7 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw8-110590049.html"><strong aria-hidden="true">1.1.2.</strong> hw8 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw9-110590049.html"><strong aria-hidden="true">1.1.3.</strong> hw9 110590049</a></li></ol></li><li class="chapter-item expanded "><a href="../math/linear-algebra.html"><strong aria-hidden="true">1.2.</strong> linear algebra</a></li></ol></li><li class="chapter-item expanded "><a href="../computer-science/index.html"><strong aria-hidden="true">2.</strong> computer science</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../computer-science/data-science.html"><strong aria-hidden="true">2.1.</strong> data science</a></li><li class="chapter-item expanded "><a href="../computer-science/CSG.html" class="active"><strong aria-hidden="true">2.2.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li></ol></li><li class="chapter-item expanded "><a href="../tool/index.html"><strong aria-hidden="true">3.</strong> tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tool/ffmpeg.html"><strong aria-hidden="true">3.1.</strong> ffmpeg</a></li><li class="chapter-item expanded "><a href="../tool/shields.io.html"><strong aria-hidden="true">3.2.</strong> shields.io</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -162,7 +162,199 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="computer-science"><a class="header" href="#computer-science">computer science</a></h1>
+<p>tags: <code>3D</code> <code>js</code></p>
+<h1 id="csg-constructive-solid-geometry-note"><a class="header" href="#csg-constructive-solid-geometry-note">CSG (Constructive Solid Geometry) note</a></h1>
+<h1 id="vector"><a class="header" href="#vector">vector</a></h1>
+<blockquote>
+<h2 id="values"><a class="header" href="#values">values</a></h2>
+<p>x,y,z for a point or normal</p>
+<h2 id="clone"><a class="header" href="#clone">clone</a></h2>
+<p>return new same vector</p>
+<h2 id="negated"><a class="header" href="#negated">negated</a></h2>
+<p>return new same negated</p>
+<h2 id="plusa"><a class="header" href="#plusa">plus(a)</a></h2>
+<p>return new vector add a vector</p>
+<h2 id="minusa"><a class="header" href="#minusa">minus(a)</a></h2>
+<p>this-a</p>
+<h2 id="timesa"><a class="header" href="#timesa">times(a)</a></h2>
+<p>乘a</p>
+<h2 id="dividebya"><a class="header" href="#dividebya">divideBy(a)</a></h2>
+<p>除a</p>
+<h2 id="dota"><a class="header" href="#dota">dot(a)</a></h2>
+<p>內積</p>
+<pre><code class="language-javascript">return x*a.x+y*a.y+z*a.z
+</code></pre>
+<h2 id="lerpat"><a class="header" href="#lerpat">lerp(a,t)</a></h2>
+<p>t通常小於1
+用來表示this 到a 之間的某個數</p>
+<pre><code class="language-javascript">this-(this-a)*t
+</code></pre>
+<h2 id="len"><a class="header" href="#len">len</a></h2>
+<h2 id="unit"><a class="header" href="#unit">unit</a></h2>
+<p>單位為1的向量</p>
+<h2 id="cross"><a class="header" href="#cross">cross</a></h2>
+<p>降階值</p>
+<pre><code class="language-javascript">[[x  ,y   ,z  ],
+[a.x,a.y ,a.z]]
+</code></pre>
+</blockquote>
+<h1 id="vertex"><a class="header" href="#vertex">vertex</a></h1>
+<blockquote>
+<h2 id="value"><a class="header" href="#value">value</a></h2>
+<ol>
+<li>pos( vector)</li>
+<li>noraml (vector)</li>
+</ol>
+<h2 id="clone-1"><a class="header" href="#clone-1">clone</a></h2>
+<h2 id="flip"><a class="header" href="#flip">flip</a></h2>
+<p>修改normal 方向</p>
+<h2 id="interpolateat"><a class="header" href="#interpolateat">interpolate(a,t)</a></h2>
+<p>用lerp的方式產生一個介於this 與a 之間的pos and normal並用 t控制落點</p>
+</blockquote>
+<h1 id="plane"><a class="header" href="#plane">plane</a></h1>
+<blockquote>
+<h2 id="value-1"><a class="header" href="#value-1">value</a></h2>
+<ol>
+<li>normal 面的髮線</li>
+<li>w</li>
+<li>epsilon 可接受誤差值</li>
+</ol>
+<h2 id="clone-2"><a class="header" href="#clone-2">clone</a></h2>
+<h2 id="flip-1"><a class="header" href="#flip-1">flip</a></h2>
+<p>change the side of the normal</p>
+<h2 id="formpointsabc"><a class="header" href="#formpointsabc">formpoints(a,b,c)</a></h2>
+<p>create plane by 3 point vector 
+and w is plane dot with fisrt verctor(position)</p>
+<h2 id="splitpolygonpolygon-coplanarfront-coplanarback-front-back"><a class="header" href="#splitpolygonpolygon-coplanarfront-coplanarback-front-back">splitPolygon(polygon, coplanarFront, coplanarBack, front, back)</a></h2>
+<p>以這個面為基準將多個面區分為語法線面相同的front 或back
+如果有交集則切割面</p>
+</blockquote>
+<h1 id="polygon"><a class="header" href="#polygon">polygon</a></h1>
+<blockquote>
+<h2 id="valuemagnitude"><a class="header" href="#valuemagnitude">valuemagnitude</a></h2>
+<ol>
+<li>vertices(lot of vertex)</li>
+<li>shared</li>
+<li>plane</li>
+<li>EPSILON(對於點是否在面上的容忍值)</li>
+</ol>
+<h2 id="clone-3"><a class="header" href="#clone-3">clone</a></h2>
+<h2 id="flip-2"><a class="header" href="#flip-2">flip</a></h2>
+<p>flip vertex
+flip plane</p>
+</blockquote>
+<h1 id="node"><a class="header" href="#node">node</a></h1>
+<blockquote>
+<p>bsp:binary space partitioning tree</p>
+</blockquote>
+<blockquote>
+<p>利用每個面的髮線區切割空間，如果空間在髮線的背面則視為true(或是包含)</p>
+</blockquote>
+<blockquote>
+<p><img src="https://i.imgur.com/EaayJ5Q.png" alt="" /></p>
+</blockquote>
+<blockquote>
+<h2 id="value-2"><a class="header" href="#value-2">value</a></h2>
+<ol>
+<li>plane</li>
+<li>front=node</li>
+<li>back=node</li>
+<li>polygons=[]</li>
+</ol>
+<h2 id="clone-4"><a class="header" href="#clone-4">clone</a></h2>
+<h2 id="invert"><a class="header" href="#invert">invert</a></h2>
+<p>flip polygons
+flip plane
+flip back and front
+and change back to front 、 change front to back</p>
+<h2 id="clip-polygons"><a class="header" href="#clip-polygons">clip Polygons</a></h2>
+<h2 id="cliptobsp"><a class="header" href="#cliptobsp">clipTo(bsp)</a></h2>
+</blockquote>
+<blockquote>
+<p>bsp:binary space partitioning tree
+<img src="https://i.imgur.com/OfUwEIp.png" alt="" /></p>
+</blockquote>
+<blockquote>
+<p>a和b的 bsp tree 合併=a-b的截面</p>
+<pre><code class="language-javascript">+-------+            +-------+
+|       |            |       |
+|   A   |            |       |
+|    +--+----+   =   |       +
++----+--+    |       +----+
+    |   B   | 
+    |       |
+    +-------+
+</code></pre>
+<pre><code></code></pre>
+<h2 id="allpolygons"><a class="header" href="#allpolygons">allPolygons</a></h2>
+<p>return combon all polygon from back and front to one array</p>
+</blockquote>
+<h1 id="boolean-operations"><a class="header" href="#boolean-operations">Boolean operations</a></h1>
+<blockquote>
+<h2 id="union"><a class="header" href="#union">union</a></h2>
+<pre><code class="language-javascript">a.clipTo(b);
+b.clipTo(a);
+b.invert();
+b.clipTo(a);
+b.invert();
+a.build(b.allPolygons());
+</code></pre>
+<p>my way</p>
+<pre><code class="language-javascript">a.clipTo(b);
+b.clipTo(a);
+a.build(b.allPolygons());
+</code></pre>
+<h2 id="subtract"><a class="header" href="#subtract">subtract</a></h2>
+<pre><code class="language-javascript">a.invert();
+a.clipTo(b);
+b.clipTo(a);
+b.invert();
+b.clipTo(a);
+b.invert();
+a.build(b.allPolygons());
+a.invert();
+</code></pre>
+</blockquote>
+<blockquote>
+<p>my way</p>
+<pre><code class="language-javascript">a.invert();
+a.clipTo(b);
+
+b.invert();
+b.clipTo(a);
+a.invert();
+a.build(b.allPolygons());
+</code></pre>
+<h2 id="intersect"><a class="header" href="#intersect">intersect</a></h2>
+</blockquote>
+<blockquote>
+<pre><code class="language-javascript">a.invert();
+b.clipTo(a);
+b.invert();
+a.clipTo(b);
+b.clipTo(a);
+a.build(b.allPolygons());
+a.invert();
+</code></pre>
+</blockquote>
+<blockquote>
+<p>another way to intersect</p>
+<pre><code class="language-javascript">a.invert();
+b.clipTo(a);
+
+b.invert();
+a.clipTo(b);
+
+a.build(b.allPolygons());
+a.invert();
+</code></pre>
+</blockquote>
+<h2 id="links"><a class="header" href="#links">links</a></h2>
+<ul>
+<li><a href="http://groups.csail.mit.edu/graphics/classes/6.837/F98/talecture/">other way</a></li>
+<li><a href="https://static1.squarespace.com/static/51bb9790e4b0510af19ea9c4/t/51bf7c34e4b0a897bf550945/1371503668974/CSG_report.pdf">paper link</a></li>
+<li><a href="https://github.com/x06lan/three_face_boolean">github</a></li>
+</ul>
 
                         <script src="https://giscus.app/client.js" data-repo="x06lan/mdbook" data-repo-id="R_kgDOJxZ6mQ"
                             data-category-id="DIC_kwDOJxZ6mc4CXeJ6" data-mapping="pathname" data-strict="0"
@@ -173,12 +365,12 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="../math/linear-algebra.html" class="mobile-nav-chapters previous"
+                        <a rel="prev" href="../computer-science/data-science.html" class="mobile-nav-chapters previous"
                             title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                             <i class="fa fa-angle-left"></i>
                         </a>
 
-                        <a rel="next" href="../computer-science/data-science.html" class="mobile-nav-chapters next"
+                        <a rel="next" href="../tool/index.html" class="mobile-nav-chapters next"
                             title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -189,12 +381,12 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                <a rel="prev" href="../math/linear-algebra.html" class="nav-chapters previous" title="Previous chapter"
+                <a rel="prev" href="../computer-science/data-science.html" class="nav-chapters previous" title="Previous chapter"
                     aria-label="Previous chapter" aria-keyshortcuts="Left">
                     <i class="fa fa-angle-left"></i>
                 </a>
 
-                <a rel="next" href="../computer-science/data-science.html" class="nav-chapters next" title="Next chapter"
+                <a rel="next" href="../tool/index.html" class="nav-chapters next" title="Next chapter"
                     aria-label="Next chapter" aria-keyshortcuts="Right">
                     <i class="fa fa-angle-right"></i>
                 </a>
