@@ -94,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../math/index.html"><strong aria-hidden="true">1.</strong> math</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/index.html"><strong aria-hidden="true">1.1.</strong> probability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/hw7-110590049.html"><strong aria-hidden="true">1.1.1.</strong> hw7 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw8-110590049.html"><strong aria-hidden="true">1.1.2.</strong> hw8 110590049</a></li><li class="chapter-item expanded "><a href="../math/probability/hw9-110590049.html"><strong aria-hidden="true">1.1.3.</strong> hw9 110590049</a></li></ol></li><li class="chapter-item expanded "><a href="../math/linear-algebra.html"><strong aria-hidden="true">1.2.</strong> linear algebra</a></li></ol></li><li class="chapter-item expanded "><a href="../computer-science/index.html"><strong aria-hidden="true">2.</strong> computer science</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../computer-science/data-science.html"><strong aria-hidden="true">2.1.</strong> data science</a></li><li class="chapter-item expanded "><a href="../computer-science/CSG.html" class="active"><strong aria-hidden="true">2.2.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li></ol></li><li class="chapter-item expanded "><a href="../tool/index.html"><strong aria-hidden="true">3.</strong> tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tool/ffmpeg.html"><strong aria-hidden="true">3.1.</strong> ffmpeg</a></li><li class="chapter-item expanded "><a href="../tool/shields.io.html"><strong aria-hidden="true">3.2.</strong> shields.io</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../math/index.html"><strong aria-hidden="true">1.</strong> math</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../math/probability/index.html"><strong aria-hidden="true">1.1.</strong> probability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../math/probability/hw2.html"><strong aria-hidden="true">1.1.1.</strong> hw2 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw3.html"><strong aria-hidden="true">1.1.2.</strong> hw3 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw4.html"><strong aria-hidden="true">1.1.3.</strong> hw4 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw5.html"><strong aria-hidden="true">1.1.4.</strong> hw5 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw6.html"><strong aria-hidden="true">1.1.5.</strong> hw6 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw7.html"><strong aria-hidden="true">1.1.6.</strong> hw7 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw8.html"><strong aria-hidden="true">1.1.7.</strong> hw8 110590049</a></li><li class="chapter-item "><a href="../math/probability/hw9.html"><strong aria-hidden="true">1.1.8.</strong> hw9 110590049</a></li></ol></li><li class="chapter-item expanded "><a href="../math/linear-algebra.html"><strong aria-hidden="true">1.2.</strong> linear algebra</a></li></ol></li><li class="chapter-item expanded "><a href="../computer-science/index.html"><strong aria-hidden="true">2.</strong> computer science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../computer-science/data-science.html"><strong aria-hidden="true">2.1.</strong> data science</a></li><li class="chapter-item expanded "><a href="../computer-science/CSG.html" class="active"><strong aria-hidden="true">2.2.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li></ol></li><li class="chapter-item expanded "><a href="../tool/index.html"><strong aria-hidden="true">3.</strong> tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tool/git.html"><strong aria-hidden="true">3.1.</strong> git</a></li><li class="chapter-item expanded "><a href="../tool/vim.html"><strong aria-hidden="true">3.2.</strong> vim</a></li><li class="chapter-item expanded "><a href="../tool/shortcut.html"><strong aria-hidden="true">3.3.</strong> shorcut</a></li><li class="chapter-item expanded "><a href="../tool/ffmpeg.html"><strong aria-hidden="true">3.4.</strong> ffmpeg</a></li><li class="chapter-item expanded "><a href="../tool/shields.io.html"><strong aria-hidden="true">3.5.</strong> shields.io</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -164,6 +164,7 @@
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <p>tags: <code>3D</code> <code>js</code></p>
 <h1 id="csg-constructive-solid-geometry-note"><a class="header" href="#csg-constructive-solid-geometry-note">CSG (Constructive Solid Geometry) note</a></h1>
+<p>CSG is a methodology for constructing geometries by mesh, using algorithms capable of performing boolean operations like union or difference (A-B), among others.</p>
 <h1 id="vector"><a class="header" href="#vector">vector</a></h1>
 <blockquote>
 <h2 id="values"><a class="header" href="#values">values</a></h2>
@@ -194,8 +195,8 @@
 <p>單位為1的向量</p>
 <h2 id="cross"><a class="header" href="#cross">cross</a></h2>
 <p>降階值</p>
-<pre><code class="language-javascript">[[x  ,y   ,z  ],
-[a.x,a.y ,a.z]]
+<pre><code class="language-javascript">[[x   ,y   ,z  ],
+ [a.x ,a.y ,a.z ]]
 </code></pre>
 </blockquote>
 <h1 id="vertex"><a class="header" href="#vertex">vertex</a></h1>
@@ -240,8 +241,10 @@ and w is plane dot with fisrt verctor(position)</p>
 </ol>
 <h2 id="clone-3"><a class="header" href="#clone-3">clone</a></h2>
 <h2 id="flip-2"><a class="header" href="#flip-2">flip</a></h2>
-<p>flip vertex
-flip plane</p>
+<ul>
+<li>flip vertex</li>
+<li>flip plane</li>
+</ul>
 </blockquote>
 <h1 id="node"><a class="header" href="#node">node</a></h1>
 <blockquote>
@@ -263,10 +266,12 @@ flip plane</p>
 </ol>
 <h2 id="clone-4"><a class="header" href="#clone-4">clone</a></h2>
 <h2 id="invert"><a class="header" href="#invert">invert</a></h2>
-<p>flip polygons
-flip plane
-flip back and front
-and change back to front 、 change front to back</p>
+<ul>
+<li>flip polygons</li>
+<li>flip plane</li>
+<li>flip back and front</li>
+<li>and change back to front 、 change front to back</li>
+</ul>
 <h2 id="clip-polygons"><a class="header" href="#clip-polygons">clip Polygons</a></h2>
 <h2 id="cliptobsp"><a class="header" href="#cliptobsp">clipTo(bsp)</a></h2>
 </blockquote>
