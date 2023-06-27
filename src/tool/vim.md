@@ -1,17 +1,12 @@
 ###### tags: `vim` `tool` `editor`
 # vim in vscode
-## move in noraml 
-
-
-| 鍵  | 功能 |
-| --- | ---- |
-| h   | 左   |
-| j   | 下   |
-| k   | 上   |
-| l   | 右   |
 ## noraml
 | 鍵                | 功能                                                        |
 | ----------------- | ----------------------------------------------------------- |
+| h                 | 左                                                          |
+| j                 | 下                                                          |
+| k                 | 上                                                          |
+| l                 | 右                                                          |
 | f1                | 啟用/停用vim                                                |
 | esc               | to normal mode                                              |
 | alt f             | to normal mode                                              |
