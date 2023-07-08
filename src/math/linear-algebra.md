@@ -761,9 +761,7 @@ y=\hat{y}+z\\
 \hat{y}\in \text{A columns space}\\
 \end{cases}
 $$
-## curve fitting
-## regression
-## normal eqution
+## curve fitting | regression | normal eqution
 $$
 (\dim \beta)n=2,
 \text{(test number)}m=4\\

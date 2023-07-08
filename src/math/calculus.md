@@ -22,7 +22,6 @@ $$
 \int f(x) \ d g(x)=f(x)g(x)-\int g(x) \ d f(x)
 $$
 ### example
-$$\frac{d}{dx}cos(x)=-sin(x)$$
 $$\int e^{f(x)} \ dx=\frac{e^{f(x)}}{f'(x)}+c$$
 $$\int \ln(x) \ dx=x\ln(x)-x+c$$
 $$\int \frac{1}{x} \ dx=\ln(x)+c$$
