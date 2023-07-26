@@ -16,6 +16,7 @@
 
 * [computer science](computer-science/README.md)
   * [data science](computer-science/data-science.md)
+  * [BitTorrent](computer-science/BitTorrent.md)
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
 
 * [tool](tool/README.md)

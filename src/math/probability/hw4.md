@@ -1,6 +1,6 @@
 # hw4 110590049
 
-[2023PB_HW4.pdf](../../assets/2023PB_HW4.pdf)
+[2023PB_HW4.pdf](../../assets/pdf/2023PB_HW4.pdf)
 
 ## 1
 
