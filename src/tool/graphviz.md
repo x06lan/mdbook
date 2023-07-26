@@ -1,7 +1,5 @@
 ###### tags: `學校`
 # dot process
-## 題目一
-15 10 11 12 1 2 3 4 5 6 7 4 5 6 7 4 5 6 4 5 6 8 12 13
 ```dot process
 digraph hierarchy {
                 nodesep=0.5
@@ -22,8 +20,6 @@ digraph hierarchy {
 }
 ```
 
-## 題目二
-15 10 11 12 1 2 3 4 5 6 7 4 5 6 7 4 5 6 4 5 6 8 12 13
 ```dot process
 digraph hierarchy {
                 nodesep=0.5

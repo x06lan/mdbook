@@ -8,6 +8,9 @@ title = "something"
 [output.html]
 #mathjax-support = true
 git-repository-url = "https://github.com/x06lan/mdbook"
+additional-css = ["theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js"]
+
 
 [output.html.fold]
 enable = true # whether or not to enable section folding
@@ -26,9 +29,9 @@ line-numbers = false     # displays line numbers for editable code
 [preprocessor.katex]
 command = "./mdbook-katex"
 
-[preprocessor.graphviz]
-command = "mdbook-graphviz"
-output-to-file = false # defaults to false, change to true to create SVG files instead of rendering them inline
+#[preprocessor.graphviz]
+#command = "mdbook-graphviz"
+#output-to-file = false # defaults to false, change to true to create SVG files instead of rendering them inline
 
 [preprocessor.toc]
 command = "mdbook-toc"
