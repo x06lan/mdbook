@@ -21,13 +21,15 @@
         position: fixed;
         width: 250px;
         height: calc(100vh - var(--menu-bar-height) - 0.67em * 4);
+
         overflow: auto;
-        /* -ms-overflow-style: none; */
-        /* IE and Edge */
-        /* scrollbar-width: none; */
-        /* display: none; */
-        /* Safari and Chrome */
-        /* overflow-y: hidden; */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .pagetoc::-webkit-scrollbar {
+        display: none;
+        width: 0 !important
     }
 
     .pagetoc a {
@@ -36,6 +38,7 @@
         display: block;
         padding-bottom: 5px;
         padding-top: 5px;
+        /* right shift */
         padding-left: 50px;
         text-align: left;
         text-decoration: none;
