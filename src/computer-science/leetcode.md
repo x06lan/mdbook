@@ -1,5 +1,5 @@
 # leetcode
-## N-Queens II
+## 52. N-Queens II
 dfs
 ```c++
 class Solution {
