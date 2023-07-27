@@ -1,5 +1,5 @@
 # linear algebra
-# matrix
+## matrix
 
 
 |      | Column 1 | Column 2 | Column 3 |
@@ -12,7 +12,7 @@ diagoua 對角
 commtative law
 associative law
 distributive law
-# sample
+## sample
 $$
     A=\begin{bmatrix}
     1&2\\
@@ -26,7 +26,7 @@ $$
     2&-4\\
     \end{bmatrix}
 $$
-# 乘積
+## 乘積
 $$
     A=\begin{bmatrix}
     a&b\\
@@ -62,7 +62,7 @@ $$
     \end{bmatrix}\\
     \underset{[n\times m]}{A}*\underset{[m\times s]}{B}=\underset{[n\times s]}{C}
 $$
-# 反矩陣
+## 反矩陣
 $$  A=\begin{bmatrix}
         a&b\\
         c&d\\
@@ -112,7 +112,7 @@ $$  A=\begin{bmatrix}
     \end{bmatrix}
 $$
 
-# indentity matrix
+## indentity matrix
 $$
     I=\begin{bmatrix}
         1&0&0\\
@@ -120,7 +120,7 @@ $$
         0&0&1\\
     \end{bmatrix}
 $$
-# transpose matrix
+## transpose matrix
 $$
     A=\begin{bmatrix}
         1&2\\
@@ -131,7 +131,7 @@ $$
         2&4\\
     \end{bmatrix}    
 $$ 
-# innrchange (change row)
+## innrchange (change row)
 $$
     \begin{bmatrix}
         1&2\\
@@ -143,7 +143,7 @@ $$
         1&2\\
     \end{bmatrix} 
 $$
-# math to matrix
+## math to matrix
 $$
     \begin{cases}
         1*x_1&+&2*x_2&+&3*x_3=5\\
@@ -154,7 +154,7 @@ $$
         2&3&4&7\\
     \end{bmatrix}
 $$
-# reduced echelon form
+## reduced echelon form
 $$
     \begin{bmatrix}
         0& 3 &-6 &6 &4 &-5\\
@@ -207,7 +207,7 @@ $$
         x_5=4
     \end{cases}
 $$
-# vector equation and matrix equation
+## vector equation and matrix equation
 $$
     \begin{cases}
         &x_1   &+ &2x_2  &-&x_3 &=&3\\
@@ -252,7 +252,7 @@ $$
     Ax=b\\
     A_{matrix}*x_{vector}=b_{vector}
 $$
-# span
+## span
 $$
 	v_1=\begin{bmatrix}
         1\\
@@ -332,7 +332,7 @@ $$
   \rbrace
    not \ span \ R^3
 $$
-# linear dependence
+## linear dependence
 $$
 if \lbrace
   \begin{matrix}
@@ -342,7 +342,7 @@ if \lbrace
   \text{
    linear dependence then at least one of vector is linear combination of another.} 
 $$
-# linear depandence vs. span:
+## linear depandence vs. span:
 $$
     A_{matrix}*x_{vector}=b_{vector}\\ 
 A\begin{bmatrix}

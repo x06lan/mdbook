@@ -7,6 +7,10 @@ title = "something"
 
 [output.html]
 #mathjax-support = true
+preferred-dark-theme = "navy"
+copy-fonts = true
+curly-quotes = true
+
 git-repository-url = "https://github.com/x06lan/mdbook"
 additional-css = ["theme/pagetoc.css"]
 additional-js = ["theme/pagetoc.js"]
