@@ -1,6 +1,6 @@
-tags: `3D` `js`
 
 # CSG (Constructive Solid Geometry) note
+tags: `3D` `js`
 
 CSG is a methodology for constructing geometries by mesh, using algorithms capable of performing boolean operations like union or difference (A-B), among others.
 

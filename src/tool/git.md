@@ -1,4 +1,5 @@
 # git
+tags `git`
 
 ## command line
 ```bash

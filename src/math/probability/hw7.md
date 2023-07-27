@@ -1,4 +1,5 @@
 # hw7 110590049
+tags `probability`
 
 [2023PB\_HW7.pdf](../../assets/pdf/2023PB_HW7.pdf)
 

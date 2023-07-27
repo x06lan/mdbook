@@ -1,6 +1,7 @@
-###### tags: `tool`
 
 # shields.io
+tags: `tool`
+
 快速製造好看的標籤
 
 ## 格式

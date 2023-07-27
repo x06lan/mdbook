@@ -1,4 +1,34 @@
 # leetcode
+tags: `leetcode`
+
+## 22. Generate Parentheses
+dfs
+```c++
+class Solution {
+public:
+    std::vector<std::string> ans;
+    int n;
+    void gen(string v,int i,int j){
+        if(i>j)
+            if(i<n)
+                gen(v+"(",i+1,j);
+            if(j<n)
+                gen(v+")",i,j+1);
+        if(i==j)
+            if(j==n)
+                ans.push_back(v);
+            else
+                gen(v+"(",i+1,j); 
+    }
+    std::vector<std::string> generateParenthesis(int nn) {
+        n=nn;
+        
+        gen("(",1,0);
+        return ans;
+    }
+};
+
+```
 ## 52. N-Queens II
 dfs
 ```c++
@@ -141,6 +171,47 @@ public:
 };
 
 ```
+## 2024. Maximize the Confusion of an Exam
+sliding window
+maintain the range that fit the requirement
+```c++
+class Solution {
+public:
+    int maxConsecutiveAnswers(string answerKey, int k) {
+        int left =0;
+        int right=0;
+        int n =answerKey.size();
+        int t=0,f=0;
+        int ans=INT_MIN;
+        int minC=0;
+        while(left <answerKey.size()){
+            minC=min(t,f);
+            while(minC<=k &&right<n){
+                ans=max(ans,right-left);
+                if(answerKey[right]=='T')
+                    t++;
+                else
+                    f++;
+                minC=min(t,f);
+                right++;
+                if(minC<=k)
+                    ans=max(ans,right-left);
+            }
+            if(right==n)
+                ans=max(ans,right-left-1);
+            if(answerKey[left++]=='T')
+                t--;
+            else
+                f--;
+        }
+        return ans;
+        return ans==INT_MIN?n:ans;
+
+    }
+};
+```
+
+
 ## 2305. Fair Distribution of Cookies
 dfs find every possible
 

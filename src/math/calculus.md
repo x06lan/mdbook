@@ -1,4 +1,5 @@
 # Calculus
+tags `math` `calculus`
 
 ## Differential 
 $$f'(x)=\lim_{h\rightarrow 0}\frac{f(x+h)+f(x)}{h}$$

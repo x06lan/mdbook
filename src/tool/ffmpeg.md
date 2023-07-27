@@ -1,10 +1,7 @@
----
-description: video edit
----
 
 # ffmpeg
 
-**tags: `tool`**
+tags: `tool` `video` `editor`
 
 ## ffmpeg
 

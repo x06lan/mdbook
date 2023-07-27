@@ -23,7 +23,7 @@ var updateFunction = function () {
     });
 
     Array.prototype.forEach.call(document.getElementsByClassName("pagetoc")[0].children, function (el) {
-        if (id.href.localeCompare(el.href) == 0) {
+        if (id && id.href.localeCompare(el.href) == 0) {
             el.classList.add("active");
         }
     });
@@ -39,6 +39,9 @@ window.addEventListener('load', function () {
         // Indent shows hierarchy
         var indent = "";
         switch (el.parentElement.tagName) {
+            case "H1":
+                indent = "10px";
+                break;
             case "H2":
                 indent = "20px";
                 break;

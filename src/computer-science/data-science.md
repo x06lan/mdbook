@@ -1,4 +1,4 @@
-# data scines
+# data science
 ## 5v
 * volume
 * variety
