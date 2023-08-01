@@ -20,6 +20,7 @@
   * [BitTorrent](computer-science/BitTorrent.md)
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
   * [leetcode](computer-science/leetcode.md)
+  * [nerf](computer-science/nerf.md)
 
 * [tool](tool/README.md)
   * [git](tool/git.md)
