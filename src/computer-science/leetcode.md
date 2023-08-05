@@ -30,7 +30,7 @@ public:
 
 ```
 ## 52. N-Queens II
-dfs
+tags:`dfs`
 ```c++
 class Solution {
 public:
@@ -79,6 +79,28 @@ std::vector<std::vector<std::pair<int, int>>> solve;
                 std::vector<std::pair<int, int>> q;
         branch(q, 0, n);
         return solve.size();
+    }
+};
+```
+## 62. Unique Paths
+tags:`math`
+```c++
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        if(m<n){
+            int temp=m;
+            m=n;
+            n=temp;
+        }
+        double ans=1;
+        // (m+n-2)!/(n-1)!/(m-1)!
+        for(int i=m;i<=m+n-2;i++)
+            ans*=i;
+        for(int i=1;i<n;i++)
+            ans/=i;
+        return ans;
+        
     }
 };
 ```
@@ -132,6 +154,102 @@ public:
     }
 };
 
+```
+## 73. Set Matrix Zeroes
+tags:`dp`
+```c++
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        //row dp
+        vector<bool> r=vector<bool>(matrix.size(),false);
+        
+        //column dp
+        vector<bool> c=vector<bool>(matrix[0].size(),false);
+        for(int i =0;i<matrix.size();i++){
+            for(int j =0;j<matrix[0].size();j++){
+                if(matrix[i][j]==0 ){
+                    r[i]=true;
+                    c[j]=true;
+                }
+            }
+        }
+        for(int i =0;i<matrix.size();i++){
+            for(int j =0;j<matrix[0].size();j++){
+                if(r[i] || c[j])
+                    matrix[i][j]=0;
+            }
+        }
+    }
+};
+```
+## 77. Combinations
+tags:`queue`
+```c++
+class Solution {
+public:
+
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>>c;
+        std::queue<pair<int,vector<int>>> q;
+        for(int i =1;i<=n;i++)
+            q.push( {i, {i}} );
+        while(!q.empty()){
+            auto [id,v]=q.front();
+            q.pop();
+            if(v.size()==k)
+                c.push_back(v);
+            else{
+                for(int i=id+1;i<=n;i++){
+                    auto vp=v;
+                    vp.push_back(i);
+                    q.push({i,vp});
+                }
+            }
+        }
+        return c;
+    }
+};
+```
+## 79. Word Search
+tags:`dfs`
+```c++
+class Solution {
+public:
+    int m,n;
+    vector<vector<bool>> s;
+    string w;
+
+    bool dfs(vector<vector<char>>& b,int x,int y,int i,int len){
+        if(i==len)
+            return true;
+        s[y][x]=false;
+        //right
+
+        if(x+1<n &&  s[y][x+1] && b[y][x+1]==w[i] &&dfs(b,x+1,y,i+1,len)==true)
+            return true;
+        if(x-1>=0 &&  s[y][x-1] && b[y][x-1]==w[i] &&dfs(b,x-1,y,i+1,len)==true)
+            return true;
+        if(y+1<m  &&  s[y+1][x] && b[y+1][x]==w[i] &&dfs(b,x,y+1,i+1,len)==true)
+            return true;
+        if(y-1>=0 &&  s[y-1][x] && b[y-1][x]==w[i] &&dfs(b,x,y-1,i+1,len)==true)
+            return true;
+        s[y][x]=true;
+        
+        return false;
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        m=board.size();
+        n=board[0].size();
+        w=word;
+        s=vector<vector<bool>>(m,vector<bool>(n,true));
+        for(int i=0;i<board.size();i++)
+            for(int j=0;j<board[0].size();j++)
+                if(board[i][j]==word[0] && dfs(board,j,i,1,word.size())==true)
+                    return true;
+        return false;
+    }
+};
 ```
 ## 91. Decode Ways
 tags:`dfs`
@@ -273,6 +391,63 @@ public:
     }
 };
 ```
+## 148. Sort List
+tags:`linklist` `merge sort`
+
+for linklist merge two sorted list only need to change one pointer
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* merge(ListNode* l ,ListNode* r ){
+        auto h=new ListNode(0);
+        auto v=h;
+        while(l!=nullptr&&r!=nullptr){
+            if(l->val <= r->val){
+                h->next=l;
+                l=l->next;
+            }
+            else{
+                h->next=r;
+                r=r->next;
+            }
+            h=h->next;
+        }
+        if(l!=nullptr)
+            h->next=l;
+        if(r!=nullptr)
+            h->next=r;
+        v=v->next;
+        // delete(h);
+        return v;
+    }
+    ListNode* sortList(ListNode* head) {
+        if(head==nullptr || head->next==nullptr)return head;
+        auto f =head;
+        auto s =head;
+        ListNode* tail=nullptr;
+        while( f !=nullptr &&f->next !=nullptr ){
+            tail=s;
+            s =s->next;
+            f=f->next->next;
+        }
+        tail->next=nullptr;
+        auto l=sortList(head);
+        auto r=sortList(s);
+        // return merge(l,r);
+        return merge(l,r);
+    }
+};
+```
 ## 198. House Robber
 tags:`dp`
 
@@ -380,7 +555,7 @@ public:
 ```
 
 ## 1705. Maximum Number of Eaten Apples
-priorty_queue
+tags:`priorty queue`
 
 alway take the apple that is closest to the Validity limte
 
@@ -415,7 +590,8 @@ public:
 
 ```
 ## 2024. Maximize the Confusion of an Exam
-sliding window
+tags:`sliding window`
+
 maintain the range that fit the requirement
 ```c++
 class Solution {
