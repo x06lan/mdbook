@@ -2,7 +2,7 @@
 tags: `leetcode`
 
 ## 22. Generate Parentheses
-dfs
+tags:`dfs`
 ```c++
 class Solution {
 public:
@@ -82,8 +82,92 @@ std::vector<std::vector<std::pair<int, int>>> solve;
     }
 };
 ```
+
+## 71. Simplify Path
+tags:`stack`
+```c++
+class Solution {
+public:
+    string simplifyPath(string path) {
+        vector<string> p;
+        int n = path.size();
+        int i = 0;
+        bool slash = false;
+        string temp;
+        
+        while (i < n) {
+            if (path[i] == '/') {
+                i++;
+                slash=true;
+                continue;
+            } 
+            
+            if (slash ==true) {
+                if (temp == ".." &&!p.empty())
+                        p.pop_back(); 
+                else if (temp != "." && temp!="" &&temp != "..")  
+                    p.push_back(temp);
+
+                temp = "";
+                slash = false;
+            }
+            temp.push_back(path[i]);
+            i++;
+        }
+        
+        if (temp == ".." && !p.empty()) 
+            p.pop_back(); 
+        else if (!temp.empty() &&temp != "." && temp!="..")
+            p.push_back(temp);
+            
+        
+        string ans = "/";
+        for (string &v : p)
+            ans += v + "/";
+        if (ans.size() > 1) {
+            ans.pop_back(); // Fix: Remove the trailing '/'
+        }
+        
+        return ans;
+    }
+};
+
+```
+## 91. Decode Ways
+tags:`dfs`
+```c++
+class Solution {
+public:
+    int ans=0;
+    map<int,int> dp;
+    int dfs(string& s, int id){
+        
+        if(id<s.size() ){
+            //beened
+            if(dp.find(id)!=dp.end())
+                return dp[id];
+
+            int c=0;
+            // not zero
+            if(s[id]!='0'){
+                c+=dfs(s,id+1);
+                //have 2 digite and  not over 26 
+                if(id<s.size()-1 && (s[id]-'0'<2 || (s[id]-'0'==2 &&s[id+1]-'0'<7 ) ))
+                    c+=dfs(s,id+2);
+                dp[id]=c;
+            }
+            
+            return c; 
+        }
+        return 1;
+    }
+    int numDecodings(string s) {
+        return dfs(s,0);
+    }
+};
+```
 ## 98. Validate Binary Search Tree
-dfs inorder 
+tags:`dfs` `inorder`
 ```c++
 /**
  * Definition for a binary tree node.
@@ -129,8 +213,68 @@ public:
     }
 };
 ```
+
+
+## 120. Triangle
+tags:`dp`
+```c++
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        vector<vector<int>> dp;
+        int n=triangle.size();
+        dp.assign(n,vector<int>(n,INT_MAX));
+        dp[0][0]=triangle[0][0];
+        for(int i=1;i<n;i++){
+            //i 0
+            dp[i][0]=dp[i-1][0]+triangle[i][0];
+            for(int j=1;j<i;j++){
+                dp[i][j]=min(dp[i-1][j],dp[i-1][j-1])+triangle[i][j];
+            }
+            // i i
+            dp[i][i]=dp[i-1][i-1]+triangle[i][i];
+        }
+        int ans=INT_MAX;
+        for(auto &v:dp[n-1])
+            ans=min(v,ans);
+        return ans;
+    }
+};
+```
+## 139. Word Break
+tags:`dp` `2023/08/06`
+```c++
+class Solution {
+public:
+    int n =0;
+    set<string> dict;
+    map<int ,bool> dp;
+    bool f(string &s,int k){
+        if(dp.find(k)!=dp.end())
+            return dp[k];
+        //end
+        if(k==n)
+            return true;
+        //max lenght is 20
+        for(int i=1;i<20 && k+i<=n ;i++){
+            if(dict.count(s.substr(k,i))!=0 && f(s,i+k) ){
+                dp[i+k]=true;
+                return true;
+            }
+        }
+        dp[k]=false;
+        return false;
+    }
+    bool wordBreak(string s, vector<string>& wordDict) {
+        n=s.size();
+        for(auto &word:wordDict)
+            dict.insert(word);
+        return f(s,0);
+    }
+};
+```
 ## 198. House Robber
-use DP
+tags:`dp`
 
 M(k) = money at the kth house<br>
 P(0) = 0<br>
@@ -158,9 +302,35 @@ public:
 };
 
 ```
+
+
+## 279. Perfect Squares
+tags:`dp`
+
+```c++
+class Solution {
+public:
+    map<int,int>dp;
+
+    int numSquares(int n) {
+        vector<int> dp(n + 1, INT_MAX);
+        dp[0]=0;
+        for(int i=1;i<=n;i++){
+            for(int j=1;j*j<=i;j++){
+                dp[i]=min(dp[i],1+dp[i-j*j]);
+            }
+        }
+        return dp[n];
+    }
+};
+``` 
+
+
+
 ## 1143. Longest Common Subsequence
 
 
+tags:`dp`
 
 ```c++
 class Solution {
@@ -185,7 +355,7 @@ public:
 ```
 ## 1218. Longest Arithmetic Subsequence of Given Difference
 
-dp 
+tags:`dp`
 
 ```c++
 class Solution {
@@ -286,6 +456,9 @@ public:
 
 
 ## 2305. Fair Distribution of Cookies
+
+tags:`dfs`
+
 dfs find every possible
 
 ```c++
