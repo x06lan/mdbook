@@ -172,7 +172,7 @@
 <h1 id="leetcode"><a class="header" href="#leetcode">leetcode</a></h1>
 <p>tags: <code>leetcode</code></p>
 <h2 id="22-generate-parentheses"><a class="header" href="#22-generate-parentheses">22. Generate Parentheses</a></h2>
-<p>dfs</p>
+<p>tags:<code>dfs</code></p>
 <pre><code class="language-c++">class Solution {
 public:
     std::vector&lt;std::string&gt; ans;
@@ -199,7 +199,7 @@ public:
 
 </code></pre>
 <h2 id="52-n-queens-ii"><a class="header" href="#52-n-queens-ii">52. N-Queens II</a></h2>
-<p>dfs</p>
+<p>tags:<code>dfs</code></p>
 <pre><code class="language-c++">class Solution {
 public:
 std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; solve;
@@ -250,8 +250,221 @@ std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; solve;
     }
 };
 </code></pre>
+<h2 id="62-unique-paths"><a class="header" href="#62-unique-paths">62. Unique Paths</a></h2>
+<p>tags:<code>math</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        if(m&lt;n){
+            int temp=m;
+            m=n;
+            n=temp;
+        }
+        double ans=1;
+        // (m+n-2)!/(n-1)!/(m-1)!
+        for(int i=m;i&lt;=m+n-2;i++)
+            ans*=i;
+        for(int i=1;i&lt;n;i++)
+            ans/=i;
+        return ans;
+        
+    }
+};
+</code></pre>
+<h2 id="71-simplify-path"><a class="header" href="#71-simplify-path">71. Simplify Path</a></h2>
+<p>tags:<code>stack</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    string simplifyPath(string path) {
+        vector&lt;string&gt; p;
+        int n = path.size();
+        int i = 0;
+        bool slash = false;
+        string temp;
+        
+        while (i &lt; n) {
+            if (path[i] == '/') {
+                i++;
+                slash=true;
+                continue;
+            } 
+            
+            if (slash ==true) {
+                if (temp == &quot;..&quot; &amp;&amp;!p.empty())
+                        p.pop_back(); 
+                else if (temp != &quot;.&quot; &amp;&amp; temp!=&quot;&quot; &amp;&amp;temp != &quot;..&quot;)  
+                    p.push_back(temp);
+
+                temp = &quot;&quot;;
+                slash = false;
+            }
+            temp.push_back(path[i]);
+            i++;
+        }
+        
+        if (temp == &quot;..&quot; &amp;&amp; !p.empty()) 
+            p.pop_back(); 
+        else if (!temp.empty() &amp;&amp;temp != &quot;.&quot; &amp;&amp; temp!=&quot;..&quot;)
+            p.push_back(temp);
+            
+        
+        string ans = &quot;/&quot;;
+        for (string &amp;v : p)
+            ans += v + &quot;/&quot;;
+        if (ans.size() &gt; 1) {
+            ans.pop_back(); // Fix: Remove the trailing '/'
+        }
+        
+        return ans;
+    }
+};
+
+</code></pre>
+<h2 id="73-set-matrix-zeroes"><a class="header" href="#73-set-matrix-zeroes">73. Set Matrix Zeroes</a></h2>
+<p>tags:<code>dp</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    void setZeroes(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) {
+        //row dp
+        vector&lt;bool&gt; r=vector&lt;bool&gt;(matrix.size(),false);
+        
+        //column dp
+        vector&lt;bool&gt; c=vector&lt;bool&gt;(matrix[0].size(),false);
+        for(int i =0;i&lt;matrix.size();i++){
+            for(int j =0;j&lt;matrix[0].size();j++){
+                if(matrix[i][j]==0 ){
+                    r[i]=true;
+                    c[j]=true;
+                }
+            }
+        }
+        for(int i =0;i&lt;matrix.size();i++){
+            for(int j =0;j&lt;matrix[0].size();j++){
+                if(r[i] || c[j])
+                    matrix[i][j]=0;
+            }
+        }
+    }
+};
+</code></pre>
+<h2 id="77-combinations"><a class="header" href="#77-combinations">77. Combinations</a></h2>
+<p>tags:<code>queue</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+
+    vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) {
+        vector&lt;vector&lt;int&gt;&gt;c;
+        std::queue&lt;pair&lt;int,vector&lt;int&gt;&gt;&gt; q;
+        for(int i =1;i&lt;=n;i++)
+            q.push( {i, {i}} );
+        while(!q.empty()){
+            auto [id,v]=q.front();
+            q.pop();
+            if(v.size()==k)
+                c.push_back(v);
+            else{
+                for(int i=id+1;i&lt;=n;i++){
+                    auto vp=v;
+                    vp.push_back(i);
+                    q.push({i,vp});
+                }
+            }
+        }
+        return c;
+    }
+};
+</code></pre>
+<h2 id="78-subsets"><a class="header" href="#78-subsets">78. Subsets</a></h2>
+<p>tags:<code>binary</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) {
+        //2^n == (1 &lt;&lt; nums.size())
+        vector&lt;vector&lt;int&gt;&gt; re((1 &lt;&lt; nums.size()), vector&lt;int&gt;{});
+        for(int i = 0;i &lt; re.size();++i){
+            for(int j = 0;j &lt; nums.size();++j){
+                // use i in bin as combination
+                if(i &amp; (1 &lt;&lt; j))
+                    re[i].push_back(nums[j]);
+            }
+        }
+        return re;
+    }
+};
+</code></pre>
+<h2 id="79-word-search"><a class="header" href="#79-word-search">79. Word Search</a></h2>
+<p>tags:<code>dfs</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int m,n;
+    vector&lt;vector&lt;bool&gt;&gt; s;
+    string w;
+
+    bool dfs(vector&lt;vector&lt;char&gt;&gt;&amp; b,int x,int y,int i,int len){
+        if(i==len)
+            return true;
+        s[y][x]=false;
+        //right
+
+        if(x+1&lt;n &amp;&amp;  s[y][x+1] &amp;&amp; b[y][x+1]==w[i] &amp;&amp;dfs(b,x+1,y,i+1,len)==true)
+            return true;
+        if(x-1&gt;=0 &amp;&amp;  s[y][x-1] &amp;&amp; b[y][x-1]==w[i] &amp;&amp;dfs(b,x-1,y,i+1,len)==true)
+            return true;
+        if(y+1&lt;m  &amp;&amp;  s[y+1][x] &amp;&amp; b[y+1][x]==w[i] &amp;&amp;dfs(b,x,y+1,i+1,len)==true)
+            return true;
+        if(y-1&gt;=0 &amp;&amp;  s[y-1][x] &amp;&amp; b[y-1][x]==w[i] &amp;&amp;dfs(b,x,y-1,i+1,len)==true)
+            return true;
+        s[y][x]=true;
+        
+        return false;
+    }
+    bool exist(vector&lt;vector&lt;char&gt;&gt;&amp; board, string word) {
+        m=board.size();
+        n=board[0].size();
+        w=word;
+        s=vector&lt;vector&lt;bool&gt;&gt;(m,vector&lt;bool&gt;(n,true));
+        for(int i=0;i&lt;board.size();i++)
+            for(int j=0;j&lt;board[0].size();j++)
+                if(board[i][j]==word[0] &amp;&amp; dfs(board,j,i,1,word.size())==true)
+                    return true;
+        return false;
+    }
+};
+</code></pre>
+<h2 id="91-decode-ways"><a class="header" href="#91-decode-ways">91. Decode Ways</a></h2>
+<p>tags:<code>dfs</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int ans=0;
+    map&lt;int,int&gt; dp;
+    int dfs(string&amp; s, int id){
+        
+        if(id&lt;s.size() ){
+            //beened
+            if(dp.find(id)!=dp.end())
+                return dp[id];
+
+            int c=0;
+            // not zero
+            if(s[id]!='0'){
+                c+=dfs(s,id+1);
+                //have 2 digite and  not over 26 
+                if(id&lt;s.size()-1 &amp;&amp; (s[id]-'0'&lt;2 || (s[id]-'0'==2 &amp;&amp;s[id+1]-'0'&lt;7 ) ))
+                    c+=dfs(s,id+2);
+                dp[id]=c;
+            }
+            
+            return c; 
+        }
+        return 1;
+    }
+    int numDecodings(string s) {
+        return dfs(s,0);
+    }
+};
+</code></pre>
 <h2 id="98-validate-binary-search-tree"><a class="header" href="#98-validate-binary-search-tree">98. Validate Binary Search Tree</a></h2>
-<p>dfs inorder </p>
+<p>tags:<code>dfs</code> <code>inorder</code></p>
 <pre><code class="language-c++">/**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -296,8 +509,119 @@ public:
     }
 };
 </code></pre>
+<h2 id="120-triangle"><a class="header" href="#120-triangle">120. Triangle</a></h2>
+<p>tags:<code>dp</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) {
+        vector&lt;vector&lt;int&gt;&gt; dp;
+        int n=triangle.size();
+        dp.assign(n,vector&lt;int&gt;(n,INT_MAX));
+        dp[0][0]=triangle[0][0];
+        for(int i=1;i&lt;n;i++){
+            //i 0
+            dp[i][0]=dp[i-1][0]+triangle[i][0];
+            for(int j=1;j&lt;i;j++){
+                dp[i][j]=min(dp[i-1][j],dp[i-1][j-1])+triangle[i][j];
+            }
+            // i i
+            dp[i][i]=dp[i-1][i-1]+triangle[i][i];
+        }
+        int ans=INT_MAX;
+        for(auto &amp;v:dp[n-1])
+            ans=min(v,ans);
+        return ans;
+    }
+};
+</code></pre>
+<h2 id="139-word-break"><a class="header" href="#139-word-break">139. Word Break</a></h2>
+<p>tags:<code>dp</code> <code>2023/08/06</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int n =0;
+    set&lt;string&gt; dict;
+    map&lt;int ,bool&gt; dp;
+    bool f(string &amp;s,int k){
+        if(dp.find(k)!=dp.end())
+            return dp[k];
+        //end
+        if(k==n)
+            return true;
+        //max lenght is 20
+        for(int i=1;i&lt;20 &amp;&amp; k+i&lt;=n ;i++){
+            if(dict.count(s.substr(k,i))!=0 &amp;&amp; f(s,i+k) ){
+                dp[i+k]=true;
+                return true;
+            }
+        }
+        dp[k]=false;
+        return false;
+    }
+    bool wordBreak(string s, vector&lt;string&gt;&amp; wordDict) {
+        n=s.size();
+        for(auto &amp;word:wordDict)
+            dict.insert(word);
+        return f(s,0);
+    }
+};
+</code></pre>
+<h2 id="148-sort-list"><a class="header" href="#148-sort-list">148. Sort List</a></h2>
+<p>tags:<code>linklist</code> <code>merge sort</code></p>
+<p>for linklist merge two sorted list only need to change one pointer</p>
+<pre><code class="language-c++">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* merge(ListNode* l ,ListNode* r ){
+        auto h=new ListNode(0);
+        auto v=h;
+        while(l!=nullptr&amp;&amp;r!=nullptr){
+            if(l-&gt;val &lt;= r-&gt;val){
+                h-&gt;next=l;
+                l=l-&gt;next;
+            }
+            else{
+                h-&gt;next=r;
+                r=r-&gt;next;
+            }
+            h=h-&gt;next;
+        }
+        if(l!=nullptr)
+            h-&gt;next=l;
+        if(r!=nullptr)
+            h-&gt;next=r;
+        v=v-&gt;next;
+        // delete(h);
+        return v;
+    }
+    ListNode* sortList(ListNode* head) {
+        if(head==nullptr || head-&gt;next==nullptr)return head;
+        auto f =head;
+        auto s =head;
+        ListNode* tail=nullptr;
+        while( f !=nullptr &amp;&amp;f-&gt;next !=nullptr ){
+            tail=s;
+            s =s-&gt;next;
+            f=f-&gt;next-&gt;next;
+        }
+        tail-&gt;next=nullptr;
+        auto l=sortList(head);
+        auto r=sortList(s);
+        // return merge(l,r);
+        return merge(l,r);
+    }
+};
+</code></pre>
 <h2 id="198-house-robber"><a class="header" href="#198-house-robber">198. House Robber</a></h2>
-<p>use DP</p>
+<p>tags:<code>dp</code></p>
 <p>M(k) = money at the kth house<br>
 P(0) = 0<br>
 P(1) = M(1)<br>
@@ -322,7 +646,143 @@ public:
 };
 
 </code></pre>
+<h2 id="279-perfect-squares"><a class="header" href="#279-perfect-squares">279. Perfect Squares</a></h2>
+<p>tags:<code>dp</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    map&lt;int,int&gt;dp;
+
+    int numSquares(int n) {
+        vector&lt;int&gt; dp(n + 1, INT_MAX);
+        dp[0]=0;
+        for(int i=1;i&lt;=n;i++){
+            for(int j=1;j*j&lt;=i;j++){
+                dp[i]=min(dp[i],1+dp[i-j*j]);
+            }
+        }
+        return dp[n];
+    }
+};
+</code></pre>
+<h2 id="341-flatten-nested-list-iterator"><a class="header" href="#341-flatten-nested-list-iterator">341. Flatten Nested List Iterator</a></h2>
+<p>tags: <code>queue</code></p>
+<pre><code class="language-c++">/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * class NestedInteger {
+ *   public:
+ *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
+ *     bool isInteger() const;
+ *
+ *     // Return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // The result is undefined if this NestedInteger holds a nested list
+ *     int getInteger() const;
+ *
+ *     // Return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // The result is undefined if this NestedInteger holds a single integer
+ *     const vector&lt;NestedInteger&gt; &amp;getList() const;
+ * };
+ */
+
+class NestedIterator {
+public:
+    // vector&lt;NestedInteger&gt; l;
+    vector &lt;int &gt; dqv;
+    int id=0;
+    NestedIterator(vector&lt;NestedInteger&gt; nestedList) {
+        deque &lt;NestedInteger &gt; dq;
+        for (auto &amp;i : nestedList)
+            dq.push_back( i);
+        while(!dq.empty()){
+            auto v=dq.front();
+            dq.pop_front();
+            if(v.isInteger())
+                dqv.emplace_back(v.getInteger());
+            for(int i =v.getList().size()-1;i&gt;=0;i--)
+                dq.push_front(v.getList()[i]);
+        } 
+    }
+    
+    int next() {
+        return dqv[id++];
+
+    }
+    
+    bool hasNext() {     
+        return id&lt;dqv.size();  
+
+    }
+};
+
+/**
+ * Your NestedIterator object will be instantiated and called as such:
+ * NestedIterator i(nestedList);
+ * while (i.hasNext()) cout &lt;&lt; i.next();
+ */
+</code></pre>
+<p>##　416. Partition Equal Subset Sum
+tags:<code>dp</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    bool subsetk(vector&lt;int&gt; &amp;x,int sum,int n){
+        bool dp[n+1][sum+1];
+        //init
+        for(int i =0;i&lt;=sum;i++)
+            dp[0][i]=false;
+        //have reach 0
+        for(int i =0;i&lt;=n;i++)
+            dp[i][0]=true;
+
+        
+        for(int i=1;i&lt;=n;i++){
+            for(int j=1;j&lt;=sum;j++){
+                if(x[i-1]&lt;=j)
+                    dp[i][j]=dp[i-1][j] || dp[i-1][j-x[i-1]];
+                else
+                    dp[i][j]=dp[i-1][j];
+            }
+        }
+        return dp[n][sum];
+    }
+    bool canPartition(vector&lt;int&gt;&amp; nums) {
+        list&lt;int&gt; l;
+        int sum=0;
+        for(auto &amp;v: nums)
+            sum+=v;
+        if(sum &amp;1 )
+            return false;
+        return subsetk(nums,sum/2,nums.size());
+    }
+};
+</code></pre>
+<h2 id="712-minimum-ascii-delete-sum-for-two-strings"><a class="header" href="#712-minimum-ascii-delete-sum-for-two-strings">712. Minimum ASCII Delete Sum for Two Strings</a></h2>
+<p>tags:<code>dp</code> <code>Longest Common Subsequence</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int minC=INT_MAX;
+    vector&lt;vector&lt;int&gt;&gt; dp;
+    int lcs(int i,int j,string&amp;s1,string&amp;s2 ){
+        if(dp[i][j]!=INT_MAX)return dp[i][j];
+        if(i==s1.size() &amp;&amp; j==s2.size()) return dp[i][j]=0;
+        if(i==s1.size())return dp[i][j]=s2[j]+lcs(i,j+1,s1,s2);
+        if(j==s2.size())return dp[i][j]=s1[i]+lcs(i+1,j,s1,s2);
+        int sum;
+        if(s1[i]==s2[j])
+            sum=lcs(i+1,j+1,s1,s2);
+        else 
+            sum=min( lcs(i+1,j,s1,s2)+s1[i],lcs(i,j+1,s1,s2)+s2[j]);
+
+        return dp[i][j]=sum;
+
+    }
+    int minimumDeleteSum(string s1, string s2) {
+        dp.assign(s1.size()+1,vector(s2.size()+1,INT_MAX));
+        return lcs(0,0,s1,s2);
+    }
+};
+</code></pre>
 <h2 id="1143-longest-common-subsequence"><a class="header" href="#1143-longest-common-subsequence">1143. Longest Common Subsequence</a></h2>
+<p>tags:<code>dp</code></p>
 <pre><code class="language-c++">class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
@@ -344,7 +804,7 @@ public:
 
 </code></pre>
 <h2 id="1218-longest-arithmetic-subsequence-of-given-difference"><a class="header" href="#1218-longest-arithmetic-subsequence-of-given-difference">1218. Longest Arithmetic Subsequence of Given Difference</a></h2>
-<p>dp </p>
+<p>tags:<code>dp</code></p>
 <pre><code class="language-c++">class Solution {
 public:
 
@@ -366,7 +826,7 @@ public:
 };
 </code></pre>
 <h2 id="1705-maximum-number-of-eaten-apples"><a class="header" href="#1705-maximum-number-of-eaten-apples">1705. Maximum Number of Eaten Apples</a></h2>
-<p>priorty_queue</p>
+<p>tags:<code>priorty queue</code></p>
 <p>alway take the apple that is closest to the Validity limte</p>
 <pre><code class="language-c++">class Solution {
 public:
@@ -398,8 +858,8 @@ public:
 
 </code></pre>
 <h2 id="2024-maximize-the-confusion-of-an-exam"><a class="header" href="#2024-maximize-the-confusion-of-an-exam">2024. Maximize the Confusion of an Exam</a></h2>
-<p>sliding window
-maintain the range that fit the requirement</p>
+<p>tags:<code>sliding window</code></p>
+<p>maintain the range that fit the requirement</p>
 <pre><code class="language-c++">class Solution {
 public:
     int maxConsecutiveAnswers(string answerKey, int k) {
@@ -436,6 +896,7 @@ public:
 };
 </code></pre>
 <h2 id="2305-fair-distribution-of-cookies"><a class="header" href="#2305-fair-distribution-of-cookies">2305. Fair Distribution of Cookies</a></h2>
+<p>tags:<code>dfs</code></p>
 <p>dfs find every possible</p>
 <pre><code class="language-c++">class Solution {
 public:
