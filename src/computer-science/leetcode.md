@@ -211,6 +211,25 @@ public:
     }
 };
 ```
+## 78. Subsets
+tags:`binary`
+```c++
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        //2^n == (1 << nums.size())
+        vector<vector<int>> re((1 << nums.size()), vector<int>{});
+        for(int i = 0;i < re.size();++i){
+            for(int j = 0;j < nums.size();++j){
+                // use i in bin as combination
+                if(i & (1 << j))
+                    re[i].push_back(nums[j]);
+            }
+        }
+        return re;
+    }
+};
+```
 ## 79. Word Search
 tags:`dfs`
 ```c++
@@ -499,7 +518,128 @@ public:
     }
 };
 ``` 
+## 341. Flatten Nested List Iterator
+tags: `queue`
+```c++
+/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * class NestedInteger {
+ *   public:
+ *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
+ *     bool isInteger() const;
+ *
+ *     // Return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // The result is undefined if this NestedInteger holds a nested list
+ *     int getInteger() const;
+ *
+ *     // Return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // The result is undefined if this NestedInteger holds a single integer
+ *     const vector<NestedInteger> &getList() const;
+ * };
+ */
 
+class NestedIterator {
+public:
+    // vector<NestedInteger> l;
+    vector <int > dqv;
+    int id=0;
+    NestedIterator(vector<NestedInteger> nestedList) {
+        deque <NestedInteger > dq;
+        for (auto &i : nestedList)
+            dq.push_back( i);
+        while(!dq.empty()){
+            auto v=dq.front();
+            dq.pop_front();
+            if(v.isInteger())
+                dqv.emplace_back(v.getInteger());
+            for(int i =v.getList().size()-1;i>=0;i--)
+                dq.push_front(v.getList()[i]);
+        } 
+    }
+    
+    int next() {
+        return dqv[id++];
+
+    }
+    
+    bool hasNext() {     
+        return id<dqv.size();  
+
+    }
+};
+
+/**
+ * Your NestedIterator object will be instantiated and called as such:
+ * NestedIterator i(nestedList);
+ * while (i.hasNext()) cout << i.next();
+ */
+```
+
+##　416. Partition Equal Subset Sum
+tags:`dp`
+```c++
+class Solution {
+public:
+    bool subsetk(vector<int> &x,int sum,int n){
+        bool dp[n+1][sum+1];
+        //init
+        for(int i =0;i<=sum;i++)
+            dp[0][i]=false;
+        //have reach 0
+        for(int i =0;i<=n;i++)
+            dp[i][0]=true;
+
+        
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=sum;j++){
+                if(x[i-1]<=j)
+                    dp[i][j]=dp[i-1][j] || dp[i-1][j-x[i-1]];
+                else
+                    dp[i][j]=dp[i-1][j];
+            }
+        }
+        return dp[n][sum];
+    }
+    bool canPartition(vector<int>& nums) {
+        list<int> l;
+        int sum=0;
+        for(auto &v: nums)
+            sum+=v;
+        if(sum &1 )
+            return false;
+        return subsetk(nums,sum/2,nums.size());
+    }
+};
+```
+## 712. Minimum ASCII Delete Sum for Two Strings
+tags:`dp` `Longest Common Subsequence`
+
+```c++
+class Solution {
+public:
+    int minC=INT_MAX;
+    vector<vector<int>> dp;
+    int lcs(int i,int j,string&s1,string&s2 ){
+        if(dp[i][j]!=INT_MAX)return dp[i][j];
+        if(i==s1.size() && j==s2.size()) return dp[i][j]=0;
+        if(i==s1.size())return dp[i][j]=s2[j]+lcs(i,j+1,s1,s2);
+        if(j==s2.size())return dp[i][j]=s1[i]+lcs(i+1,j,s1,s2);
+        int sum;
+        if(s1[i]==s2[j])
+            sum=lcs(i+1,j+1,s1,s2);
+        else 
+            sum=min( lcs(i+1,j,s1,s2)+s1[i],lcs(i,j+1,s1,s2)+s2[j]);
+
+        return dp[i][j]=sum;
+
+    }
+    int minimumDeleteSum(string s1, string s2) {
+        dp.assign(s1.size()+1,vector(s2.size()+1,INT_MAX));
+        return lcs(0,0,s1,s2);
+    }
+};
+```
 
 
 ## 1143. Longest Common Subsequence
