@@ -170,26 +170,35 @@
                         </div>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="nerf-model"><a class="header" href="#nerf-model">NERF model</a></h1>
-<h2 id="hyperdiffusion-generating-implicit-neural-fields-with-weight-space-diffusion"><a class="header" href="#hyperdiffusion-generating-implicit-neural-fields-with-weight-space-diffusion">HyperDiffusion: Generating Implicit Neural Fields with Weight-Space Diffusion</a></h2>
+<h2 id="model-genera"><a class="header" href="#model-genera">model genera</a></h2>
+<h3 id="hyperdiffusion-generating-implicit-neural-fields-with-weight-space-diffusion"><a class="header" href="#hyperdiffusion-generating-implicit-neural-fields-with-weight-space-diffusion">HyperDiffusion: Generating Implicit Neural Fields with Weight-Space Diffusion</a></h3>
 <p><a href="https://arxiv.org/pdf/2303.17015.pdf">paper</a>
 <img src="https://hackmd.io/_uploads/B1swT78s3.png" alt="" />
 overfit the <code>MLP</code> to describe the 3d mesh then use the <code>diffustion model</code> to lean the associate of  <code>weight</code>、<code>bais</code>and the string</p>
-<h3 id="training-time"><a class="header" href="#training-time">training time</a></h3>
+<h4 id="training-time"><a class="header" href="#training-time">training time</a></h4>
 <p>3-layer 128-dim MLPs contain ≈ 36k parameters, which are flattened and tokenized for diffusion. We use an <code>Adam optimizer</code> with batch size 32 and initial learning rate of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span></span>, which is reduced by 20% every 200 epochs. We train for ≈ 4000 epochs until convergence, which takes ≈ 4 days on a single A6000 GPU</p>
-<h2 id="graf-generative-radiance-fields-for-3d-aware-image-synthesis"><a class="header" href="#graf-generative-radiance-fields-for-3d-aware-image-synthesis">GRAF: Generative Radiance Fields for 3D-Aware Image Synthesis</a></h2>
+<h3 id="graf-generative-radiance-fields-for-3d-aware-image-synthesis"><a class="header" href="#graf-generative-radiance-fields-for-3d-aware-image-synthesis">GRAF: Generative Radiance Fields for 3D-Aware Image Synthesis</a></h3>
 <p><a href="https://autonomousvision.github.io/graf/">link</a>
 <img src="https://hackmd.io/_uploads/r17wI48o2.png" alt="" />
 use GAN and NERF to ganerative the 3D model </p>
 <p>generator : input direaction and position and <code>style latent space vector</code> return color and density;<br>
 defector: input the image that render by volume rendering by genertor and real image predict loss;</p>
-<h2 id="lerf-language-embedded-radiance-fields"><a class="header" href="#lerf-language-embedded-radiance-fields">LERF: Language Embedded Radiance Fields</a></h2>
+<h3 id="nvdiffrec"><a class="header" href="#nvdiffrec">nvdiffrec</a></h3>
+<p><a href="https://nvlabs.github.io/nvdiffrec/">link</a>
+<img src="https://hackmd.io/_uploads/Syos71ai3.png" alt="" />
+use instant-nerf as nerf base and use <a href="https://nv-tlabs.github.io/DMTet/">DMTet</a> to reconstruct the 3D mesh. The render image by 3D mesh and neural general <code>PBR</code> texture compare to the origin sample .</p>
+<h3 id="nerfnerneural-radiance-fields-with-reflections"><a class="header" href="#nerfnerneural-radiance-fields-with-reflections">NeRFNeR:Neural Radiance Fields with Reflections</a></h3>
+<p><a href="https://github.com/bennyguo/nerfren">link</a>
+use 2 mlp the reflection map and surface color;</p>
+<h2 id="mics"><a class="header" href="#mics">mics</a></h2>
+<h3 id="lerf-language-embedded-radiance-fields"><a class="header" href="#lerf-language-embedded-radiance-fields">LERF: Language Embedded Radiance Fields</a></h3>
 <p><a href="https://www.lerf.io/">link</a>
 <img src="https://hackmd.io/_uploads/HJMm4IIjn.png" alt="" /></p>
-<h3 id="clip"><a class="header" href="#clip">CLIP</a></h3>
+<h4 id="clip"><a class="header" href="#clip">CLIP</a></h4>
 <p>decode text or image to the same <code>latent space</code></p>
-<h3 id="multiscale-clip-preprocessin"><a class="header" href="#multiscale-clip-preprocessin">Multiscale CLIP Preprocessin</a></h3>
+<h4 id="multiscale-clip-preprocessin"><a class="header" href="#multiscale-clip-preprocessin">Multiscale CLIP Preprocessin</a></h4>
 <p>slice traing image to diffrent size of image and use as <code>ground truth</code></p>
-<h3 id="lerf"><a class="header" href="#lerf">LERF</a></h3>
+<h4 id="lerf"><a class="header" href="#lerf">LERF</a></h4>
 <p>input :image <br>
 output :rgb、density 、<code>DINO feature</code>、<code>CLIP feature</code> <br>
 By find <code>cosine similarity</code> the input text <code>CLIP feature</code>and the LERF predict <code>CLIP feature</code> can show the connection between the text and NERF scene; </p>

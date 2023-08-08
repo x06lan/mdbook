@@ -198,6 +198,48 @@ public:
 };
 
 </code></pre>
+<h2 id="33-search-in-rotated-sorted-array"><a class="header" href="#33-search-in-rotated-sorted-array">33. Search in Rotated Sorted Array</a></h2>
+<p>tags:<code>binary search</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int search(vector&lt;int&gt;&amp; nums, int target) {
+        int l=0;
+        int bound=nums.size();
+        int r=bound-1;     
+        if(nums[l]&gt;nums[r]){
+            //binary search to find the prior point
+            while(l&lt;r){
+                int mid=l+(r-l)/2;
+                if(nums[mid]==target)
+                    return mid;
+                if(nums[mid]&gt;nums[r])
+                    l=mid+1;
+                else
+                    r=mid;
+            }
+
+            if(target&lt;=nums[bound-1])
+                r=bound-1;
+            else {
+                r=l;
+                l=0;
+            }
+        }
+        //binary search
+        while(l&lt;=r){
+            int mid=l+(r-l)/2;
+            if(nums[mid]==target)
+                return mid;
+            if(nums[mid]&gt;target)
+                r=mid-1;
+            else
+                l=mid+1;
+            mid=(l+r)/2;
+        }
+        return -1;
+    }
+};
+</code></pre>
 <h2 id="52-n-queens-ii"><a class="header" href="#52-n-queens-ii">52. N-Queens II</a></h2>
 <p>tags:<code>dfs</code></p>
 <pre><code class="language-c++">class Solution {
@@ -661,6 +703,30 @@ public:
             }
         }
         return dp[n];
+    }
+};
+</code></pre>
+<h2 id="322-coin-change"><a class="header" href="#322-coin-change">322. Coin Change</a></h2>
+<p>tags: <code>dp</code></p>
+<pre><code class="language-c++">class Solution {
+public:
+    int coinChange(vector&lt;int&gt;&amp; coins, int amount) {
+        vector&lt;int&gt; dp (amount+1,INT_MAX);
+        if(amount==0)
+            return 0;
+        dp[0]=0;
+        sort(begin(coins), end(coins));
+        for(int i=0;i&lt;=amount;i++){
+            for(auto &amp;v:coins){
+                if(v&gt;amount)
+                    break;
+                if(dp[i]!=INT_MAX &amp;&amp; v+i&lt;=amount )
+                    dp[i+v]=min(dp[i]+1,dp[i+v]);
+            }
+            
+                
+        }
+        return dp[amount]!=INT_MAX?dp[amount]:-1;
     }
 };
 </code></pre>
