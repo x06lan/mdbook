@@ -29,6 +29,49 @@ public:
 };
 
 ```
+## 33. Search in Rotated Sorted Array
+tags:`binary search`
+```c++
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int l=0;
+        int bound=nums.size();
+        int r=bound-1;     
+        if(nums[l]>nums[r]){
+            //binary search to find the prior point
+            while(l<r){
+                int mid=l+(r-l)/2;
+                if(nums[mid]==target)
+                    return mid;
+                if(nums[mid]>nums[r])
+                    l=mid+1;
+                else
+                    r=mid;
+            }
+
+            if(target<=nums[bound-1])
+                r=bound-1;
+            else {
+                r=l;
+                l=0;
+            }
+        }
+        //binary search
+        while(l<=r){
+            int mid=l+(r-l)/2;
+            if(nums[mid]==target)
+                return mid;
+            if(nums[mid]>target)
+                r=mid-1;
+            else
+                l=mid+1;
+            mid=(l+r)/2;
+        }
+        return -1;
+    }
+};
+```
 ## 52. N-Queens II
 tags:`dfs`
 ```c++
@@ -518,6 +561,31 @@ public:
     }
 };
 ``` 
+## 322. Coin Change
+tags: `dp`
+```c++
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp (amount+1,INT_MAX);
+        if(amount==0)
+            return 0;
+        dp[0]=0;
+        sort(begin(coins), end(coins));
+        for(int i=0;i<=amount;i++){
+            for(auto &v:coins){
+                if(v>amount)
+                    break;
+                if(dp[i]!=INT_MAX && v+i<=amount )
+                    dp[i+v]=min(dp[i]+1,dp[i+v]);
+            }
+            
+                
+        }
+        return dp[amount]!=INT_MAX?dp[amount]:-1;
+    }
+};
+```
 ## 341. Flatten Nested List Iterator
 tags: `queue`
 ```c++

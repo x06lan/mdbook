@@ -20,8 +20,11 @@ defector: input the image that render by volume rendering by genertor and real i
 ### nvdiffrec
 [link](https://nvlabs.github.io/nvdiffrec/)
 ![](https://hackmd.io/_uploads/Syos71ai3.png)
-use instant-nerf as nerf base and use [DMTet](https://nv-tlabs.github.io/DMTet/) to reconstruct the 3D mesh. The render image by 3D mesh with neural genera `PBR` texture compare to the origin sample .
+use instant-nerf as nerf base and use [DMTet](https://nv-tlabs.github.io/DMTet/) to reconstruct the 3D mesh. The render image by 3D mesh and neural general `PBR` texture compare to the origin sample .
 
+### NeRFNeR:Neural Radiance Fields with Reflections
+[link](https://github.com/bennyguo/nerfren)
+use 2 mlp the reflection map and surface color;
 
 
 ## mics
