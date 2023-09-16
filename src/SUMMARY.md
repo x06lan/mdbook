@@ -17,6 +17,8 @@
 
 * [computer science](computer-science/README.md)
   * [data science](computer-science/data-science.md)
+  * [computer networking](computer-science/computer-network.md)
+  * [signals processing](computer-science/signals-and-systems.md)
   * [BitTorrent](computer-science/BitTorrent.md)
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
   * [leetcode](computer-science/leetcode.md)
