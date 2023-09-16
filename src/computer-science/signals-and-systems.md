@@ -7,7 +7,7 @@ Example: $ x(t), y(t), z(t), A(x, y)$
 
 
 ### DT(discrete-time)
-• For a discrete-time (DT) signal, the independent variable is always
+For a discrete-time (DT) signal, the independent variable is always
 enclosed by a brackets $[N]$<br>
 Example: $x[n], y[n], z[n], A[m, n]$
 
