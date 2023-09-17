@@ -2471,6 +2471,12 @@ node[shape=record]
 <h2 id="docker-container"><a class="header" href="#docker-container">Docker Container</a></h2>
 <p>A Docker container is a running instance of a Docker image. It encapsulates the application code, libraries, and dependencies defined in the image, along with an isolated file system, network stack, and process space.</p>
 <h2 id="command"><a class="header" href="#command">command</a></h2>
+<h3 id="working-with-images"><a class="header" href="#working-with-images">Working with Images:</a></h3>
+<pre><code class="language-bash">docker images                               # List all locally available Docker images.
+docker pull &lt;image&gt;                         # Download an image from a registry (e.g., Docker Hub).
+docker build -t &lt;tag&gt; &lt;path_to_Dockerfile&gt;  # Build a new Docker image from a Dockerfile.
+docker rmi &lt;image&gt;                          # Remove a Docker image.
+</code></pre>
 <h3 id="working-with-containers"><a class="header" href="#working-with-containers">Working with Containers:</a></h3>
 <pre><code class="language-bash">docker run [options] &lt;image&gt;             # Create and start a new container based on the specified image.
 docker ps                                # List all running containers.
@@ -2479,12 +2485,6 @@ docker start &lt;container&gt;                 # Start a stopped container.
 docker stop &lt;container&gt;                  # Stop a running container.
 docker restart &lt;container&gt;               # Restart a container.
 docker exec -it &lt;container&gt; &lt;command&gt;    # Execute a command inside a running container.
-</code></pre>
-<h3 id="working-with-images"><a class="header" href="#working-with-images">Working with Images:</a></h3>
-<pre><code class="language-bash">docker images                               # List all locally available Docker images.
-docker pull &lt;image&gt;                         # Download an image from a registry (e.g., Docker Hub).
-docker build -t &lt;tag&gt; &lt;path_to_Dockerfile&gt;  # Build a new Docker image from a Dockerfile.
-docker rmi &lt;image&gt;                          # Remove a Docker image.
 </code></pre>
 <h3 id="managing-docker-compose-for-multi-container-applications"><a class="header" href="#managing-docker-compose-for-multi-container-applications">Managing Docker Compose (for multi-container applications):</a></h3>
 <pre><code class="language-bash">docker-compose up            # Create and start containers defined in a docker-compose.yml file.
