@@ -7,6 +7,14 @@ Images are typically created from a base image (like a Linux distribution) and c
 A Docker container is a running instance of a Docker image. It encapsulates the application code, libraries, and dependencies defined in the image, along with an isolated file system, network stack, and process space.
 ## command
 
+### Working with Images:
+```bash
+docker images                               # List all locally available Docker images.
+docker pull <image>                         # Download an image from a registry (e.g., Docker Hub).
+docker build -t <tag> <path_to_Dockerfile>  # Build a new Docker image from a Dockerfile.
+docker rmi <image>                          # Remove a Docker image.
+```
+
 ### Working with Containers:
 
 ```bash
@@ -18,15 +26,6 @@ docker stop <container>                  # Stop a running container.
 docker restart <container>               # Restart a container.
 docker exec -it <container> <command>    # Execute a command inside a running container.
 ```
-
-### Working with Images:
-```bash
-docker images                               # List all locally available Docker images.
-docker pull <image>                         # Download an image from a registry (e.g., Docker Hub).
-docker build -t <tag> <path_to_Dockerfile>  # Build a new Docker image from a Dockerfile.
-docker rmi <image>                          # Remove a Docker image.
-```
-
 
 ### Managing Docker Compose (for multi-container applications):
 
