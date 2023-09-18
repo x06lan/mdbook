@@ -25,3 +25,21 @@ $$
 $$
 P  =\frac{E}{t_2-t_1}=\int^{t_2}_{t_1}p(t)dt=\int^{t_2}_{t_1}\frac{1}{R}v^2(t)dt
 $$
+### ex1
+$$
+x(t)=\begin{cases}
+        x& 0<x<3\\
+        6-x& 3<x<6\\
+    \end{cases}\\
+E=\int^{6}_{0}x(t)^2dt=\int^{3}_{0}(t)^2dt+\int^{6}_{3}(6-t)^2dt\\
+P=\frac{E}{6-0}=\frac{1}{6}(\int^{3}_{0}(t)^2dt+\int^{6}_{3}(6-t)^2dt)
+$$
+### ex2
+$$
+x[t]=\begin{cases}
+        x& 0<x<3\\
+        6-x& 3<x<6\\
+    \end{cases}\\
+E=\sum^{3}_{t=0}x(t)^2=\sum^{3}_{t=0}(t)^2+\sum^{6}_{t=3}(6-t)^2\\
+P=\frac{E}{6-0}=\frac{1}{6}(\sum^{3}_{t=0}(t)^2+\sum^{6}_{t=3}(6-t)^2)
+$$
