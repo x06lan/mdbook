@@ -3,7 +3,7 @@
 
 * [about me](README.md)
 * [math](math/README.md)
-  * [probability](math/probability/README.md)
+  * [probability](math/probability/hw2.md)
       * [hw2 110590049](math/probability/hw2.md)
       * [hw3 110590049](math/probability/hw3.md)
       * [hw4 110590049](math/probability/hw4.md)
@@ -17,6 +17,7 @@
 
 * [computer science](computer-science/README.md)
   * [data science](computer-science/data-science.md)
+  * [database systems](computer-science/database-systems/hw1.md)
   * [computer networking](computer-science/computer-network.md)
   * [signals processing](computer-science/signals-and-systems.md)
   * [BitTorrent](computer-science/BitTorrent.md)
