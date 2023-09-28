@@ -53,11 +53,11 @@ f(x)=sin(x) \rightarrow &f^0(x)=sin(x)\\
 & f^4(x)=sin(x)=f^0(x)\\
 \end{alignedat}\\
 \text{if }a=0\\
-\begin{alignedat}{}
+\begin{aligned}{}
 f(x)&=\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n\\
     &=\sum_{n=0}^{\infty}\frac{sin(0)}{(4n+0)!}(x)^{4n}+\frac{cos(0)}{(4n+1)!}(x)^{4n+1}+\frac{-sin(0)}{(4n+2)!}(x)^{4n+2}+\frac{-cos(0)}{(4n+3)!}(x)^{4n+3}\\
     &=\sum_{n=0}^{\infty}\frac{cos(0)}{(4n+1)!}(x)^{4n+1}+\frac{-cos(0)}{(4n+3)!}(x)^{4n+3}\\
     &=\sum_{n=0}^{\infty}\frac{1}{(4n+1)!}(x)^{4n+1}+\frac{-1}{(4n+3)!}(x)^{4n+3}\\
     sin(x)&=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}(x)^{2n+1}\\
-\end{alignedat}\\
+\end{aligned}\\
 $$

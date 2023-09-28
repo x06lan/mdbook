@@ -1,10 +1,5 @@
 # computer networking
 
-## intro
-| 表头            | 表头            |
-| --------------- | --------------- |
-| packet switches | router,switches |
-| 单元格          | 单元格          |
 
 ## circuit switching(FDM,TDM)
 
