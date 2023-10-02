@@ -47,3 +47,28 @@ $$
 
 ## function transform
 <iframe src="https://www.desmos.com/calculator/rxadxdsm8y?embed" width="800" height="800" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+
+## unit step function
+$$
+u[n]\stackrel{def}{=}
+\begin{cases}
+1 & n\geq 0\\
+0 & n< 0\\
+\end{cases}\\
+$$
+
+## unit impulse function 
+$$
+\int_{-\infty}^{\infty}\delta(x) \ dx=1\\
+\delta[n]\stackrel{def}{=}
+\begin{cases}
+1& n=0\\
+0& n\neq 0
+\end{cases}\\
+\delta[n-n_0]=
+\begin{cases}
+1& n=n_0\\
+0& n\neq n_0
+\end{cases}\\
+$$
