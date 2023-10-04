@@ -16,7 +16,9 @@
   * [calcus](math/calculus.md)
 
 * [computer science](computer-science/README.md)
-  * [data science](computer-science/data-science.md)
+  * [data science](computer-science/data-science/data-science.md)
+    * [data science](computer-science/data-science/data-science.md)
+    * [hw1](computer-science/data-science/hw1.md)
   * [database systems](computer-science/database-systems/hw1.md)
     * [hw1](computer-science/database-systems/hw1.md)
   * [computer networking](computer-science/computer-network/computer-network.md)
