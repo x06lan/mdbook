@@ -162,14 +162,20 @@ $$
 | 57  | 30.2 |
 | 58  | 34.1 |
 | 58  | 32.9 |
-| 60  | 40.2 |
+| 60  | 41.2 |
 | 61  | 35.7 |
 
 $$
 \begin{aligned}
 r&=\frac{\underset{i}{\sum}(x_{i}-\hat x)(y_{i}-\hat y)}{ \sqrt{\underset{i}{\sum}(x_{i}-\hat x)^2}\sqrt{\underset{i}{\sum}(y_{i}-\hat y)^2}}\\
-&=\frac{1576.6}{\sqrt{2910}\sqrt{1231.2247}}\\
+&=\frac{1590.6}{\sqrt{2910}\sqrt{1256.731}}\\
 &=0.8329
+\end{aligned}
+$$
+$$
+\begin{aligned}
+cov(x,y)&=\frac{1}{n}\sum_{i}((x_i-E(x))(y_i-E(y))\\
+&=99.41
 \end{aligned}
 $$
 
