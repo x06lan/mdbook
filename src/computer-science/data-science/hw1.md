@@ -3,7 +3,7 @@
 
 tags `data`
 
-[2023 Educational Data Mining and Applications HW1.pdf](../../../assets/pdf/Educational_Data_Mining_and_Applications_HW1.pdf)
+[2023 Educational Data Mining and Applications HW1.pdf](../../assets/pdf/Educational_Data_Mining_and_Applications_HW1.pdf)
 
 # 2.2(e)
 Five number summary: min, Q1, median, Q3, max<br>
@@ -109,6 +109,21 @@ $$
 | Bin2 | 43.7,43.7,43.7,43.7,43.7,43.7,43.7,43.7,43.7 |
 
 # 3.3(b)
+find the outlier value using the IQR method:
+$$
+IQR=Q3-Q1=35-20=15\\
+\begin{aligned}{}
+\text{Lower Bound} & = Q1 - 1.5 * IQR\\
+& = 20 - 1.5 * 15 = 20 - 22.5 = -2.5\\
+\end{aligned}\\
+
+\begin{aligned}{}
+\text{Upper Bound} & = Q3 + 1.5 * IQR\\
+& = 35 + 1.5 * 15 = 35 + 22.5 = 57.5\\
+\end{aligned}\\
+70>\text{Upper Bound}\\
+\text{70 is the outlier value}
+$$
 # 3.7(a)
 $$
 \begin{aligned}{}
@@ -129,10 +144,26 @@ $$
 
 # 3.8(b)
 
-| age | 23  | 23   | 27  | 27   | 39   | 41   | 47   | 49   | 50   | 52   | 54   | 56   | 57   | 58   | 58   | 60   | 61   |
-| --- | --- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| fat | 9.5 | 26.5 | 7.8 | 17.8 | 31.4 | 25.9 | 27.4 | 27.2 | 31.2 | 34.6 | 28.8 | 33.4 | 30.2 | 34.1 | 32.9 | 40.2 | 35.7 |
 
+| age | fat  |
+| --- | ---- |
+| 23  | 9.5  |
+| 23  | 26.5 |
+| 27  | 7.8  |
+| 27  | 17.8 |
+| 39  | 31.4 |
+| 41  | 25.9 |
+| 47  | 27.4 |
+| 49  | 27.2 |
+| 50  | 31.2 |
+| 52  | 34.6 |
+| 54  | 28.8 |
+| 56  | 33.4 |
+| 57  | 30.2 |
+| 58  | 34.1 |
+| 58  | 32.9 |
+| 60  | 40.2 |
+| 61  | 35.7 |
 
 $$
 \begin{aligned}

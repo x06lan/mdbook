@@ -3,7 +3,7 @@
 
 tags `db` `database`
 
-[2023 database-systems HW1.pdf](../../../assets/pdf/database_systemsHW1.pdf)
+[2023 database-systems HW1.pdf](../../assets/pdf/database_systemsHW1.pdf)
 
 # 1.
 

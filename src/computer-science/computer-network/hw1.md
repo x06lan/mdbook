@@ -1,6 +1,6 @@
 # hw1
 
-[2023 computer-networking HW1.pdf](../../../assets/pdf/computer_networkingHW1.pdf)
+[2023 computer-networking HW1.pdf](../../assets/pdf/computer_networkingHW1.pdf)
 
 ## 1.
 Determine the bottleneck link, which is the link with the lowest throughput. In this case, the bottleneck link is the first hop with a throughput of 500 kbps.
