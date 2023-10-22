@@ -13,7 +13,7 @@ curly-quotes = true
 
 git-repository-url = "https://github.com/x06lan/mdbook"
 additional-css = ["theme/pagetoc.css"]
-additional-js = ["theme/pagetoc.js"]
+additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
 
 
 [output.html.fold]
@@ -37,4 +37,6 @@ command = "./mdbook-katex"
 #command = "mdbook-graphviz"
 #output-to-file = false # defaults to false, change to true to create SVG files instead of rendering them inline
 
+[preprocessor.mermaid]
+command = "./mdbook-mermaid"
 

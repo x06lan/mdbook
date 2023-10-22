@@ -21,6 +21,7 @@
     * [hw1](computer-science/data-science/hw1.md)
   * [database systems](computer-science/database-systems/hw1.md)
     * [hw1](computer-science/database-systems/hw1.md)
+    * [hw2](computer-science/database-systems/hw2.md)
   * [computer networking](computer-science/computer-network/computer-network.md)
     * [computer networking](computer-science/computer-network/computer-network.md)
     * [hw1](computer-science/computer-network/hw1.md)
