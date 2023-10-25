@@ -50,8 +50,22 @@ $$
 
 
 ## unit step function
+### discrcte
 $$
 u[n]\stackrel{def}{=}
+\begin{cases}
+1 & n\geq 0\\
+0 & n< 0\\
+\end{cases}\\
+u[n-n_0]\stackrel{def}{=}
+\begin{cases}
+1 & n_0\geq 0\\
+0 & n_0< 0\\
+\end{cases}\\
+$$
+### continouse
+$$
+u(n)\stackrel{def}{=}
 \begin{cases}
 1 & n\geq 0\\
 0 & n< 0\\
@@ -59,16 +73,76 @@ u[n]\stackrel{def}{=}
 $$
 
 ## unit impulse function 
+### discrcte
 $$
-\int_{-\infty}^{\infty}\delta(x) \ dx=1\\
 \delta[n]\stackrel{def}{=}
 \begin{cases}
 1& n=0\\
 0& n\neq 0
 \end{cases}\\
-\delta[n-n_0]=
+
+\delta[n-n_0]\stackrel{def}{=}
 \begin{cases}
 1& n=n_0\\
 0& n\neq n_0
 \end{cases}\\
 $$
+
+### continouse
+$$
+\delta(n)\stackrel{def}{=}
+\begin{cases}
+\infty & n= 0\\
+0 & n\neq 0\\
+\end{cases}\\
+\int_{-\infty}^{\infty}\delta(x) \ dx=1\\
+$$
+
+## basic system properties
+### memory and memoryless
+#### memoryless systems
+only the current signal<br>
+$$
+y[n]=(2x[n]-x[n]^2)^2
+$$
+
+#### memory systems
+only the current signal<br>
+$$
+\begin{aligned}\\
+&y[n]=\sum_{k=-\infty}^{n}x[k]     & \text{(accumulator)}\\
+&y(t)=\int_{-\infty}^{t} x(t) \ dt & \text{(integral)}\\
+&y[n]=x[n] & \text{(delay)}\\
+\end{aligned}
+$$
+
+
+### invertibility
+$$
+\begin{aligned}\\
+&y(t)=2x(t)&,&y(t)^{-1}=\frac{1}{2}x(t)\\
+&y[n]=\sum_{-\infty}^{n}x[n]&,&y[t]^{-1}=x[n]-x[n-1]\\
+\end{aligned}
+$$
+### causality
+only the current and past signal are relate then it is causal system<br>
+#### causal systems
+$$
+y(t)=x(t-1)\\
+y[n]=x[n]-x[n-1]
+$$
+#### non-causal systems
+$$
+y(t)=x(t+1)\\
+y[n]=x[n]-x[n+1]
+$$
+### stability and BIBO stable 
+can find BIBO(bounded-input and bounded-output) in another word the function is diverage or not.
+#### BIBO stable
+$$
+y(t)=1.01x[n-1]\\
+y[n]=x[n]-x[n+1]
+$$
+### time invariance
+the function shift or scale input will not effect the output result.
+### linearity
