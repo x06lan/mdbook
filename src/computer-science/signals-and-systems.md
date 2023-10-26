@@ -76,6 +76,7 @@ $$
 
 
 ### invertibility
+function is invertable
 $$
 \begin{aligned}\\
 &y(t)=2x(t)&,&y(t)^{-1}=\frac{1}{2}x(t)\\
@@ -94,13 +95,30 @@ $$
 y(t)=x(t+1)\\
 y[n]=x[n]-x[n+1]
 $$
-### stability and BIBO stable 
+### stability (BIBO stable )
 can find BIBO(bounded-input and bounded-output) in another word the function is diverage or not.
+$$
+|x(t)|\leq \infty \text{ and }|y(t)|\leq \infty \text{ for all t}
+$$
 #### BIBO stable
 $$
+y[n]=x[n]+x[n+1]
+$$
+#### BIBO  unstable
+$$
 y(t)=1.01x[n-1]\\
-y[n]=x[n]-x[n+1]
 $$
 ### time invariance
-the function shift or scale input will not effect the output result.
+the function shift input will only shift and dont have any effect 
 ### linearity
+if $x(at)+x(bt)== x(at+bt)$ then is linearty
+
+### test
+|                                                    | memoryless | stable | causal | linaer | time invariant |
+| :------------------------------------------------: | :--------: | :----: | :----: | :----: | :------------: |
+|                 $$y(t)=cos(x(t))$$                 |     ✅      |   ✅    |   ✅    |   ❌    |       ✅        |
+|                 $$y[n]=2x[n]u[n]$$                 |     ✅      |   ✅    |   ✅    |   ✅    |       ❌        |
+|       $$y(t)=\int_{-\infty}^{t/2} x(u) du$$        |     ❌      |   ✅    |   ❌    |   ✅    |       ❌        |
+|        $$y[n]=\sum_{k=-\infty}^{n} x[k+2]$$        |     ❌      |   ✅    |   ❌    |   ✅    |       ✅        |
+|                  $$y(t)=x(2-t)$$                   |     ❌      |   ✅    |   ❌    |   ✅    |       ❌        |
+| $$y[n]=x[n]\sum_{k=-\infty}^{\infty}\delta[n-2k]$$ |     ✅      |   ✅    |   ✅    |   ✅    |       ✅        |

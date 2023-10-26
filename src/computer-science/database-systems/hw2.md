@@ -26,7 +26,7 @@ The key icon stands for primary key. On the other side of the connection with th
 有違反 Semantic Integrity Constraints，Robert 的上司是 James(888665555) ，但 Robert 的薪水(58000)比上司(55000)還高
 No integrity constraints are violated.
 ### 3.b
-The DEPT_LOCATIONS number should be 5, but this operation inserts 4 into it, resulting in inconsistency in the DEPT_LOCATIONS number.
+The DEPT_LOCATIONS number should be 5, but this operation inserts 2 into it, resulting in inconsistency in the DEPT_LOCATIONS number.
 ### 3.c
 No integrity constraints are violated.
 ### 3.d
