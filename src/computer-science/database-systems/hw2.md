@@ -32,7 +32,7 @@ No integrity constraints are violated.
 ### 3.d
 Delete the PROJECT "ProductX" from the PROJECT table, and also delete the tuple from the WORKS_ON table where "Pno" is "1."
 ### 3.e
-Change the super_ssn of employee "Alicia" to 943775544, making the supervisor of "Alicia" change to "Robert," who is in the department of research, while the department of "Alicia" is administration. This will result in inconsistency within the EMPLOYEE table.
+No integrity constraints are violated.
 ### 3.f
 If you modify the Pnumber from 30 to 40, you also need to change the row in the WORKS_ON table where Pno is 30 to 40. This will result in inconsistency within the WORKS_ON table.
 

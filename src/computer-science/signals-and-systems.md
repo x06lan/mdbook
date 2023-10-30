@@ -109,7 +109,17 @@ $$
 y(t)=1.01x[n-1]\\
 $$
 ### time invariance
-the function shift input will only shift and dont have any effect 
+the function shift input will only shift and dont have any effect <br>
+#### example
+$$
+\begin{aligned}\\
+&,&&y(t)=tx(t)\\
+\text{define } y_1(x)\text{ let } x(t)=x(t+t_0)&,&&y_1(t)=tx(t+t_0)\\
+\text{if }y_1(t)==y(t+t_0) \text{then it is invariance}&,&&y(t+t_0)=tx(t+t_0)\\
+
+\end{aligned}
+
+$$
 ### linearity
 if $x(at)+x(bt)== x(at+bt)$ then is linearty
 
@@ -122,3 +132,26 @@ if $x(at)+x(bt)== x(at+bt)$ then is linearty
 |        $$y[n]=\sum_{k=-\infty}^{n} x[k+2]$$        |     ❌      |   ✅    |   ❌    |   ✅    |       ✅        |
 |                  $$y(t)=x(2-t)$$                   |     ❌      |   ✅    |   ❌    |   ✅    |       ❌        |
 | $$y[n]=x[n]\sum_{k=-\infty}^{\infty}\delta[n-2k]$$ |     ✅      |   ✅    |   ✅    |   ✅    |       ✅        |
+## complex plane
+
+$$
+j=\sqrt{-1}\\
+ \\
+\begin{aligned}
+z&=r\times e^{j\theta}\\
+&=r\times (\sin( \theta) +j \cos(\omega))\\
+&=\alpha+j\omega\\
+\end{aligned}\\
+$$
+## exponential signal & sinusoidal signal
+### exponential signal
+$$
+x(t)=Ce^{\alpha t}\\
+$$
+
+
+|  |C is real| C is complex|
+| :--------: | :---: | :---: |
+|  a is real|$$x(t)=Ce^{\alpha t}$$| |
+|  a is  imaginary| | $$C=r\times e^{j\phi}\\a=j w_0 \\ x(t)=r\times e^{j(w_0 t+ \phi)}$$ |
+|  a is  complex | | $$C=r_1\times e^{j\phi} \\ a=r_2+j w_0\\ \begin{aligned} x(t)&=(r_1\times e^{j\phi})(e^{r_2 t+j w_0t})\\x(t)&=r_1(e^{r_2 t}e^{j (w_0t+\phi )})\\ x(t)&=r\times e^{j(w_0 t+ \phi)}\end{aligned}$$ |
