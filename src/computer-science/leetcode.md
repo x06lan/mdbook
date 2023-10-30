@@ -644,7 +644,7 @@ public:
  */
 ```
 
-##　416. Partition Equal Subset Sum
+## 416. Partition Equal Subset Sum
 tags:`dp`
 ```c++
 class Solution {
