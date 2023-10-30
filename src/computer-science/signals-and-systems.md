@@ -145,8 +145,6 @@ z&=r\times e^{j\theta}\\
 \end{aligned}\\
 $$
 ## exponential signal & sinusoidal signal
-### exponential signal
-#### base eqtion
 $$
 x(t)=Ce^{\alpha t}\\
 $$
@@ -157,3 +155,36 @@ $$
 |    a is real    | $$x(t)=Ce^{\alpha t}$$ |                                                                                                                                                                                                                                    |
 | a is  imaginary |                        |                                                                                $$C=r\times e^{j\phi}\\a=j w_0 \\ x(t)=r\times e^{j(w_0 t+ \phi)}$$                                                                                 |
 |  a is  complex  |                        | $$C=r_1\times e^{j\phi} \\ a=\alpha +j w_0\\ \begin{aligned} x(t)&=(r\times e^{j\phi})(e^{\alpha t+j w_0t})\\ x(t)&=r(e^{\alpha t}e^{j (w_0t+\phi )})\\ x(t)&=r \ e^{\alpha t}(\cos(w_0t+\phi )+j \sin(w_0t+\phi ))\end{aligned}$$ |
+
+### periods
+#### CT
+$$
+x(t)=r \ e^{j w_0 t}\\
+\text{fundamental period }T_0=\frac{2\pi}{w_0}
+$$
+##### example
+$$
+x(t)=e^{j2t}+e^{j3t}\\
+\text{fundamental period of }e^{j2t}=\pi\\
+\text{fundamental period of }e^{j3t}=\frac{2\pi}{3}\\
+\text{LCD(Least Common Denominator) of }\pi \text{ and } \frac{2\pi}{3} \text{ is } 2\pi\\
+\text{fundamental period of }e^{j2t}+e^{j3t}=2\pi\\
+$$
+#### DT
+
+fundamental period $T_0$ is integer that $x[n]=x[n+i\% T_0]$ for all integer $i$<br>
+> not every "sinusoidal signal" all have $T_0$
+
+$$
+x[n]=r \ e^{j w_0 t}=r \ e^{j\frac{m}{N}n}\\
+\text{fundamental period }T_0=N\\
+\text{fundamental frequency }=\frac{2\pi}{N}\\
+$$
+##### example
+$$
+x[n]=e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}\\
+\text{fundamental period of } e^{j(\frac{2\pi}{3})n}=3\\
+\text{fundamental period of } e^{j(\frac{3\pi}{4})n}=8  \ \because(2\pi=\frac{24 \pi}{4})\\
+\text{LCD(Least Common Denominator) of } 3 \text{ and } 8 \text{ is } 24\\
+\text{fundamental period of }e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}=24\\
+$$
