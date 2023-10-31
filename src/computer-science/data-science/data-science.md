@@ -163,6 +163,10 @@ use point number of group as weight or averge two group distance
 * support(A->B)=$P(A\cap B)$
 * confidence(A->B)=$P(A| B)$
 * lift(A->B)=$\frac{P(A\cap B)}{P(A)P(B)}$
+* AllConf(A,b)=$\frac{P(A \cap  B)}{\max(P(A),P(B))}$
+* MaxConf(A,b)=$\max(P(A|B),P(B|A))$
+* Kulc(A,b)=$\frac{1}{2}(P(B|A)+P(A|B))$
+* Cosine(A,B)=$\frac{A \cdot B}{|A|\times |B|}$
 
 if lift(A,B) >1 then A,B is effective
 
