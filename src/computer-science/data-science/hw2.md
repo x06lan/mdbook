@@ -7,15 +7,32 @@ tags `data`
 
 ## 6.3
 ### a
+1. Support(L) ≥ minimum support threshold.<br>
+1. Since S is a subset of L, it means that any transaction containing all items in S also contains all items in L.
+1. Support(S) ≥ Support(L) (because S includes all transactions that L includes)
+1. Therefore, Support(S) ≥ minimum support threshold.
+1. This proves that S is also a frequent itemset.
 ### b
+1. Support(s') < Support(s)
+1. Support(s') < Support(s) leads to a contradiction, as we've shown that the support of the intersection of s and s' is greater than the support of s, which is not logically possible
 ### c
+1. Confidence(X => Y) = Support(X ∪ Y) / Support(X).
+1. Confidence(s => {l-s}) = Support(s ∪ {l-s}) / Support({l-s}).
+1. Confidence(s' => {l-s'}) = Support(s' ∪ {l-s'}) / Support({l-s'}).
+1. Support(s' ∪ (l - s')) ≤ Support(s ∪ (l - s))
+1. Support(s') ≥ Support(s)
+1. Confidence(s' => (l - s')) ≤ Confidence(s => (l - s))
+
 ### d
+1. If I is frequent in D, it must have a support count greater than or equal to the minimum support count threshold (minsup) for frequent itemsets in D.
+2. If I is not frequent in any partition Pi, it must have a support count less than the minsup in each partition.
+3. Any itemset that is frequent in the original database D must be frequent in at least one partition of D.
 
 ## 6.6
 min_support=0.6<br>
 min_confi=0.8<br>
 
-|  ID   |    Items bought    |
+|  ID   |       Items        |
 | :---: | :----------------: |
 | T100  | {M, O, N, K, E, Y} |
 | T200  | {D, O, N, K, E, Y} |
@@ -28,16 +45,27 @@ min_confi=0.8<br>
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>K</td><td>1.0</td></tr><tr><td>E</td><td>0.8</td></tr><tr><td>Y</td><td>0.6</td></tr><tr><td>M</td><td>0.6</td></tr><tr><td>O</td><td>0.6</td></tr><tr><td>C</td><td>0.4</td></tr><tr><td>N</td><td>0.4</td></tr><tr><td>D</td><td>0.1</td></tr><tr><td>A</td><td>0.1</td></tr><tr><td>U</td><td>0.1</td></tr><tr><td>I</td><td>0.1</td></tr></tbody></table> | <table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>{K,E}</td><td>0.8</td></tr><tr><td>{K,Y}</td><td>0.6</td></tr><tr><td>{K,M}</td><td>0.6</td></tr><tr><td>{K,O}</td><td>0.6</td></tr><tr><td>{E,Y}</td><td>0.4</td></tr><tr><td>{E,M}</td><td>0.4</td></tr><tr><td>{E,O}</td><td>0.6</td></tr><tr><td>{Y,M}</td><td>0.4</td></tr><tr><td>{Y,O}</td><td>0.2</td></tr><tr><td>{M,O}</td><td>0.2</td></tr></tbody> </table> | <table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>{K,E,Y}</td><td>0.4</td></tr><tr><td>{K,E,M}</td><td>0.4</td></tr><tr><td>{K,E,O}</td><td>0.6</td></tr><tr><td>{K,Y,M}</td><td>0.4</td></tr><tr><td>{K,Y,O}</td><td>0.4</td></tr><tr><td>{K,M,O}</td><td>0.2</td></tr><tr><td>{K,M,E,O}</td><td>0.2</td></tr></tbody></table> |
 
-#### FP-growth algorithm
-![](../../assets/image/data_science_hw2_fp_tree.svg)
-
-#### conclusion
-By query 2 time to build FP-tree reduce the time to query database .So FP-growth is more efficient compared to a priori.
-### b
-| Item                           | support | Confidence |
+| frequent itemsets              | support | Confidence |
 | ------------------------------ | ------- | ---------- |
 | $$\{E \}\rightarrow \{K,O \}$$ | 0.6     | 0.8        |
 | $$\{O \}\rightarrow \{K,E \}$$ | 0.6     | 1.0        |
+| $$\{K,O \}\rightarrow \{E \}$$ | 0.6     | 1.0        |
+| $$\{E,O \}\rightarrow \{K \}$$ | 0.6     | 1.0        |
+
+#### FP-growth algorithm
+![](../../assets/image/data_science_hw2_fp_tree.svg)
+
+| itemsets | condition                   | frequent itemsets |
+| -------- | --------------------------- | ----------------- |
+| e        | {k:4}                       | {k:4}             |
+| m        | {e,k:2},{k:1}               | {k:3}             |
+| o        | {f,e,m:1},{k,e:2}           | {e:3}             |
+| y        | {f,e,m:1},{f,e,o:1},{f,m:1} | {f:3}             |
+#### conclusion
+By query 2 time to build FP-tree reduce the time to query database .So FP-growth is more efficient compared to a priori.
+### b
+| frequent itemsets              | support | Confidence |
+| ------------------------------ | ------- | ---------- |
 | $$\{K,O \}\rightarrow \{E \}$$ | 0.6     | 1.0        |
 | $$\{E,O \}\rightarrow \{K \}$$ | 0.6     | 1.0        |
 

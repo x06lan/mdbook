@@ -79,11 +79,17 @@
 <title>m1-&gt;y3</title>
 <path fill="none" stroke="#000000" d="M171,-215.8314C171,-205 171,-191.2876 171,-180.4133"/>
 </g>
+<!-- m2&#45;&gt;m1 -->
+<g id="edge13" class="edge">
+<title>m2-&gt;m1</title>
+<path fill="none" stroke="#000000" d="M54.4534,-175.7267C77.2438,-187.1219 109.8433,-203.4216 134.7724,-215.8862"/>
+<polygon fill="#000000" stroke="#000000" points="133.4052,-219.1157 143.9147,-220.4574 136.5357,-212.8547 133.4052,-219.1157"/>
+</g>
 <!-- o1 -->
 <g id="node7" class="node">
 <title>o1</title>
 <polygon fill="none" stroke="#000000" points="54,-108 0,-108 0,-72 54,-72 54,-108"/>
-<text text-anchor="middle" x="27" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#000000">o:2</text>
+<text text-anchor="middle" x="27" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#000000">o:1</text>
 </g>
 <!-- m2&#45;&gt;o1 -->
 <g id="edge6" class="edge">
@@ -101,6 +107,12 @@
 <title>o1-&gt;y1</title>
 <path fill="none" stroke="#000000" d="M27,-71.8314C27,-61 27,-47.2876 27,-36.4133"/>
 </g>
+<!-- o2&#45;&gt;o1 -->
+<g id="edge10" class="edge">
+<title>o2-&gt;o1</title>
+<path fill="none" stroke="#000000" d="M80.8314,-143.8314C72.2848,-135.2848 61.9443,-124.9443 52.6198,-115.6198"/>
+<polygon fill="#000000" stroke="#000000" points="54.9592,-113.0095 45.4133,-108.4133 50.0095,-117.9592 54.9592,-113.0095"/>
+</g>
 <!-- y2 -->
 <g id="node9" class="node">
 <title>y2</title>
@@ -111,6 +123,18 @@
 <g id="edge8" class="edge">
 <title>o2-&gt;y2</title>
 <path fill="none" stroke="#000000" d="M99,-143.8314C99,-133 99,-119.2876 99,-108.4133"/>
+</g>
+<!-- y3&#45;&gt;y1 -->
+<g id="edge12" class="edge">
+<title>y3-&gt;y1</title>
+<path fill="none" stroke="#000000" d="M167.7145,-143.7141C163.3218,-123.9147 153.8015,-92.4334 135,-72 115.8731,-51.2129 86.959,-37.3477 63.8604,-28.8769"/>
+<polygon fill="#000000" stroke="#000000" points="64.9573,-25.5528 54.3625,-25.5723 62.6571,-32.1641 64.9573,-25.5528"/>
+</g>
+<!-- y3&#45;&gt;y2 -->
+<g id="edge11" class="edge">
+<title>y3-&gt;y2</title>
+<path fill="none" stroke="#000000" d="M152.8314,-143.8314C144.2848,-135.2848 133.9443,-124.9443 124.6198,-115.6198"/>
+<polygon fill="#000000" stroke="#000000" points="126.9592,-113.0095 117.4133,-108.4133 122.0095,-117.9592 126.9592,-113.0095"/>
 </g>
 </g>
 </svg>
