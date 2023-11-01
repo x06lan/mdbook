@@ -174,13 +174,37 @@
 <p><a href="../../assets/pdf/Educational_Data_Mining_and_Applications_HW2.pdf">2023 Educational Data Mining and Applications HW2.pdf</a></p>
 <h2 id="63"><a class="header" href="#63">6.3</a></h2>
 <h3 id="a"><a class="header" href="#a">a</a></h3>
+<ol>
+<li>Support(L) ≥ minimum support threshold.<br></li>
+<li>Since S is a subset of L, it means that any transaction containing all items in S also contains all items in L.</li>
+<li>Support(S) ≥ Support(L) (because S includes all transactions that L includes)</li>
+<li>Therefore, Support(S) ≥ minimum support threshold.</li>
+<li>This proves that S is also a frequent itemset.</li>
+</ol>
 <h3 id="b"><a class="header" href="#b">b</a></h3>
+<ol>
+<li>Support(s’) &lt; Support(s)</li>
+<li>Support(s’) &lt; Support(s) leads to a contradiction, as we’ve shown that the support of the intersection of s and s’ is greater than the support of s, which is not logically possible</li>
+</ol>
 <h3 id="c"><a class="header" href="#c">c</a></h3>
+<ol>
+<li>Confidence(X =&gt; Y) = Support(X ∪ Y) / Support(X).</li>
+<li>Confidence(s =&gt; {l-s}) = Support(s ∪ {l-s}) / Support({l-s}).</li>
+<li>Confidence(s’ =&gt; {l-s’}) = Support(s’ ∪ {l-s’}) / Support({l-s’}).</li>
+<li>Support(s’ ∪ (l - s’)) ≤ Support(s ∪ (l - s))</li>
+<li>Support(s’) ≥ Support(s)</li>
+<li>Confidence(s’ =&gt; (l - s’)) ≤ Confidence(s =&gt; (l - s))</li>
+</ol>
 <h3 id="d"><a class="header" href="#d">d</a></h3>
+<ol>
+<li>If I is frequent in D, it must have a support count greater than or equal to the minimum support count threshold (minsup) for frequent itemsets in D.</li>
+<li>If I is not frequent in any partition Pi, it must have a support count less than the minsup in each partition.</li>
+<li>Any itemset that is frequent in the original database D must be frequent in at least one partition of D.</li>
+</ol>
 <h2 id="66"><a class="header" href="#66">6.6</a></h2>
 <p>min_support=0.6<br>
 min_confi=0.8<br></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">ID</th><th style="text-align: center">Items bought</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">ID</th><th style="text-align: center">Items</th></tr></thead><tbody>
 <tr><td style="text-align: center">T100</td><td style="text-align: center">{M, O, N, K, E, Y}</td></tr>
 <tr><td style="text-align: center">T200</td><td style="text-align: center">{D, O, N, K, E, Y}</td></tr>
 <tr><td style="text-align: center">T300</td><td style="text-align: center">{M, A, K, E}</td></tr>
@@ -193,15 +217,26 @@ min_confi=0.8<br></p>
 <div class="table-wrapper"><table><thead><tr><th>1-Itemsets</th><th>2-Itemsets</th><th>3-Itemsets</th></tr></thead><tbody>
 <tr><td><table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>K</td><td>1.0</td></tr><tr><td>E</td><td>0.8</td></tr><tr><td>Y</td><td>0.6</td></tr><tr><td>M</td><td>0.6</td></tr><tr><td>O</td><td>0.6</td></tr><tr><td>C</td><td>0.4</td></tr><tr><td>N</td><td>0.4</td></tr><tr><td>D</td><td>0.1</td></tr><tr><td>A</td><td>0.1</td></tr><tr><td>U</td><td>0.1</td></tr><tr><td>I</td><td>0.1</td></tr></tbody></table></td><td><table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>{K,E}</td><td>0.8</td></tr><tr><td>{K,Y}</td><td>0.6</td></tr><tr><td>{K,M}</td><td>0.6</td></tr><tr><td>{K,O}</td><td>0.6</td></tr><tr><td>{E,Y}</td><td>0.4</td></tr><tr><td>{E,M}</td><td>0.4</td></tr><tr><td>{E,O}</td><td>0.6</td></tr><tr><td>{Y,M}</td><td>0.4</td></tr><tr><td>{Y,O}</td><td>0.2</td></tr><tr><td>{M,O}</td><td>0.2</td></tr></tbody> </table></td><td><table><thead><tr><th>Item</th><th>Support</th></tr></thead><tbody><tr><td>{K,E,Y}</td><td>0.4</td></tr><tr><td>{K,E,M}</td><td>0.4</td></tr><tr><td>{K,E,O}</td><td>0.6</td></tr><tr><td>{K,Y,M}</td><td>0.4</td></tr><tr><td>{K,Y,O}</td><td>0.4</td></tr><tr><td>{K,M,O}</td><td>0.2</td></tr><tr><td>{K,M,E,O}</td><td>0.2</td></tr></tbody></table></td></tr>
 </tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>frequent itemsets</th><th>support</th><th>Confidence</th></tr></thead><tbody>
+<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>0.8</td></tr>
+<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
+<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
+<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
+</tbody></table>
 </div>
 <h4 id="fp-growth-algorithm"><a class="header" href="#fp-growth-algorithm">FP-growth algorithm</a></h4>
 <p><img src="../../assets/image/data_science_hw2_fp_tree.svg" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th>itemsets</th><th>condition</th><th>frequent itemsets</th></tr></thead><tbody>
+<tr><td>e</td><td>{k:4}</td><td>{k:4}</td></tr>
+<tr><td>m</td><td>{e,k:2},{k:1}</td><td>{k:3}</td></tr>
+<tr><td>o</td><td>{f,e,m:1},{k,e:2}</td><td>{e:3}</td></tr>
+<tr><td>y</td><td>{f,e,m:1},{f,e,o:1},{f,m:1}</td><td>{f:3}</td></tr>
+</tbody></table>
+</div>
 <h4 id="conclusion"><a class="header" href="#conclusion">conclusion</a></h4>
 <p>By query 2 time to build FP-tree reduce the time to query database .So FP-growth is more efficient compared to a priori.</p>
 <h3 id="b-1"><a class="header" href="#b-1">b</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Item</th><th>support</th><th>Confidence</th></tr></thead><tbody>
-<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>0.8</td></tr>
-<tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
+<div class="table-wrapper"><table><thead><tr><th>frequent itemsets</th><th>support</th><th>Confidence</th></tr></thead><tbody>
 <tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
 <tr><td><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">}</span></span></span></span></span></td><td>0.6</td><td>1.0</td></tr>
 </tbody></table>
