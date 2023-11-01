@@ -9,30 +9,27 @@ When a user requests an object, the cache checks if it has a copy of the object.
 ## 3.
 The applications of HTTP, SMTP, and POP3 require more reliability than throughput, so they use TCP.
 ## 4.
-total time= $RTT_0 + RTT_1 + … + RTT_n$<br>
+total time=$\underset{\text{setup}}{RTT_0}+ \sum_{i=1}^n RTT_i + \underset{\text{return answer}}{RTT_0}$<br>
 This is because each DNS server visited create an RTT, and once the IP address is obtained, an additional RTT is incurred to establish a connection with the server containing the object. The total time elapsed is equal to the sum of all these RTTs 
 ## 5.a
 $$
 \begin{aligned}
-\text{time}&=\text{connect time}&+&\text{trainsmission time}\\
-           &=0 &+& 3\times\text{RTT}_0\\
-           &=3 \times \text{RTT}_0\\
+total time&=\underset{\text{setup}}{2RTT}+ \underset{\text{requset 3 obj at same time}}{ 2 RTT}\\
+&=4RTT
 \end{aligned}
 $$
 ## 5.b
 $$
 \begin{aligned}
-\text{time}&=\text{connect time}&+&\text{trainsmission time}\\
-           &=\text{RTT}_0\times 3&+&\text{RTT}_0\times 3\\
-           &=6\times \text{RTT}_0\\
+total time&=\underset{\text{setup}}{2RTT}+ \underset{\text{requset 3 obj one by one}}{3\times 2 RTT}\\
+&=8RTT
 \end{aligned}
 $$
 
 ## 5.c
 $$
 \begin{aligned}
-\text{time}&=\text{connect time}&+&\text{trainsmission time}\\
-           &=0&+&\text{RTT}_0\\
-           &= \text{RTT}_0\\
+total time&=\underset{\text{no setup pipelining}}{0 \times RTT}+ \underset{\text{requset 3 obj at same time}}{ 2 RTT}\\
+&=3RTT
 \end{aligned}
 $$
