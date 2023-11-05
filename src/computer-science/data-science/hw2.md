@@ -55,12 +55,13 @@ min_confi=0.8<br>
 #### FP-growth algorithm
 ![](../../assets/image/data_science_hw2_fp_tree.svg)
 
-| itemsets | condition                   | frequent itemsets |
-| -------- | --------------------------- | ----------------- |
-| e        | {k:4}                       | {k:4}             |
-| m        | {e,k:2},{k:1}               | {k:3}             |
-| o        | {f,e,m:1},{k,e:2}           | {e:3}             |
-| y        | {f,e,m:1},{f,e,o:1},{f,m:1} | {f:3}             |
+| itemsets | condition                   | support $\boldsymbol{\geq}$ 0.6 itemsets | frequent itemsets             |
+| -------- | --------------------------- | ---------------------------------------- | ----------------------------- |
+| e        | {k:4}                       | {k:4}                                    | $$\{E,K\} $$                  |
+| m        | {e,k:2},{k:1}               | {k:3}                                    | $$\{M,K\}$$                   |
+| o        | {k,e,m:1},{k,e:2}           | {k,3}{e:3}                               | $$\{O,K\},\{O,E\},\{O,E,K\}$$ |
+| y        | {k,e,m:1},{k,e,o:1},{k,m:1} | {k:3}                                    | $$\{Y,K\}$$                   |
+
 #### conclusion
 By query 2 time to build FP-tree reduce the time to query database .So FP-growth is more efficient compared to a priori.
 ### b
