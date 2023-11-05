@@ -86,7 +86,7 @@ rdt2.2不再使用NAK，而是在ACK加入序號的訊息，所以在接收端�
 #### rdt 3.0
 * add timer .If sender not receive ACK then resend
 
-### TCP round trip time, timeout
+### TCP RTT(round trip time), timeout
 * use EWMA(exponential weighted moving average) 
 * influence of past sample decreases exponentially fast
 * typical value: $\alpha$ = 0.125 
