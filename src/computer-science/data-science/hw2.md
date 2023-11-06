@@ -13,8 +13,10 @@ tags `data`
 1. Therefore, Support(S) ≥ minimum support threshold.
 1. This proves that S is also a frequent itemset.
 ### b
-1. Support(s') < Support(s)
-1. Support(s') < Support(s) leads to a contradiction, as we've shown that the support of the intersection of s and s' is greater than the support of s, which is not logically possible
+1. S' ⊆ S
+1. {T ∈ D | S ⊆ T} = Support(S) ,  all possible set T that is the superset of S
+1. {T ∈ D | S ⊆ T} ⊆ {T ∈ D | S' ⊆ T}
+1. Support(S) ≤ Support(S')
 ### c
 1. Confidence(X => Y) = Support(X ∪ Y) / Support(X).
 1. Confidence(s => {l-s}) = Support(s ∪ {l-s}) / Support({l-s}).

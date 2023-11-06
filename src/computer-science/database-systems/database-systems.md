@@ -42,3 +42,47 @@
   * presend subclass is union of super class 
   * use "U" as symbol in EER diagram
 # sql
+```
+HOTEL(hotelNo, hoteName, City) 
+ROOM(roomNo, hotelNo, type, price)
+BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo)
+GUEST(guestNo, guestName, guestAddress)
+```
+## List the price and type of all rooms that hotelName is Howard Hotel. 
+```sql
+SELECT r.price, r.type
+FROM ROOM r
+INNER JOIN HOTEL h ON r.hotelNo = h.hotelNo
+WHERE h.hotelName = 'Howard Hotel';
+```
+```sql
+SELECT price, type
+FROM ROOM
+WHERE hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
+```
+
+## List the details of all rooms at the Howard Hotel, including the name of the guest staying in the room if the room is occupied. 
+```sql
+SELECT r.roomNo, r.type, r.price, g.guestName
+FROM ROOM r
+LEFT JOIN BOOKING b ON r.roomNo = b.roomNo
+LEFT JOIN GUEST g ON b.guestNo = g.guestNo
+INNER JOIN HOTEL h ON r.hotelNo = h.hotelNo
+WHERE h.hotelName = 'Howard Hotel';
+```
+## List all single rooms with a price below $3,000 per night. ) (4%) List all guests currently staying at the Howard Hotel.
+```sql
+SELECT r.roomNo, r.price
+FROM ROOM r
+WHERE r.type = 'single' AND r.price < 3000;
+
+```
+## list all guests currently staying at the "Howard Hotel," 
+```sql
+SELECT DISTINCT g.guestName
+FROM GUEST g
+INNER JOIN BOOKING b ON g.guestNo = b.guestNo
+WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
+```
+## join vs. sub-query
+In general join have better performance because of optimisers.
