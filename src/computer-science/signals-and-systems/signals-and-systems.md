@@ -44,7 +44,28 @@ E=\sum^{3}_{t=0}x(t)^2=\sum^{3}_{t=0}(t)^2+\sum^{6}_{t=3}(6-t)^2\\
 P=\frac{E}{6-0}=\frac{1}{6}(\sum^{3}_{t=0}(t)^2+\sum^{6}_{t=3}(6-t)^2)
 $$
 
+## odd vs even
 
+$$
+x(t)=E_v\{x(t)\}+O_d\{x(t)\}\\
+$$
+## even
+$$
+E_v\{x(t)\}=\frac{x(t)+x(-n)}{2}
+$$
+## odd
+$$
+O_d\{x(t)\}=\frac{x(t)-x(-n)}{2}
+$$
+## some prove
+$$
+\begin{aligned}\\
+\int_{-\infty}^{\infty} E_v\{x(t)\}\times O_d\{x(t)\} \ dt&=\int_{-\infty}^{\infty} \frac{x(t)+x(-t)}{2}\times\frac{x(t)-x(-t)}{2} \ dt\\
+&=\int_{-\infty}^{\infty}\frac{x(t)^2-x(-t)^2}{4} \ dt \\
+&=\int_{-\infty}^{\infty}\frac{x(t)^2}{4} \ dt - \int_{-\infty}^{\infty}\frac{x(-t)^2}{4} \ dt\\
+&=0\\
+\end{aligned}\\
+$$
 ## function transform
 <iframe src="https://www.desmos.com/calculator/rxadxdsm8y?embed" width="800" height="800" style="border: 1px solid #ccc" frameborder=0></iframe>
 
@@ -173,7 +194,9 @@ $$
 #### DT
 
 fundamental period $T_0$ is integer that $x[n]=x[n+i\% T_0]$ for all integer $i$<br>
-> not every "sinusoidal signal" all have $T_0$
+
+> $T_0$ have to be integer.<br>
+> not every "sinusoidal signal" have $T_0$
 
 $$
 x[n]=r \ e^{j w_0 t}=r \ e^{j\frac{m}{N}n}\\

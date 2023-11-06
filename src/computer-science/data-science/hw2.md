@@ -20,7 +20,7 @@ tags `data`
 1. Confidence(s => {l-s}) = Support(s ∪ {l-s}) / Support({l-s}).
 1. Confidence(s' => {l-s'}) = Support(s' ∪ {l-s'}) / Support({l-s'}).
 1. Support(s' ∪ (l - s')) ≤ Support(s ∪ (l - s))
-1. Support(s') ≥ Support(s)
+1. Support(s') ≤ Support(s)
 1. Confidence(s' => (l - s')) ≤ Confidence(s => (l - s))
 
 ### d
