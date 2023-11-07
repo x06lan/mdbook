@@ -29,7 +29,7 @@ $$
 ## 5.c
 $$
 \begin{aligned}
-total time&=\underset{\text{setup}}{2 RTT}+ \underset{\text{requset 3 obj at same time but cut half by pipeline }}{ RTT}\\
+total time&=\underset{\text{setup}}{2 RTT}+ \underset{\text{requset 3 obj at same time but cut half by Persistent HTTP}}{ RTT}\\
 &=3RTT
 \end{aligned}
 $$

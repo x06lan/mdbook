@@ -22,47 +22,74 @@ optical, electromagnetic frequencies divided into (narrow) frequency bands = eac
 
 time divided into slots = each call allocated periodic slot(s), can transmit at maximum rate of (wider) frequency band, but only during its time slot(s)
 
-## http
-### http/1.0
+## applicaion layer
+### http
+#### http/1.0
 1. TCP connection opened
 2. at most one object sent over TCP connection
-### http/1.1
-1. TCP connection opened to a server 
-1. multiple objects can be sent over single TCP connection between client, and that server 
-1. TCP connection closed
-### http/2
-multiple, pipelined GETs over single TCP
-connection
-### http/3
+#### http/1.1
+1. pipelined GETs over single TCP connection
+#### http/2
+1. multiple, pipelined GETs over single TCP connection
+1. push unrequested objects to clien
+#### http/3
 adds security , per object error control (more pipelining) over UDP
+
+
+### email SMTP POP3 IMAP
+#### SMTP
+mail server send to mail server
+#### POP3 
+muil-user download email 
+#### IMAP 
+will delete email that user download
 
 |              | http                                     | smtp                                       |
 | ------------ | ---------------------------------------- | ------------------------------------------ |
 |              | pull                                     | push                                       |
 | encode       | ASCII                                    | ASCII                                      |
 | multiple obj | encapsulated in its own response message | multiple objects sent in multipart message |
+### DNS
+1. hostname to IP address translation
+1. host aliasing
+1. mail server aliasing
+1. take but 2 RTT(one for make connection one for return IP info) to get send IP back
+
+## socket
+use this four tuple to identified TCP packet<br>
+(source IP, source port, destination IP, destination port)
 
 ## UDP
 * no handshaking before sending data
 * sender explicitly attaches IP destination address and port # to each packet
 * receiver extracts sender IP address and port# from received packe
 * transmitted data may be lost or received out-of-order
+
 ## TCP
 * reliable, byte stream-oriented
 * server process must first be running
 * server must have created socket (door) that welcomes client’s contact
 * TCP 3-way handshake
+
 ## Multimedia video:
 * DASH: Dynamic, Adaptive Streaming over HTT
 * CBR: (constant bit rate): video encoding rate fixed
 * VBR: (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
 
-## TDP flow controll
+
+## principles of reliable data transfer
 * finite state machines (FSM)
-### Back-N
+* Sequence numbers:
+  * byte stream “number” of first byte in segment’s data
+* Acknowledgements:
+  * seq # of next byte expectet from other side
+  * cumulative ACK
+### Go Back N
 the all the packet that behind is overtime or NAK 
+![](https://i.imgur.com/eoftyjT.png)
 ### Selective repeat
 only resend the packet overtime or NAK 
+![](https://i.imgur.com/fAlaZsW.png)
 
 ### stop and wait
 rdt(reliable data transfer)
@@ -86,6 +113,14 @@ rdt2.2不再使用NAK，而是在ACK加入序號的訊息，所以在接收端�
 #### rdt 3.0
 * add timer .If sender not receive ACK then resend
 
+## TCP flow control
+receiver controls sender, so sender won’t overflow receiver’s buffer by transmitting too much, too fast
+### window buffer size
+if the receiver window buffer is fill then sender should stop sending until receiver window buffer is free again
+### SampleRTT
+* measured time from segment transmission until ACK receipt
+* ignore retransmissions
+* SampleRTT will vary, want estimated RTT “smoother” average several recent measurements, not just current SampleRTT
 ### TCP RTT(round trip time), timeout
 * use EWMA(exponential weighted moving average) 
 * influence of past sample decreases exponentially fast
