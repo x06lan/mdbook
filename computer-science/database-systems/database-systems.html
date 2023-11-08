@@ -243,6 +243,43 @@
 </li>
 </ul>
 <h1 id="sql"><a class="header" href="#sql">sql</a></h1>
+<pre><code class="language-sql">HOTEL(hotelNo, hoteName, City);
+ROOM(roomNo, hotelNo, type, price);
+BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo);
+GUEST(guestNo, guestName, guestAddress);
+</code></pre>
+<h2 id="list-the-price-and-type-of-all-rooms-that-hotelname-is-howard-hotel"><a class="header" href="#list-the-price-and-type-of-all-rooms-that-hotelname-is-howard-hotel">List the price and type of all rooms that hotelName is Howard Hotel.</a></h2>
+<pre><code class="language-sql">SELECT r.price, r.type
+FROM ROOM r
+INNER JOIN HOTEL h ON r.hotelNo = h.hotelNo
+WHERE h.hotelName = 'Howard Hotel';
+</code></pre>
+<pre><code class="language-sql">SELECT price, type
+FROM ROOM
+WHERE hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
+</code></pre>
+<h2 id="list-the-details-of-all-rooms-at-the-howard-hotel-including-the-name-of-the-guest-staying-in-the-room-if-the-room-is-occupied"><a class="header" href="#list-the-details-of-all-rooms-at-the-howard-hotel-including-the-name-of-the-guest-staying-in-the-room-if-the-room-is-occupied">List the details of all rooms at the Howard Hotel, including the name of the guest staying in the room if the room is occupied.</a></h2>
+<pre><code class="language-sql">SELECT r.roomNo, r.type, r.price, g.guestName
+FROM ROOM r
+LEFT JOIN BOOKING b ON r.roomNo = b.roomNo
+LEFT JOIN GUEST g ON b.guestNo = g.guestNo
+INNER JOIN HOTEL h ON r.hotelNo = h.hotelNo
+WHERE h.hotelName = 'Howard Hotel';
+</code></pre>
+<h2 id="list-all-single-rooms-with-a-price-below-3000-per-night--4-list-all-guests-currently-staying-at-the-howard-hotel"><a class="header" href="#list-all-single-rooms-with-a-price-below-3000-per-night--4-list-all-guests-currently-staying-at-the-howard-hotel">List all single rooms with a price below $3,000 per night. ) (4%) List all guests currently staying at the Howard Hotel.</a></h2>
+<pre><code class="language-sql">SELECT r.roomNo, r.price
+FROM ROOM r
+WHERE r.type = 'single' AND r.price &lt; 3000;
+
+</code></pre>
+<h2 id="list-all-guests-currently-staying-at-the-howard-hotel"><a class="header" href="#list-all-guests-currently-staying-at-the-howard-hotel">list all guests currently staying at the “Howard Hotel,”</a></h2>
+<pre><code class="language-sql">SELECT DISTINCT g.guestName
+FROM GUEST g
+INNER JOIN BOOKING b ON g.guestNo = b.guestNo
+WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
+</code></pre>
+<h2 id="join-vs-sub-query"><a class="header" href="#join-vs-sub-query">join vs. sub-query</a></h2>
+<p>In general join have better performance because of optimisers.</p>
 
                         <!-- github commet -->
                         <script src="https://giscus.app/client.js" data-repo="x06lan/mdbook" data-repo-id="R_kgDOJxZ6mQ"

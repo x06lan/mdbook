@@ -180,29 +180,54 @@
 <h3 id="time-division-multiplexing-tdm"><a class="header" href="#time-division-multiplexing-tdm">Time Division Multiplexing (TDM)</a></h3>
 <p><img src="https://imgur.com/Lf7C9Sv.png" alt="TDM" /></p>
 <p>time divided into slots = each call allocated periodic slot(s), can transmit at maximum rate of (wider) frequency band, but only during its time slot(s)</p>
-<h2 id="http"><a class="header" href="#http">http</a></h2>
-<h3 id="http10"><a class="header" href="#http10">http/1.0</a></h3>
+<h2 id="applicaion-layer"><a class="header" href="#applicaion-layer">applicaion layer</a></h2>
+<h3 id="http"><a class="header" href="#http">http</a></h3>
+<h4 id="http10"><a class="header" href="#http10">http/1.0</a></h4>
 <ol>
 <li>TCP connection opened</li>
 <li>at most one object sent over TCP connection</li>
+<li>Non-persistent HTTP。</li>
 </ol>
-<h3 id="http11"><a class="header" href="#http11">http/1.1</a></h3>
+<h4 id="http11"><a class="header" href="#http11">http/1.1</a></h4>
 <ol>
-<li>TCP connection opened to a server </li>
-<li>multiple objects can be sent over single TCP connection between client, and that server </li>
-<li>TCP connection closed</li>
+<li>pipelined GETs over single TCP connection</li>
+<li>persistent HTTP。</li>
 </ol>
-<h3 id="http2"><a class="header" href="#http2">http/2</a></h3>
-<p>multiple, pipelined GETs over single TCP
-connection</p>
-<h3 id="http3"><a class="header" href="#http3">http/3</a></h3>
-<p>adds security , per object error control (more pipelining) over UDP</p>
+<h4 id="http2"><a class="header" href="#http2">http/2</a></h4>
+<ol>
+<li>multiple, pipelined GETs over single TCP connection</li>
+<li>push unrequested objects to clien</li>
+</ol>
+<h4 id="http3"><a class="header" href="#http3">http/3</a></h4>
+<p>This is an advanced transport protocol that operates on top of UDP. QUIC incorporates features like reduced connection and transport latency, multiplexing without head-of-line blocking, and improved congestion control. It integrates encryption by default, providing a secure connection setup with a single round-trip time (RTT).</p>
+<h4 id="persistent-http"><a class="header" href="#persistent-http">persistent http</a></h4>
+<ol>
+<li>keep connetion of TCP </li>
+<li>half time of tramit</li>
+</ol>
+<h3 id="email-smtp-pop3-imap"><a class="header" href="#email-smtp-pop3-imap">email SMTP POP3 IMAP</a></h3>
+<h4 id="smtp"><a class="header" href="#smtp">SMTP</a></h4>
+<p>mail server send to mail server</p>
+<h4 id="pop3"><a class="header" href="#pop3">POP3</a></h4>
+<p>muil-user download email </p>
+<h4 id="imap"><a class="header" href="#imap">IMAP</a></h4>
+<p>will delete email that user download</p>
 <div class="table-wrapper"><table><thead><tr><th></th><th>http</th><th>smtp</th></tr></thead><tbody>
 <tr><td></td><td>pull</td><td>push</td></tr>
 <tr><td>encode</td><td>ASCII</td><td>ASCII</td></tr>
 <tr><td>multiple obj</td><td>encapsulated in its own response message</td><td>multiple objects sent in multipart message</td></tr>
 </tbody></table>
 </div>
+<h3 id="dns"><a class="header" href="#dns">DNS</a></h3>
+<ol>
+<li>hostname to IP address translation</li>
+<li>host aliasing</li>
+<li>mail server aliasing</li>
+<li>take but 2 RTT(one for make connection one for return IP info) to get send IP back</li>
+</ol>
+<h2 id="socket"><a class="header" href="#socket">socket</a></h2>
+<p>use this four tuple to identified TCP packet<br>
+(source IP, source port, destination IP, destination port)</p>
 <h2 id="udp"><a class="header" href="#udp">UDP</a></h2>
 <ul>
 <li>no handshaking before sending data</li>
@@ -223,14 +248,27 @@ connection</p>
 <li>CBR: (constant bit rate): video encoding rate fixed</li>
 <li>VBR: (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes</li>
 </ul>
-<h2 id="tdp-flow-controll"><a class="header" href="#tdp-flow-controll">TDP flow controll</a></h2>
+<h2 id="principles-of-reliable-data-transfer"><a class="header" href="#principles-of-reliable-data-transfer">principles of reliable data transfer</a></h2>
 <ul>
 <li>finite state machines (FSM)</li>
+<li>Sequence numbers:
+<ul>
+<li>byte stream “number” of first byte in segment’s data</li>
 </ul>
-<h3 id="back-n"><a class="header" href="#back-n">Back-N</a></h3>
-<p>the all the packet that behind is overtime or NAK </p>
+</li>
+<li>Acknowledgements:
+<ul>
+<li>seq # of next byte expectet from other side</li>
+<li>cumulative ACK</li>
+</ul>
+</li>
+</ul>
+<h3 id="go-back-n"><a class="header" href="#go-back-n">Go Back N</a></h3>
+<p>the all the packet that behind is overtime or NAK 
+<img src="https://i.imgur.com/eoftyjT.png" alt="" /></p>
 <h3 id="selective-repeat"><a class="header" href="#selective-repeat">Selective repeat</a></h3>
-<p>only resend the packet overtime or NAK </p>
+<p>only resend the packet overtime or NAK 
+<img src="https://i.imgur.com/fAlaZsW.png" alt="" /></p>
 <h3 id="stop-and-wait"><a class="header" href="#stop-and-wait">stop and wait</a></h3>
 <p>rdt(reliable data transfer)</p>
 <h4 id="rdt-10"><a class="header" href="#rdt-10">rdt 1.0</a></h4>
@@ -260,6 +298,16 @@ connection</p>
 <ul>
 <li>add timer .If sender not receive ACK then resend</li>
 </ul>
+<h2 id="tcp-flow-control"><a class="header" href="#tcp-flow-control">TCP flow control</a></h2>
+<p>receiver controls sender, so sender won’t overflow receiver’s buffer by transmitting too much, too fast</p>
+<h3 id="window-buffer-size"><a class="header" href="#window-buffer-size">window buffer size</a></h3>
+<p>if the receiver window buffer is fill then sender should stop sending until receiver window buffer is free again</p>
+<h3 id="samplertt"><a class="header" href="#samplertt">SampleRTT</a></h3>
+<ul>
+<li>measured time from segment transmission until ACK receipt</li>
+<li>ignore retransmissions</li>
+<li>SampleRTT will vary, want estimated RTT “smoother” average several recent measurements, not just current SampleRTT</li>
+</ul>
 <h3 id="tcp-rttround-trip-time-timeout"><a class="header" href="#tcp-rttround-trip-time-timeout">TCP RTT(round trip time), timeout</a></h3>
 <ul>
 <li>use EWMA(exponential weighted moving average) </li>
@@ -283,6 +331,7 @@ connection</p>
 <p>use the cubic function(三次函數) to predict bottlenck </p>
 <h3 id="3-duplicate-ack"><a class="header" href="#3-duplicate-ack">3 duplicate ack</a></h3>
 <p>if recevie 3 ACK of same packet then see as reach bottlenck</p>
+<h3 id="congestion-avoidance-aimdadditive-increase-multiplicative-decrease"><a class="header" href="#congestion-avoidance-aimdadditive-increase-multiplicative-decrease">congestion avoidance AIMD(Additive Increase Multiplicative Decrease)</a></h3>
 
                         <!-- github commet -->
                         <script src="https://giscus.app/client.js" data-repo="x06lan/mdbook" data-repo-id="R_kgDOJxZ6mQ"
