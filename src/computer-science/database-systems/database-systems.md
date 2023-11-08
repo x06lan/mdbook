@@ -43,10 +43,10 @@
   * use "U" as symbol in EER diagram
 # sql
 ```
-HOTEL(hotelNo, hoteName, City) 
-ROOM(roomNo, hotelNo, type, price)
-BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo)
-GUEST(guestNo, guestName, guestAddress)
+HOTEL(hotelNo, hoteName, City);
+ROOM(roomNo, hotelNo, type, price);
+BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo);
+GUEST(guestNo, guestName, guestAddress);
 ```
 ## List the price and type of all rooms that hotelName is Howard Hotel. 
 ```sql

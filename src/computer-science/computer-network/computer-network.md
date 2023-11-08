@@ -26,15 +26,20 @@ time divided into slots = each call allocated periodic slot(s), can transmit at 
 ### http
 #### http/1.0
 1. TCP connection opened
-2. at most one object sent over TCP connection
+1. at most one object sent over TCP connection
+1. Non-persistent HTTP。
 #### http/1.1
 1. pipelined GETs over single TCP connection
+1. persistent HTTP。
 #### http/2
 1. multiple, pipelined GETs over single TCP connection
 1. push unrequested objects to clien
 #### http/3
-adds security , per object error control (more pipelining) over UDP
+This is an advanced transport protocol that operates on top of UDP. QUIC incorporates features like reduced connection and transport latency, multiplexing without head-of-line blocking, and improved congestion control. It integrates encryption by default, providing a secure connection setup with a single round-trip time (RTT).
 
+#### persistent http  
+1. keep connetion of TCP 
+1. half time of tramit
 
 ### email SMTP POP3 IMAP
 #### SMTP
@@ -147,3 +152,4 @@ increase rate exponentially until first loss event
 use the cubic function(三次函數) to predict bottlenck 
 ### 3 duplicate ack
 if recevie 3 ACK of same packet then see as reach bottlenck
+### congestion avoidance AIMD(Additive Increase Multiplicative Decrease)
