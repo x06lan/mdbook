@@ -212,6 +212,47 @@
     --search-mark-bg: #e69f67;
 }
 
+.monokai {
+    --bg: #272822;
+    --fg: #f8f8f2;
+
+    --sidebar-bg: #272822;
+    --sidebar-fg: #75715e;
+    --sidebar-non-existant: #50524e;
+    --sidebar-active: #66d9ef;
+    --sidebar-spacer: #75715e;
+
+    --scrollbar: #75715e;
+
+    --icons: #ae81ff;
+    --icons-hover: #f8f8f2;
+
+    --links: #66d9ef;
+
+    --inline-code-color: #f8f8f2;
+
+    --theme-popup-bg: #272822;
+    --theme-popup-border: #75715e;
+    --theme-hover: #3e3d32;
+
+    --quote-bg: #373832;
+    --quote-border: #272822;
+
+    --table-border-color: #272822;
+    --table-header-bg: #272822;
+    --table-alternate-bg: #2c2c27;
+
+    --searchbar-border-color: #75715e;
+    --searchbar-bg: #3e3d32;
+    --searchbar-fg: #f8f8f2;
+    --searchbar-shadow-color: #75715e;
+    --searchresults-header-fg: #75715e;
+    --searchresults-border-color: #75715e;
+    --searchresults-li-bg: #272822;
+    --search-mark-bg: #66d9ef;
+}
+
+
 @media (prefers-color-scheme: dark) {
     .light.no-js {
         --bg: hsl(200, 7%, 8%);

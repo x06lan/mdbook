@@ -292,6 +292,7 @@ function playground_text(playground, hidden = true) {
     var stylesheets = {
         ayuHighlight: document.querySelector("[href$='ayu-highlight.css']"),
         tomorrowNight: document.querySelector("[href$='tomorrow-night.css']"),
+        monokaiHighlight: document.querySelector("[href$='monokai.css']"),
         highlight: document.querySelector("[href$='highlight.css']"),
     };
 
@@ -338,7 +339,12 @@ function playground_text(playground, hidden = true) {
             stylesheets.tomorrowNight.disabled = true;
             stylesheets.highlight.disabled = true;
             ace_theme = "ace/theme/tomorrow_night";
-        } else {
+        }else if (theme == 'monokai') {
+            stylesheets.ayuHighlight.disabled = false;
+            stylesheets.tomorrowNight.disabled = true;
+            stylesheets.highlight.disabled = true;
+            ace_theme = "ace/theme/monokai";
+        }  else {
             stylesheets.ayuHighlight.disabled = true;
             stylesheets.tomorrowNight.disabled = true;
             stylesheets.highlight.disabled = false;

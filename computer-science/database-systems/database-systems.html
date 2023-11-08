@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../../highlight.css">
     <link rel="stylesheet" href="../../tomorrow-night.css">
     <link rel="stylesheet" href="../../ayu-highlight.css">
+    <link rel="stylesheet" href="../../monokai.css">
 
     <!-- Custom theme stylesheets -->
     <link rel="stylesheet" href="../../theme/pagetoc.css">
@@ -121,6 +122,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="monokai">Monokai</button></li>
                         </ul>
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
                             aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
@@ -190,7 +192,7 @@
 </ul>
 <h1 id="database-constraint"><a class="header" href="#database-constraint">Database constraint</a></h1>
 <ul>
-<li>Implicit Constraints
+<li>Implicit Constraints or Inherent constraint
 <ul>
 <li>Constraints that are applied in the data model</li>
 </ul>
@@ -200,14 +202,47 @@
 <li>Constraints that are directly applied in the schemas of the data model, by specifying them in the DDL(Data Definition Language).</li>
 </ul>
 </li>
-<li>Semantic Constraints
+<li>Semantic Constraints or Application based
 <ul>
 <li>Constraints that cannot be directly applied in the schemas of the data model. We call these Application based or .</li>
 </ul>
 </li>
 </ul>
+<h1 id="database-independence"><a class="header" href="#database-independence">Database Independence</a></h1>
+<ul>
+<li>Logical Data Independence:
+<ul>
+<li>The capacity to change the conceptual schema without having to change the external schemas and their associated application programs</li>
+</ul>
+</li>
+<li>Physical Data Independence:
+<ul>
+<li>The capacity to change the internal schema without having to change the conceptual schema.</li>
+</ul>
+</li>
+</ul>
+<h1 id="three-tier-client-server-architecture"><a class="header" href="#three-tier-client-server-architecture">Three-tier client-server architecture</a></h1>
+<ul>
+<li>presentation layer
+<ul>
+<li>GUI, web interface</li>
+</ul>
+</li>
+<li>busincess layer
+<ul>
+<li>application programs </li>
+</ul>
+</li>
+<li>database services layer
+<ul>
+<li>database management system</li>
+</ul>
+</li>
+</ul>
 <h1 id="superkey"><a class="header" href="#superkey">superkey</a></h1>
 <p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg" alt="" /></p>
+<h1 id="null"><a class="header" href="#null">null</a></h1>
+<p>A special null value is used to represent values that are unknown or not available (value exist) or inapplicable (value undefined) in certain tuples.</p>
 <h1 id="eer-diagram"><a class="header" href="#eer-diagram">EER diagram</a></h1>
 <h2 id="total-vs-partial--disjoint-vs-overlapped"><a class="header" href="#total-vs-partial--disjoint-vs-overlapped">total vs partial | disjoint vs overlapped</a></h2>
 <div class="table-wrapper"><table><thead><tr><th></th><th>total</th><th>partial</th><th>disjoint</th><th>overlapped</th></tr></thead><tbody>
