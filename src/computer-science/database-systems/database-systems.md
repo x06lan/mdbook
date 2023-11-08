@@ -42,7 +42,7 @@
   * presend subclass is union of super class 
   * use "U" as symbol in EER diagram
 # sql
-```
+```sql
 HOTEL(hotelNo, hoteName, City);
 ROOM(roomNo, hotelNo, type, price);
 BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo);
