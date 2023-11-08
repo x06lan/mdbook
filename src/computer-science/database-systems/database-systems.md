@@ -9,16 +9,29 @@
   * how to present to out world (interface)
 
 # Database constraint
-* Implicit Constraints
+* Implicit Constraints or Inherent constraint
   * Constraints that are applied in the data model
 * Schema-Based Constraints or Explicit Constraints 
   * Constraints that are directly applied in the schemas of the data model, by specifying them in the DDL(Data Definition Language).
-* Semantic Constraints
+* Semantic Constraints or Application based
   * Constraints that cannot be directly applied in the schemas of the data model. We call these Application based or .
-
+# Database Independence
+* Logical Data Independence:
+  * The capacity to change the conceptual schema without having to change the external schemas and their associated application programs
+* Physical Data Independence:
+  * The capacity to change the internal schema without having to change the conceptual schema.
+# Three-tier client-server architecture
+* presentation layer
+  * GUI, web interface
+* busincess layer
+  * application programs 
+* database services layer
+  * database management system
 # superkey
 ![](https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg)
 
+# null
+A special null value is used to represent values that are unknown or not available (value exist) or inapplicable (value undefined) in certain tuples.
 # EER diagram
 
 

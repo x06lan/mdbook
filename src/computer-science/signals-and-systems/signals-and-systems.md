@@ -66,9 +66,6 @@ $$
 &=0\\
 \end{aligned}\\
 $$
-## function transform
-<iframe src="https://www.desmos.com/calculator/rxadxdsm8y?embed" width="800" height="800" style="border: 1px solid #ccc" frameborder=0></iframe>
-
 
 ## unit step function and unit impulse function 
 |            |                                                                       unit step                                                                        |                                                                       unit impules                                                                       |
