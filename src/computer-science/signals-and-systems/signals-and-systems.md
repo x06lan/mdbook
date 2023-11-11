@@ -62,7 +62,7 @@ $$
 \begin{aligned}\\
 \int_{-\infty}^{\infty} E_v\{x(t)\}\times O_d\{x(t)\} \ dt&=\int_{-\infty}^{\infty} \frac{x(t)+x(-t)}{2}\times\frac{x(t)-x(-t)}{2} \ dt\\
 &=\int_{-\infty}^{\infty}\frac{x(t)^2-x(-t)^2}{4} \ dt \\
-&=\int_{-\infty}^{\infty}\frac{x(t)^2}{4} \ dt - \int_{-\infty}^{\infty}\frac{x(-t)^2}{4} \ dt\\
+&=\int_{-\infty}^{\infty}\frac{x(t)}{4} \ dt - \int^2_{-\infty}^{\infty}\frac{x(-t)^2}{4} \ dt\\
 &=0\\
 \end{aligned}\\
 $$
@@ -139,7 +139,7 @@ $$
 
 $$
 ### linearity
-if $x(at)+x(bt)== x(at+bt)$ then is linearty
+if $ ay(x(t))+b y(x(t))== y(ax(t)+bx(t))$ then is linearty
 
 ### test
 |                                                    | memoryless | stable | causal | linaer | time invariant |
