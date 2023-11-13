@@ -3,7 +3,7 @@
 
 tags `data`
 
-[2023 Educational Data Mining and Applications HW2.pdf](../../assets/pdf/Educational_Data_Mining_and_Applications_HW2.pdf)
+[2023 Educational Data Mining and Applications HW3.pdf](../../assets/pdf/Educational_Data_Mining_and_Applications_HW3.pdf)
 
 ## 8.11
 
@@ -57,7 +57,7 @@ $$
 | 1.00       | 0   | 0   | 5   | 5   | 0.0 | 0.0 |
  -->
 
-## ROC
+### ROC
 ![](https://imgur.com/zo9hP6V.png)
 
 
@@ -68,4 +68,12 @@ change the traing dataset to balance by oversampleing the fraudulent cases or un
 by threshold-moving to reduce the error chance on majority case
 ![](https://imgur.com/CqhipX8.png)
 ## 9.4
+
+|              | **Eager Classification**                                     | **Lazy Classification**                                           |
+| ------------ | ------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Advantage    | Better interpretability<br> Better efficiency                | Robust to Noise                                                   |
+| Disadvantage | Robust to Noise <br> Need for re-training when have new data | Vulnerability to irrelevant features <br>Limited interpretability |
+
+
 ## 9.5
+
