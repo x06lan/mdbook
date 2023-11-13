@@ -49,6 +49,7 @@ interQuartile range:Q3-Q1<br>
 | Actual Negative (False) | FP                 | TN                 |
 
 $$TPR\text{(recall | sensitivity)}:\frac{TP}{TP+FN}$$
+$$FPR=\frac{FP}{TN+FP}$$
 $$TNR(\text{specificity}):\frac{TN}{TN+FP}$$
 $$PPV:\text{(precision | positive predictive)}:\frac{TP}{TP+FP}$$
 $$NPV\text{(negative predictive)}:\frac{TN}{TN+FN}$$
@@ -184,6 +185,19 @@ Coordinate descent updates one parameter at a time, while gradient descent attem
 1. After a classifier Mi is learned, set the subsequent classifier, Mi+1, to pay more
 1. attention to the training tuples that were misclassified by Mi
 1. The final M* combines the votes of each individual classifier, where the weight of each classifier's vote is a function of its accuracy
+
+
+## Imbalanced Data Sets
+* Oversampling: Oversample the minority class.
+* Under-sampling: Randomly eliminate tuples from majority class
+* Synthesizing: Synthesize new minority classes
+
+![](https://imgur.com/M2gR4vt.png)
+
+* Threshold-moving 
+  * Move the decision threshold, t, so that the rare class tuples are easier to classify, and hence, less chance of costly false negative errors
+
+![](https://imgur.com/CqhipX8.png)
 # MLP(ANN)
 
 * 人工神经元Artificial Neural Unit

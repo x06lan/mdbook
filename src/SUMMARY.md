@@ -20,6 +20,7 @@
     * [data science](computer-science/data-science/data-science.md)
     * [hw1](computer-science/data-science/hw1.md)
     * [hw2](computer-science/data-science/hw2.md)
+    * [hw3](computer-science/data-science/hw3.md)
   * [database systems](computer-science/database-systems/database-systems.md)
     * [database systems](computer-science/database-systems/database-systems.md)
     * [hw1](computer-science/database-systems/hw1.md)
