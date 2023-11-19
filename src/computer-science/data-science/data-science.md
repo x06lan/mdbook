@@ -10,7 +10,7 @@
 * database
 * data store
 * data ming
-* data vu
+* data value
 ## data warehouse
 * subject oriented
 * integrate
@@ -60,6 +60,8 @@ $$ F_1\text{ score(F-measure | F-score)}=\frac{2TP}{2TP+FP+TN}=\frac{2}{\frac{1}
 
 # correlations
 
+
+$$cov(x,y)=\frac{\underset{i}{\sum}(x_{i}-\hat x)(y_{i}-\hat y)}{n}$$
 $$r=\frac{\underset{i}{\sum}(x_{i}-\hat x)(y_{i}-\hat y)}{ \sqrt{\underset{i}{\sum}(x_{i}-\hat x)^2}\sqrt{\underset{i}{\sum}(y_{i}-\hat y)^2}}$$
 
 $$r^2=\frac{(\underset{i}{\sum}(x_{i}-\hat x)(y_{i}-\hat y))^2}{{\underset{i}{\sum}(x_{i}-\hat x)^2}{\underset{i}{\sum}(y_{i}-\hat y)^2}}$$
