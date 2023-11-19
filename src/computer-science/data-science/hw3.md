@@ -76,4 +76,28 @@ by threshold-moving to reduce the error chance on majority case
 
 
 ## 9.5
-
+```py=0
+def distance(a,b):
+    return sum([abs(a[i]-b[i]) for i in range(len(a))])
+    
+def KNN(input_data,k,dataset,answer):
+    distances=[]
+    i=0
+    for data in dataset :
+        distances.append({
+            "distance":distance(input_data,data),
+            "answer":answer[i]
+        })
+        i+=1
+    nesrest=sorted(distances,key=lambda x:x["distance"])[:k]
+    counter={key:0 for key in answer}
+    for x in nesrest:
+        counter[x["answer"]]+=1
+    predict={key:counter[key]/k for key in counter}
+    return predict
+data=[[1,2,3],[0,-1,0],[1,4,4],[1,3,4]]
+answer=["a","a","b","b"]
+input_data=[0,0,0]
+k=3
+print(KNN(input_data,k,data,answer))
+```
