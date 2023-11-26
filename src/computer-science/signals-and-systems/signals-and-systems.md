@@ -67,7 +67,7 @@ $$
 \end{aligned}\\
 $$
 
-## unit step function and unit impulse function 
+## unit step function and unit impulse function
 |            |                                                                       unit step                                                                        |                                                                       unit impules                                                                       |
 | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |  discrcte  | $$u[n]\stackrel{def}{=}\begin{cases}1 & n\geq 0\\0 & n< 0\\\end{cases}\\u[n-n_0]\stackrel{def}{=}\begin{cases}1 & n_0\geq 0\\0 & n_0< 0\\\end{cases}$$ | $$\delta[n]\stackrel{def}{=}\begin{cases}1& n=0\\0& n\neq 0\end{cases}\\  \delta[n-n_0]\stackrel{def}{=}\begin{cases}1& n=n_0\\0& n\neq n_0\end{cases}$$ |
@@ -208,3 +208,4 @@ x[n]=e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}\\
 \text{LCD(Least Common Denominator) of } 3 \text{ and } 8 \text{ is } 24\\
 \text{fundamental period of }e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}=24\\
 $$
+<iframe src="https://phiresky.github.io/convolution-demo/" width="100%" height="90%">

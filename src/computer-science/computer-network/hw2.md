@@ -10,7 +10,7 @@ When a user requests an object, the cache checks if it has a copy of the object.
 The applications of HTTP, SMTP, and POP3 require more reliability than throughput, so they use TCP.
 ## 4.
 total time=$\underset{\text{setup}}{RTT_0}+ \sum_{i=1}^n RTT_i + \underset{\text{return answer}}{RTT_0}$<br>
-This is because each DNS server visited create an RTT, and once the IP address is obtained, an additional RTT is incurred to establish a connection with the server containing the object. The total time elapsed is equal to the sum of all these RTTs 
+This is because each DNS server visited create an RTT, and once the IP address is obtained, an additional RTT is incurred to establish a connection with the server containing the object. The total time elapsed is equal to the sum of all these RTTs
 ## 5.a
 $$
 \begin{aligned}
