@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+
+<head>
+    <!-- Book generated using mdBook -->
+    <meta charset="UTF-8">
+    <title>hw3 - something</title>
+
+
+    <!-- Custom HTML head -->
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="icon" href="../../favicon.svg">
+    <link rel="shortcut icon" href="../../favicon.png">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/chrome.css">
+    <link rel="stylesheet" href="../../css/print.css" media="print">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../fonts/fonts.css">
+
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="../../highlight.css">
+    <link rel="stylesheet" href="../../tomorrow-night.css">
+    <link rel="stylesheet" href="../../ayu-highlight.css">
+    <link rel="stylesheet" href="../../monokai.css">
+
+    <!-- Custom theme stylesheets -->
+    <link rel="stylesheet" href="../../theme/pagetoc.css">
+
+    <!-- google anagles-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4ZX8LPY4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E4ZX8LPY4F');
+        //ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> about me</a></li><li class="chapter-item "><a href="../../math/index.html"><strong aria-hidden="true">2.</strong> math</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">2.1.</strong> probability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">2.1.1.</strong> hw2</a></li><li class="chapter-item "><a href="../../math/probability/hw3.html"><strong aria-hidden="true">2.1.2.</strong> hw3</a></li><li class="chapter-item "><a href="../../math/probability/hw4.html"><strong aria-hidden="true">2.1.3.</strong> hw4</a></li><li class="chapter-item "><a href="../../math/probability/hw5.html"><strong aria-hidden="true">2.1.4.</strong> hw5</a></li><li class="chapter-item "><a href="../../math/probability/hw6.html"><strong aria-hidden="true">2.1.5.</strong> hw6</a></li><li class="chapter-item "><a href="../../math/probability/hw7.html"><strong aria-hidden="true">2.1.6.</strong> hw7</a></li><li class="chapter-item "><a href="../../math/probability/hw8.html"><strong aria-hidden="true">2.1.7.</strong> hw8</a></li><li class="chapter-item "><a href="../../math/probability/hw9.html"><strong aria-hidden="true">2.1.8.</strong> hw9</a></li></ol></li><li class="chapter-item "><a href="../../math/linear-algebra.html"><strong aria-hidden="true">2.2.</strong> linear algebra</a></li><li class="chapter-item "><a href="../../math/calculus.html"><strong aria-hidden="true">2.3.</strong> calculus</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/index.html"><strong aria-hidden="true">3.</strong> computer science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">3.1.</strong> data science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">3.1.1.</strong> data science</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw1.html"><strong aria-hidden="true">3.1.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw2.html"><strong aria-hidden="true">3.1.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw3.html"><strong aria-hidden="true">3.1.4.</strong> hw3</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">3.2.</strong> database systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">3.2.1.</strong> database systems</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw1.html"><strong aria-hidden="true">3.2.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw2.html"><strong aria-hidden="true">3.2.3.</strong> hw2</a></li><li class="chapter-item expanded "><a href="../../computer-science/database-systems/hw3.html" class="active"><strong aria-hidden="true">3.2.4.</strong> hw3</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">3.3.</strong> computer networking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">3.3.1.</strong> computer networking</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw1.html"><strong aria-hidden="true">3.3.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw2.html"><strong aria-hidden="true">3.3.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw4.html"><strong aria-hidden="true">3.3.4.</strong> hw4</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">3.4.</strong> signals and systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">3.4.1.</strong> signals processing</a></li><li class="chapter-item "><a href="../../computer-science/signals-and-systems/mid.html"><strong aria-hidden="true">3.4.2.</strong> mid</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/BitTorrent.html"><strong aria-hidden="true">3.5.</strong> BitTorrent</a></li><li class="chapter-item "><a href="../../computer-science/CSG.html"><strong aria-hidden="true">3.6.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li><li class="chapter-item "><a href="../../computer-science/leetcode.html"><strong aria-hidden="true">3.7.</strong> leetcode</a></li><li class="chapter-item "><a href="../../computer-science/nerf.html"><strong aria-hidden="true">3.8.</strong> nerf</a></li></ol></li><li class="chapter-item "><a href="../../tool/index.html"><strong aria-hidden="true">4.</strong> tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../tool/git.html"><strong aria-hidden="true">4.1.</strong> git</a></li><li class="chapter-item "><a href="../../tool/vim.html"><strong aria-hidden="true">4.2.</strong> vim</a></li><li class="chapter-item "><a href="../../tool/ffmpeg.html"><strong aria-hidden="true">4.3.</strong> ffmpeg</a></li><li class="chapter-item "><a href="../../tool/shortcut.html"><strong aria-hidden="true">4.4.</strong> shortcut</a></li><li class="chapter-item "><a href="../../tool/graphviz.html"><strong aria-hidden="true">4.5.</strong> graphviz</a></li><li class="chapter-item "><a href="../../tool/shields.io.html"><strong aria-hidden="true">4.6.</strong> shields.io</a></li><li class="chapter-item "><a href="../../tool/docker.html"><strong aria-hidden="true">4.7.</strong> docker</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
+                            aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme"
+                            aria-label="Change theme" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="monokai">Monokai</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">something</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/x06lan/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="hw3-110590049"><a class="header" href="#hw3-110590049">hw3 110590049</a></h1>
+<p>tags <code>db</code> <code>database</code></p>
+<p><a href="../../assets/pdf/database_systemsHW3.pdf">2023 database-systems HW3.pdf</a></p>
+<h1 id="1"><a class="header" href="#1">1</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>table</th><th>column</th><th></th><th></th><th></th><th></th></tr></thead><tbody>
+<tr><td>PREREQUISITE</td><td>CourseNumber</td><td>PrerequisiteCourseNumber</td><td></td><td></td><td></td></tr>
+<tr><td>GRADE_REPORT</td><td>StudentNumber</td><td>SectionNumber</td><td>Grade</td><td></td><td></td></tr>
+<tr><td>STUDENT</td><td>StudentNumber</td><td>Name</td><td>Class</td><td>Major</td><td></td></tr>
+<tr><td>COURSE</td><td>CourseNumber</td><td>CourseName</td><td>“CreditHour”</td><td>Department</td><td></td></tr>
+<tr><td>SECTION</td><td>SectionNumber</td><td>CourseNumber</td><td>Semester</td><td>Year</td><td>Instructor</td></tr>
+</tbody></table>
+</div>
+<h2 id="a"><a class="header" href="#a">a</a></h2>
+<pre><code class="language-sql">UPDATE &quot;COURSE&quot;
+SET &quot;CreditHour&quot; = 2
+WHERE &quot;CourseName&quot; = 'Object-Oriented Programming'
+  AND &quot;Department&quot; = 'EECS';
+</code></pre>
+<h2 id="b"><a class="header" href="#b">b</a></h2>
+<pre><code class="language-sql">DELETE FROM &quot;STUDENT&quot;
+WHERE Name = 'David'
+  AND &quot;StudentNumber&quot; = '005';
+</code></pre>
+<h2 id="c"><a class="header" href="#c">c</a></h2>
+<pre><code class="language-sql">SELECT &quot;COURSE&quot;.&quot;CourseName&quot; FROM &quot;SECTION&quot;
+LEFT JOIN &quot;COURSE&quot; ON &quot;COURSE&quot;.&quot;CourseNumber&quot; = &quot;SECTION&quot;.&quot;CourseNumber&quot;
+WHERE &quot;Instructor&quot; = 'John'
+  AND &quot;Year&quot; = 2022;
+</code></pre>
+<h2 id="d"><a class="header" href="#d">d</a></h2>
+<pre><code class="language-sql">SELECT &quot;S&quot;.&quot;CourseNumber&quot;, &quot;SE&quot;.&quot;Semester&quot;, &quot;SE&quot;.&quot;Year&quot;, COUNT(&quot;GR&quot;.&quot;StudentNumber&quot;) AS &quot;NumberOfStudents&quot;
+FROM &quot;SECTION&quot; &quot;SE&quot;
+JOIN &quot;COURSE&quot; &quot;S&quot; ON &quot;SE&quot;.&quot;CourseNumber&quot; = &quot;S&quot;.&quot;CourseNumber&quot;
+LEFT JOIN &quot;GRADE_REPORT&quot; &quot;GR&quot; ON &quot;SE&quot;.&quot;SectionNumber&quot; = &quot;GR&quot;.&quot;SectionNumber&quot;
+WHERE &quot;SE&quot;.&quot;Instructor&quot; = 'Eric'
+GROUP BY &quot;S&quot;.&quot;CourseNumber&quot;, &quot;SE&quot;.&quot;Semester&quot;, &quot;SE&quot;.&quot;Year&quot;;
+</code></pre>
+<h2 id="e"><a class="header" href="#e">e</a></h2>
+<pre><code class="language-sql">SELECT &quot;P&quot;.&quot;PrerequisiteCourseNumber&quot;, &quot;PC&quot;.&quot;CourseName&quot;
+FROM &quot;PREREQUISITE&quot; &quot;P&quot;
+JOIN &quot;COURSE&quot; &quot;C&quot; ON &quot;P&quot;.&quot;CourseNumber&quot; = &quot;C&quot;.&quot;CourseNumber&quot;
+JOIN &quot;COURSE&quot; &quot;PC&quot; ON &quot;P&quot;.&quot;PrerequisiteCourseNumber&quot; = &quot;PC&quot;.&quot;CourseNumber&quot;
+WHERE &quot;C&quot;.&quot;CourseName&quot; = 'Database Systems' AND &quot;C&quot;.&quot;Department&quot; = 'EECS';
+</code></pre>
+<h2 id="f"><a class="header" href="#f">f</a></h2>
+<pre><code class="language-sql">SELECT &quot;STUDENT&quot;.&quot;Name&quot;, &quot;COURSE&quot;.&quot;CourseNumber&quot;, &quot;COURSE&quot;.&quot;CourseName&quot;, &quot;COURSE&quot;.&quot;CreditHour&quot;, &quot;SECTION&quot;.&quot;Semester&quot;, &quot;SECTION&quot;.&quot;Year&quot;, &quot;GRADE_REPORT&quot;.&quot;Grade&quot;
+FROM &quot;STUDENT&quot;
+JOIN &quot;GRADE_REPORT&quot; ON &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot;
+JOIN &quot;SECTION&quot; ON &quot;GRADE_REPORT&quot;.&quot;SectionNumber&quot; = &quot;SECTION&quot;.&quot;SectionNumber&quot;
+JOIN &quot;COURSE&quot; ON &quot;SECTION&quot;.&quot;CourseNumber&quot; = &quot;COURSE&quot;.&quot;CourseNumber&quot;
+WHERE &quot;STUDENT&quot;.&quot;Class&quot; = 3 AND &quot;STUDENT&quot;.&quot;Major&quot; = 'EECS';
+</code></pre>
+<h2 id="g"><a class="header" href="#g">g</a></h2>
+<pre><code class="language-sql">SELECT DISTINCT &quot;STUDENT&quot;.&quot;Name&quot;
+FROM &quot;STUDENT&quot;
+WHERE NOT EXISTS (
+    SELECT *
+    FROM &quot;GRADE_REPORT&quot;
+    WHERE &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot; AND &quot;GRADE_REPORT&quot;.&quot;Grade&quot; &lt; 80
+);
+</code></pre>
+<h2 id="h"><a class="header" href="#h">h</a></h2>
+<pre><code class="language-sql">SELECT &quot;STUDENT&quot;.&quot;Name&quot;, &quot;STUDENT&quot;.&quot;Major&quot;
+FROM &quot;STUDENT&quot;
+WHERE NOT EXISTS (
+    SELECT *
+    FROM &quot;GRADE_REPORT&quot;
+    WHERE &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot; AND &quot;GRADE_REPORT&quot;.&quot;Grade&quot; &lt; 60
+);
+</code></pre>
+<h2 id="i"><a class="header" href="#i">i</a></h2>
+<pre><code class="language-sql">SELECT DISTINCT &quot;STUDENT&quot;.&quot;Name&quot;, &quot;STUDENT&quot;.&quot;Major&quot;
+FROM &quot;STUDENT&quot;
+JOIN &quot;GRADE_REPORT&quot; ON &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot;
+WHERE &quot;GRADE_REPORT&quot;.&quot;Grade&quot; &lt; 60
+ORDER BY &quot;STUDENT&quot;.&quot;StudentNumber&quot;;
+</code></pre>
+<h2 id="j"><a class="header" href="#j">j</a></h2>
+<pre><code class="language-sql">SELECT &quot;STUDENT&quot;.&quot;Name&quot;, AVG(&quot;GRADE_REPORT&quot;.&quot;Grade&quot;) AS &quot;AverageGrade&quot;
+FROM &quot;STUDENT&quot;
+JOIN &quot;GRADE_REPORT&quot; ON &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot;
+JOIN &quot;SECTION&quot; ON &quot;GRADE_REPORT&quot;.&quot;SectionNumber&quot; = &quot;SECTION&quot;.&quot;SectionNumber&quot;
+WHERE &quot;SECTION&quot;.&quot;Year&quot; = 2023
+GROUP BY &quot;STUDENT&quot;.&quot;Name&quot;
+HAVING AVG(&quot;GRADE_REPORT&quot;.&quot;Grade&quot;) &gt; 80.0;
+</code></pre>
+<h2 id="k"><a class="header" href="#k">k</a></h2>
+<pre><code class="language-sql">SELECT &quot;STUDENT&quot;.&quot;Major&quot;, COUNT(DISTINCT &quot;STUDENT&quot;.&quot;StudentNumber&quot;) AS &quot;NumStudents&quot;
+FROM &quot;STUDENT&quot;
+JOIN &quot;GRADE_REPORT&quot; ON &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot;
+GROUP BY &quot;STUDENT&quot;.&quot;Major&quot;
+HAVING AVG(&quot;GRADE_REPORT&quot;.&quot;Grade&quot;) &lt; 60.0;
+</code></pre>
+<h2 id="l"><a class="header" href="#l">l</a></h2>
+<pre><code class="language-sql">CREATE VIEW &quot;StudentTranscript&quot; AS
+SELECT &quot;STUDENT&quot;.&quot;StudentNumber&quot;, &quot;STUDENT&quot;.&quot;Name&quot;, &quot;COURSE&quot;.&quot;CourseName&quot;, &quot;SECTION&quot;.&quot;Semester&quot;, &quot;SECTION&quot;.&quot;Year&quot;, &quot;GRADE_REPORT&quot;.&quot;Grade&quot;
+FROM &quot;STUDENT&quot;
+JOIN &quot;GRADE_REPORT&quot; ON &quot;STUDENT&quot;.&quot;StudentNumber&quot; = &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot;
+JOIN &quot;SECTION&quot; ON &quot;GRADE_REPORT&quot;.&quot;SectionNumber&quot; = &quot;SECTION&quot;.&quot;SectionNumber&quot;
+JOIN &quot;COURSE&quot; ON &quot;SECTION&quot;.&quot;CourseNumber&quot; = &quot;COURSE&quot;.&quot;CourseNumber&quot;;
+</code></pre>
+<h1 id="2"><a class="header" href="#2">2</a></h1>
+<h2 id="a-1"><a class="header" href="#a-1">a</a></h2>
+<pre><code class="language-sql">CREATE TABLE &quot;STUDENT&quot; (
+    &quot;StudentNumber&quot; INT PRIMARY KEY,
+    &quot;Name&quot; VARCHAR(255),
+    &quot;Class&quot; INT,
+    &quot;Major&quot; VARCHAR(255)
+);
+
+CREATE TABLE &quot;COURSE&quot; (
+    &quot;CourseNumber&quot; INT PRIMARY KEY,
+    &quot;CourseName&quot; VARCHAR(255),
+    &quot;CreditHour&quot; INT,
+    &quot;Department&quot; VARCHAR(255)
+);
+
+CREATE TABLE &quot;SECTION&quot; (
+    &quot;SectionNumber&quot; INT PRIMARY KEY,
+    &quot;CourseNumber&quot; INT REFERENCES &quot;COURSE&quot;(&quot;CourseNumber&quot;)ON DELETE CASCADE,
+    &quot;Semester&quot; VARCHAR(255),
+    &quot;Year&quot; INT,
+    &quot;Instructor&quot; VARCHAR(255)
+);
+
+CREATE TABLE &quot;GRADE_REPORT&quot; (
+    &quot;StudentNumber&quot; INT REFERENCES &quot;STUDENT&quot;(&quot;StudentNumber&quot;)ON DELETE CASCADE,
+    &quot;SectionNumber&quot; INT REFERENCES &quot;SECTION&quot;(&quot;SectionNumber&quot;)ON DELETE CASCADE,
+    &quot;Grade&quot; INT
+);
+
+CREATE TABLE &quot;PREREQUISITE&quot; (
+    &quot;CourseNumber&quot; INT REFERENCES &quot;COURSE&quot;(&quot;CourseNumber&quot;)ON DELETE CASCADE,
+    &quot;PrerequisiteCourseNumber&quot; INT REFERENCES &quot;COURSE&quot;(&quot;CourseNumber&quot;)ON DELETE CASCADE,
+    PRIMARY KEY (&quot;CourseNumber&quot;, &quot;PrerequisiteCourseNumber&quot;)
+);
+</code></pre>
+<p><img src="https://imgur.com/alL1xya.png" alt="" /></p>
+<h2 id="b-1"><a class="header" href="#b-1">b</a></h2>
+<pre><code class="language-sql">INSERT INTO &quot;STUDENT&quot; (&quot;StudentNumber&quot;, &quot;Name&quot;, &quot;Class&quot;, &quot;Major&quot;) VALUES
+(1, 'Alice', 3, 'EECS'),
+(2, 'Bob', 2, 'Mathematics'),
+(3, 'Charlie', 1, 'Physics'),
+(4, 'Eva', 3, 'Computer Science'),
+(5, 'David', 2, 'EECS');
+
+-- Sample data for COURSE table
+INSERT INTO &quot;COURSE&quot; (&quot;CourseNumber&quot;, &quot;CourseName&quot;, &quot;CreditHour&quot;, &quot;Department&quot;) VALUES
+(1, 'Introduction to Computer Science', 3, 'EECS'),
+(2, 'Linear Algebra', 4, 'Mathematics'),
+(3, 'Modern Physics', 3, 'Physics'),
+(4, 'Object-Oriented Programming', 3, 'EECS'),
+(5, 'Database Systems', 4, 'EECS');
+
+-- Sample data for SECTION table
+INSERT INTO &quot;SECTION&quot; (&quot;SectionNumber&quot;, &quot;CourseNumber&quot;, &quot;Semester&quot;, &quot;Year&quot;, &quot;Instructor&quot;) VALUES
+(1, 1, 'Fall', 2022, 'John'),
+(2, 2, 'Spring', 2023, 'Alice'),
+(3, 4, 'Fall', 2022, 'Eric'),
+(4, 5, 'Spring', 2023, 'Bob');
+
+-- Sample data for GRADE_REPORT table
+INSERT INTO &quot;GRADE_REPORT&quot; (&quot;StudentNumber&quot;, &quot;SectionNumber&quot;, &quot;Grade&quot;) VALUES
+(1, 1, 90),
+(2, 2, 85),
+(3, 3, 75),
+(4, 4, 92),
+(5, 1, 88);
+
+-- Sample data for PREREQUISITE table
+INSERT INTO &quot;PREREQUISITE&quot; (&quot;CourseNumber&quot;, &quot;PrerequisiteCourseNumber&quot;) VALUES
+(5, 4),
+(5, 3),
+(2, 1);
+</code></pre>
+<h2 id="c-1"><a class="header" href="#c-1">c</a></h2>
+<h3 id="a-2"><a class="header" href="#a-2">a</a></h3>
+<p><img src="https://imgur.com/oLroM0e.png" alt="" /></p>
+<h3 id="b-2"><a class="header" href="#b-2">b</a></h3>
+<p><img src="https://imgur.com/cDlqw1w.png" alt="" /></p>
+<h3 id="c-2"><a class="header" href="#c-2">c</a></h3>
+<p><img src="https://imgur.com/13eFyXg.png" alt="" /></p>
+<h3 id="d-1"><a class="header" href="#d-1">d</a></h3>
+<p><img src="https://imgur.com/e1W89dy.png" alt="" /></p>
+<h3 id="e-1"><a class="header" href="#e-1">e</a></h3>
+<p><img src="https://imgur.com/CMWHT4e.png" alt="" /></p>
+<h3 id="f-1"><a class="header" href="#f-1">f</a></h3>
+<p><img src="https://imgur.com/o1zk4Mk.png" alt="" /></p>
+<h3 id="g-1"><a class="header" href="#g-1">g</a></h3>
+<p><img src="https://imgur.com/k5hxUFD.png" alt="" /></p>
+<h3 id="h-1"><a class="header" href="#h-1">h</a></h3>
+<p><img src="https://imgur.com/GmCQxNG.png" alt="" /></p>
+<h3 id="i-1"><a class="header" href="#i-1">i</a></h3>
+<p><img src="https://imgur.com/VstHEZb.png" alt="" /></p>
+<h3 id="j-1"><a class="header" href="#j-1">j</a></h3>
+<p><img src="https://imgur.com/OoYws77.png" alt="" /></p>
+<h3 id="k-1"><a class="header" href="#k-1">k</a></h3>
+<p><img src="https://imgur.com/ICsgG0r.png" alt="" /></p>
+<h3 id="l-1"><a class="header" href="#l-1">l</a></h3>
+<p><img src="https://imgur.com/ESBunyw.png" alt="" /></p>
+<h2 id="d-2"><a class="header" href="#d-2">d</a></h2>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION get_student_average_grade(student_number INT)
+RETURNS varchar AS $$
+DECLARE
+    avg_grade numeric;
+    result_text varchar;
+BEGIN
+    SELECT AVG(&quot;GRADE_REPORT&quot;.&quot;Grade&quot;) INTO avg_grade
+    FROM &quot;GRADE_REPORT&quot;
+    WHERE &quot;GRADE_REPORT&quot;.&quot;StudentNumber&quot; = student_number;
+
+    IF avg_grade &gt;= 60 THEN
+        result_text := 'PASS';
+    ELSE
+        result_text := 'FAIL';
+    END IF;
+    RETURN result_text;
+END;
+$$ LANGUAGE plpgsql;
+</code></pre>
+<p><img src="https://imgur.com/9ejsbNW.png" alt="" /></p>
+
+                        <!-- github commet -->
+                        <script src="https://giscus.app/client.js" data-repo="x06lan/mdbook" data-repo-id="R_kgDOJxZ6mQ"
+                            data-category-id="DIC_kwDOJxZ6mc4CXeJ6" data-mapping="pathname" data-strict="0"
+                            data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom"
+                            data-theme="preferred_color_scheme" data-lang="zh-TW" crossorigin="anonymous" async>
+                            </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+</body>
+
+</html>
