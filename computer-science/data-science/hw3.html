@@ -250,11 +250,29 @@ print(KNN(input_data,k,data,answer))
 </code></pre>
 
                         <!-- github commet -->
-                        <script src="https://giscus.app/client.js" data-repo="x06lan/mdbook" data-repo-id="R_kgDOJxZ6mQ"
-                            data-category-id="DIC_kwDOJxZ6mc4CXeJ6" data-mapping="pathname" data-strict="0"
-                            data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom"
-                            data-theme="preferred_color_scheme" data-lang="zh-TW" crossorigin="anonymous" async>
-                            </script>
+                        <script>
+                            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+                            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                                var giscusScript = document.createElement('script');
+                                giscusScript.src = "https://giscus.app/client.js";
+                                giscusScript.setAttribute('data-repo', 'x06lan/mdbook');
+                                giscusScript.setAttribute('data-repo-id', 'R_kgDOJxZ6mQ');
+                                giscusScript.setAttribute('data-category-id', 'DIC_kwDOJxZ6mc4CXeJ6');
+                                giscusScript.setAttribute('data-mapping', 'pathname');
+                                giscusScript.setAttribute('data-strict', '0');
+                                giscusScript.setAttribute('data-reactions-enabled', '1');
+                                giscusScript.setAttribute('data-emit-metadata', '0');
+                                giscusScript.setAttribute('data-input-position', 'bottom');
+                                giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
+                                giscusScript.setAttribute('data-lang', 'zh-TW');
+                                giscusScript.setAttribute('crossorigin', 'anonymous');
+                                giscusScript.async = true;
+                                let giscusDiv = document.getElementById('giscus');
+                                giscusDiv.appendChild(giscusScript);
+                            }
+                            <dir id="giscus"></dir>
+                        </script>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
