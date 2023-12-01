@@ -1,6 +1,6 @@
 # hw2
 
-[2023 computer-networking HW1.pdf](../../assets/pdf/computer_networkingHW2.pdf)
+[2023 computer-networking HW2.pdf](../../assets/pdf/computer_networkingHW2.pdf)
 
 ## 1.
 use UDP  because it is faster then TCP
