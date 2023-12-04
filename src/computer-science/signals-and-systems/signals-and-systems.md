@@ -62,7 +62,7 @@ $$
 \begin{aligned}\\
 \int_{-\infty}^{\infty} E_v\{x(t)\}\times O_d\{x(t)\} \ dt&=\int_{-\infty}^{\infty} \frac{x(t)+x(-t)}{2}\times\frac{x(t)-x(-t)}{2} \ dt\\
 &=\int_{-\infty}^{\infty}\frac{x(t)^2-x(-t)^2}{4} \ dt \\
-&=\int_{-\infty}^{\infty}\frac{x(t)}{4} \ dt - \int^2_{-\infty}^{\infty}\frac{x(-t)^2}{4} \ dt\\
+&=\int_{-\infty}^{\infty}\frac{x(t)^2}{4} \ dt - \int_{-\infty}^{\infty}\frac{x(-t)^2}{4} \ dt\\
 &=0\\
 \end{aligned}\\
 $$
@@ -208,4 +208,67 @@ x[n]=e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}\\
 \text{LCD(Least Common Denominator) of } 3 \text{ and } 8 \text{ is } 24\\
 \text{fundamental period of }e^{j(\frac{2\pi}{3})n}+e^{j(\frac{3\pi}{4})n}=24\\
 $$
-<iframe src="https://phiresky.github.io/convolution-demo/" width="100%" height="90%">
+## convolution
+### CT
+$$
+(f*g)(t)=\int_{-\infty}^{\infty}{f(\tau)g(t-\tau) \ d\tau }
+$$
+### DT
+$$
+(f*g)[n]=\sum_{k=-\infty}^{\infty}{f[k]g[n-k] }
+$$
+
+$$
+\begin{aligned}
+x[n]=&
+\begin{cases}
+0.5^{n} &, 0\leq n\\
+0 &, else
+\end{cases}\\
+
+h[n]=&
+\begin{cases}
+0.5^{n} &, 0\leq n<3\\
+0 &, else
+\end{cases}
+\end{aligned}
+
+$$
+
+| h\x  | x[n]                | 0   | 1     | 2      | 3       | 3        |
+| ---- | ------------------- | --- | ----- | ------ | ------- | -------- |
+| h[n] | $$x[n]\times h[n]$$ | 1   | 0.5   | 0.25   | 0.125   | 0.0625   |
+| 0    | 1                   | 1   | 0.5   | 0.25   | 0.125   | 0.0625   |
+| 1    | 0.5                 | 0.5 | 0.25  | 0.125  | 0.0625  | 0.03125  |
+| 2    | 0.25                | 0.5 | 0.125 | 0.0625 | 0.03125 | 0.015625 |
+| 3    | 0                   | 0   | 0     | 0      | 0       | 0        |
+| 4    | 0                   | 0   | 0     | 0      | 0       | 0        |
+
+$$
+\begin{aligned}
+(x*h)[0]&=x[0]\times h[0]\\
+(x*h)[1]&=x[0]\times h[1]+x[1]\times h[0]\\
+(x*h)[2]&=x[0]\times h[2]+x[1]\times h[1]+x[2]\times h[0]\\
+\end{aligned}
+$$
+
+<!-- <iframe src="https://phiresky.github.io/convolution-demo/" width="100%" height="800px"> -->
+
+## LTI(Linear Time-Invariant)
+### Linear
+$$
+\begin{aligned}
+y(t)&=x(t)*h(t)\\
+    &=\int_{-\infty}^{\infty} {x(t-\tau)h(\tau) } \ d \tau\\
+    &=\int_{-\infty}^{\infty} {x(\tau)h(t-\tau) } \ d \tau\\
+
+\end{aligned}
+$$
+
+### Time-invariant
+$$
+\begin{aligned}
+y(t)&=x(t)*h(t)\\
+y(t-k)&=x(t-k)*h(t)\\
+\end{aligned}
+$$

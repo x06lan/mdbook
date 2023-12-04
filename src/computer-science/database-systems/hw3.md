@@ -185,7 +185,7 @@ INSERT INTO "SECTION" ("SectionNumber", "CourseNumber", "Semester", "Year", "Ins
 INSERT INTO "GRADE_REPORT" ("StudentNumber", "SectionNumber", "Grade") VALUES
 (1, 1, 90),
 (2, 2, 85),
-(3, 3, 75),
+(3, 3, 59),
 (4, 4, 92),
 (5, 1, 88);
 
