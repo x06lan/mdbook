@@ -133,7 +133,7 @@ $$
 \begin{aligned}\\
 &,&&y(t)=tx(t)&\\
 \text{define } y_1(x)\text{ let } x(t)=x(t+t_0)&,&&y_1(t)=tx(t+t_0)&\\
-\text{if }y_1(t)==y(t+t_0) \text{then it is invariance}&,&&(t+t_0)x(t+t_0)\neq tx(t+t_0)& \text{not invariance}\\
+\text{if }y_1(t)==y(t+t_0) \text{then it is invariance}&,&&\because (t+t_0)x(t+t_0)\neq tx(t+t_0)& \therefore \text{not invariance}\\
 
 \end{aligned}
 
