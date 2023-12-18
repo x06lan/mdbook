@@ -11,7 +11,7 @@
 # Database constraint
 * Implicit Constraints or Inherent constraint
   * Constraints that are applied in the data model
-* Schema-Based Constraints or Explicit Constraints 
+* Schema-Based Constraints or Explicit Constraints
   * Constraints that are directly applied in the schemas of the data model, by specifying them in the DDL(Data Definition Language).
 * Semantic Constraints or Application based
   * Constraints that cannot be directly applied in the schemas of the data model. We call these Application based or .
@@ -24,7 +24,7 @@
 * presentation layer
   * GUI, web interface
 * busincess layer
-  * application programs 
+  * application programs
 * database services layer
   * database management system
 # superkey
@@ -41,18 +41,18 @@ A special null value is used to represent values that are unknown or not availab
 | EER diagram             | double line           | single line | d           | o                 |
 | super class inheritance | at least one subclass | can be none | at most one | can more than one |
 
-* specialization: 
+* specialization:
   * top down conceptual refinement process
   * arrow to subclass
-* generalization: 
+* generalization:
   * bottom up conceptual synthesis process
   * arrow to superclass
 * shared subclass:
   * multiple super class
-  * multiple inheritance from diff super class 
-  * presend subclass is intersection of super class 
+  * multiple inheritance from diff super class
+  * presend subclass is intersection of super class
 * Categories (UNION TYPES):
-  * presend subclass is union of super class 
+  * presend subclass is union of super class
   * use "U" as symbol in EER diagram
 # sql
 ```sql
@@ -61,7 +61,7 @@ ROOM(roomNo, hotelNo, type, price);
 BOOKING(hotelNoguestNo, dateFrom, dateTo, foomNo);
 GUEST(guestNo, guestName, guestAddress);
 ```
-## List the price and type of all rooms that hotelName is Howard Hotel. 
+## List the price and type of all rooms that hotelName is Howard Hotel.
 ```sql
 SELECT r.price, r.type
 FROM ROOM r
@@ -74,7 +74,7 @@ FROM ROOM
 WHERE hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 ```
 
-## List the details of all rooms at the Howard Hotel, including the name of the guest staying in the room if the room is occupied. 
+## List the details of all rooms at the Howard Hotel, including the name of the guest staying in the room if the room is occupied.
 ```sql
 SELECT r.roomNo, r.type, r.price, g.guestName
 FROM ROOM r
@@ -90,7 +90,7 @@ FROM ROOM r
 WHERE r.type = 'single' AND r.price < 3000;
 
 ```
-## list all guests currently staying at the "Howard Hotel," 
+## list all guests currently staying at the "Howard Hotel,"
 ```sql
 SELECT DISTINCT g.guestName
 FROM GUEST g
@@ -99,3 +99,9 @@ WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 ```
 ## join vs. sub-query
 In general join have better performance because of optimisers.
+
+# 正規化 (normalization)
+## 1NF
+## 2NF
+## 3NF
+## 4NF

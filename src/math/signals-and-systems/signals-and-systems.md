@@ -252,6 +252,28 @@ $$
 \end{aligned}
 $$
 
+### commutative
+$$
+\begin{aligned}
+x(t)*h(t)&=h(t)*x(t)\\
+\int_{-\infty}^{\infty}{x(\tau)h(t-\tau) \ d\tau }&=\int_{-\infty}^{\infty}{h(\tau)x(t-\tau) \ d\tau }\\
+\end{aligned}
+$$
+
+### distributive
+$$
+\begin{aligned}
+x(t)*(h_1(t)+h_2(t))&=x(t)*h_1(t)+x(t)*h_2(t)\\
+\end{aligned}
+$$
+### associative
+$$
+\begin{aligned}
+x(t)*(h_1(t)*h_2(t))&=(x(t)*h_1(t))*h_2(t)\\
+\end{aligned}
+$$
+
+
 <!-- <iframe src="https://phiresky.github.io/convolution-demo/" width="100%" height="800px"> -->
 
 ## LTI(Linear Time-Invariant)
@@ -271,4 +293,83 @@ $$
 y(t)&=x(t)*h(t)\\
 y(t-k)&=x(t-k)*h(t)\\
 \end{aligned}
+$$
+
+## LTI systems and convolution
+
+### stability for LTI Systems
+$$
+\text{if }|x(t)|\text{ is bounded, then }|y(t)|\text{ is also bounded.}\\
+\text{Sufficient condition for a continuous-time LTI system to be stable}
+$$
+### Unit Step Response of an LTI System
+#### CT
+$$
+\begin{aligned}
+y[n]&=h[n]*u[t]\\
+&=\int_{-\infty}^{\infty}u[n-\tau]h[\tau] \ d \tau \\
+&=\int_{-\infty}^{n} h[\tau] \ d \tau \\
+\end{aligned}\\
+h[n]=y[n]-y[n-1]
+$$
+#### DT
+$$
+\begin{aligned}
+y(t)&=h(t)*u(t)\\
+&=\sum_{-\infty}^{\infty}u(t-\tau)h(\tau) \ d \tau \\
+&=\sum_{-\infty}^{t}h(\tau) \ d \tau \\
+\end{aligned}\\
+h(t)=y'(t)
+$$
+
+## eigen function and eigen value of LTI systems
+The response of an LTI system to a eigen function is the same eigen function with only a change in amplitude(eigen value)
+
+$$
+x(t) \rightarrow H(t)x(t)\\
+x(t)\text{ is eigenfunction }\\
+H(t)\text{ is eigen value}\\
+$$
+### The Response of LTI Systems to Complex Exponential Signals
+$$
+x(t)=e^{st}\\
+\begin{aligned}
+y(t)&=h(t)*x(t)\\
+&=\int_{-\infty}^{\infty}h(\tau)x(t-\tau) \ dt\\
+&=\int_{-\infty}^{\infty}h(\tau)e^{s(t-\tau)} \ dt\\
+&=e^{st}\int_{-\infty}^{\infty}h(\tau)e^{-s\tau} \ dt\\
+\end{aligned}\\
+H(t)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau} \ dt
+$$
+#### example
+$$
+x(t)=e^{j2t}\\
+y(t)=e^{j2(t-3)}=e^{j6}e^{j2t}\\
+H(t)=\int_{-\infty}^{\infty}\delta(\tau-3)e^{-s\tau} \ dt=e^{-3s}\\
+$$
+
+## system
+
+### delay system
+$$
+x(t) *\delta(t-t_0) = x(t-t_0)\\
+x[t] *\delta[t-t_0] = x[t-t_0]\\
+$$
+
+### difference system
+$$
+x[n] * \delta[t-t_0] = x[t-t_0]
+$$
+
+### accumulation system
+$$
+y[n]  = \sum_{m-\infty}^{n} x[m]
+$$
+
+## example
+$$
+\int_{T_0}e^{jw_0t} \ dt
+$$
+$$
+\int_{T_0}e^{jw_0t} \ dt
 $$
