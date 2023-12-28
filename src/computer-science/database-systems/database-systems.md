@@ -102,6 +102,20 @@ In general join have better performance because of optimisers.
 
 # 正規化 (normalization)
 ## 1NF
+*  must be a primary key for identification
+*  no duplicated rows or columns
 ## 2NF
+* 1NF
+* no partial dependency
 ## 3NF
+* 2NF
+* no transitive partial dependency(遞移相依)
+
+## BCNF (Boyce-Codd Normal Form)
+
+* 3NF
+* all key of table cant depend on another non-key columns
+
+
 ## 4NF
+* not only can save on storage, but also avoid the update anomalies
