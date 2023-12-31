@@ -36,6 +36,7 @@
     * [hw2](computer-science/computer-network/hw2.md)
     * [hw4](computer-science/computer-network/hw4.md)
     * [hw5](computer-science/computer-network/hw5.md)
+    * [hw6](computer-science/computer-network/hw6.md)
   * [BitTorrent](computer-science/BitTorrent.md)
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
   * [leetcode](computer-science/leetcode.md)

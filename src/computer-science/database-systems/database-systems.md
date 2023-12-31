@@ -83,7 +83,7 @@ LEFT JOIN GUEST g ON b.guestNo = g.guestNo
 INNER JOIN HOTEL h ON r.hotelNo = h.hotelNo
 WHERE h.hotelName = 'Howard Hotel';
 ```
-## List all single rooms with a price below $3,000 per night. ) (4%) List all guests currently staying at the Howard Hotel.
+## List all single rooms with a price below 3,000 per night. ) (4%) List all guests currently staying at the Howard Hotel.
 ```sql
 SELECT r.roomNo, r.price
 FROM ROOM r
@@ -101,6 +101,17 @@ WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 In general join have better performance because of optimisers.
 
 # 正規化 (normalization)
+## Functional Dependencies
+$\{x,y\}\rightarrow\{z\}\\$
+mean if get x and y can get z
+## partial dependency
+$\{x,y\}\rightarrow\{z\}$ but $ \{x\}\rightarrow\{z\}\\$
+x alone can get z then it is partial dependency
+## transitive dependency
+$\{x\}\rightarrow\{y\}\\$
+$\{y\}\rightarrow\{z\}\\$
+and y is not candidate key then it is transitive dependency
+## multivalued dependencies
 ## 1NF
 *  must be a primary key for identification
 *  no duplicated rows or columns
@@ -118,4 +129,5 @@ In general join have better performance because of optimisers.
 
 
 ## 4NF
+* if, for every nontrivial multivalued dependency x is superkey
 * not only can save on storage, but also avoid the update anomalies

@@ -16,7 +16,7 @@ $$
 ### Frequency Division Multiplexing (FDM)
 ![FDM](https://imgur.com/Li4VtUz.png)
 
-optical, electromagnetic frequencies divided into (narrow) frequency bands = each call allocated its own band, can transmit at max rate of that narrow band 
+optical, electromagnetic frequencies divided into (narrow) frequency bands = each call allocated its own band, can transmit at max rate of that narrow band
 ### Time Division Multiplexing (TDM)
 ![TDM](https://imgur.com/Lf7C9Sv.png)
 
@@ -37,16 +37,16 @@ time divided into slots = each call allocated periodic slot(s), can transmit at 
 #### http/3
 This is an advanced transport protocol that operates on top of UDP. QUIC incorporates features like reduced connection and transport latency, multiplexing without head-of-line blocking, and improved congestion control. It integrates encryption by default, providing a secure connection setup with a single round-trip time (RTT).
 
-#### persistent http  
-1. keep connetion of TCP 
+#### persistent http
+1. keep connetion of TCP
 1. half time of tramit
 
 ### email SMTP POP3 IMAP
 #### SMTP
 mail server send to mail server
-#### POP3 
-muil-user download email 
-#### IMAP 
+#### POP3
+muil-user download email
+#### IMAP
 will delete email that user download
 
 |              | http                                     | smtp                                       |
@@ -90,10 +90,10 @@ use this four tuple to identified TCP packet<br>
   * seq # of next byte expectet from other side
   * cumulative ACK
 ### Go Back N
-the all the packet that behind is overtime or NAK 
+the all the packet that behind is overtime or NAK
 ![](https://i.imgur.com/eoftyjT.png)
 ### Selective repeat
-only resend the packet overtime or NAK 
+only resend the packet overtime or NAK
 ![](https://i.imgur.com/fAlaZsW.png)
 
 ### stop and wait
@@ -127,9 +127,9 @@ if the receiver window buffer is fill then sender should stop sending until rece
 * ignore retransmissions
 * SampleRTT will vary, want estimated RTT “smoother” average several recent measurements, not just current SampleRTT
 ### TCP RTT(round trip time), timeout
-* use EWMA(exponential weighted moving average) 
+* use EWMA(exponential weighted moving average)
 * influence of past sample decreases exponentially fast
-* typical value: $\alpha$ = 0.125 
+* typical value: $\alpha$ = 0.125
 $$
 \text{EstimatedRTT}=(1-\alpha)*\text{EstimatedRTT }+\alpha*\text{SampleRTT}\\
 \text{TimeoutInterval} = \text{EstimatedRTT} + 4*\text{DevRTT(safety margin)}\\
@@ -149,7 +149,66 @@ increase rate exponentially until first loss event
 * double cwnd every RTT
 * done by incrementing cwnd for every ACK received
 ### CUBIC (briefly)
-use the cubic function(三次函數) to predict bottlenck 
+use the cubic function(三次函數) to predict bottlenck
 ### 3 duplicate ack
 if recevie 3 ACK of same packet then see as reach bottlenck
 ### congestion avoidance AIMD(Additive Increase Multiplicative Decrease)
+
+
+## Link layer and LAN
+### error detection, correction
+
+* Internet checksum
+* Parity checking
+* Cyclic Redundancy Check (CRC)
+#### Parity checking
+![](https://imgur.com/34PJCaF.png)
+#### Cyclic Redundancy Check (CRC)
+$
+r=\text{check bit length}\\
+D=\text{raw data bits}\\
+G=\text{bit pattern}=r+1\text{ bit}\\
+R= (D\times 2^r) \ mod \ G\\
+CRC=(D\times 2^r)+R\\
+\text{if }CRC \ mod \ G \ \neq 0 \text{ then have error bit}
+$
+### MAC protocol(multiple access)
+
+* channel partitioning
+  * time division
+  * frequency division
+* random access MAC protocol
+  * ALOHA, slotted ALOHA
+  * CSMA, CSMA/CD, CSMA/CS
+* takeing turns
+  * polling
+  * token passing
+#### slotted ALOHA
+
+* time divided into equal size slots (time to transmit 1 frame)
+* nodes are synchronized
+* if collision: node retransmits frame in each subsequent slot with probability $ p $ until success
+* max efficiency = $e^{-1}$= 0.37
+
+#### Pure ALOHA
+![](https://imgur.com/4dJ8hQN.png)
+#### CSMA
+* CSMA:
+  * if channel sensed idle: transmit entire frame
+  • if channel sensed busy: defer transmission
+* CSMA/CD(Collision Detection):
+  * collision detection easy in wired, difficult with wireless
+  * if collisions detected within short then send `abort`,`jam signal`
+  * After aborting, NIC enters binary (exponential) backoff:
+    * after mth collision, NIC chooses K at random from {0,1,2, …, 2m-1}. NIC waits $K\times 512$ bit times
+    *  more collisions: longer backoff interval
+### LAN
+#### ARP: address resolution protocol
+determine interface’s MAC address by its IP
+address
+* ARP table: each IP node (host, router) on LAN has table
+* IP/MAC address mappings for some LAN nodes:< IP address; MAC address; TTL>
+* TTL (Time To Live): time after which address mapping will be forgotten (typically 20 min)
+#### switch
+switch table
+![](https://imgur.com/YhnHQyv.png)
