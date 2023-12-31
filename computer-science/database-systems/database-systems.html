@@ -317,9 +317,29 @@ WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 <p>In general join have better performance because of optimisers.</p>
 <h1 id="正規化-normalization"><a class="header" href="#正規化-normalization">正規化 (normalization)</a></h1>
 <h2 id="1nf"><a class="header" href="#1nf">1NF</a></h2>
+<ul>
+<li>must be a primary key for identification</li>
+<li>no duplicated rows or columns</li>
+</ul>
 <h2 id="2nf"><a class="header" href="#2nf">2NF</a></h2>
+<ul>
+<li>1NF</li>
+<li>no partial dependency</li>
+</ul>
 <h2 id="3nf"><a class="header" href="#3nf">3NF</a></h2>
+<ul>
+<li>2NF</li>
+<li>no transitive partial dependency(遞移相依)</li>
+</ul>
+<h2 id="bcnf-boyce-codd-normal-form"><a class="header" href="#bcnf-boyce-codd-normal-form">BCNF (Boyce-Codd Normal Form)</a></h2>
+<ul>
+<li>3NF</li>
+<li>all key of table cant depend on another non-key columns</li>
+</ul>
 <h2 id="4nf"><a class="header" href="#4nf">4NF</a></h2>
+<ul>
+<li>not only can save on storage, but also avoid the update anomalies</li>
+</ul>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
