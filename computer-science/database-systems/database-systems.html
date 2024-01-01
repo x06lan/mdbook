@@ -316,6 +316,10 @@ WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 <h2 id="join-vs-sub-query"><a class="header" href="#join-vs-sub-query">join vs. sub-query</a></h2>
 <p>In general join have better performance because of optimisers.</p>
 <h1 id="正規化-normalization"><a class="header" href="#正規化-normalization">正規化 (normalization)</a></h1>
+<ol>
+<li>candidate key: If a relation schema has more than one key, each is called a candidate key</li>
+<li>Prime attribute: Prime attribute must be a member of some candidate key</li>
+</ol>
 <h2 id="functional-dependencies"><a class="header" href="#functional-dependencies">Functional Dependencies</a></h2>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 mean if get x and y can get z</p>
@@ -327,6 +331,7 @@ x alone can get z then it is partial dependency</p>
 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 and y is not candidate key then it is transitive dependency</p>
 <h2 id="multivalued-dependencies"><a class="header" href="#multivalued-dependencies">multivalued dependencies</a></h2>
+<h2 id="join-dependency"><a class="header" href="#join-dependency">join dependency</a></h2>
 <h2 id="1nf"><a class="header" href="#1nf">1NF</a></h2>
 <ul>
 <li>must be a primary key for identification</li>
@@ -352,6 +357,53 @@ and y is not candidate key then it is transitive dependency</p>
 <li>if, for every nontrivial multivalued dependency x is superkey</li>
 <li>not only can save on storage, but also avoid the update anomalies</li>
 </ul>
+<h2 id="5nf"><a class="header" href="#5nf">5NF</a></h2>
+<ul>
+<li>The constraint states that every legal state r of R should have a non-additive join decomposition into R1, R2, …, Rn; that is, for every such r we have</li>
+</ul>
+<h1 id="disk"><a class="header" href="#disk">disk</a></h1>
+<ul>
+<li>Blocking factor (bfr): refers to the number of records per block</li>
+</ul>
+<h2 id="record"><a class="header" href="#record">record</a></h2>
+<ul>
+<li>fixed length</li>
+<li></li>
+</ul>
+<h2 id="spanned"><a class="header" href="#spanned">spanned</a></h2>
+<ul>
+<li>Spanned Records:a record can be stored in more than one block</li>
+<li>unspanned Records:no record can span two blocks</li>
+</ul>
+<h2 id="operations-on-files"><a class="header" href="#operations-on-files">Operations on Files</a></h2>
+<h2 id="unorder-file"><a class="header" href="#unorder-file">unorder file</a></h2>
+<ul>
+<li>linear search</li>
+<li>heap or pile file</li>
+<li>Record insertion is quite efficient</li>
+<li>deletion marker</li>
+</ul>
+<h2 id="order-file"><a class="header" href="#order-file">order file</a></h2>
+<ul>
+<li>sequential</li>
+<li>sorted</li>
+<li>binary search</li>
+</ul>
+<h2 id="hash-file"><a class="header" href="#hash-file">hash file</a></h2>
+<h3 id="deal-with-collision"><a class="header" href="#deal-with-collision">deal with collision</a></h3>
+<ul>
+<li>Chaining :use link list to chaining data</li>
+<li>Rehashing</li>
+<li>Open Addressing
+<ul>
+<li>linear probing</li>
+<li>Quadratic Probing</li>
+<li>Double Hashing</li>
+</ul>
+</li>
+</ul>
+<h3 id="dynamic-hashing-or-extendible-hashing"><a class="header" href="#dynamic-hashing-or-extendible-hashing">Dynamic Hashing or extendible hashing</a></h3>
+<p>problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data</p>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
