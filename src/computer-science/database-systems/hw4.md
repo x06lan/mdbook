@@ -19,12 +19,14 @@ $A,B$ is Key because
 * $B$ can get $\{F,G,H\}$
 
 ## 1.b
-R are already 3NF
+* 2NF:no partial dependcy
 
 $
 \{A,B\} \rightarrow \{C\}\\
-\{A\}\rightarrow \{D,E,I,J\}\\
-\{B\}\rightarrow \{F,G,H\}\\
+\{A\}\rightarrow \{D,E\}\\
+\{D\}\rightarrow \{I,J\}\\
+\{B\}\rightarrow \{F\}\\
+\{F\} \rightarrow \{G,H\}\\
 $
 
 ## 1.c

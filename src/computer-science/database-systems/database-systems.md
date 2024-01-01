@@ -101,6 +101,8 @@ WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 In general join have better performance because of optimisers.
 
 # 正規化 (normalization)
+1. candidate key: If a relation schema has more than one key, each is called a candidate key
+1. Prime attribute: Prime attribute must be a member of some candidate key
 ## Functional Dependencies
 $\{x,y\}\rightarrow\{z\}\\$
 mean if get x and y can get z
@@ -112,6 +114,7 @@ $\{x\}\rightarrow\{y\}\\$
 $\{y\}\rightarrow\{z\}\\$
 and y is not candidate key then it is transitive dependency
 ## multivalued dependencies
+## join dependency
 ## 1NF
 *  must be a primary key for identification
 *  no duplicated rows or columns
@@ -131,3 +134,39 @@ and y is not candidate key then it is transitive dependency
 ## 4NF
 * if, for every nontrivial multivalued dependency x is superkey
 * not only can save on storage, but also avoid the update anomalies
+
+## 5NF
+* The constraint states that every legal state r of R should have a non-additive join decomposition into R1, R2, ..., Rn; that is, for every such r we have
+
+# disk
+* Blocking factor (bfr): refers to the number of records per block
+## record
+*  fixed length
+*
+
+## spanned
+* Spanned Records:a record can be stored in more than one block
+* unspanned Records:no record can span two blocks
+## Operations on Files
+
+## unorder file
+* linear search
+* heap or pile file
+* Record insertion is quite efficient
+* deletion marker
+## order file
+* sequential
+* sorted
+* binary search
+## hash file
+### deal with collision
+* Chaining :use link list to chaining data
+* Rehashing
+* Open Addressing
+  * linear probing
+  * Quadratic Probing
+  * Double Hashing
+
+
+### Dynamic Hashing or extendible hashing
+problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data
