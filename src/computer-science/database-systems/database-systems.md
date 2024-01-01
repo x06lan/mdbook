@@ -113,7 +113,10 @@ x alone can get z then it is partial dependency
 $\{x\}\rightarrow\{y\}\\$
 $\{y\}\rightarrow\{z\}\\$
 and y is not candidate key then it is transitive dependency
-## multivalued dependencies
+## multivalued dependency
+
+$\{x\}\rightarrow\{y\}\\$
+if y is the subset of x then this is multivalued dependency
 ## join dependency
 ## 1NF
 *  must be a primary key for identification
@@ -125,11 +128,10 @@ and y is not candidate key then it is transitive dependency
 * 2NF
 * no transitive partial dependency(遞移相依)
 
-## BCNF (Boyce-Codd Normal Form)
+## BCNF or 3.5NF (Boyce-Codd Normal Form)
 
 * 3NF
 * all key of table cant depend on another non-key columns
-
 
 ## 4NF
 * if, for every nontrivial multivalued dependency x is superkey
@@ -138,16 +140,28 @@ and y is not candidate key then it is transitive dependency
 ## 5NF
 * The constraint states that every legal state r of R should have a non-additive join decomposition into R1, R2, ..., Rn; that is, for every such r we have
 
+## NF example
+2NF
+
+![](https://imgur.com/iohrUvO.png)
+
+3NF
+
+![](https://imgur.com/MLKsKtS.png)
+
+4NF 5NF
+
+![](https://imgur.com/TPJqzyP.png)
 # disk
 * Blocking factor (bfr): refers to the number of records per block
 ## record
-*  fixed length
-*
+* fixed length
+* variant length
 
 ## spanned
 * Spanned Records:a record can be stored in more than one block
 * unspanned Records:no record can span two blocks
-## Operations on Files
+<!-- ## Operations on Files -->
 
 ## unorder file
 * linear search
@@ -158,6 +172,12 @@ and y is not candidate key then it is transitive dependency
 * sequential
 * sorted
 * binary search
+
+### clustered index(B-Tree)
+primary index is leaf index of tree
+![](https://imgur.com/6Ix8crC.png)
+### not clustered index
+![](https://imgur.com/5MTXQN2.png)
 ## hash file
 ### deal with collision
 * Chaining :use link list to chaining data
