@@ -124,6 +124,7 @@ if y is the subset of x then this is multivalued dependency
 ## 2NF
 * 1NF
 * no partial dependency
+* every non-prime attribute $y$ in R is fully functionally dependent on the primary key
 ## 3NF
 * 2NF
 * no transitive partial dependency(遞移相依)

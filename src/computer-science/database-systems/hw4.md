@@ -39,31 +39,30 @@ $
 $
 
 # 2
-$
-\{A\} \rightarrow \{B,C,D\}\\
-\{E,F,G,H\}\rightarrow \{I,J,K,L\}\\
-\{I,J,G,H\}\rightarrow \{L,E,F\}\\
-$
+FD1={Course_no} → {Offering_dept, Credit_hours, Course_level}
+
+FD2={Course_no, Sec_no, Semester, Year} → {Days_hours, Room_no, No_of_students, Instructor_ssn}
+
+FD3={Room_no, Days_hours, Semester, Year} → {Instructor_ssn, Course_no, Sec_no}
 
 ## 2.a
 
-2NF because:
-* Each non-prime attribute is fully functionally dependent on the primary key (1NF)
-* no partial dependcy (2NF)
+1NF because:
+* FD1 have partial function since Course_no is not key
+
 ## 2.b
 * {Course_no, Sec_no, Semester, Year}
 * {Room_no, Days_hours, Semester, Year}
 
 ## 2.c
+use {Course_no, Sec_no, Semester, Year} as PK
+
+loss FD3
 R1 = {Course_no, Offering_dept, Credit_hours, Course_level}
 
-R2 = {Course_no, Sec_no, Semester, Year, Instructor_ssn}
+R2 = {Course_no, Sec_no, Semester, Year, Days_hours, Room_no, No_of_students, Instructor_ssn}}
 
-R3 = {Room_no, Days_hours, Semester, Year, Instructor_ssn, Course_no, Sec_no}
-
-R4 = {Room_no, Days_hours, Semester, Year, No_of_students}
-
-
+is BCNF
 # 3
 * Caching: move disk data to RAM or SSD
 * Indexing: use B-trees or hash indexes to speedup the time of searching
