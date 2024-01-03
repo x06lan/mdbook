@@ -97,18 +97,38 @@ FROM GUEST g
 INNER JOIN BOOKING b ON g.guestNo = b.guestNo
 WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 ```
+## execpt
+```sql
+SELECT Fname, Lname
+FROM Employee
+WHERE NOT EXISTS((SELECT Pnumber
+										FROM PROJECT
+										WHERE Dno=5)
+					EXCEPT(SELECT Pno
+									FROM WORKS_ON
+									WHERE Ssn= ESsn));
+```
+## schemas
 ## join vs. sub-query
 In general join have better performance because of optimisers.
 
 # 正規化 (normalization)
+
+* make sure attribute semantics are clear
+* reducing redundant information
+*
+
+
 1. candidate key: If a relation schema has more than one key, each is called a candidate key
 1. Prime attribute: Prime attribute must be a member of some candidate key
-## Functional Dependencies
+## Functional Dependency
 $\{x,y\}\rightarrow\{z\}\\$
 mean if get x and y can get z
 ## partial dependency
 $\{x,y\}\rightarrow\{z\}$ but $ \{x\}\rightarrow\{z\}\\$
 x alone can get z then it is partial dependency
+## Fully Functional Dependency
+not partial dependency
 ## transitive dependency
 $\{x\}\rightarrow\{y\}\\$
 $\{y\}\rightarrow\{z\}\\$
@@ -117,17 +137,22 @@ and y is not candidate key then it is transitive dependency
 
 $\{x\}\rightarrow\{y\}\\$
 if y is the subset of x then this is multivalued dependency
-## join dependency
+## join dependency | dependency preservation
 ## 1NF
 *  must be a primary key for identification
 *  no duplicated rows or columns
+*  no nest relations(JSON)
+*  no composite attributes (struct)
+*  no multivalued attributes (array)
 ## 2NF
 * 1NF
 * no partial dependency
-* every non-prime attribute $y$ in R is fully functionally dependent on the primary key
+* All attributes depend on the whole key
+* No partial dependencies on the primary key (for nonprime attributes)
 ## 3NF
 * 2NF
-* no transitive partial dependency(遞移相依)
+* All attributes depend on nothing but the key
+* No transitive dependencies on the primary key (for nonprime attribute
 
 ## BCNF or 3.5NF (Boyce-Codd Normal Form)
 
@@ -153,8 +178,16 @@ if y is the subset of x then this is multivalued dependency
 4NF 5NF
 
 ![](https://imgur.com/TPJqzyP.png)
+
 # disk
+
+
+
 ![](https://imgur.com/rnZdBwG.png)
+
+* Seek time: position the read/write head on the correct track
+* Rotational delay or latency: the beginning of the desired block rotates into position under the read/write head
+* Block transfer time: transfer the data of the desired block
 * Blocking factor (bfr): refers to the number of records per block
 * primary file organizations
   * records of a file are physically placed on the disk
@@ -211,19 +244,23 @@ primary index is leaf index of tree
 #### not clustered index
 ![](https://imgur.com/5MTXQN2.png)
 ### hash file
+directories can be stored on disk, and they expand or shrink dynamically
 #### deal with collision
 * Chaining :use link list to chaining data
 * Rehashing
 * Open Addressing
-  * linear probing
-  * Quadratic Probing
-  * Double Hashing
 
-
-#### Dynamic Hashing or extendible hashing
-* problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data
-* Hashing techniques are adapted to allow the dynamic growth and shrinking of the number of file records
+#### static hashing
+* order access is inefficient
+#### dynamic Hashing
+* directory is a binary tree
+#### extendible hashing
+* directory is an array of size $2^d$ where $d$ is called the global depth
+#### Linear hashing
+* not use a directory
 ## RAID
+![](https://imgur.com/SmeeVaQ.png)
+
 * Improve reliability: by storing redundant information on disks using parity or some other error correction code
 * transfer rate: high overall transfer rate and also accomplish load balancing
 * performance: improve disk performance
