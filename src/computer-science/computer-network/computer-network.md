@@ -211,4 +211,5 @@ address
 * TTL (Time To Live): time after which address mapping will be forgotten (typically 20 min)
 #### switch
 switch table
+
 ![](https://imgur.com/YhnHQyv.png)

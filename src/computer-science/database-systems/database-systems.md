@@ -154,33 +154,64 @@ if y is the subset of x then this is multivalued dependency
 
 ![](https://imgur.com/TPJqzyP.png)
 # disk
+![](https://imgur.com/rnZdBwG.png)
 * Blocking factor (bfr): refers to the number of records per block
+* primary file organizations
+  * records of a file are physically placed on the disk
+  * how the records can be accessed
+  * e.g.heap, sorted, hashed, B-tree
+## buffering
+### double buffering
+* ite continuous stream of blocks from memory to the disk
+* Permits continuous reading or writing of data on consecutive disk blocks, which eliminates the seek time and rotational delay for all but the first block transfer
+### Buffer Management
+Buffer manager is a software component of a DBMS that responds
+to requests for data and decides what buffer to use and what pages to
+replace in the buffer to accommodate the newly requested blocks
+
+* Controls the main memory directly as in most RDBMS
+* Allocate buffers in virtual memory, which allows the control to transfer to the operating system (OS
+
+#### data requested workflow
+1. checks if the requested page is already in a buffer in the buffer pool; if so, it increments its pin-count and release the page
+2. If the page is not in the buffer pool, the buffer manager does the following
+   1. It chooses a page for replacement, using the replacement policy, and increments its pin-count
+   2. If the dirty bit of the replacement page is on, the buffer manager writes that page to disk by replacing its old copy on disk. If the dirty it is not on, no need to write
+   3. The main memory address of the new page is passed to the requesting application
+### Buffer Replacement Strategies
+* Least recently used (LRU)
+* Clock policy (a round-robin variant of the LRU)
+* First-in-first-out (FIFO)
+* Most recently used (MRU)
 ## record
 * fixed length
-* variant length
+* variable length
+  * variable field (varying size)
+  * repeating field (multiple values)
+  * optional field (optional)
 
-## spanned
-* Spanned Records:a record can be stored in more than one block
-* unspanned Records:no record can span two blocks
 <!-- ## Operations on Files -->
+## file
+* Unspanned: no record can span two blocks
+* Spanned: a record can be stored in more than one block
 
-## unorder file
+### unorder file
 * linear search
 * heap or pile file
 * Record insertion is quite efficient
 * deletion marker
-## order file
+### order file
 * sequential
 * sorted
 * binary search
 
-### clustered index(B-Tree)
+#### clustered index(B-Tree)
 primary index is leaf index of tree
 ![](https://imgur.com/6Ix8crC.png)
-### not clustered index
+#### not clustered index
 ![](https://imgur.com/5MTXQN2.png)
-## hash file
-### deal with collision
+### hash file
+#### deal with collision
 * Chaining :use link list to chaining data
 * Rehashing
 * Open Addressing
@@ -189,5 +220,28 @@ primary index is leaf index of tree
   * Double Hashing
 
 
-### Dynamic Hashing or extendible hashing
-problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data
+#### Dynamic Hashing or extendible hashing
+* problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data
+* Hashing techniques are adapted to allow the dynamic growth and shrinking of the number of file records
+## RAID
+* Improve reliability: by storing redundant information on disks using parity or some other error correction code
+* transfer rate: high overall transfer rate and also accomplish load balancing
+* performance: improve disk performance
+* data striping
+  * Bit-level data striping
+    * Splitting a byte of data and writing bit j to the jth disk
+    * Can be generalized to a number of disks that is either a multiple or a factor of eight
+  * Block-level data striping
+    * separate disks to reduce queuing time of I/O reques
+    * arge requests (accessing multiple blocks) can be parallelized to reduce the response time
+## NAS(Network-Attached Storage)
+* file sharing
+* low cost
+## SAN(Storage Area Networks)
+* Flexible: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches
+* Better isolation capabilities allowing non-disruptive addition of new peripherals and servers
+## index
+
+* **primary index**: must be defined on an ordered key field.
+* **clustered index**: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.
+* **secondary index**: is defined on any non-ordered (keyed or non-key) field.
