@@ -372,40 +372,86 @@ if y is the subset of x then this is multivalued dependency</p>
 <p>4NF 5NF</p>
 <p><img src="https://imgur.com/TPJqzyP.png" alt="" /></p>
 <h1 id="disk"><a class="header" href="#disk">disk</a></h1>
+<p><img src="https://imgur.com/rnZdBwG.png" alt="" /></p>
 <ul>
 <li>Blocking factor (bfr): refers to the number of records per block</li>
+<li>primary file organizations
+<ul>
+<li>records of a file are physically placed on the disk</li>
+<li>how the records can be accessed</li>
+<li>e.g.heap, sorted, hashed, B-tree</li>
+</ul>
+</li>
+</ul>
+<h2 id="buffering"><a class="header" href="#buffering">buffering</a></h2>
+<h3 id="double-buffering"><a class="header" href="#double-buffering">double buffering</a></h3>
+<ul>
+<li>ite continuous stream of blocks from memory to the disk</li>
+<li>Permits continuous reading or writing of data on consecutive disk blocks, which eliminates the seek time and rotational delay for all but the first block transfer</li>
+</ul>
+<h3 id="buffer-management"><a class="header" href="#buffer-management">Buffer Management</a></h3>
+<p>Buffer manager is a software component of a DBMS that responds
+to requests for data and decides what buffer to use and what pages to
+replace in the buffer to accommodate the newly requested blocks</p>
+<ul>
+<li>Controls the main memory directly as in most RDBMS</li>
+<li>Allocate buffers in virtual memory, which allows the control to transfer to the operating system (OS</li>
+</ul>
+<h4 id="data-requested-workflow"><a class="header" href="#data-requested-workflow">data requested workflow</a></h4>
+<ol>
+<li>checks if the requested page is already in a buffer in the buffer pool; if so, it increments its pin-count and release the page</li>
+<li>If the page is not in the buffer pool, the buffer manager does the following
+<ol>
+<li>It chooses a page for replacement, using the replacement policy, and increments its pin-count</li>
+<li>If the dirty bit of the replacement page is on, the buffer manager writes that page to disk by replacing its old copy on disk. If the dirty it is not on, no need to write</li>
+<li>The main memory address of the new page is passed to the requesting application</li>
+</ol>
+</li>
+</ol>
+<h3 id="buffer-replacement-strategies"><a class="header" href="#buffer-replacement-strategies">Buffer Replacement Strategies</a></h3>
+<ul>
+<li>Least recently used (LRU)</li>
+<li>Clock policy (a round-robin variant of the LRU)</li>
+<li>First-in-first-out (FIFO)</li>
+<li>Most recently used (MRU)</li>
 </ul>
 <h2 id="record"><a class="header" href="#record">record</a></h2>
 <ul>
 <li>fixed length</li>
-<li>variant length</li>
-</ul>
-<h2 id="spanned"><a class="header" href="#spanned">spanned</a></h2>
+<li>variable length
 <ul>
-<li>Spanned Records:a record can be stored in more than one block</li>
-<li>unspanned Records:no record can span two blocks</li>
+<li>variable field (varying size)</li>
+<li>repeating field (multiple values)</li>
+<li>optional field (optional)</li>
+</ul>
+</li>
 </ul>
 <!-- ## Operations on Files -->
-<h2 id="unorder-file"><a class="header" href="#unorder-file">unorder file</a></h2>
+<h2 id="file"><a class="header" href="#file">file</a></h2>
+<ul>
+<li>Unspanned: no record can span two blocks</li>
+<li>Spanned: a record can be stored in more than one block</li>
+</ul>
+<h3 id="unorder-file"><a class="header" href="#unorder-file">unorder file</a></h3>
 <ul>
 <li>linear search</li>
 <li>heap or pile file</li>
 <li>Record insertion is quite efficient</li>
 <li>deletion marker</li>
 </ul>
-<h2 id="order-file"><a class="header" href="#order-file">order file</a></h2>
+<h3 id="order-file"><a class="header" href="#order-file">order file</a></h3>
 <ul>
 <li>sequential</li>
 <li>sorted</li>
 <li>binary search</li>
 </ul>
-<h3 id="clustered-indexb-tree"><a class="header" href="#clustered-indexb-tree">clustered index(B-Tree)</a></h3>
+<h4 id="clustered-indexb-tree"><a class="header" href="#clustered-indexb-tree">clustered index(B-Tree)</a></h4>
 <p>primary index is leaf index of tree
 <img src="https://imgur.com/6Ix8crC.png" alt="" /></p>
-<h3 id="not-clustered-index"><a class="header" href="#not-clustered-index">not clustered index</a></h3>
+<h4 id="not-clustered-index"><a class="header" href="#not-clustered-index">not clustered index</a></h4>
 <p><img src="https://imgur.com/5MTXQN2.png" alt="" /></p>
-<h2 id="hash-file"><a class="header" href="#hash-file">hash file</a></h2>
-<h3 id="deal-with-collision"><a class="header" href="#deal-with-collision">deal with collision</a></h3>
+<h3 id="hash-file"><a class="header" href="#hash-file">hash file</a></h3>
+<h4 id="deal-with-collision"><a class="header" href="#deal-with-collision">deal with collision</a></h4>
 <ul>
 <li>Chaining :use link list to chaining data</li>
 <li>Rehashing</li>
@@ -417,8 +463,49 @@ if y is the subset of x then this is multivalued dependency</p>
 </ul>
 </li>
 </ul>
-<h3 id="dynamic-hashing-or-extendible-hashing"><a class="header" href="#dynamic-hashing-or-extendible-hashing">Dynamic Hashing or extendible hashing</a></h3>
-<p>problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data</p>
+<h4 id="dynamic-hashing-or-extendible-hashing"><a class="header" href="#dynamic-hashing-or-extendible-hashing">Dynamic Hashing or extendible hashing</a></h4>
+<ul>
+<li>problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data</li>
+<li>Hashing techniques are adapted to allow the dynamic growth and shrinking of the number of file records</li>
+</ul>
+<h2 id="raid"><a class="header" href="#raid">RAID</a></h2>
+<ul>
+<li>Improve reliability: by storing redundant information on disks using parity or some other error correction code</li>
+<li>transfer rate: high overall transfer rate and also accomplish load balancing</li>
+<li>performance: improve disk performance</li>
+<li>data striping
+<ul>
+<li>Bit-level data striping
+<ul>
+<li>Splitting a byte of data and writing bit j to the jth disk</li>
+<li>Can be generalized to a number of disks that is either a multiple or a factor of eight</li>
+</ul>
+</li>
+<li>Block-level data striping
+<ul>
+<li>separate disks to reduce queuing time of I/O reques</li>
+<li>arge requests (accessing multiple blocks) can be parallelized to reduce the response time</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="nasnetwork-attached-storage"><a class="header" href="#nasnetwork-attached-storage">NAS(Network-Attached Storage)</a></h2>
+<ul>
+<li>file sharing</li>
+<li>low cost</li>
+</ul>
+<h2 id="sanstorage-area-networks"><a class="header" href="#sanstorage-area-networks">SAN(Storage Area Networks)</a></h2>
+<ul>
+<li>Flexible: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches</li>
+<li>Better isolation capabilities allowing non-disruptive addition of new peripherals and servers</li>
+</ul>
+<h2 id="index"><a class="header" href="#index">index</a></h2>
+<ul>
+<li><strong>primary index</strong>: must be defined on an ordered key field.</li>
+<li><strong>clustered index</strong>: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.</li>
+<li><strong>secondary index</strong>: is defined on any non-ordered (keyed or non-key) field.</li>
+</ul>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
