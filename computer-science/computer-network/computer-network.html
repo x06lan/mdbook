@@ -253,12 +253,12 @@
 <h2 id="principles-of-reliable-data-transfer"><a class="header" href="#principles-of-reliable-data-transfer">principles of reliable data transfer</a></h2>
 <ul>
 <li>finite state machines (FSM)</li>
-<li>Sequence numbers:
+<li><strong>Sequence numbers</strong>:
 <ul>
 <li>byte stream “number” of first byte in segment’s data</li>
 </ul>
 </li>
-<li>Acknowledgements:
+<li><strong>Acknowledgements</strong>:
 <ul>
 <li>seq # of next byte expectet from other side</li>
 <li>cumulative ACK</li>
@@ -342,7 +342,7 @@
 <ul>
 <li>functions
 <ul>
-<li>network-layer functions:
+<li><strong>network-layer functions</strong>:
 <ul>
 <li><strong>forwarding</strong>: move packets from a router’s input link to appropriate router output link</li>
 <li><strong>routing</strong>: determine route taken by packets from source to destination
@@ -362,17 +362,19 @@
 </li>
 <li>data plane and control plane
 <ul>
-<li>Data plane:
+<li><strong>Data plane</strong>:
 <ul>
 <li>local, per-router function</li>
 <li>determines how datagram arriving on router input port is forwarded to router output port</li>
+<li><strong>forwarding</strong>: move packets from router’s input to appropriate router output </li>
 </ul>
 </li>
-<li>Control plane
+<li><strong>Control plane</strong>:
 <ul>
 <li>network-wide logic</li>
+<li><strong>routing</strong>: determine route taken by packets from source to destination </li>
 <li>determines how datagram is routed among routers along end- end path from source host to destination host</li>
-<li>two control-plane approaches:
+<li><strong>two control-plane approaches</strong>:
 <ul>
 <li><strong>traditional routing algorithms</strong>: implemented in routers</li>
 <li><strong>software-defined networking Software-Defined Networking((SDN)</strong>: implemented in (remote) servers</li>
@@ -383,12 +385,12 @@
 </ul>
 </li>
 </ul>
-<h3 id="data-planech4"><a class="header" href="#data-planech4">Data Plane(CH4)</a></h3>
+<h3 id="network-layerdata-planech4"><a class="header" href="#network-layerdata-planech4">Network layer:Data Plane(CH4)</a></h3>
 <h4 id="router"><a class="header" href="#router">Router</a></h4>
 <ul>
-<li><strong><strong>input port queuing</strong></strong>: if datagrams arrive faster than forwarding rate into switch fabri</li>
-<li><strong><strong>destination-based forwarding</strong></strong>: forward based only on destination IP address (traditional)</li>
-<li><strong><strong>generalized forwarding</strong></strong>: forward based on any set of header field values</li>
+<li><strong>input port queuing</strong>: if datagrams arrive faster than forwarding rate into switch fabri</li>
+<li><strong>destination-based forwarding</strong>: forward based only on destination IP address (traditional)</li>
+<li><strong>generalized forwarding</strong>: forward based on any set of header field values</li>
 </ul>
 <image src="https://imgur.com/I6mxtp2.png" width="80%">
 <h5 id="input-port-functions"><a class="header" href="#input-port-functions">Input port functions</a></h5>
@@ -406,7 +408,7 @@
 <li>from input link to appropriate output link</li>
 </ul>
 </li>
-<li>switching rate:
+<li><strong>switching rate</strong>:
 <ul>
 <li>rate at which packets can be transfer from</li>
 </ul>
@@ -429,7 +431,7 @@
 <ul>
 <li>Buffering
 <ul>
-<li>drop policy:which datagrams to drop if no free buffers?</li>
+<li><strong>drop policy</strong>: which datagrams to drop if no free buffers? </li>
 <li>Datagrams can be lost due to congestion, lack of buffers</li>
 </ul>
 </li>
@@ -494,7 +496,7 @@
 </ul>
 <h5 id="subnets"><a class="header" href="#subnets">Subnets</a></h5>
 <ul>
-<li>in same subnet if:
+<li><strong>in same subnet if</strong>:
 <ul>
 <li>device interfaces that can physically reach each other without passing through an intervening router</li>
 </ul>
@@ -516,7 +518,7 @@
 <image src="https://imgur.com/nG833ln.png" width="80%">
 <h5 id="natnetwork-address-translation"><a class="header" href="#natnetwork-address-translation">NAT(Network Address Translation)</a></h5>
 <ul>
-<li>NAT has been controversial:
+<li><strong>NAT has been controversial</strong>:
 <ul>
 <li>routers “should” only process up to layer 3</li>
 <li>address “shortage” should be solved by IPv6</li>
@@ -524,7 +526,7 @@
 <li><strong>NAT traversal</strong>: what if client wants to connect to server behind NAT?</li>
 </ul>
 </li>
-<li>but NAT is here to stay:
+<li><strong>but NAT is here to stay</strong>:
 <ul>
 <li>extensively used in home and institutional nets, 4G/5G cellular net</li>
 </ul>
@@ -552,8 +554,124 @@
 </div>
 <h5 id="middleboxes"><a class="header" href="#middleboxes">middleboxes</a></h5>
 <image src="https://imgur.com/QnhkauT.png" width="80%">
-<h3 id="control-planech5"><a class="header" href="#control-planech5">Control Plane(CH5)</a></h3>
+<h3 id="network-layercontrol-planech5"><a class="header" href="#network-layercontrol-planech5">Network layer:Control Plane(CH5)</a></h3>
+<ul>
+<li><strong>structuring network control plane</strong>:
+<ul>
+<li>per-router control (traditional)</li>
+<li>logically centralized control (software defined networking)</li>
+</ul>
+</li>
+</ul>
+<h4 id="routing-protocols"><a class="header" href="#routing-protocols">Routing protocols</a></h4>
+<image src="https://imgur.com/rEszsqB.png" width="80%">
+<h5 id="dijkstras-link-state-routing-algorithm"><a class="header" href="#dijkstras-link-state-routing-algorithm">Dijkstra’s link-state routing algorithm</a></h5>
+<ul>
+<li><strong>centralized</strong>: network topology, link costs known to all node </li>
+<li><strong>iterative</strong>: after k iterations, know least cost path to k destinations </li>
+</ul>
+<image src="https://imgur.com/OEjogtT.png" width="80%">
+<h5 id="distance-vector-algorithmbellman-ford"><a class="header" href="#distance-vector-algorithmbellman-ford">Distance vector algorithm(Bellman-Ford)</a></h5>
+<ul>
+<li>from time-to-time, each node sends its own distance vector estimate to neighbors</li>
+<li>under natural conditions, the estimate Dx(y) converge to the actual least cost dx(y)
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">mi</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)}</span><span class="mord text"><span class="mord"> for each node </span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></li>
+</ul>
+</li>
+<li>when x receives new DV estimate from any neighbor, it updates its own DV using B-F equation</li>
+<li><strong>link cost changes</strong>:
+<ul>
+<li>node detects local link cost change</li>
+<li>updates routing info, recalculates local DV</li>
+<li>if DV changes, notify neighbors</li>
+</ul>
+</li>
+</ul>
+<h4 id="intra-as-routing"><a class="header" href="#intra-as-routing">Intra-AS routing</a></h4>
+<ul>
+<li><strong>RIP</strong>: Routing Information Protocol [RFC 1723] 
+<ul>
+<li><strong>classic DV</strong>: DVs exchanged every 30 secs </li>
+<li>no longer widely used</li>
+</ul>
+</li>
+<li><strong>EIGRP</strong>: Enhanced Interior Gateway Routing Protocol 
+<ul>
+<li>DV based</li>
+<li>formerly Cisco-proprietary for decades (became open in 2013 [RFC 7868])</li>
+</ul>
+</li>
+<li><strong>OSPF</strong>: Open Shortest Path First [RFC 2328] 
+<ul>
+<li>classic link-state
+<ul>
+<li>each router floods OSPF link-state advertisements (directly over IP rather than using TCP/UDP) to all other routers in entire AS</li>
+<li><strong>multiple link costs metrics possible</strong>: bandwidth, delay </li>
+<li>each router has full topology, uses Dijkstra’s algorithm to compute forwarding table</li>
+</ul>
+</li>
+<li><strong>security</strong>: all OSPF messages authenticated (to prevent malicious intrusion) </li>
+<li><image src="https://imgur.com/97bMDV5.png" width="80%">
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="inter-as-routing"><a class="header" href="#inter-as-routing">Inter-AS routing</a></h4>
+<ul>
+<li><strong>BGP (Border Gateway Protocol)inter-domain routing protocol</strong>:
+<ul>
+<li><strong>eBGP</strong>: obtain subnet reachability information from neighboring ASes </li>
+<li><strong>iBGP</strong>: propagate reachability information to all AS-internal routers </li>
+</ul>
+</li>
+</ul>
+<h4 id="why-different-intra-as-inter-as-routing-"><a class="header" href="#why-different-intra-as-inter-as-routing-">Why different Intra-AS, Inter-AS routing ?</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>Criteria</th><th>Intra-AS</th><th>Inter-AS</th></tr></thead><tbody>
+<tr><td><strong>Policy</strong></td><td>Single admin, no policy decisions needed</td><td>Admin wants control over how traffic is routed, and who routes through its network</td></tr>
+<tr><td><strong>Scale</strong></td><td></td><td>Hierarchical routing saves table size, reduced update traffic</td></tr>
+<tr><td><strong>Performance</strong></td><td>Can focus on performance</td><td>Policy dominates over performance</td></tr>
+</tbody></table>
+</div>
+<h4 id="icmp-internet-control-message-protocol"><a class="header" href="#icmp-internet-control-message-protocol">ICMP: internet control message protocol</a></h4>
+<ul>
+<li>used by hosts and routers to communicate network-level information
+<ul>
+<li><strong>error reporting</strong>: unreachable host, network, port, protocol </li>
+<li>echo request/reply (used by ping)</li>
+</ul>
+</li>
+<li><strong>network-layer “above</strong>: IP: 
+<ul>
+<li>ICMP messages carried in IP datagrams</li>
+</ul>
+</li>
+<li><strong>ICMP message</strong>: type, code plus first 8 bytes of IP datagram causing error </li>
+</ul>
 <h2 id="link-layer-and-lanch6"><a class="header" href="#link-layer-and-lanch6">Link layer and LAN(CH6)</a></h2>
+<ul>
+<li><strong>flow control</strong>:
+<ul>
+<li>pacing between adjacent sending and receiving nodes</li>
+</ul>
+</li>
+<li><strong>error detection</strong>:
+<ul>
+<li>errors caused by signal attenuation, noise.</li>
+<li>receiver detects errors, signals retransmission, or drops frame</li>
+</ul>
+</li>
+<li><strong>error correction</strong>:
+<ul>
+<li>receiver identifies and corrects bit error(s) without retransmission</li>
+</ul>
+</li>
+<li><strong>half-duplex and full-duplex</strong>:
+<ul>
+<li>with half duplex, nodes at both ends of link can transmit, but not at sam</li>
+</ul>
+</li>
+</ul>
 <h3 id="error-detection-correction"><a class="header" href="#error-detection-correction">error detection, correction</a></h3>
 <ul>
 <li>Internet checksum</li>
@@ -596,17 +714,17 @@
 <image src="https://imgur.com/4dJ8hQN.png" width="80%">
 <h4 id="csma"><a class="header" href="#csma">CSMA</a></h4>
 <ul>
-<li>CSMA:
+<li><strong>CSMA</strong>:
 <ul>
 <li><strong>if channel sensed idle</strong>: transmit entire frame
 • if channel sensed busy: defer transmission</li>
 </ul>
 </li>
-<li>CSMA/CD(Collision Detection):
+<li><strong>CSMA/CD(Collision Detection)</strong>:
 <ul>
 <li>collision detection easy in wired, difficult with wireless</li>
 <li>if collisions detected within short then send <code>abort</code>,<code>jam signal</code></li>
-<li>After aborting, NIC enters binary (exponential) backoff:
+<li><strong>After aborting, NIC enters binary (exponential) backoff</strong>:
 <ul>
 <li>after mth collision, NIC chooses K at random from {0,1,2, …, 2m-1}. NIC waits <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">512</span></span></span></span> bit times</li>
 <li><strong>more collisions</strong>: longer backoff interval</li>
@@ -621,7 +739,7 @@
 address</p>
 <ul>
 <li><strong>ARP table</strong>: each IP node (host, router) on LAN has table</li>
-<li>IP/MAC address mappings for some LAN nodes:&lt; IP address; MAC address; TTL&gt;</li>
+<li><strong>IP/MAC address mappings for some LAN nodes</strong>: &lt; IP address; MAC address; TTL&gt; </li>
 <li><strong>TTL (Time To Live)</strong>: time after which address mapping will be forgotten (typically 20 min)</li>
 </ul>
 <h4 id="switch"><a class="header" href="#switch">switch</a></h4>
