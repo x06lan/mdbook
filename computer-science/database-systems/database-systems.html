@@ -240,7 +240,7 @@
 </li>
 </ul>
 <h1 id="superkey"><a class="header" href="#superkey">superkey</a></h1>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg" alt="" /></p>
+<image src="https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg" width="80%">
 <h1 id="null"><a class="header" href="#null">null</a></h1>
 <p>A special null value is used to represent values that are unknown or not available (value exist) or inapplicable (value undefined) in certain tuples.</p>
 <h1 id="eer-diagram"><a class="header" href="#eer-diagram">EER diagram</a></h1>
@@ -389,18 +389,18 @@ if y is the subset of x then this is multivalued dependency</p>
 </ul>
 <h2 id="nf-example"><a class="header" href="#nf-example">NF example</a></h2>
 <p>2NF</p>
-<p><img src="https://imgur.com/iohrUvO.png" alt="" /></p>
+<image src="https://imgur.com/iohrUvO.png" width="80%">
 <p>3NF</p>
-<p><img src="https://imgur.com/MLKsKtS.png" alt="" /></p>
+<image src="https://imgur.com/MLKsKtS.png" width="80%">
 <p>4NF 5NF</p>
-<p><img src="https://imgur.com/TPJqzyP.png" alt="" /></p>
+<image src="https://imgur.com/TPJqzyP.png" width="80%">
 <h1 id="disk"><a class="header" href="#disk">disk</a></h1>
-<p><img src="https://imgur.com/rnZdBwG.png" alt="" /></p>
+<image src="https://imgur.com/rnZdBwG.png" width="80%">
 <ul>
-<li>Seek time: position the read/write head on the correct track</li>
-<li>Rotational delay or latency: the beginning of the desired block rotates into position under the read/write head</li>
-<li>Block transfer time: transfer the data of the desired block</li>
-<li>Blocking factor (bfr): refers to the number of records per block</li>
+<li><strong>Seek time</strong>: position the read/write head on the correct track</li>
+<li><strong>Rotational delay or latency</strong>: the beginning of the desired block rotates into position under the read/write head</li>
+<li><strong>Block transfer time</strong>: transfer the data of the desired block</li>
+<li><strong>Blocking factor (bfr)</strong>: refers to the number of records per block</li>
 <li>primary file organizations
 <ul>
 <li>records of a file are physically placed on the disk</li>
@@ -455,8 +455,8 @@ replace in the buffer to accommodate the newly requested blocks</p>
 <!-- ## Operations on Files -->
 <h2 id="file"><a class="header" href="#file">file</a></h2>
 <ul>
-<li>Unspanned: no record can span two blocks</li>
-<li>Spanned: a record can be stored in more than one block</li>
+<li><strong>Unspanned</strong>: no record can span two blocks</li>
+<li><strong>Spanned</strong>: a record can be stored in more than one block</li>
 </ul>
 <h3 id="unorder-file"><a class="header" href="#unorder-file">unorder file</a></h3>
 <ul>
@@ -473,9 +473,9 @@ replace in the buffer to accommodate the newly requested blocks</p>
 </ul>
 <h4 id="clustered-indexb-tree"><a class="header" href="#clustered-indexb-tree">clustered index(B-Tree)</a></h4>
 <p>primary index is leaf index of tree
-<img src="https://imgur.com/6Ix8crC.png" alt="" /></p>
+<image src="https://imgur.com/6Ix8crC.png" width="80%"></p>
 <h4 id="not-clustered-index"><a class="header" href="#not-clustered-index">not clustered index</a></h4>
-<p><img src="https://imgur.com/5MTXQN2.png" alt="" /></p>
+<image src="https://imgur.com/5MTXQN2.png" width="80%">
 <h3 id="hash-file"><a class="header" href="#hash-file">hash file</a></h3>
 <p>directories can be stored on disk, and they expand or shrink dynamically</p>
 <h4 id="deal-with-collision"><a class="header" href="#deal-with-collision">deal with collision</a></h4>
@@ -501,11 +501,11 @@ replace in the buffer to accommodate the newly requested blocks</p>
 <li>not use a directory</li>
 </ul>
 <h2 id="raid"><a class="header" href="#raid">RAID</a></h2>
-<p><img src="https://imgur.com/SmeeVaQ.png" alt="" /></p>
+<image src="https://imgur.com/SmeeVaQ.png" width="80%">
 <ul>
-<li>Improve reliability: by storing redundant information on disks using parity or some other error correction code</li>
-<li>transfer rate: high overall transfer rate and also accomplish load balancing</li>
-<li>performance: improve disk performance</li>
+<li><strong>Improve reliability</strong>: by storing redundant information on disks using parity or some other error correction code</li>
+<li><strong>transfer rate</strong>: high overall transfer rate and also accomplish load balancing</li>
+<li><strong>performance</strong>: improve disk performance</li>
 <li>data striping
 <ul>
 <li>Bit-level data striping
@@ -530,14 +530,14 @@ replace in the buffer to accommodate the newly requested blocks</p>
 </ul>
 <h2 id="sanstorage-area-networks"><a class="header" href="#sanstorage-area-networks">SAN(Storage Area Networks)</a></h2>
 <ul>
-<li>Flexible: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches</li>
+<li><strong>Flexible</strong>: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches</li>
 <li>Better isolation capabilities allowing non-disruptive addition of new peripherals and servers</li>
 </ul>
 <h2 id="index"><a class="header" href="#index">index</a></h2>
 <ul>
-<li><strong>primary index</strong>: must be defined on an ordered key field.</li>
-<li><strong>clustered index</strong>: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.</li>
-<li><strong>secondary index</strong>: is defined on any non-ordered (keyed or non-key) field.</li>
+<li><strong><strong>primary index</strong></strong>: must be defined on an ordered key field.</li>
+<li><strong><strong>clustered index</strong></strong>: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.</li>
+<li><strong><strong>secondary index</strong></strong>: is defined on any non-ordered (keyed or non-key) field.</li>
 </ul>
 
                         <!-- github commet -->
