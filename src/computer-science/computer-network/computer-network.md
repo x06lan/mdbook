@@ -154,8 +154,181 @@ use the cubic function(三次函數) to predict bottlenck
 if recevie 3 ACK of same packet then see as reach bottlenck
 ### congestion avoidance AIMD(Additive Increase Multiplicative Decrease)
 
+## Network Layer:
+* functions
+  * network-layer functions:
+    * forwarding: move packets from a router’s input link to appropriate router output link
+    * routing: determine route taken by packets from source to destination
+      * routing algorithms
+  * analogy: taking a trip
+    * forwarding: process of getting through single interchange
+    * routing: process of planning trip from source to destination
+* data plane and control plane
+  * Data plane:
+    * local, per-router function
+    * determines how datagram arriving on router input port is forwarded to router output port
+  * Control plane
+    * network-wide logic
+    * determines how datagram is routed among routers along end- end path from source host to destination host
+    * two control-plane approaches:
+      * traditional routing algorithms: implemented in routers
+      * software-defined networking Software-Defined Networking((SDN): implemented in (remote) servers
 
-## Link layer and LAN
+### Data Plane(CH4)
+
+#### Router
+* **input port queuing**: if datagrams arrive faster than forwarding rate into switch fabri
+* **destination-based forwarding**: forward based only on destination IP address (traditional)
+* **generalized forwarding**: forward based on any set of header field values
+
+
+<image src="https://imgur.com/I6mxtp2.png" width="80%">
+
+##### Input port functions
+<image src="https://imgur.com/jwMpl8L.png" width="80%">
+
+###### Destination-based forwarding(Longest prefix matching)
+* when looking for forwarding table entry for given destination address, use longest address prefix that matches destination address.
+
+![](https://imgur.com/MqZHr2S.png)
+![](https://imgur.com/GtNXmwl.png)
+
+
+
+##### Switching fabrics
+* transfer packet
+  * from input link to appropriate output link
+* switching rate:
+  * rate at which packets can be transfer from
+
+
+<image src="https://imgur.com/TedE1AM.png" width="80%">
+
+##### Input Output queuing
+* input
+  * If switch fabric slower than input ports combined -> queueing may occur at input queues
+    * queueing delay and loss due to input buffer overflow!
+  * Head-of-the-Line (HOL) blocking: queued datagram at front of queue prevents others in queue from moving forward
+* output
+  * Buffering
+    * drop policy:which datagrams to drop if no free buffers?
+    * Datagrams can be lost due to congestion, lack of buffers
+  * Priority scheduling – who gets best performance, network neutrality
+##### buffer management
+![](https://imgur.com/mybi2hI.png)
+* drop: which packet to add,drop when buffers are full
+  * tail drop: drop arriving packet
+  * priority: drop/remove on priority basis
+* marking: which packet to mark to signal congestion(ECN,RED)
+
+$$
+N=\text{flows},C=\text{link speed}\\
+\text{buffer size}=\frac{RTT \times C}{\sqrt{N}}
+$$
+
+##### packet scheduling
+* FCFS(first come, first served)
+* priority
+  * priority queue
+  * ![](https://imgur.com/c0gdQQp.png)
+* RR(round robin)
+  * arriving traffic classified, queued by class(any header fields can be used for classification)
+  * server cyclically, repeatedly scans class queues, sending one complete packet from each class (if available) in turn
+  * ![](https://imgur.com/E3uUUDe.png)
+* WFQ(Weighted Fair Queuing)
+  * round robin but each class, $i$, has weight, $w_i$, and gets weighted amount of service in each cycle
+
+
+#### IP (Internet Protoco)
+##### IP Datagram
+![](https://imgur.com/kjuR0Da.png)
+![](https://imgur.com/TJy7dN0.png)
+##### IP address
+*  IP address: 32-bit identifier associated with each host or router interface
+* interface: connection between host/router and physical link
+  * router’s typically have multiple interfaces
+  * host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)
+##### Subnets
+* in same subnet if:
+  * device interfaces that can physically reach each other without passing through an intervening router
+
+
+![](https://imgur.com/FCAWoXP.png)
+
+
+###### CIDR(Classless InterDomain Routing)
+address format: a.b.c.d/x, where x is # bits in subnet portion of address
+
+![](https://imgur.com/YS58NCh.png)
+##### DHCP
+host dynamically obtains IP address from network server when it
+"joins" network
+
+* host broadcasts DHCP discover msg [optional]
+* DHCP server responds with DHCP offer msg [optional]
+* host requests IP address: DHCP request msg
+* DHCP server sends address: DHCP ack msg
+
+![](https://imgur.com/nG833ln.png)
+##### NAT(Network Address Translation)
+* NAT has been controversial:
+  * routers “should” only process up to layer 3
+  * address “shortage” should be solved by IPv6
+  * violates end-to-end argument (port # manipulation by network-layer device)
+  * NAT traversal: what if client wants to connect to server behind NAT?
+* but NAT is here to stay:
+  * extensively used in home and institutional nets, 4G/5G cellular net
+
+![](https://imgur.com/8pQh2Fj.png)
+##### IP6
+![](https://imgur.com/kkNzQau.png)
+###### tunneling:Transition from IPv4 to IPv6
+IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (“packet within a packet”)
+
+![](https://imgur.com/mEzJH1z.png)
+
+
+##### Generalized forwarding(flow table)
+
+
+![](https://imgur.com/rmcjk71.png)
+
+
+flow table entries
+
+![](https://imgur.com/i7qwKaH.png)
+
+* **match+action**: abstraction unifies different kinds of devices
+
+| Device   | Match                         | Action                   |
+| -------- | ----------------------------- | ------------------------ |
+| Router   | Longest Destination IP Prefix | Forward out a link       |
+| Switch   | Destination MAC Address       | Forward or flood         |
+| Firewall | IP Addresses and Port Numbers | Permit or deny           |
+| NAT      | IP Address and Port           | Rewrite address and port |
+##### middleboxes
+![](https://imgur.com/QnhkauT.png)
+
+
+
+
+
+
+### Control Plane(CH5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Link layer and LAN(CH6)
 ### error detection, correction
 
 * Internet checksum
