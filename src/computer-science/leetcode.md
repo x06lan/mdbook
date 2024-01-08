@@ -355,9 +355,9 @@ tags:`dfs` `inorder`
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- * **  TreeNode()**: val(0), left(nullptr), right(nullptr) {}
- * **  TreeNode(int x)**: val(x), left(nullptr), right(nullptr) {}
- * **  TreeNode(int x, TreeNode *left, TreeNode *right)**: val(x), left(left), right(right) {}
+ * ** **TreeNode()****: val(0), left(nullptr), right(nullptr) {} 
+ * ** **TreeNode(int x)****: val(x), left(nullptr), right(nullptr) {} 
+ * ** **TreeNode(int x, TreeNode *left, TreeNode *right)****: val(x), left(left), right(right) {} 
  * };
  */
 class Solution {
@@ -463,9 +463,9 @@ for linklist merge two sorted list only need to change one pointer
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- * **  ListNode()**: val(0), next(nullptr) {}
- * **  ListNode(int x)**: val(x), next(nullptr) {}
- * **  ListNode(int x, ListNode *next)**: val(x), next(next) {}
+ * ** **ListNode()****: val(0), next(nullptr) {} 
+ * ** **ListNode(int x)****: val(x), next(nullptr) {} 
+ * ** **ListNode(int x, ListNode *next)****: val(x), next(next) {} 
  * };
  */
 class Solution {
@@ -593,7 +593,7 @@ tags: `queue`
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
  * class NestedInteger {
- *   public:
+ * **public**:  
  *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
  *     bool isInteger() const;
  *
@@ -638,7 +638,7 @@ public:
 };
 
 /**
- * Your NestedIterator object will be instantiated and called as such:
+ * **Your NestedIterator object will be instantiated and called as such**:  
  * NestedIterator i(nestedList);
  * while (i.hasNext()) cout << i.next();
  */

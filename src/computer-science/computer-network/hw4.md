@@ -11,9 +11,9 @@ by using this can make P2P connection network with NAT
 * UPnP (Universal Plug and Play)
 
 ## 2.
-* Subnets1 :223.3.16.0/25
-* Subnets2 :223.3.16.128/26
-* Subnets3 :223.3.16.192/26
+* **Subnets1**: 223.3.16.0/25 
+* **Subnets2**: 223.3.16.128/26 
+* **Subnets3**: 223.3.16.192/26 
 
 ## 3.
 1. Private IP are internal IP for internal network that not should not expose on public network

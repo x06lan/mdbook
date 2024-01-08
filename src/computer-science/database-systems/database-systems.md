@@ -16,9 +16,9 @@
 * Semantic Constraints or Application based
   * Constraints that cannot be directly applied in the schemas of the data model. We call these Application based or .
 # Database Independence
-* Logical Data Independence:
+* **Logical Data Independence**:  
   * The capacity to change the conceptual schema without having to change the external schemas and their associated application programs
-* Physical Data Independence:
+* **Physical Data Independence**:  
   * The capacity to change the internal schema without having to change the conceptual schema.
 # Three-tier client-server architecture
 * presentation layer
@@ -42,17 +42,17 @@ A special null value is used to represent values that are unknown or not availab
 | EER diagram             | double line           | single line | d           | o                 |
 | super class inheritance | at least one subclass | can be none | at most one | can more than one |
 
-* specialization:
+* **specialization**:  
   * top down conceptual refinement process
   * arrow to subclass
-* generalization:
+* **generalization**:  
   * bottom up conceptual synthesis process
   * arrow to superclass
-* shared subclass:
+* **shared subclass**:  
   * multiple super class
   * multiple inheritance from diff super class
   * presend subclass is intersection of super class
-* Categories (UNION TYPES):
+* **Categories (UNION TYPES)**:  
   * presend subclass is union of super class
   * use "U" as symbol in EER diagram
 # sql
@@ -253,7 +253,7 @@ primary index is leaf index of tree
 ### hash file
 directories can be stored on disk, and they expand or shrink dynamically
 #### deal with collision
-* Chaining :use link list to chaining data
+* **Chaining**: use link list to chaining data 
 * Rehashing
 * Open Addressing
 

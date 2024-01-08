@@ -19,7 +19,7 @@ $A,B$ is Key because
 * $B$ can get $\{F,G,H\}$
 
 ## 1.b
-* 2NF:no partial dependcy
+* **2NF**: no partial dependcy 
 
 $
 \{A,B\} \rightarrow \{C\}\\

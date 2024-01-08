@@ -32,8 +32,8 @@ def convert_markdown_to_html(markdown_text):
     html_text = re.sub(image_pattern, r'<image src="\1" width="80%">\n', markdown_text)
 
     # Convert * label: something to * **label**: something
-    label_pattern = r'\* (?: {0,2})(.*?)(?: {0,2})(:) (.*?)\n'
-    html_text = re.sub(label_pattern,r'* **\g<1>**\2 \g<3>\n', html_text)
+    label_pattern = r'\* (?: {0,2})(?!\*\*|<|\[)(.*?)(?: {0,2})(:) *(.*?)\n'
+    html_text = re.sub(label_pattern,r'* **\1**\2 \3 \n', html_text)
     return html_text
 def processMarkdown(path,final_path):
     with open(path,"r") as f:

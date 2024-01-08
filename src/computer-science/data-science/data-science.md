@@ -330,11 +330,11 @@ if lift(A,B) >1 then A,B is effective
 use diff condiation to pruning the iteamset early
 * **Monotonic(相關性)**: 
   * If c is satisfied, no need to check c again
-* Anti-monotonic:
+* **Anti-monotonic**:  
   *  If constraint c is violated, its further mining can be terminated
 * **Convertible**: 
   * c can be converted to monotonic or anti-monotonic if items can be properly ordered in processing
-* Succinct:
+* **Succinct**:  
   * If the constraint c can be enforced by directly manipulating the dat
 
 ## Sequential Patterns

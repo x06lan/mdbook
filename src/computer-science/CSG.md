@@ -188,6 +188,6 @@ CSG is a methodology for constructing geometries by mesh, using algorithms capab
 > ```
 
  ## links
-* [other way](http://groups.csail.mit.edu/graphics/classes/6.837/F98/talecture/)
-* [paper link](https://static1.squarespace.com/static/51bb9790e4b0510af19ea9c4/t/51bf7c34e4b0a897bf550945/1371503668974/CSG_report.pdf)
+* **[other way](http**: //groups.csail.mit.edu/graphics/classes/6.837/F98/talecture/) 
+* **[paper link](https**: //static1.squarespace.com/static/51bb9790e4b0510af19ea9c4/t/51bf7c34e4b0a897bf550945/1371503668974/CSG_report.pdf) 
 * [github](https://github.com/x06lan/three_face_boolean)

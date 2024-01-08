@@ -87,9 +87,9 @@ use this four tuple to identified TCP packet<br>
 
 ## principles of reliable data transfer
 * finite state machines (FSM)
-* Sequence numbers:
+* **Sequence numbers**:  
   * byte stream “number” of first byte in segment’s data
-* Acknowledgements:
+* **Acknowledgements**:  
   * seq # of next byte expectet from other side
   * cumulative ACK
 ### Go Back N
@@ -165,7 +165,7 @@ if recevie 3 ACK of same packet then see as reach bottlenck
 
 ## Network Layer:
 * functions
-  * network-layer functions:
+  * **network-layer functions**:
     * **forwarding**: move packets from a router’s input link to appropriate router output link
     * **routing**: determine route taken by packets from source to destination
       * routing algorithms
@@ -173,22 +173,24 @@ if recevie 3 ACK of same packet then see as reach bottlenck
     * **forwarding**: process of getting through single interchange
     * **routing**: process of planning trip from source to destination
 * data plane and control plane
-  * Data plane:
+  * **Data plane**:
     * local, per-router function
     * determines how datagram arriving on router input port is forwarded to router output port
-  * Control plane
+    * **forwarding**: move packets from router’s input to appropriate router output 
+  * **Control plane**:
     * network-wide logic
+    * **routing**: determine route taken by packets from source to destination 
     * determines how datagram is routed among routers along end- end path from source host to destination host
-    * two control-plane approaches:
+    * **two control-plane approaches**:  
       * **traditional routing algorithms**: implemented in routers
       * **software-defined networking Software-Defined Networking((SDN)**: implemented in (remote) servers
 
-### Data Plane(CH4)
+### Network layer:Data Plane(CH4)
 
 #### Router
-* ****input port queuing****: if datagrams arrive faster than forwarding rate into switch fabri
-* ****destination-based forwarding****: forward based only on destination IP address (traditional)
-* ****generalized forwarding****: forward based on any set of header field values
+* **input port queuing**: if datagrams arrive faster than forwarding rate into switch fabri
+* **destination-based forwarding**: forward based only on destination IP address (traditional)
+* **generalized forwarding**: forward based on any set of header field values
 
 
 <image src="https://imgur.com/I6mxtp2.png" width="80%">
@@ -209,7 +211,7 @@ if recevie 3 ACK of same packet then see as reach bottlenck
 ##### Switching fabrics
 * transfer packet
   * from input link to appropriate output link
-* switching rate:
+* **switching rate**:  
   * rate at which packets can be transfer from
 
 
@@ -222,7 +224,7 @@ if recevie 3 ACK of same packet then see as reach bottlenck
   * **Head-of-the-Line (HOL) blocking**: queued datagram at front of queue prevents others in queue from moving forward
 * output
   * Buffering
-    * drop policy:which datagrams to drop if no free buffers?
+    * **drop policy**: which datagrams to drop if no free buffers? 
     * Datagrams can be lost due to congestion, lack of buffers
   * Priority scheduling – who gets best performance, network neutrality
 ##### buffer management
@@ -265,7 +267,7 @@ $$
   * router’s typically have multiple interfaces
   * host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)
 ##### Subnets
-* in same subnet if:
+* **in same subnet if**:  
   * device interfaces that can physically reach each other without passing through an intervening router
 
 
@@ -290,12 +292,12 @@ host dynamically obtains IP address from network server when it
 <image src="https://imgur.com/nG833ln.png" width="80%">
 
 ##### NAT(Network Address Translation)
-* NAT has been controversial:
+* **NAT has been controversial**:  
   * routers “should” only process up to layer 3
   * address “shortage” should be solved by IPv6
   * violates end-to-end argument (port # manipulation by network-layer device)
   * **NAT traversal**: what if client wants to connect to server behind NAT?
-* but NAT is here to stay:
+* **but NAT is here to stay**:  
   * extensively used in home and institutional nets, 4G/5G cellular net
 
 <image src="https://imgur.com/8pQh2Fj.png" width="80%">
@@ -339,21 +341,78 @@ flow table entries
 
 
 
-### Control Plane(CH5)
+### Network layer:Control Plane(CH5)
+
+* **structuring network control plane**:  
+  * per-router control (traditional)
+  * logically centralized control (software defined networking)
+#### Routing protocols
+
+<image src="https://imgur.com/rEszsqB.png" width="80%">
+
+##### Dijkstra’s link-state routing algorithm
+* **centralized**: network topology, link costs known to all node 
+* **iterative**: after k iterations, know least cost path to k destinations 
+
+<image src="https://imgur.com/OEjogtT.png" width="80%">
+
+##### Distance vector algorithm(Bellman-Ford)
+* from time-to-time, each node sends its own distance vector estimate to neighbors
+* under natural conditions, the estimate Dx(y) converge to the actual least cost dx(y)
+  * $D_x(y) \leftarrow min_v\{c_{x,v} + D_v(y)\}\text{ for each node }y \in N$
+* when x receives new DV estimate from any neighbor, it updates its own DV using B-F equation
+* **link cost changes**:  
+  * node detects local link cost change
+  * updates routing info, recalculates local DV
+  * if DV changes, notify neighbors
+
+#### Intra-AS routing
+* **RIP**: Routing Information Protocol [RFC 1723] 
+  * **classic DV**: DVs exchanged every 30 secs 
+  * no longer widely used
+* **EIGRP**: Enhanced Interior Gateway Routing Protocol 
+  * DV based
+  * formerly Cisco-proprietary for decades (became open in 2013 [RFC 7868])
+* **OSPF**: Open Shortest Path First [RFC 2328] 
+  * classic link-state
+    * each router floods OSPF link-state advertisements (directly over IP rather than using TCP/UDP) to all other routers in entire AS
+    * **multiple link costs metrics possible**: bandwidth, delay 
+    * each router has full topology, uses Dijkstra’s algorithm to compute forwarding table
+  * **security**: all OSPF messages authenticated (to prevent malicious intrusion) 
+  * <image src="https://imgur.com/97bMDV5.png" width="80%">
 
 
+#### Inter-AS routing
+* **BGP (Border Gateway Protocol)inter-domain routing protocol**:  
+  * **eBGP**: obtain subnet reachability information from neighboring ASes 
+  * **iBGP**: propagate reachability information to all AS-internal routers 
 
+#### Why different Intra-AS, Inter-AS routing ?
+| Criteria        | Intra-AS                                 | Inter-AS                                                                           |
+| --------------- | ---------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Policy**      | Single admin, no policy decisions needed | Admin wants control over how traffic is routed, and who routes through its network |
+| **Scale**       |                                          | Hierarchical routing saves table size, reduced update traffic                      |
+| **Performance** | Can focus on performance                 | Policy dominates over performance                                                  |
 
-
-
-
-
-
-
-
+#### ICMP: internet control message protocol
+* used by hosts and routers to communicate network-level information
+  * **error reporting**: unreachable host, network, port, protocol 
+  * echo request/reply (used by ping)
+* **network-layer "above**: IP: 
+  * ICMP messages carried in IP datagrams
+* **ICMP message**: type, code plus first 8 bytes of IP datagram causing error 
 
 
 ## Link layer and LAN(CH6)
+* **flow control**:  
+  * pacing between adjacent sending and receiving nodes
+* **error detection**:  
+  * errors caused by signal attenuation, noise.
+  * receiver detects errors, signals retransmission, or drops frame
+* **error correction**:  
+  * receiver identifies and corrects bit error(s) without retransmission
+* **half-duplex and full-duplex**:  
+  * with half duplex, nodes at both ends of link can transmit, but not at sam
 ### error detection, correction
 
 * Internet checksum
@@ -393,13 +452,13 @@ $
 <image src="https://imgur.com/4dJ8hQN.png" width="80%">
 
 #### CSMA
-* CSMA:
+* **CSMA**:  
   * **if channel sensed idle**: transmit entire frame
   • if channel sensed busy: defer transmission
-* CSMA/CD(Collision Detection):
+* **CSMA/CD(Collision Detection)**:  
   * collision detection easy in wired, difficult with wireless
   * if collisions detected within short then send `abort`,`jam signal`
-  * After aborting, NIC enters binary (exponential) backoff:
+  * **After aborting, NIC enters binary (exponential) backoff**:  
     * after mth collision, NIC chooses K at random from {0,1,2, …, 2m-1}. NIC waits $K\times 512$ bit times
     * **more collisions**: longer backoff interval
 ### LAN
@@ -407,10 +466,9 @@ $
 determine interface’s MAC address by its IP
 address
 * **ARP table**: each IP node (host, router) on LAN has table
-* IP/MAC address mappings for some LAN nodes:< IP address; MAC address; TTL>
+* **IP/MAC address mappings for some LAN nodes**: < IP address; MAC address; TTL> 
 * **TTL (Time To Live)**: time after which address mapping will be forgotten (typically 20 min)
 #### switch
 switch table
 
 <image src="https://imgur.com/YhnHQyv.png" width="80%">
-

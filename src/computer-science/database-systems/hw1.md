@@ -21,7 +21,7 @@ commands
 
 
 # 2. main characteristies
-* Self-describing :<br> A DBMS catalog stores the description of a particular database (e.g. data structures, types, and constraints)
+* **Self-describing**: <br> A DBMS catalog stores the description of a particular database (e.g. data structures, types, and constraints) 
 * **Insulation between programs and data**: <br> program-data independence
 
 # 3.a data model
