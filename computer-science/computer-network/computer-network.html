@@ -334,7 +334,215 @@
 <h3 id="3-duplicate-ack"><a class="header" href="#3-duplicate-ack">3 duplicate ack</a></h3>
 <p>if recevie 3 ACK of same packet then see as reach bottlenck</p>
 <h3 id="congestion-avoidance-aimdadditive-increase-multiplicative-decrease"><a class="header" href="#congestion-avoidance-aimdadditive-increase-multiplicative-decrease">congestion avoidance AIMD(Additive Increase Multiplicative Decrease)</a></h3>
-<h2 id="link-layer-and-lan"><a class="header" href="#link-layer-and-lan">Link layer and LAN</a></h2>
+<h2 id="network-layer"><a class="header" href="#network-layer">Network Layer:</a></h2>
+<ul>
+<li>functions
+<ul>
+<li>network-layer functions:
+<ul>
+<li>forwarding: move packets from a router’s input link to appropriate router output link</li>
+<li>routing: determine route taken by packets from source to destination
+<ul>
+<li>routing algorithms</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>analogy: taking a trip
+<ul>
+<li>forwarding: process of getting through single interchange</li>
+<li>routing: process of planning trip from source to destination</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>data plane and control plane
+<ul>
+<li>Data plane:
+<ul>
+<li>local, per-router function</li>
+<li>determines how datagram arriving on router input port is forwarded to router output port</li>
+</ul>
+</li>
+<li>Control plane
+<ul>
+<li>network-wide logic</li>
+<li>determines how datagram is routed among routers along end- end path from source host to destination host</li>
+<li>two control-plane approaches:
+<ul>
+<li>traditional routing algorithms: implemented in routers</li>
+<li>software-defined networking Software-Defined Networking((SDN): implemented in (remote) servers</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-planech4"><a class="header" href="#data-planech4">Data Plane(CH4)</a></h3>
+<h4 id="router"><a class="header" href="#router">Router</a></h4>
+<ul>
+<li><strong>input port queuing</strong>: if datagrams arrive faster than forwarding rate into switch fabri</li>
+<li><strong>destination-based forwarding</strong>: forward based only on destination IP address (traditional)</li>
+<li><strong>generalized forwarding</strong>: forward based on any set of header field values</li>
+</ul>
+<image src="https://imgur.com/I6mxtp2.png" width="80%">
+<h5 id="input-port-functions"><a class="header" href="#input-port-functions">Input port functions</a></h5>
+<image src="https://imgur.com/jwMpl8L.png" width="80%">
+<h6 id="destination-based-forwardinglongest-prefix-matching"><a class="header" href="#destination-based-forwardinglongest-prefix-matching">Destination-based forwarding(Longest prefix matching)</a></h6>
+<ul>
+<li>when looking for forwarding table entry for given destination address, use longest address prefix that matches destination address.</li>
+</ul>
+<p><img src="https://imgur.com/MqZHr2S.png" alt="" />
+<img src="https://imgur.com/GtNXmwl.png" alt="" /></p>
+<h5 id="switching-fabrics"><a class="header" href="#switching-fabrics">Switching fabrics</a></h5>
+<ul>
+<li>transfer packet
+<ul>
+<li>from input link to appropriate output link</li>
+</ul>
+</li>
+<li>switching rate:
+<ul>
+<li>rate at which packets can be transfer from</li>
+</ul>
+</li>
+</ul>
+<image src="https://imgur.com/TedE1AM.png" width="80%">
+<h5 id="input-output-queuing"><a class="header" href="#input-output-queuing">Input Output queuing</a></h5>
+<ul>
+<li>input
+<ul>
+<li>If switch fabric slower than input ports combined -&gt; queueing may occur at input queues
+<ul>
+<li>queueing delay and loss due to input buffer overflow!</li>
+</ul>
+</li>
+<li>Head-of-the-Line (HOL) blocking: queued datagram at front of queue prevents others in queue from moving forward</li>
+</ul>
+</li>
+<li>output
+<ul>
+<li>Buffering
+<ul>
+<li>drop policy:which datagrams to drop if no free buffers?</li>
+<li>Datagrams can be lost due to congestion, lack of buffers</li>
+</ul>
+</li>
+<li>Priority scheduling – who gets best performance, network neutrality</li>
+</ul>
+</li>
+</ul>
+<h5 id="buffer-management"><a class="header" href="#buffer-management">buffer management</a></h5>
+<p><img src="https://imgur.com/mybi2hI.png" alt="" /></p>
+<ul>
+<li>drop: which packet to add,drop when buffers are full
+<ul>
+<li>tail drop: drop arriving packet</li>
+<li>priority: drop/remove on priority basis</li>
+</ul>
+</li>
+<li>marking: which packet to mark to signal congestion(ECN,RED)</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">flows</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">link speed</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">buffer size</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2903em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.1833em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702 c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14 c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54 c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10 s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429 c69,-144,104.5,-217.7,106.5,-221 l0 -0 c5.3,-9.3,12,-14,20,-14 H400000v40H845.2724 s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7 c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h5 id="packet-scheduling"><a class="header" href="#packet-scheduling">packet scheduling</a></h5>
+<ul>
+<li>FCFS(first come, first served)</li>
+<li>priority
+<ul>
+<li>priority queue</li>
+<li><img src="https://imgur.com/c0gdQQp.png" alt="" /></li>
+</ul>
+</li>
+<li>RR(round robin)
+<ul>
+<li>arriving traffic classified, queued by class(any header fields can be used for classification)</li>
+<li>server cyclically, repeatedly scans class queues, sending one complete packet from each class (if available) in turn</li>
+<li><img src="https://imgur.com/E3uUUDe.png" alt="" /></li>
+</ul>
+</li>
+<li>WFQ(Weighted Fair Queuing)
+<ul>
+<li>round robin but each class, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, has weight, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, and gets weighted amount of service in each cycle</li>
+</ul>
+</li>
+</ul>
+<h4 id="ip-internet-protoco"><a class="header" href="#ip-internet-protoco">IP (Internet Protoco)</a></h4>
+<h5 id="ip-datagram"><a class="header" href="#ip-datagram">IP Datagram</a></h5>
+<p><img src="https://imgur.com/kjuR0Da.png" alt="" />
+<img src="https://imgur.com/TJy7dN0.png" alt="" /></p>
+<h5 id="ip-address"><a class="header" href="#ip-address">IP address</a></h5>
+<ul>
+<li>IP address: 32-bit identifier associated with each host or router interface</li>
+<li>interface: connection between host/router and physical link
+<ul>
+<li>router’s typically have multiple interfaces</li>
+<li>host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)</li>
+</ul>
+</li>
+</ul>
+<h5 id="subnets"><a class="header" href="#subnets">Subnets</a></h5>
+<ul>
+<li>in same subnet if:
+<ul>
+<li>device interfaces that can physically reach each other without passing through an intervening router</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/FCAWoXP.png" alt="" /></p>
+<h6 id="cidrclassless-interdomain-routing"><a class="header" href="#cidrclassless-interdomain-routing">CIDR(Classless InterDomain Routing)</a></h6>
+<p>address format: a.b.c.d/x, where x is # bits in subnet portion of address</p>
+<p><img src="https://imgur.com/YS58NCh.png" alt="" /></p>
+<h5 id="dhcp"><a class="header" href="#dhcp">DHCP</a></h5>
+<p>host dynamically obtains IP address from network server when it
+“joins” network</p>
+<ul>
+<li>host broadcasts DHCP discover msg [optional]</li>
+<li>DHCP server responds with DHCP offer msg [optional]</li>
+<li>host requests IP address: DHCP request msg</li>
+<li>DHCP server sends address: DHCP ack msg</li>
+</ul>
+<p><img src="https://imgur.com/nG833ln.png" alt="" /></p>
+<h5 id="natnetwork-address-translation"><a class="header" href="#natnetwork-address-translation">NAT(Network Address Translation)</a></h5>
+<ul>
+<li>NAT has been controversial:
+<ul>
+<li>routers “should” only process up to layer 3</li>
+<li>address “shortage” should be solved by IPv6</li>
+<li>violates end-to-end argument (port # manipulation by network-layer device)</li>
+<li>NAT traversal: what if client wants to connect to server behind NAT?</li>
+</ul>
+</li>
+<li>but NAT is here to stay:
+<ul>
+<li>extensively used in home and institutional nets, 4G/5G cellular net</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/8pQh2Fj.png" alt="" /></p>
+<h5 id="ip6"><a class="header" href="#ip6">IP6</a></h5>
+<p><img src="https://imgur.com/kkNzQau.png" alt="" /></p>
+<h6 id="tunnelingtransition-from-ipv4-to-ipv6"><a class="header" href="#tunnelingtransition-from-ipv4-to-ipv6">tunneling:Transition from IPv4 to IPv6</a></h6>
+<p>IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (“packet within a packet”)</p>
+<p><img src="https://imgur.com/mEzJH1z.png" alt="" /></p>
+<h5 id="generalized-forwardingflow-table"><a class="header" href="#generalized-forwardingflow-table">Generalized forwarding(flow table)</a></h5>
+<p><img src="https://imgur.com/rmcjk71.png" alt="" /></p>
+<p>flow table entries</p>
+<p><img src="https://imgur.com/i7qwKaH.png" alt="" /></p>
+<ul>
+<li><strong>match+action</strong>: abstraction unifies different kinds of devices</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Match</th><th>Action</th></tr></thead><tbody>
+<tr><td>Router</td><td>Longest Destination IP Prefix</td><td>Forward out a link</td></tr>
+<tr><td>Switch</td><td>Destination MAC Address</td><td>Forward or flood</td></tr>
+<tr><td>Firewall</td><td>IP Addresses and Port Numbers</td><td>Permit or deny</td></tr>
+<tr><td>NAT</td><td>IP Address and Port</td><td>Rewrite address and port</td></tr>
+</tbody></table>
+</div>
+<h5 id="middleboxes"><a class="header" href="#middleboxes">middleboxes</a></h5>
+<p><img src="https://imgur.com/QnhkauT.png" alt="" /></p>
+<h3 id="control-planech5"><a class="header" href="#control-planech5">Control Plane(CH5)</a></h3>
+<h2 id="link-layer-and-lanch6"><a class="header" href="#link-layer-and-lanch6">Link layer and LAN(CH6)</a></h2>
 <h3 id="error-detection-correction"><a class="header" href="#error-detection-correction">error detection, correction</a></h3>
 <ul>
 <li>Internet checksum</li>

@@ -313,19 +313,37 @@ FROM GUEST g
 INNER JOIN BOOKING b ON g.guestNo = b.guestNo
 WHERE b.hotelNo = (SELECT hotelNo FROM HOTEL WHERE hotelName = 'Howard Hotel');
 </code></pre>
+<h2 id="execpt"><a class="header" href="#execpt">execpt</a></h2>
+<pre><code class="language-sql">SELECT Fname, Lname
+FROM Employee
+WHERE NOT EXISTS((SELECT Pnumber
+										FROM PROJECT
+										WHERE Dno=5)
+					EXCEPT(SELECT Pno
+									FROM WORKS_ON
+									WHERE Ssn= ESsn));
+</code></pre>
+<h2 id="schemas"><a class="header" href="#schemas">schemas</a></h2>
 <h2 id="join-vs-sub-query"><a class="header" href="#join-vs-sub-query">join vs. sub-query</a></h2>
 <p>In general join have better performance because of optimisers.</p>
 <h1 id="正規化-normalization"><a class="header" href="#正規化-normalization">正規化 (normalization)</a></h1>
+<ul>
+<li>make sure attribute semantics are clear</li>
+<li>reducing redundant information</li>
+<li></li>
+</ul>
 <ol>
 <li>candidate key: If a relation schema has more than one key, each is called a candidate key</li>
 <li>Prime attribute: Prime attribute must be a member of some candidate key</li>
 </ol>
-<h2 id="functional-dependencies"><a class="header" href="#functional-dependencies">Functional Dependencies</a></h2>
+<h2 id="functional-dependency"><a class="header" href="#functional-dependency">Functional Dependency</a></h2>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 mean if get x and y can get z</p>
 <h2 id="partial-dependency"><a class="header" href="#partial-dependency">partial dependency</a></h2>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span></span></span> but <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 x alone can get z then it is partial dependency</p>
+<h2 id="fully-functional-dependency"><a class="header" href="#fully-functional-dependency">Fully Functional Dependency</a></h2>
+<p>not partial dependency</p>
 <h2 id="transitive-dependency"><a class="header" href="#transitive-dependency">transitive dependency</a></h2>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
@@ -333,22 +351,27 @@ and y is not candidate key then it is transitive dependency</p>
 <h2 id="multivalued-dependency"><a class="header" href="#multivalued-dependency">multivalued dependency</a></h2>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">}</span></span><span class="mspace newline"></span></span></span>
 if y is the subset of x then this is multivalued dependency</p>
-<h2 id="join-dependency"><a class="header" href="#join-dependency">join dependency</a></h2>
+<h2 id="join-dependency--dependency-preservation"><a class="header" href="#join-dependency--dependency-preservation">join dependency | dependency preservation</a></h2>
 <h2 id="1nf"><a class="header" href="#1nf">1NF</a></h2>
 <ul>
 <li>must be a primary key for identification</li>
 <li>no duplicated rows or columns</li>
+<li>no nest relations(JSON)</li>
+<li>no composite attributes (struct)</li>
+<li>no multivalued attributes (array)</li>
 </ul>
 <h2 id="2nf"><a class="header" href="#2nf">2NF</a></h2>
 <ul>
 <li>1NF</li>
 <li>no partial dependency</li>
-<li>every non-prime attribute <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> in R is fully functionally dependent on the primary key</li>
+<li>All attributes depend on the whole key</li>
+<li>No partial dependencies on the primary key (for nonprime attributes)</li>
 </ul>
 <h2 id="3nf"><a class="header" href="#3nf">3NF</a></h2>
 <ul>
 <li>2NF</li>
-<li>no transitive partial dependency(遞移相依)</li>
+<li>All attributes depend on nothing but the key</li>
+<li>No transitive dependencies on the primary key (for nonprime attribute</li>
 </ul>
 <h2 id="bcnf-or-35nf-boyce-codd-normal-form"><a class="header" href="#bcnf-or-35nf-boyce-codd-normal-form">BCNF or 3.5NF (Boyce-Codd Normal Form)</a></h2>
 <ul>
@@ -374,6 +397,9 @@ if y is the subset of x then this is multivalued dependency</p>
 <h1 id="disk"><a class="header" href="#disk">disk</a></h1>
 <p><img src="https://imgur.com/rnZdBwG.png" alt="" /></p>
 <ul>
+<li>Seek time: position the read/write head on the correct track</li>
+<li>Rotational delay or latency: the beginning of the desired block rotates into position under the read/write head</li>
+<li>Block transfer time: transfer the data of the desired block</li>
 <li>Blocking factor (bfr): refers to the number of records per block</li>
 <li>primary file organizations
 <ul>
@@ -451,24 +477,31 @@ replace in the buffer to accommodate the newly requested blocks</p>
 <h4 id="not-clustered-index"><a class="header" href="#not-clustered-index">not clustered index</a></h4>
 <p><img src="https://imgur.com/5MTXQN2.png" alt="" /></p>
 <h3 id="hash-file"><a class="header" href="#hash-file">hash file</a></h3>
+<p>directories can be stored on disk, and they expand or shrink dynamically</p>
 <h4 id="deal-with-collision"><a class="header" href="#deal-with-collision">deal with collision</a></h4>
 <ul>
 <li>Chaining :use link list to chaining data</li>
 <li>Rehashing</li>
-<li>Open Addressing
-<ul>
-<li>linear probing</li>
-<li>Quadratic Probing</li>
-<li>Double Hashing</li>
+<li>Open Addressing</li>
 </ul>
-</li>
-</ul>
-<h4 id="dynamic-hashing-or-extendible-hashing"><a class="header" href="#dynamic-hashing-or-extendible-hashing">Dynamic Hashing or extendible hashing</a></h4>
+<h4 id="static-hashing"><a class="header" href="#static-hashing">static hashing</a></h4>
 <ul>
-<li>problem of static probing: when system need scale bucket it will  spend a lot time to move data and cant access data</li>
-<li>Hashing techniques are adapted to allow the dynamic growth and shrinking of the number of file records</li>
+<li>order access is inefficient</li>
+</ul>
+<h4 id="dynamic-hashing"><a class="header" href="#dynamic-hashing">dynamic Hashing</a></h4>
+<ul>
+<li>directory is a binary tree</li>
+</ul>
+<h4 id="extendible-hashing"><a class="header" href="#extendible-hashing">extendible hashing</a></h4>
+<ul>
+<li>directory is an array of size <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span></span></span></span> where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> is called the global depth</li>
+</ul>
+<h4 id="linear-hashing"><a class="header" href="#linear-hashing">Linear hashing</a></h4>
+<ul>
+<li>not use a directory</li>
 </ul>
 <h2 id="raid"><a class="header" href="#raid">RAID</a></h2>
+<p><img src="https://imgur.com/SmeeVaQ.png" alt="" /></p>
 <ul>
 <li>Improve reliability: by storing redundant information on disks using parity or some other error correction code</li>
 <li>transfer rate: high overall transfer rate and also accomplish load balancing</li>

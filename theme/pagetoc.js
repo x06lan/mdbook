@@ -40,16 +40,22 @@ window.addEventListener('load', function () {
         var indent = "";
         switch (el.parentElement.tagName) {
             case "H1":
-                indent = "10px";
+                indent = "0px";
                 break;
             case "H2":
-                indent = "20px";
+                indent = "15px";
                 break;
             case "H3":
-                indent = "40px";
+                indent = "30px";
                 break;
             case "H4":
+                indent = "45px";
+                break;
+            case "H5":
                 indent = "60px";
+                break;
+            case "H6":
+                indent = "75px";
                 break;
             default:
                 break;
