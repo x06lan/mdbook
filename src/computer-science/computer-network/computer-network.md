@@ -1,7 +1,8 @@
 # computer networking
 
 ## delay
-![](https://imgur.com/rEb1odo.png)
+<image src="https://imgur.com/rEb1odo.png" width="80%">
+
 $$
 \text{transmission delay}=\frac{L(bits)}{R(bits/sec)}\\
 \text{queueing delay}=\frac{L(bits)\times a(\text{average packet arrival rate})}{R(bps)}\\
@@ -14,11 +15,13 @@ $$
 
 
 ### Frequency Division Multiplexing (FDM)
-![FDM](https://imgur.com/Li4VtUz.png)
+<image src="https://imgur.com/Li4VtUz.png" width="80%">
+
 
 optical, electromagnetic frequencies divided into (narrow) frequency bands = each call allocated its own band, can transmit at max rate of that narrow band
 ### Time Division Multiplexing (TDM)
-![TDM](https://imgur.com/Lf7C9Sv.png)
+<image src="https://imgur.com/Lf7C9Sv.png" width="80%">
+
 
 time divided into slots = each call allocated periodic slot(s), can transmit at maximum rate of (wider) frequency band, but only during its time slot(s)
 
@@ -77,9 +80,9 @@ use this four tuple to identified TCP packet<br>
 * TCP 3-way handshake
 
 ## Multimedia video:
-* DASH: Dynamic, Adaptive Streaming over HTT
-* CBR: (constant bit rate): video encoding rate fixed
-* VBR: (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
+* **DASH**: Dynamic, Adaptive Streaming over HTT
+* **CBR**: (constant bit rate): video encoding rate fixed
+* **VBR**: (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
 
 
 ## principles of reliable data transfer
@@ -91,28 +94,34 @@ use this four tuple to identified TCP packet<br>
   * cumulative ACK
 ### Go Back N
 the all the packet that behind is overtime or NAK
-![](https://i.imgur.com/eoftyjT.png)
+<image src="https://i.imgur.com/eoftyjT.png" width="80%">
+
 ### Selective repeat
 only resend the packet overtime or NAK
-![](https://i.imgur.com/fAlaZsW.png)
+<image src="https://i.imgur.com/fAlaZsW.png" width="80%">
+
 
 ### stop and wait
 rdt(reliable data transfer)
 #### rdt 1.0
 * rely on channel perfectly reliable
-![](https://i.imgur.com/vsfr4vl.png)
+<image src="https://i.imgur.com/vsfr4vl.png" width="80%">
+
 #### rdt 2.0
 * checksum to detect bit errors
-* acknowledgements (ACKs): receiver explicitly tells sender that pkt received OK
-* negative acknowledgements (NAKs): receiver explicitly tells sender that pkt had errors
-* stop and wait: sender sends one packet, then waits for receiver response
-![](https://i.imgur.com/3B7r9op.png)
+* **acknowledgements (ACKs)**: receiver explicitly tells sender that pkt received OK
+* **negative acknowledgements (NAKs)**: receiver explicitly tells sender that pkt had errors
+* **stop and wait**: sender sends one packet, then waits for receiver response
+<image src="https://i.imgur.com/3B7r9op.png" width="80%">
+
 #### rdt 2.1
 在每份封包加入序號(sequence number) 來編號，因此接收端可以藉由序號判斷現在收到的封包是不是重複的，若重複則在回傳一次ACK回去，而這裡的序號用1位元就夠了(0和1交替)。
 * sender
-![](https://i.imgur.com/O5I8H0g.png)
+<image src="https://i.imgur.com/O5I8H0g.png" width="80%">
+
 * receiver
-![](https://i.imgur.com/r52Iw9D.png)
+<image src="https://i.imgur.com/r52Iw9D.png" width="80%">
+
 #### rdt 2.2
 rdt2.2不再使用NAK，而是在ACK加入序號的訊息，所以在接收端的make_pkt()加入參數ACK,0或ACK,1，而在傳送端則是要檢查所收到ACK的序號。
 #### rdt 3.0
@@ -129,7 +138,7 @@ if the receiver window buffer is fill then sender should stop sending until rece
 ### TCP RTT(round trip time), timeout
 * use EWMA(exponential weighted moving average)
 * influence of past sample decreases exponentially fast
-* typical value: $\alpha$ = 0.125
+* **typical value**: $\alpha$ = 0.125
 $$
 \text{EstimatedRTT}=(1-\alpha)*\text{EstimatedRTT }+\alpha*\text{SampleRTT}\\
 \text{TimeoutInterval} = \text{EstimatedRTT} + 4*\text{DevRTT(safety margin)}\\
@@ -157,12 +166,12 @@ if recevie 3 ACK of same packet then see as reach bottlenck
 ## Network Layer:
 * functions
   * network-layer functions:
-    * forwarding: move packets from a router’s input link to appropriate router output link
-    * routing: determine route taken by packets from source to destination
+    * **forwarding**: move packets from a router’s input link to appropriate router output link
+    * **routing**: determine route taken by packets from source to destination
       * routing algorithms
-  * analogy: taking a trip
-    * forwarding: process of getting through single interchange
-    * routing: process of planning trip from source to destination
+  * **analogy**: taking a trip
+    * **forwarding**: process of getting through single interchange
+    * **routing**: process of planning trip from source to destination
 * data plane and control plane
   * Data plane:
     * local, per-router function
@@ -171,15 +180,15 @@ if recevie 3 ACK of same packet then see as reach bottlenck
     * network-wide logic
     * determines how datagram is routed among routers along end- end path from source host to destination host
     * two control-plane approaches:
-      * traditional routing algorithms: implemented in routers
-      * software-defined networking Software-Defined Networking((SDN): implemented in (remote) servers
+      * **traditional routing algorithms**: implemented in routers
+      * **software-defined networking Software-Defined Networking((SDN)**: implemented in (remote) servers
 
 ### Data Plane(CH4)
 
 #### Router
-* **input port queuing**: if datagrams arrive faster than forwarding rate into switch fabri
-* **destination-based forwarding**: forward based only on destination IP address (traditional)
-* **generalized forwarding**: forward based on any set of header field values
+* ****input port queuing****: if datagrams arrive faster than forwarding rate into switch fabri
+* ****destination-based forwarding****: forward based only on destination IP address (traditional)
+* ****generalized forwarding****: forward based on any set of header field values
 
 
 <image src="https://imgur.com/I6mxtp2.png" width="80%">
@@ -190,8 +199,10 @@ if recevie 3 ACK of same packet then see as reach bottlenck
 ###### Destination-based forwarding(Longest prefix matching)
 * when looking for forwarding table entry for given destination address, use longest address prefix that matches destination address.
 
-![](https://imgur.com/MqZHr2S.png)
-![](https://imgur.com/GtNXmwl.png)
+<image src="https://imgur.com/MqZHr2S.png" width="80%">
+
+<image src="https://imgur.com/GtNXmwl.png" width="80%">
+
 
 
 
@@ -208,18 +219,19 @@ if recevie 3 ACK of same packet then see as reach bottlenck
 * input
   * If switch fabric slower than input ports combined -> queueing may occur at input queues
     * queueing delay and loss due to input buffer overflow!
-  * Head-of-the-Line (HOL) blocking: queued datagram at front of queue prevents others in queue from moving forward
+  * **Head-of-the-Line (HOL) blocking**: queued datagram at front of queue prevents others in queue from moving forward
 * output
   * Buffering
     * drop policy:which datagrams to drop if no free buffers?
     * Datagrams can be lost due to congestion, lack of buffers
   * Priority scheduling – who gets best performance, network neutrality
 ##### buffer management
-![](https://imgur.com/mybi2hI.png)
-* drop: which packet to add,drop when buffers are full
-  * tail drop: drop arriving packet
-  * priority: drop/remove on priority basis
-* marking: which packet to mark to signal congestion(ECN,RED)
+<image src="https://imgur.com/mybi2hI.png" width="80%">
+
+* **drop**: which packet to add,drop when buffers are full
+  * **tail drop**: drop arriving packet
+  * **priority**: drop/remove on priority basis
+* **marking**: which packet to mark to signal congestion(ECN,RED)
 
 $$
 N=\text{flows},C=\text{link speed}\\
@@ -230,22 +242,26 @@ $$
 * FCFS(first come, first served)
 * priority
   * priority queue
-  * ![](https://imgur.com/c0gdQQp.png)
+  * <image src="https://imgur.com/c0gdQQp.png" width="80%">
+
 * RR(round robin)
   * arriving traffic classified, queued by class(any header fields can be used for classification)
   * server cyclically, repeatedly scans class queues, sending one complete packet from each class (if available) in turn
-  * ![](https://imgur.com/E3uUUDe.png)
+  * <image src="https://imgur.com/E3uUUDe.png" width="80%">
+
 * WFQ(Weighted Fair Queuing)
   * round robin but each class, $i$, has weight, $w_i$, and gets weighted amount of service in each cycle
 
 
 #### IP (Internet Protoco)
 ##### IP Datagram
-![](https://imgur.com/kjuR0Da.png)
-![](https://imgur.com/TJy7dN0.png)
+<image src="https://imgur.com/kjuR0Da.png" width="80%">
+
+<image src="https://imgur.com/TJy7dN0.png" width="80%">
+
 ##### IP address
-*  IP address: 32-bit identifier associated with each host or router interface
-* interface: connection between host/router and physical link
+* **IP address**: 32-bit identifier associated with each host or router interface
+* **interface**: connection between host/router and physical link
   * router’s typically have multiple interfaces
   * host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)
 ##### Subnets
@@ -253,52 +269,60 @@ $$
   * device interfaces that can physically reach each other without passing through an intervening router
 
 
-![](https://imgur.com/FCAWoXP.png)
+<image src="https://imgur.com/FCAWoXP.png" width="80%">
+
 
 
 ###### CIDR(Classless InterDomain Routing)
 address format: a.b.c.d/x, where x is # bits in subnet portion of address
 
-![](https://imgur.com/YS58NCh.png)
+<image src="https://imgur.com/YS58NCh.png" width="80%">
+
 ##### DHCP
 host dynamically obtains IP address from network server when it
 "joins" network
 
 * host broadcasts DHCP discover msg [optional]
 * DHCP server responds with DHCP offer msg [optional]
-* host requests IP address: DHCP request msg
-* DHCP server sends address: DHCP ack msg
+* **host requests IP address**: DHCP request msg
+* **DHCP server sends address**: DHCP ack msg
 
-![](https://imgur.com/nG833ln.png)
+<image src="https://imgur.com/nG833ln.png" width="80%">
+
 ##### NAT(Network Address Translation)
 * NAT has been controversial:
   * routers “should” only process up to layer 3
   * address “shortage” should be solved by IPv6
   * violates end-to-end argument (port # manipulation by network-layer device)
-  * NAT traversal: what if client wants to connect to server behind NAT?
+  * **NAT traversal**: what if client wants to connect to server behind NAT?
 * but NAT is here to stay:
   * extensively used in home and institutional nets, 4G/5G cellular net
 
-![](https://imgur.com/8pQh2Fj.png)
+<image src="https://imgur.com/8pQh2Fj.png" width="80%">
+
 ##### IP6
-![](https://imgur.com/kkNzQau.png)
+<image src="https://imgur.com/kkNzQau.png" width="80%">
+
 ###### tunneling:Transition from IPv4 to IPv6
 IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (“packet within a packet”)
 
-![](https://imgur.com/mEzJH1z.png)
+<image src="https://imgur.com/mEzJH1z.png" width="80%">
+
 
 
 ##### Generalized forwarding(flow table)
 
 
-![](https://imgur.com/rmcjk71.png)
+<image src="https://imgur.com/rmcjk71.png" width="80%">
+
 
 
 flow table entries
 
-![](https://imgur.com/i7qwKaH.png)
+<image src="https://imgur.com/i7qwKaH.png" width="80%">
 
-* **match+action**: abstraction unifies different kinds of devices
+
+* ****match+action****: abstraction unifies different kinds of devices
 
 | Device   | Match                         | Action                   |
 | -------- | ----------------------------- | ------------------------ |
@@ -307,7 +331,8 @@ flow table entries
 | Firewall | IP Addresses and Port Numbers | Permit or deny           |
 | NAT      | IP Address and Port           | Rewrite address and port |
 ##### middleboxes
-![](https://imgur.com/QnhkauT.png)
+<image src="https://imgur.com/QnhkauT.png" width="80%">
+
 
 
 
@@ -335,7 +360,8 @@ flow table entries
 * Parity checking
 * Cyclic Redundancy Check (CRC)
 #### Parity checking
-![](https://imgur.com/34PJCaF.png)
+<image src="https://imgur.com/34PJCaF.png" width="80%">
+
 #### Cyclic Redundancy Check (CRC)
 $
 r=\text{check bit length}\\
@@ -360,29 +386,31 @@ $
 
 * time divided into equal size slots (time to transmit 1 frame)
 * nodes are synchronized
-* if collision: node retransmits frame in each subsequent slot with probability $ p $ until success
+* **if collision**: node retransmits frame in each subsequent slot with probability $ p $ until success
 * max efficiency = $e^{-1}$= 0.37
 
 #### Pure ALOHA
-![](https://imgur.com/4dJ8hQN.png)
+<image src="https://imgur.com/4dJ8hQN.png" width="80%">
+
 #### CSMA
 * CSMA:
-  * if channel sensed idle: transmit entire frame
+  * **if channel sensed idle**: transmit entire frame
   • if channel sensed busy: defer transmission
 * CSMA/CD(Collision Detection):
   * collision detection easy in wired, difficult with wireless
   * if collisions detected within short then send `abort`,`jam signal`
   * After aborting, NIC enters binary (exponential) backoff:
     * after mth collision, NIC chooses K at random from {0,1,2, …, 2m-1}. NIC waits $K\times 512$ bit times
-    *  more collisions: longer backoff interval
+    * **more collisions**: longer backoff interval
 ### LAN
 #### ARP: address resolution protocol
 determine interface’s MAC address by its IP
 address
-* ARP table: each IP node (host, router) on LAN has table
+* **ARP table**: each IP node (host, router) on LAN has table
 * IP/MAC address mappings for some LAN nodes:< IP address; MAC address; TTL>
-* TTL (Time To Live): time after which address mapping will be forgotten (typically 20 min)
+* **TTL (Time To Live)**: time after which address mapping will be forgotten (typically 20 min)
 #### switch
 switch table
 
-![](https://imgur.com/YhnHQyv.png)
+<image src="https://imgur.com/YhnHQyv.png" width="80%">
+

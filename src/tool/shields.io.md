@@ -18,7 +18,8 @@ tags: `tool`
 
 
 ### 範例
-![](https://img.shields.io/badge/note-hackMD-5cb85c??style=for-the-badge&logo=hackhands&logoColor=ffffff&labelColor=555555)
+<image src="https://img.shields.io/badge/note-hackMD-5cb85c??style=for-the-badge&logo=hackhands&logoColor=ffffff&labelColor=555555" width="80%">
+
 
 ```url
 https://img.shields.io/badge/note-hackMD
@@ -30,7 +31,9 @@ https://img.shields.io/badge/note-hackMD
 ```
 
 ## mark down 
-![](https://img.shields.io/badge/-window-000000?style=for-the-badge&logo=github&logoColor=ffffff)
+<image src="https://img.shields.io/badge/-window-000000?style=for-the-badge&logo=github&logoColor=ffffff" width="80%">
+
 ```markdown
-![](https://img.shields.io/badge/-window-000000?style=for-the-badge&logo=github&logoColor=ffffff)
+<image src="https://img.shields.io/badge/-window-000000?style=for-the-badge&logo=github&logoColor=ffffff" width="80%">
+
 ```

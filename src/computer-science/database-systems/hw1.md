@@ -9,16 +9,20 @@ tags `db` `database`
 
 install steps
 
-![Imgur](https://imgur.com/IyVRggv.png)
-![Imgur](https://imgur.com/mqVzdkG.png)
-![Imgur](https://imgur.com/8xrKhqQ.png)
+<image src="https://imgur.com/IyVRggv.png" width="80%">
+
+<image src="https://imgur.com/mqVzdkG.png" width="80%">
+
+<image src="https://imgur.com/8xrKhqQ.png" width="80%">
+
 commands
 
-![Imgur](https://imgur.com/6Inwvgt.png)
+<image src="https://imgur.com/6Inwvgt.png" width="80%">
+
 
 # 2. main characteristies
 * Self-describing :<br> A DBMS catalog stores the description of a particular database (e.g. data structures, types, and constraints)
-* Insulation between programs and data : <br> program-data independence
+* **Insulation between programs and data**: <br> program-data independence
 
 # 3.a data model
 Set of concepts to describe the structure of a database,
@@ -30,8 +34,8 @@ The description of a database. Includes descriptions of the database structure,
 data types, and the constraints on the database.
 
 # 4.Three-Schema Architecture
-* Internal schema : at the internal level to describe physical storage structures and access paths
-* Conceptual schema : at the conceptual level to describe the structure and constraints for the whole database for a community of users.
+* **Internal schema**: at the internal level to describe physical storage structures and access paths
+* **Conceptual schema**: at the conceptual level to describe the structure and constraints for the whole database for a community of users.
 
 
 

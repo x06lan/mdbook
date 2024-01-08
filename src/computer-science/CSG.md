@@ -85,7 +85,8 @@ CSG is a methodology for constructing geometries by mesh, using algorithms capab
 
 > 利用每個面的髮線區切割空間，如果空間在髮線的背面則視為true(或是包含)
 
-> ![](https://i.imgur.com/EaayJ5Q.png)
+> <image src="https://i.imgur.com/EaayJ5Q.png" width="80%">
+
 
 
 > ## value
@@ -103,7 +104,8 @@ CSG is a methodology for constructing geometries by mesh, using algorithms capab
 > ## clipTo(bsp)
 
 > bsp:binary space partitioning tree
-> ![](https://i.imgur.com/OfUwEIp.png)
+> <image src="https://i.imgur.com/OfUwEIp.png" width="80%">
+
 
 > a和b的 bsp tree 合併=a-b的截面
 > ```javascript

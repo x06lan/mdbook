@@ -28,7 +28,8 @@
 * database services layer
   * database management system
 # superkey
-![](https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg)
+<image src="https://media.geeksforgeeks.org/wp-content/uploads/20230314093236/keys-in-dbms.jpg" width="80%">
+
 
 # null
 A special null value is used to represent values that are unknown or not available (value exist) or inapplicable (value undefined) in certain tuples.
@@ -169,26 +170,30 @@ if y is the subset of x then this is multivalued dependency
 ## NF example
 2NF
 
-![](https://imgur.com/iohrUvO.png)
+<image src="https://imgur.com/iohrUvO.png" width="80%">
+
 
 3NF
 
-![](https://imgur.com/MLKsKtS.png)
+<image src="https://imgur.com/MLKsKtS.png" width="80%">
+
 
 4NF 5NF
 
-![](https://imgur.com/TPJqzyP.png)
+<image src="https://imgur.com/TPJqzyP.png" width="80%">
+
 
 # disk
 
 
 
-![](https://imgur.com/rnZdBwG.png)
+<image src="https://imgur.com/rnZdBwG.png" width="80%">
 
-* Seek time: position the read/write head on the correct track
-* Rotational delay or latency: the beginning of the desired block rotates into position under the read/write head
-* Block transfer time: transfer the data of the desired block
-* Blocking factor (bfr): refers to the number of records per block
+
+* **Seek time**: position the read/write head on the correct track
+* **Rotational delay or latency**: the beginning of the desired block rotates into position under the read/write head
+* **Block transfer time**: transfer the data of the desired block
+* **Blocking factor (bfr)**: refers to the number of records per block
 * primary file organizations
   * records of a file are physically placed on the disk
   * how the records can be accessed
@@ -225,8 +230,8 @@ replace in the buffer to accommodate the newly requested blocks
 
 <!-- ## Operations on Files -->
 ## file
-* Unspanned: no record can span two blocks
-* Spanned: a record can be stored in more than one block
+* **Unspanned**: no record can span two blocks
+* **Spanned**: a record can be stored in more than one block
 
 ### unorder file
 * linear search
@@ -240,9 +245,11 @@ replace in the buffer to accommodate the newly requested blocks
 
 #### clustered index(B-Tree)
 primary index is leaf index of tree
-![](https://imgur.com/6Ix8crC.png)
+<image src="https://imgur.com/6Ix8crC.png" width="80%">
+
 #### not clustered index
-![](https://imgur.com/5MTXQN2.png)
+<image src="https://imgur.com/5MTXQN2.png" width="80%">
+
 ### hash file
 directories can be stored on disk, and they expand or shrink dynamically
 #### deal with collision
@@ -259,11 +266,12 @@ directories can be stored on disk, and they expand or shrink dynamically
 #### Linear hashing
 * not use a directory
 ## RAID
-![](https://imgur.com/SmeeVaQ.png)
+<image src="https://imgur.com/SmeeVaQ.png" width="80%">
 
-* Improve reliability: by storing redundant information on disks using parity or some other error correction code
-* transfer rate: high overall transfer rate and also accomplish load balancing
-* performance: improve disk performance
+
+* **Improve reliability**: by storing redundant information on disks using parity or some other error correction code
+* **transfer rate**: high overall transfer rate and also accomplish load balancing
+* **performance**: improve disk performance
 * data striping
   * Bit-level data striping
     * Splitting a byte of data and writing bit j to the jth disk
@@ -275,10 +283,10 @@ directories can be stored on disk, and they expand or shrink dynamically
 * file sharing
 * low cost
 ## SAN(Storage Area Networks)
-* Flexible: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches
+* **Flexible**: many-to-many connectivity among servers and storage devices using fiber channel hubs and switches
 * Better isolation capabilities allowing non-disruptive addition of new peripherals and servers
 ## index
 
-* **primary index**: must be defined on an ordered key field.
-* **clustered index**: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.
-* **secondary index**: is defined on any non-ordered (keyed or non-key) field.
+* ****primary index****: must be defined on an ordered key field.
+* ****clustered index****: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.
+* ****secondary index****: is defined on any non-ordered (keyed or non-key) field.

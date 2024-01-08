@@ -26,18 +26,28 @@ def list_files(directory):
             file_path = os.path.join(root, file_name)
             file_paths.append(file_path)
     return file_paths
+def convert_markdown_to_html(markdown_text):
+    # Convert Markdown image syntax: ![](url) to <image src="url" width="80">
+    image_pattern = r'!\[.*?\]\((.*?)\)'
+    html_text = re.sub(image_pattern, r'<image src="\1" width="80%">\n', markdown_text)
+
+    # Convert * label: something to * **label**: something
+    label_pattern = r'\* (?: {0,2})(.*?)(?: {0,2})(:) (.*?)\n'
+    html_text = re.sub(label_pattern,r'* **\g<1>**\2 \g<3>\n', html_text)
+    return html_text
 def processMarkdown(path,final_path):
     with open(path,"r") as f:
         text=f.read()
 
-        remap=[("\\\\"," \\\\\\\\"),
-               ("\\{"," \\\\{ "),
-               ("\\}"," \\\\} "),
-               ("*"," \\times ")]
-        for target,value in remap:
-            text=text.replace(target,value)
+        # remap=[("\\\\"," \\\\\\\\"),
+        #        ("\\{"," \\\\{ "),
+        #        ("\\}"," \\\\} "),
+        #        ("*"," \\times ")]
+        # for target,value in remap:
+        #     text=text.replace(target,value)
+        process_text=convert_markdown_to_html(text)
         with open(final_path,"w") as f2:
-            f2.write(text)
+            f2.write(process_text)
 
 
 if __name__=="__main__":

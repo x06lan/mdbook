@@ -58,15 +58,18 @@ $$
  -->
 
 ### ROC
-![](https://imgur.com/zo9hP6V.png)
+<image src="https://imgur.com/zo9hP6V.png" width="80%">
+
 
 
 ## 8.16
 change the traing dataset to balance by oversampleing the fraudulent cases or undersampling nonfraudulent cases.
-![](https://imgur.com/M2gR4vt.png)
+<image src="https://imgur.com/M2gR4vt.png" width="80%">
+
 
 by threshold-moving to reduce the error chance on majority case
-![](https://imgur.com/CqhipX8.png)
+<image src="https://imgur.com/CqhipX8.png" width="80%">
+
 ## 9.4
 
 |              | **Eager Classification**                                     | **Lazy Classification**                                           |

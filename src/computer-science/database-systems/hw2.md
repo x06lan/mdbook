@@ -10,18 +10,23 @@ tags `db` `database`
 
 
 The doctor could also be a patient. Additionally, the pharmacy can sell drugs from pharmaceutical companies at different prices compared to other pharmacies.
-![](../../assets/image/database_ERdiagram_doctor.svg)
+<image src="../../assets/image/database_ERdiagram_doctor.svg" width="80%">
+
 The key icon stands for primary key. On the other side of the connection with the primary key is the foreign key.
-![](../../assets/image/database_EERdiagram_doctor.svg)
+<image src="../../assets/image/database_EERdiagram_doctor.svg" width="80%">
+
 
 
 ## 2.
-![](../../assets/image/database_ERdiagram_baseball.svg)
+<image src="../../assets/image/database_ERdiagram_baseball.svg" width="80%">
+
 The key icon stands for primary key. On the other side of the connection with the primary key is the foreign key.
-![](../../assets/image/database_EERdiagram_baseball.svg)
+<image src="../../assets/image/database_EERdiagram_baseball.svg" width="80%">
+
 
 ## 3.
-![](../../assets/image/database_ERdiagram_hw2-3.png)
+<image src="../../assets/image/database_ERdiagram_hw2-3.png" width="80%">
+
 ### 3.a
 有違反 Semantic Integrity Constraints，Robert 的上司是 James(888665555) ，但 Robert 的薪水(58000)比上司(55000)還高
 No integrity constraints are violated.
@@ -38,4 +43,5 @@ If you modify the Pnumber from 30 to 40, you also need to change the row in the 
 
 ## 4.
 
-![](../../assets/image/database_ERdiagram_airplane.svg)
+<image src="../../assets/image/database_ERdiagram_airplane.svg" width="80%">
+

@@ -4,8 +4,8 @@
 
 ## 1.
 No.
-* reliable delivery:  ensures that content or resources hosted on websites can be reliably accessed by users
-* TCP: lower level, providing a reliable communication channel between two devices on the Internet.
+* **reliable delivery**:  ensures that content or resources hosted on websites can be reliably accessed by users
+* **TCP**: lower level, providing a reliable communication channel between two devices on the Internet.
 
 ## 2.
 1. Broadcasting the ARP query ensures that the request reaches all devices on the network.

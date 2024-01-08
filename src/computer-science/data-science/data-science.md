@@ -56,7 +56,8 @@ $$NPV\text{(negative predictive)}:\frac{TN}{TN+FN}$$
 $$ F_1\text{ score(F-measure | F-score)}=\frac{2TP}{2TP+FP+TN}=\frac{2}{\frac{1}{precision}+\frac{1}{recall}}$$
 
 ## ROC curve
-![](https://upload.wikimedia.org/wikipedia/commons/6/6b/Roccurves.png)
+<image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Roccurves.png" width="80%">
+
 
 # correlations
 
@@ -108,12 +109,14 @@ $$
 * Wrapper methods
 * Embedded methods
 
-![](https://imgur.com/4Kv4iL6.png)
+<image src="https://imgur.com/4Kv4iL6.png" width="80%">
+
 
 # Classification
 
 ## Decision Tree 
-![](https://imgur.com/vdxbW5E.png)
+<image src="https://imgur.com/vdxbW5E.png" width="80%">
+
 
 ### entropy(熵)
 $$P(x)=\text{probability of x} \\
@@ -128,11 +131,14 @@ $$GI(S,A)=1-\sum_i ^{A\in S} P(i|S)^2 $$
 ### random forest(Bootstrap Aggregation for decision tree)
 
 use mutilple random Decision Tree to vote asnwer
-![](https://imgur.com/ISGENWw.png)
-![](https://imgur.com/XLte186.png)
+<image src="https://imgur.com/ISGENWw.png" width="80%">
+
+<image src="https://imgur.com/XLte186.png" width="80%">
+
 ## naive bayes 
 
-![貝氏定理 (Bayes' theorem)](../../assets/image/Bayes_Theorem.gif)
+<image src="../../assets/image/Bayes_Theorem.gif" width="80%">
+
 $$P(h|\{a,b,a,c\})=P(h)*P(a|h)^2P(b|h)P(c|h)$$
 $$P(\lnot h|\{a,b,a,c\})=P(\lnot h)*P(a|\lnot h)^2P(b|\lnot h)P(c|\lnot h)$$
 ### zero conditional(when probability is zero)
@@ -148,17 +154,21 @@ $$
 ### Bayesian Network
 Bayesian networks are directed and acyclic, whereas Markov networks are undirected and could be cyclic. 
 
-![](https://codesachin.files.wordpress.com/2017/03/bayesian-networks-a-brief-introduction-7-638.jpg)
+<image src="https://codesachin.files.wordpress.com/2017/03/bayesian-networks-a-brief-introduction-7-638.jpg" width="80%">
+
 
 
 ## SVM(Support Vector Machines)
-![](https://imgur.com/BOIczf9.png)
+<image src="https://imgur.com/BOIczf9.png" width="80%">
+
 ### linear separable SVM
-![](https://imgur.com/DbyeGOz.png)
+<image src="https://imgur.com/DbyeGOz.png" width="80%">
+
 ### linear inseparable SVM
 map data to higher dimension 
 
-![](https://imgur.com/FTRlnAw.png)
+<image src="https://imgur.com/FTRlnAw.png" width="80%">
+
 
 ## KNN( K Nearest Neighbor)
 
@@ -173,11 +183,13 @@ map data to higher dimension
 $$\frac{y}{1-y}= w^T x + b$$
 
 ### Gradient Descent
-![](https://imgur.com/iaNLmgC.png)
+<image src="https://imgur.com/iaNLmgC.png" width="80%">
+
 ### Coordinate Descent
 Coordinate descent updates one parameter at a time, while gradient descent attempts to update all parameters at once
 
-![](https://imgur.com/hr0emoK.png)
+<image src="https://imgur.com/hr0emoK.png" width="80%">
+
 ## Improve Classification Accuracy
 ### Bagging:Bootstrap aggregating
 給定一個大小為 n 的訓練集 D，Bagging算法從中均勻、有放回地（即使用自助抽樣法）選出 m個大小為 $n'$的子集 $D_i$，作為新的訓練集。在這 m 個訓練集上使用分類、回歸等算法，則可得到 m 個模型，在透過取平均值、取多數票等方法，即可得到Bagging的結果。 
@@ -190,16 +202,18 @@ Coordinate descent updates one parameter at a time, while gradient descent attem
 
 
 ## Imbalanced Data Sets
-* Oversampling: Oversample the minority class.
-* Under-sampling: Randomly eliminate tuples from majority class
-* Synthesizing: Synthesize new minority classes
+* **Oversampling**: Oversample the minority class.
+* **Under-sampling**: Randomly eliminate tuples from majority class
+* **Synthesizing**: Synthesize new minority classes
 
-![](https://imgur.com/M2gR4vt.png)
+<image src="https://imgur.com/M2gR4vt.png" width="80%">
+
 
 * Threshold-moving 
   * Move the decision threshold, t, so that the rare class tuples are easier to classify, and hence, less chance of costly false negative errors
 
-![](https://imgur.com/CqhipX8.png)
+<image src="https://imgur.com/CqhipX8.png" width="80%">
+
 # MLP(ANN)
 
 * 人工神经元Artificial Neural Unit
@@ -274,9 +288,12 @@ use point number of group as weight or averge two group distance
 # pattern mining
 
 ## FP tree
-![](https://imgur.com/AwWn0IU.png)
-![](https://imgur.com/i0hjUGG.png)
-![](https://imgur.com/UTtd0PT.png)
+<image src="https://imgur.com/AwWn0IU.png" width="80%">
+
+<image src="https://imgur.com/i0hjUGG.png" width="80%">
+
+<image src="https://imgur.com/UTtd0PT.png" width="80%">
+
 ## rule (is the itemset are frequent itemset)
 * $$\text{support}(A \rightarrow B)=P(A\cap B)$$
 * $$\text{confidence}(A\rightarrow B)=P(A| B)$$
@@ -305,17 +322,17 @@ if lift(A,B) >1 then A,B is effective
 * Dimension/level constraint—similar to projection in relational database 
   * In relevance to region, price, brand, customer category
 * Interestingness constraint—various kinds of thresholds
-  * Strong rules: min_sup = 0.02, min_conf =  0.6, min_correlation=0.7
+  * **Strong rules**: min_sup = 0.02, min_conf =  0.6, min_correlation=0.7
 * Rule (or pattern) constraint
   * Small sales (price < \$10) triggers big sales (sum > $200) 
 -->
 ### pruning Strategies
 use diff condiation to pruning the iteamset early
-* Monotonic(相關性): 
+* **Monotonic(相關性)**: 
   * If c is satisfied, no need to check c again
 * Anti-monotonic:
   *  If constraint c is violated, its further mining can be terminated
-* Convertible: 
+* **Convertible**: 
   * c can be converted to monotonic or anti-monotonic if items can be properly ordered in processing
 * Succinct:
   * If the constraint c can be enforced by directly manipulating the dat
@@ -327,10 +344,10 @@ items within an element are unordered and we list them alphabetically
 
 Representative algorithms
 
-* GSP (Generalized Sequential Patterns): 
+* **GSP (Generalized Sequential Patterns)**: 
   * Generate “length-(k+1)” candidate sequences from “length-k” frequent sequences using Apriori
-* Vertical format-based mining: SPADE (Zaki@Machine Leanining’00)
-* Pattern-growth methods: PrefixSpan
+* **Vertical format-based mining**: SPADE (Zaki@Machine Leanining’00)
+* **Pattern-growth methods**: PrefixSpan
 
 # dimensionality reduction(降维)
 

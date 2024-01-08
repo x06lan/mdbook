@@ -64,9 +64,9 @@ R2 = {Course_no, Sec_no, Semester, Year, Days_hours, Room_no, No_of_students, In
 
 is BCNF
 # 3
-* Caching: move disk data to RAM or SSD
-* Indexing: use B-trees or hash indexes to speedup the time of searching
-* organization of data on disk: keep related data on continuous block
+* **Caching**: move disk data to RAM or SSD
+* **Indexing**: use B-trees or hash indexes to speedup the time of searching
+* **organization of data on disk**: keep related data on continuous block
 # 4
 ## 4.a
 $$
@@ -145,6 +145,6 @@ $$
 $$
 
 # 5
-* **primary index**: must be defined on an ordered key field.
-* **clustered index**: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.
-* **secondary index**: is defined on any non-ordered (keyed or non-key) field.
+* ****primary index****: must be defined on an ordered key field.
+* ****clustered index****: must be defined on an order field (not keyed) allowing for ranges of records with identical index field values.
+* ****secondary index****: is defined on any non-ordered (keyed or non-key) field.

@@ -12,7 +12,8 @@ Five number summary: min, Q1, median, Q3, max<br>
 | --- | :---: | :----: | --- | --- |
 | 13  |  20   |   25   | 35  | 70  |
 # 2.2(f)
-![](https://imgur.com/rWMvu22.png)
+<image src="https://imgur.com/rWMvu22.png" width="80%">
+
 
 # 2.8(a)
 
@@ -196,7 +197,8 @@ cov(x,y)&=\frac{1}{n}\sum_{i}((x_i-E(x))(y_i-E(y))\\
 $$
 
 # 3.11(a)
-![](https://imgur.com/PHobsZJ.png)
+<image src="https://imgur.com/PHobsZJ.png" width="80%">
+
 
 
 

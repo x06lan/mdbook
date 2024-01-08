@@ -156,7 +156,8 @@ CREATE TABLE "PREREQUISITE" (
     PRIMARY KEY ("CourseNumber", "PrerequisiteCourseNumber")
 );
 ```
-![](https://imgur.com/alL1xya.png)
+<image src="https://imgur.com/alL1xya.png" width="80%">
+
 ## b
 ```sql
 INSERT INTO "STUDENT" ("StudentNumber", "Name", "Class", "Major") VALUES
@@ -197,29 +198,41 @@ INSERT INTO "PREREQUISITE" ("CourseNumber", "PrerequisiteCourseNumber") VALUES
 ```
 ## c
 ### a
-![](https://imgur.com/oLroM0e.png)
+<image src="https://imgur.com/oLroM0e.png" width="80%">
+
 ### b
-![](https://imgur.com/cDlqw1w.png)
+<image src="https://imgur.com/cDlqw1w.png" width="80%">
+
 ### c
-![](https://imgur.com/13eFyXg.png)
+<image src="https://imgur.com/13eFyXg.png" width="80%">
+
 ### d
-![](https://imgur.com/e1W89dy.png)
+<image src="https://imgur.com/e1W89dy.png" width="80%">
+
 ### e
-![](https://imgur.com/CMWHT4e.png)
+<image src="https://imgur.com/CMWHT4e.png" width="80%">
+
 ### f
-![](https://imgur.com/o1zk4Mk.png)
+<image src="https://imgur.com/o1zk4Mk.png" width="80%">
+
 ### g
-![](https://imgur.com/k5hxUFD.png)
+<image src="https://imgur.com/k5hxUFD.png" width="80%">
+
 ### h
-![](https://imgur.com/GmCQxNG.png)
+<image src="https://imgur.com/GmCQxNG.png" width="80%">
+
 ### i
-![](https://imgur.com/VstHEZb.png)
+<image src="https://imgur.com/VstHEZb.png" width="80%">
+
 ### j
-![](https://imgur.com/OoYws77.png)
+<image src="https://imgur.com/OoYws77.png" width="80%">
+
 ### k
-![](https://imgur.com/ICsgG0r.png)
+<image src="https://imgur.com/ICsgG0r.png" width="80%">
+
 ### l
-![](https://imgur.com/ESBunyw.png)
+<image src="https://imgur.com/ESBunyw.png" width="80%">
+
 
 ## d
 ```sql
@@ -242,4 +255,5 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 ```
-![](https://imgur.com/9ejsbNW.png)
+<image src="https://imgur.com/9ejsbNW.png" width="80%">
+

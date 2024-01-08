@@ -52,7 +52,8 @@ $$
 \{\{E\},\{ K\},\{ M\},\{ O\},\{ Y\},\{ EK\},\{ EO\}, \{KM\}, \{KO\}, \{KY\}, \{EKO\}\}
 $$
 #### FP-growth algorithm
-![](../../assets/image/data_science_hw2_fp_tree.svg)
+<image src="../../assets/image/data_science_hw2_fp_tree.svg" width="80%">
+
 
 | itemsets | condition                   | support $\boldsymbol{\geq}$ 0.6 itemsets | frequent itemsets             |
 | -------- | --------------------------- | ---------------------------------------- | ----------------------------- |

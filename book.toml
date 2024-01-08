@@ -39,4 +39,3 @@ command = "./mdbook-katex"
 
 [preprocessor.mermaid]
 command = "./mdbook-mermaid"
-
