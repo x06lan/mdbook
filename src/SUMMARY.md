@@ -15,6 +15,7 @@
   * [signals and systems](math/signals-and-systems/signals-and-systems.md)
     * [signals processing](math/signals-and-systems/signals-and-systems.md)
     * [mid](math/signals-and-systems/mid.md)
+    * [final](math/signals-and-systems/final.md)
   * [linear algebra](math/linear-algebra.md)
   * [calculus](math/calculus.md)
 
