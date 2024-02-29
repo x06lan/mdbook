@@ -1,4 +1,4 @@
-tags `math` `linear algebra`
+tags `math` `linear` `algebra`
 # linear algebra
 ## matrix
 
@@ -155,7 +155,7 @@ $$
         2&3&4&7\\
     \end{bmatrix}
 $$
-## reduced echelon form
+## reduced echelon form(gaussian elimination)
 $$
     \begin{bmatrix}
         0& 3 &-6 &6 &4 &-5\\

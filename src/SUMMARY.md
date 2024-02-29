@@ -17,6 +17,7 @@
     * [mid](math/signals-and-systems/mid.md)
     * [final](math/signals-and-systems/final.md)
   * [linear algebra](math/linear-algebra.md)
+  * [matrix algebra](math/matrix-algebra.md)
   * [calculus](math/calculus.md)
 
 * [computer science](computer-science/README.md)
