@@ -1,0 +1,2 @@
+# OS
+tags: `software` `hardware`

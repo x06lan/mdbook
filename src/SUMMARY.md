@@ -18,6 +18,8 @@
     * [final](math/signals-and-systems/final.md)
   * [linear algebra](math/linear-algebra.md)
   * [matrix algebra](math/matrix-algebra.md)
+  * [formal language](math/formal-language/formal-language.md)
+    * [hw1](math/formal-language/hw1.md)
   * [calculus](math/calculus.md)
 
 * [computer science](computer-science/README.md)
@@ -39,6 +41,9 @@
     * [hw4](computer-science/computer-network/hw4.md)
     * [hw5](computer-science/computer-network/hw5.md)
     * [hw6](computer-science/computer-network/hw6.md)
+  * [OS](computer-science/operating-system/operating-system.md)
+    * [OS](computer-science/operating-system/operating-system.md)
+    * [hw1](computer-science/operating-system/hw1.md)
   * [BitTorrent](computer-science/BitTorrent.md)
   * [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
   * [leetcode](computer-science/leetcode.md)

@@ -87,6 +87,7 @@ c&d\\
 \begin{bmatrix}
 a&b
 \end{bmatrix}
++
 \begin{bmatrix}
 0\\3
 \end{bmatrix}
@@ -142,13 +143,57 @@ $$
 \end{aligned}\\
 $$
 ## revert U to A
-
+$G,F,E $ are elimination operation matrix
 $$
 GFEA=U\\
 E^{-1}F^{-1}G^{-1}U=A\\
 \text{let } L=E^{-1}F^{-1}G^{-1}\\
 LU=A\\
+U=DU\\
+LDU=A\\
+$$
+$$
+\begin{aligned}\\
+E^{-1} F^{-1} G^{-1}&=L\\
+
+\begin{bmatrix}
+1 & 0 & 0\\
+l_{21} & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+l_{31} & 0 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & l_{32} & 1\\
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1 & 0 & 0\\
+l_{21} & 1 & 0\\
+l_{31} & l_{32} & 1\\
+\end{bmatrix}\\
+\begin{bmatrix}
+1 & 0 & 0\\
+l_{21} & 1 & 0\\
+l_{31} & l_{32} & 1\\
+\end{bmatrix}
+&=L
+\end{aligned}
 $$
 <!-- * $U$:Appears after forward elimination -->
 <!-- * $U$: result of gaussian elimination -->
 <!-- * $L$:Bring $U$ back to $A$ -->
+
+$$
+\begin{align}
+Ax &= b \\
+L^{-1}Ax &= L^{-1}b \\
+Ux &= L^{-1}b \\
+x &= U^{-1}L^{-1}b
+\end{align}
+$$
