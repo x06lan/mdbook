@@ -1,2 +1,2 @@
-# OS
+# operating system
 tags: `software` `hardware`

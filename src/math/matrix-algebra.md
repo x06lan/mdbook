@@ -1,6 +1,9 @@
 tags `math` `matrix` `algebra`
+
 # matrix algebra
+
 # multiplication
+
 $$
 AB=
 \begin{bmatrix}
@@ -50,6 +53,7 @@ c&d\\
 a\begin{bmatrix} 1\\2\end{bmatrix}+c\begin{bmatrix} 0\\3\end{bmatrix}&,& b\begin{bmatrix} 1\\2\end{bmatrix}+d\begin{bmatrix} 0\\3\end{bmatrix}\\
 \end{bmatrix}
 $$
+
 ### by row
 
 $$
@@ -70,6 +74,7 @@ c&d\\
 $$
 
 ### by block
+
 $$
 AB=
 \begin{bmatrix}
@@ -95,11 +100,13 @@ a&b
 c&d
 \end{bmatrix}
 $$
+
 # matrix form of gaussian elimination
 
 actually the row reduce from the [there](./linear-algebra.html#reduced-echelon-formgaussian-elimination) are matrix multiplication as well
 
 Subtracting 2 times the $1^{st}$ row of A from the $2^{nd}$ row of A
+
 $$
 \{ EA \} \rightarrow A^+\\
 \begin{bmatrix}
@@ -119,9 +126,8 @@ x_{31} &x_{32} & x_{33}\\
 \end{bmatrix}\\
 $$
 
-
-
 ## for example
+
 $$
 \begin{aligned}\\
 \{ EA \} &\rightarrow A^+\\
@@ -142,8 +148,11 @@ $$
 \end{bmatrix}\\
 \end{aligned}\\
 $$
+
 ## revert U to A
+
 $G,F,E $ are elimination operation matrix
+
 $$
 GFEA=U\\
 E^{-1}F^{-1}G^{-1}U=A\\
@@ -152,6 +161,7 @@ LU=A\\
 U=DU\\
 LDU=A\\
 $$
+
 $$
 \begin{aligned}\\
 E^{-1} F^{-1} G^{-1}&=L\\
@@ -185,6 +195,7 @@ l_{31} & l_{32} & 1\\
 &=L
 \end{aligned}
 $$
+
 <!-- * $U$:Appears after forward elimination -->
 <!-- * $U$: result of gaussian elimination -->
 <!-- * $L$:Bring $U$ back to $A$ -->

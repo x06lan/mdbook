@@ -1,7 +1,8 @@
 tags `math` `linear` `algebra`
-# linear algebra
-## matrix
 
+# linear algebra
+
+## matrix
 
 |      | Column 1 | Column 2 | Column 3 |
 | ---- | -------- | -------- | -------- |
@@ -13,7 +14,9 @@ diagoua 對角
 commtative law
 associative law
 distributive law
+
 ## sample
+
 $$
     A=\begin{bmatrix}
     1&2\\
@@ -27,7 +30,9 @@ $$
     2&-4\\
     \end{bmatrix}
 $$
+
 ## 乘積
+
 $$
     A=\begin{bmatrix}
     a&b\\
@@ -63,8 +68,11 @@ $$
     \end{bmatrix}\\
     \underset{[n\times m]}{A}*\underset{[m\times s]}{B}=\underset{[n\times s]}{C}
 $$
+
 ## 反矩陣
-$$  A=\begin{bmatrix}
+
+$$
+A=\begin{bmatrix}
         a&b\\
         c&d\\
     \end{bmatrix}\\
@@ -114,6 +122,7 @@ $$  A=\begin{bmatrix}
 $$
 
 ## indentity matrix
+
 $$
     I=\begin{bmatrix}
         1&0&0\\
@@ -121,7 +130,9 @@ $$
         0&0&1\\
     \end{bmatrix}
 $$
+
 ## transpose matrix
+
 $$
     A=\begin{bmatrix}
         1&2\\
@@ -130,9 +141,11 @@ $$
     A^{T}=\begin{bmatrix}
         1&3\\
         2&4\\
-    \end{bmatrix}    
-$$ 
+    \end{bmatrix}
+$$
+
 ## innrchange (change row)
+
 $$
     \begin{bmatrix}
         1&2\\
@@ -142,9 +155,11 @@ $$
         5&6\\
         3&4\\
         1&2\\
-    \end{bmatrix} 
+    \end{bmatrix}
 $$
+
 ## math to matrix
+
 $$
     \begin{cases}
         1*x_1&+&2*x_2&+&3*x_3=5\\
@@ -155,7 +170,9 @@ $$
         2&3&4&7\\
     \end{bmatrix}
 $$
+
 ## reduced echelon form(gaussian elimination)
+
 $$
     \begin{bmatrix}
         0& 3 &-6 &6 &4 &-5\\
@@ -208,7 +225,9 @@ $$
         x_5=4
     \end{cases}
 $$
+
 ## vector equation and matrix equation
+
 $$
     \begin{cases}
         &x_1   &+ &2x_2  &-&x_3 &=&3\\
@@ -219,12 +238,12 @@ $$
         1\\
         -2\\
         0\\
-    \end{bmatrix} 
+    \end{bmatrix}
     +x_2 \begin{bmatrix}
         2\\
         -2\\
         2\\
-    \end{bmatrix} 
+    \end{bmatrix}
     +x_3 \begin{bmatrix}
         -1\\
         4\\
@@ -244,7 +263,7 @@ $$
         x_1\\
         x_2\\
         x_3\\
-    \end{bmatrix} 
+    \end{bmatrix}
     =\begin{bmatrix}
         3\\
         0\\
@@ -253,7 +272,9 @@ $$
     Ax=b\\
     A_{matrix}*x_{vector}=b_{vector}
 $$
+
 ## span
+
 $$
 	v_1=\begin{bmatrix}
         1\\
@@ -275,7 +296,7 @@ $$
 	&v_1,&v_2,&v_3
   \end{matrix}
   \rbrace
-   span 
+   span
    \text{: mean all the combinenation vecter of can combine by }v_1、v_2、v_3 .\\
 	\\
 	set\lbrace
@@ -283,11 +304,11 @@ $$
 	&v_1,&v_2,&v_3
   \end{matrix}
   \rbrace
-   span \ R^3 
+   span \ R^3
    \text{: mean all the vecter can be combine by }v_1、v_2、v_3 .\\
        \text{b are the all the vector} \\
     \text{x are the all the possible vector} \\
-	example:\\ 
+	example:\\
 	if \lbrace
   \begin{matrix}
 	&v_1,&v_2,&v_3
@@ -303,7 +324,7 @@ $$
         x_1\\
         x_2\\
         x_3\\
-    \end{bmatrix} 
+    \end{bmatrix}
     =b\begin{bmatrix}
         b_1\\
         b_2\\
@@ -333,7 +354,9 @@ $$
   \rbrace
    not \ span \ R^3
 $$
+
 ## linear dependence
+
 $$
 if \lbrace
   \begin{matrix}
@@ -341,11 +364,13 @@ if \lbrace
   \end{matrix}
   \rbrace
   \text{
-   linear dependence then at least one of vector is linear combination of another.} 
+   linear dependence then at least one of vector is linear combination of another.}
 $$
+
 ## linear depandence vs. span:
+
 $$
-    A_{matrix}*x_{vector}=b_{vector}\\ 
+    A_{matrix}*x_{vector}=b_{vector}\\
 A\begin{bmatrix}
 	   	  0  &2  & -2 \\
 	   	  1  &1  & 1 \\
@@ -365,7 +390,9 @@ A\begin{bmatrix}
 	   	  b_4 \\
     \end{bmatrix}
 $$
+
 ## echelon form
+
 $$
 \begin{bmatrix}
       0  &2  & -2 &b_1 \\
@@ -392,7 +419,9 @@ $$
       0  &0  & 0  &-b_2+b_4+\frac{-b_1}{2}\\
 \end{bmatrix}
 $$
+
 ## vector equation
+
 $$
 x_1\begin{bmatrix}
       1  \\
@@ -419,29 +448,39 @@ b\begin{bmatrix}
       -b_2+b_4+\frac{-b_1}{2}\\
 \end{bmatrix}
 $$
-## span R^4
-NO,did not have pivot point in row3 and row4
-## linear independence?
-NO,did not have pivot point in column 3 
 
+## span R^4
+
+NO,did not have pivot point in row3 and row4
+
+## linear independence?
+
+NO,did not have pivot point in column 3
 
 # transform
+
 ## one-to-one
+
 $$
 T(x)= b \\
 \text{for all b only have one x that T(x)=b}
 $$
+
 ## onto
+
 $$
 T(x)= b \\
 \text{for all b have atleast one x that T(x)=b}
 $$
+
 ## linear transformation
+
 $$
 T(x)= b \\
 \text{for all b have atleast one x that T(x)=b}\\
 T(a+b)=T(a)+T(b)
 $$
+
 # vectorspace
 
 $$
@@ -452,7 +491,9 @@ $$
 \text{if v is inside A then n} \in \text{R and n*v should be also inside A}\\
 \end{cases}
 $$
+
 # child space
+
 $$
 x=\begin{bmatrix}
       2  & 2& 4 \\
@@ -466,20 +507,30 @@ x=\begin{bmatrix}
       0 & 0& 0 \\
 \end{bmatrix}
 $$
-## null space
+
+$$
+Col(A)=Row(A^T)\\
+Col(A^T)=Row(A)\\
+$$
+
+## null svfvvvvbgvvvvnvfvbnmv
+
 $$
 \text{null space : all the solution make }  Ax=0.\\
 \text{orth to columns space}\\
 \text{Negative the not pivot columns }\\
+\text{but if the row of not pivot columns have not pivot then value of that row is 1}\\
 {\begin{cases}
     {\begin{bmatrix}
         -0\\
         -2\\
-        -0\\
+        1\\
     \end{bmatrix}}
 \end{cases}}
 $$
+
 ## columns space
+
 $$
 \text{columns space :all the  combinenation of columsn vector }\\
 Ax=b\\
@@ -497,7 +548,9 @@ Ax=b\\
 		 \end{bmatrix}
     \end{cases}}
 $$
+
 ## rows space
+
 $$
 \text{rows space :the space that is orth to columns space}\\
 \text{the pivot row}\\
@@ -527,34 +580,41 @@ $$
     \end{cases}}
 $$
 
+# rank nullity
+
+![](https://cdn1.byjus.com/wp-content/uploads/2022/03/Rank-and-nullity1.png)
+
+$$
+A \in R^{m\times n} \\
+rank(A)+nullity(A)=n\\
+rank(A^T)+nullity(A^T)=m
+$$
+
+## rank
+
+the number of non-zero pivot column
+
+$$
+rank(A)=dim(Col(A))\\
+rank(A)=rank(A^T)
+$$
+
+## nullity/kernel
+
+the number of zero pivot column
+
+$$
+nullity(A)=dim(Nul(A))
+$$
+
 # Eigenvector and Eigenvalue
+
 $$
-\lambda= \text{eigenvalue (nature number could be zero)}\\
-v=\text{eigenvector(not zero vector)}\\
-Av=\lambda v\\
-Av =\lambda Iv\\
-Av − \lambda Iv = 0\\
-| A − \lambda I | = 0\\
-$$
-## eigen value
-$$
-A=\begin{bmatrix}
-			6 & 9\\
-			2 & 3\\
+\lambda= \text{eigenvalue (nature number could be zero)}\\b## null svfvvvvbgvvvvnv
+
+\end{bmatrix}\\ould be zero)}\\b## null svfvvvvbgvvvvnv
+
 \end{bmatrix}\\
-det\begin{bmatrix}
-			6 & 9\\
-			2 & 3\\
-\end{bmatrix}=6*3-9*2=0\\
-| A − \lambda I | = 0\\
-det\begin{bmatrix}
-			6-\lambda & 9\\
-			2 & 3-\lambda \\
-\end{bmatrix}=(6-\lambda)(3-\lambda)-18=0\\
-\lambda =0 \ or \ 9
-$$
-## eigen vector
-$$
 \lambda =0 \ or \ 9 \\
 Av=\lambda v\\
 \begin{bmatrix}
@@ -562,8 +622,21 @@ Av=\lambda v\\
 		2 & 3\\
 \end{bmatrix}
 \begin{bmatrix}
+\end{bmatrix}=9
+\begin{bmatrix}
 		x\\
 		y\\
+\end{bmatrix}\\
+\begin{cases}
+6x+9y=9x\\bn
+2x+3y=9y\\
+\end{cases}\\
+Av=\lambda v\\
+\begin{bmatrix}
+		6 & 9\\
+		2 & 3\\
+\end{bmatrix}
+\begin{bmatrix}
 \end{bmatrix}=9
 \begin{bmatrix}
 		x\\
@@ -572,7 +645,6 @@ Av=\lambda v\\
 \begin{cases}
 6x+9y=9x\\
 2x+3y=9y\\
-\end{cases}\\
 6x=18y \rightarrow x=-3y \\
 Av=\lambda v\\
 \begin{bmatrix}
@@ -600,6 +672,7 @@ v=\begin{bmatrix}
 $$
 
 # diagonalization
+
 $$
 \text{Find P and D that}\\
 A=PDP^{-1}\\
@@ -611,13 +684,15 @@ A^n=PD^nP^{-1}\\
 		V1_{EigenVector} & V2_{EigenVector}& & V3_{EigenVector} &...\\
 \end{bmatrix}\\
 \underset{n \times m}{D}=\begin{bmatrix}
-		\lambda1_{EigenValue}   &0  &0&... \\     
+		\lambda1_{EigenValue}   &0  &0&... \\
         0 & \lambda2_{EigenValue} & 0&...\\
         0 & 0 &\lambda3_{EigenValue} &...\\
         \vdots & \vdots &\vdots & \ddots \\
 \end{bmatrix}
 $$
+
 # orthogonal
+
 $$
 \text{If } a\cdot b=0 \text{ then }a \perp b \text{ (orthogonal)}\\
 \begin{bmatrix}
@@ -637,7 +712,9 @@ $$
 4\\
 \end{bmatrix}
 $$
+
 ## dot
+
 [comment]: <> ( )
 [//]: # ( )
 
@@ -646,25 +723,36 @@ $$
 \text{columns space vector: }A\cdot B=A^T\times B\\
 \text{rows space vector: }A\cdot B=A\times B^T\\
 $$
+
 ## |A|
+
 ### vector
+
 $$
 |A|=\sqrt{\sum_{i=1}^{n}\sum_{j=1}^{m}{{(A_{ij})}^2}}\\
 |A-B|=|A|-2A\cdot B+|B|\\
 $$
+
 ### matrix
+
 [link](https://math.stackexchange.com/questions/507742/distance-similarity-between-two-matrices)
+
 $$
 |A-B|=\text{B to A distance or Similarity between two matrices}\\
 distance=\sum_{i=1}^{n}\sum_{j=1}^{m}{|A_{ij}-B_{ij}}|\\
 distance=\sqrt{\sum_{i=1}^{n}\sum_{j=1}^{m}{{(A_{ij}-B_{ij})}^2}}\\
 $$
+
 ## orthogonal vs orthonormal matrix
+
 ### orthogonal
+
 $$
 \text{If column vector are orth to each other}\\
 $$
+
 ### orthonormal
+
 $$
 \text{If column vector are orth to each other and the lenght of  column vector is 1  then is orthonormal}\\
 \text{then is orthogonal matrix}\\
@@ -672,12 +760,12 @@ $$
 \frac{1}{\sqrt{3}} \\
 \frac{1}{\sqrt{3}} \\
 \frac{1}{\sqrt{3}} \\
-\end{bmatrix} \perp 
+\end{bmatrix} \perp
 \begin{bmatrix}
 1 \\
 1 \\
 -2 \\
-\end{bmatrix} \perp 
+\end{bmatrix} \perp
 \begin{bmatrix}
 -3 \\
 3 \\
@@ -698,9 +786,11 @@ $$
 \text{if A is orthogonal matrix then } A^T \times A=I \\
 A^T=A^{-1}
 $$
+
 ## find orth basis(gram-schmidt process)
 
-## erivative of a Matrix 
+## erivative of a Matrix
+
 $$
 A=\begin{bmatrix}
 1 &2\\
@@ -751,7 +841,9 @@ f_3(x_1,x_2)=a_{11}{x_1}^2+a_{12}x_1x_2+a_{21}x_1x_2+a_{22}{x_2}^2\\
 \\
 \because z \neq x \\
 $$
+
 ## perjection
+
 $$
 \hat{y}=\frac{y\cdot A}{y \cdot y}\times y\\
 \text{define } z=y-\hat{y}\\
@@ -762,7 +854,9 @@ y=\hat{y}+z\\
 \hat{y}\in \text{A columns space}\\
 \end{cases}
 $$
+
 ## curve fitting | regression | normal eqution
+
 $$
 (\dim \beta)n=2,
 \text{(test number)}m=4\\
@@ -794,14 +888,18 @@ z=y-\hat{y}\\
 z\in \text{nul }A^T\\
 \text{distance of y to A columns space is } z(\text{because } z \perp A)\\
 $$
+
 ### way 1
+
 $$
 \text{Find } \beta \ let \ {|A\beta - y|}^2 \text{have} \min\\
 {|A\beta - y|}^2=(|A\beta|-2A\beta\cdot y+|y|)^2\\
 {|A\beta - y|}^2=(|A\beta|-2A\beta\cdot (\hat{y}+z)+|\hat{y}+z|)^2\\
 {|A\beta - y|}^2=(|A\beta|-2A\beta\cdot (\hat{y}+z)+|\hat{y}+z|)^2\\
 $$
+
 ### way 2
+
 $$
 \text{Find } \beta \ let \ {|A\beta - y|}^2 \text{have} \min\\
 \text{if erivative }f^{'}(a)=0 \ then \ f(a)\text{ is max or min value }\\
@@ -810,7 +908,9 @@ $$
 2{|y-A\beta|}\times\frac{d}{d\beta}(|y|-2y\cdot A\beta+|A\beta|)=0\\
 2{|y-A\beta|}\times (A+|A\beta|)=0\\
 $$
+
 ### way 3
+
 $$
 \text{Find } \beta \ let \ {|A\beta - y|}^2 \text{have} \min\\
 |A^Ty-A^TA\beta|=A^T\times distance\\
