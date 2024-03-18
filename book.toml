@@ -30,12 +30,14 @@ copyable = true          # include the copy button for copying code snippets
 copy-js = true           # includes the JavaScript for the code editor
 line-numbers = false     # displays line numbers for editable code
 
+[preprocessor.graphviz]
+command = "./mdbook-graphviz"
+output-to-file = false
+after = ["links"]
+
 [preprocessor.katex]
 command = "./mdbook-katex"
 
-# [preprocessor.graphviz]
-# command = "./mdbook-graphviz"
-# output-to-file = false # defaults to false, change to true to create SVG files instead of rendering them inline
 
 [preprocessor.mermaid]
 command = "./mdbook-mermaid"

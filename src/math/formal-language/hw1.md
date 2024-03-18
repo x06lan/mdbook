@@ -4,16 +4,17 @@
 
 # 1.a
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
 
-    node [shape = doublecircle]; q0
+    node [shape = doublecircle]; q1
     node [shape=plaintext] s;
     s [label=""];
 
     node [shape = circle];
+
     s  -> q0 [ label = "start" ];
     q0 -> q0 [ label = "0" ];
     q0 -> q1 [ label = "1" ];
@@ -26,7 +27,7 @@ digraph finite_state_machine {
 
 # 1.b
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -49,7 +50,7 @@ digraph finite_state_machine {
 
 # 1.c
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -69,10 +70,9 @@ digraph finite_state_machine {
 
 # 1.d
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
-    splines=false;
     size="8,5"
 
 
@@ -117,7 +117,7 @@ digraph finite_state_machine {
 
 # 1.e
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -160,9 +160,7 @@ $$
 
 # 3.a
 
-todo
-
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -184,9 +182,7 @@ digraph finite_state_machine {
 
 # 3.b
 
-todo
-
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -202,7 +198,7 @@ digraph finite_state_machine {
     q1 -> q2 [ label = "0" ];
     q2 -> q0 [ label = "0" ];
     q2 -> q3 [ label = "1" ];
-    q3 -> q1 [ label = "0" ];
+    q3 -> q2 [ label = "0" ];
     q3 -> q4 [ label = "1" ];
     q4 -> q4 [ label = "0,1" ];
 
@@ -211,9 +207,39 @@ digraph finite_state_machine {
 
 # 3.c
 
+```dot process
+digraph finite_state_machine {
+    rankdir=LR;
+    size="15,15"
+
+    node [shape = circle];
+    node [shape=plaintext] s;
+    s [label=""];
+    node [shape = doublecircle]; q3,q5;
+    node [shape = circle];
+    s  -> q0 [ label = "start" ];
+    q0 -> q1 [ label = "ϵ" ];
+    q0 -> q2 [ label = "ϵ" ];
+
+    q1 -> q3 [ label = "1" ];
+    q1 -> q1 [ label = "0" ];
+    q3 -> q1 [ label = "1" ];
+    q3 -> q3 [ label = "0" ];
+
+    q2 -> q4 [ label = "0"]
+    q2 -> q2 [ label = "1"]
+    q4 -> q5 [ label = "0"]
+    q4 -> q4 [ label = "1"]
+    q5 -> q6 [ label = "0,1"]
+    q6 -> q6 [ label = "0,1"]
+
+
+}
+```
+
 # 3.d
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -235,7 +261,7 @@ digraph finite_state_machine {
 
 # 3.e
 
-```graphviz
+```dot process
 digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
@@ -270,10 +296,8 @@ $$
 todo
 
 $$
-R=\Sigma^*0\Sigma^*0\Sigma^*
+R=(1^+ 0 1^+ 0 1^*)\cup(1^+ 0 1^* 0 1^+)\cup(1^* 0 1^+ 0 1^+)
 $$
-
-[ref](https://chat.openai.com/share/e9bbc771-30ac-49e0-a95b-5d3b1c4b352b)
 
 # 4.c
 
