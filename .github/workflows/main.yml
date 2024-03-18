@@ -2,25 +2,25 @@ name: CI
 
 on:
   push:
-    branches: [ main ,master]
+    branches: [main, master]
   pull_request:
-    branches: [ main ,master]
+    branches: [main, master]
 
 jobs:
   build:
     name: Build, Test and Deploy
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # To push a branch 
-      pull-requests: write  # To create a PR from that branch
+      contents: write # To push a branch
+      pull-requests: write # To create a PR from that branch
     steps:
       - uses: actions/checkout@v2
       # - uses: actions-rs/toolchain@v1
-        # with:
-          # toolchain: stable
+      # with:
+      # toolchain: stable
       # - run: (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.4" mdbook)
-      # - run: sudo apt install cargo 
-      # - run: cargo install mdbook-graphviz
+      # - run: sudo apt install cargo
+      - run: sudo apt-get install graphviz
       - run: ./mdbook build && ./mdbook test # In case of custom book path: mdbook build path/to/mybook && mdbook test path/to/mybook
       - run: ls -all
       - uses: JamesIves/github-pages-deploy-action@4.1.7
