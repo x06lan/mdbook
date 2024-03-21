@@ -1,14 +1,15 @@
 # dot process
+
 tags: `graphviz`
 
 ```dot process
 digraph hierarchy {
                 nodesep=0.5
-                node [color=Red,fontname=Courier,shape=box] 
+                node [color=Red,fontname=Courier,shape=box]
                 edge [color=Blue, style=dashed]
-                
+
                 {"15 10 11 12 1 2 3"}
-                
+
                 "15 10 11 12 1 2 3"->{"4"}
                 "4"->{"5 6"}[label="true"]
                 "4"->{"8"}[label="false"]
@@ -16,21 +17,21 @@ digraph hierarchy {
                 {"5 6"}->{4}[label="false"]
                 7->{4}
                 {8}->{"12 13"}
-                
-                
+
+
 }
 ```
 
 ```dot process
 digraph hierarchy {
                 nodesep=0.5
-                node [color=Red,fontname=Courier,shape=box] 
+                node [color=Red,fontname=Courier,shape=box]
                 edge [color=Blue, style=dashed]
-                
+
                 {"17 12 13 1 2 3"}
-                
+
                 "17 12 13 1 2 3"->{"4"}
-                
+
 }
 ```
 
@@ -48,15 +49,15 @@ digraph structs{
 	culling [label="{<f0>culling |remove unneed vertex }" shape=Mrecord]
 	frag [label="{<f0>fragment shader|lighting | color|shadow  }" shape=Mrecord]
 	framebuffer [label="{<f0>frame buffer | postprocess}" shape=Mrecord]
-    
-    
-    start:f0 -> cpu:f0 
+
+
+    start:f0 -> cpu:f0
 	cpu->bind[label = "vertex data"]
     bind:f0 -> draw
 	draw->vertex
 	vertex->geo
     geo->culling
-    culling->rez 
+    culling->rez
     rez->frag
 	frag->framebuffer
 
@@ -64,6 +65,7 @@ digraph structs{
 
 }
 ```
+
 ```dot process
 digraph google{
     // layout=neato;
@@ -87,6 +89,7 @@ digraph google{
 	"000"
 }
 ```
+
 ```dot process
 digraph google{
     // layout=neato;
@@ -104,12 +107,13 @@ digraph google{
 	"001"
 	"010"
 	"011"
-	"100" 
+	"100"
 	"101"
 	"110"
 	"111"
 }
 ```
+
 ```dot process
 digraph google{
     // layout=neato;
@@ -124,22 +128,23 @@ digraph google{
     label="mesh network"
 	// "000"->"001"->"010"->"011"->"100"->"101"->"110"->"111"->"000"
 	"000"->"001" "000"->"010" "000"->"011"  "000"->"100"  "000"->"101"  "000"->"110"  "000"->"111"
-	"001"->"010" "001"->"011" "001"->"100"  "001"->"101"  "001"->"110"  "001"->"111" 
-	"010"->"011" "010"->"100" "010"->"101"  "010"->"110"  "010"->"111" 
-	"011"->"100" "011"->"101" "011"->"110"  "011"->"111" 
-	"100"->"101" "100"->"110" "100"->"111" 
-	"101"->"110" "101"->"111" 
-	 "110"->"111" 
-	
+	"001"->"010" "001"->"011" "001"->"100"  "001"->"101"  "001"->"110"  "001"->"111"
+	"010"->"011" "010"->"100" "010"->"101"  "010"->"110"  "010"->"111"
+	"011"->"100" "011"->"101" "011"->"110"  "011"->"111"
+	"100"->"101" "100"->"110" "100"->"111"
+	"101"->"110" "101"->"111"
+	 "110"->"111"
+
 	// mode="ipsep"
 	// "000"[root=true]
     // "010"-> "101" [constraint=false color=red,mode="ipsep"];
-	
-    
+
+
 }
 ```
+
 ```dot process
-digraph google{
+digraph tracker{
     // layout=neato;
     // layout=circo;
 	// layout=twopi;
@@ -147,16 +152,16 @@ digraph google{
     fontcolor=white
     bgcolor="black"
     // bgcolor="transparent"
-    node[shape=circle,style=filled,color=white,colorscheme=ylgnbu7,fixedsize=1,fontsize=15,width=.75]
+    node[shape=circle,style=filled,color=white,colorscheme=ylgnbu7,fontsize=15]
     edge[color=white,penwidth=2 ,minlen=3]
     label="tracker server"
 	// "000"->"001"->"010"->"011"->"100"->"101"->"110"->"111"->"000"
-	"tracker server"[shape=cube,width=2,height=1,fontsize=20,color="#00ff00"]
-	
+	"tracker server"[shape=box,fontsize=20,color="#00ff00"]
+
 	"tracker server"->"client11"
 	"client11"->"tracker server"
     "client11"-> "You" [constraint=false,color=green ,minlen=3,dir="both"];
-	
+
 	"tracker server"->"You"
 	"You"->"tracker server"
 
@@ -166,6 +171,7 @@ digraph google{
 
 }
 ```
+
 ```dot process
 digraph google{
     // layout=neato;
@@ -202,10 +208,11 @@ digraph google{
     "110"->"000"[color=skyblue]
 	"111"
 	// "111"->"101"
-	"000" 
-    
+	"000"
+
 }
 ```
+
 ```dot process
 digraph structs{
     fontcolor=white
@@ -219,11 +226,12 @@ digraph structs{
     n2 [label="{N2|{⠀⠀|001|⠀⠀}|{⠀⠀|⠀⠀|<f1>101}|{110|111|___}}" shape=Mrecord]
     n3 [label="{N3|{⠀⠀|001|010}|{⠀⠀|100|101}|{110|<f2>111|___}}" shape=Mrecord]
 
-    start:f0 -> n1:f0 
-    start:f1 -> n2:f1 
-    start:f2 -> n3:f2 
+    start:f0 -> n1:f0
+    start:f1 -> n2:f1
+    start:f2 -> n3:f2
 }
 ```
+
 ```dot process
 digraph google{
     // layout=neato;
@@ -259,9 +267,10 @@ digraph google{
     "110"->"001"
     "110"->"000"
 	"111"
-	"000"   
+	"000"
 }
 ```
+
 ```dot process
 digraph google{
 node[shape=record]
@@ -275,7 +284,7 @@ node[shape=record]
    "10*"->"101";
    "10*"->"100";
 
-   
+
 	nnnn ->"0**";
    "0**"->"01*";
    "0**"->"00*";
@@ -285,18 +294,19 @@ node[shape=record]
    "00*"->"000";
 }
 ```
+
 ```dot process
 digraph google{
     fontcolor=white
   fontname="Helvetica,Arial,sans-serif"
-    
+
     // bgcolor="transparent"
     bgcolor="black"
     node[shape=record,style=filled,color=white]
     edge[color=white]
     	subgraph cluster_3 {
 
-		"1**" 
+		"1**"
 		"11*"
 		"111"
 		"110"
@@ -307,7 +317,7 @@ digraph google{
 		color=green
 	}
 		subgraph cluster_2 {
-		"0**" 
+		"0**"
 		"01*"
 		"011"
 		"010"
@@ -317,7 +327,7 @@ digraph google{
 	}
        subgraph cluster_1 {
 
-		"00*" 
+		"00*"
 		"000"
 		label = "k-bucket 0";
 		color=blue
@@ -347,14 +357,14 @@ digraph google{
 digraph google{
     fontcolor=white
     fontname="Helvetica,Arial,sans-serif"
-    
+
     // bgcolor="transparent"
     bgcolor="black"
-    
+
     node[shape=record,style=filled,color=white,colorscheme=ylgnbu7]
     edge[color=white]
     subgraph cluster_3 {
-		"1**" 
+		"1**"
 		"11*"
 		"111"
 		"110"
@@ -384,7 +394,7 @@ digraph google{
     "001"-> "101" [constraint=false color=red];
     // "001" "111" rank=same ;
    // "001"->"111"[rank=same];
-   
+
 }
 
 ```
