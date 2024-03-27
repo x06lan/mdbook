@@ -37,6 +37,10 @@ after = ["links"]
 
 [preprocessor.katex]
 command = "./mdbook-katex"
+throw-on-error = true
+leqno = false
+fleqn = false
+pre-render = true
 
 
 [preprocessor.mermaid]

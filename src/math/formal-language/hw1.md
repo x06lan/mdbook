@@ -73,7 +73,7 @@ digraph finite_state_machine {
 ```dot process
 digraph finite_state_machine {
     rankdir=LR;
-    size="8,5"
+    size="100,100"
 
 
     node [shape = doublecircle]; q20,q21,q22;
@@ -109,9 +109,6 @@ digraph finite_state_machine {
     q22 -> qn [ label = "0" ];
 
     qn -> qn [ label = "0,1" ];
-
-
-
 }
 ```
 
@@ -375,9 +372,14 @@ $$
 
 # 6.b
 
-if $L_1$ and $L_2$ is regular then $L_1 \cup L_2 $ is regular
+$$
+A \text{ is a finite language, then it contains a finite number of strings }a_0,a_1,\cdots,a_n\\
+\text{The language }\{a_i\} \text{ consisting of a single literal string }a_i\text{ is regular }\\
+\text{The union of a finite number of regular languages is also regular.}\\
+\text{Therefore } A=a_0,a_1,\cdots,a_n \text{ is regular}
+$$
 
-<!-- By definition any regular language can convert finite machine. -->
+[ref](https://cs.stackexchange.com/questions/104322/why-is-every-finite-language-a-%E2%8A%86-%CE%A3-regular)
 
 # 6.c
 
@@ -399,24 +401,53 @@ $$
 
 $$
 
+L^{(\frac{1}{3})}=\{w|w^3\in L\}\\
+$$
+
+$$
+L^{(\frac{1}{3})} \text{ mean all the solution that in } L \text{ that can divide to 3 exact same part}\\
+
 
 $$
 
 # 6.f
 
-yes
+$$
+L^{(3)}=\{w^3|w\in L\}\\
+\text{since } L \text{ is regular so is } L^3.\text{(regular closure)}
+$$
+
+[ref (Formal definition)](https://en.wikipedia.org/wiki/Regular_language)
 
 # 6.g
 
+todo
+
+since $w^*$ and $L$ is regular make $(w^* \cap L)$ is regular. ([ref](https://stackoverflow.com/questions/58317350/can-the-intersection-of-two-regular-languages-be-non-regular))
+
 # 6.h
 
-yes
+$$
+L^{\frac{1}{\infty}}=L^{1} \cap L^{\frac{1}{2}} \cdots  \cap L^{\frac{1}{\infty}}\\
+\text{since } L\text{ is regular so is the }L^{\frac{1}{n}}\\
+ L^{\infty}\text{ are regular because it is interest of } L^{\frac{1}{n}}\\
+$$
 
 # 6.i
 
-not
+$$
+
+\sqrt{L} =\bigcup_{k\leq 1} L^{\frac{1}{k}}\\
+\sqrt{L}\text{ is regular by union closure}
+$$
 
 # 6.j
+
+$$
+L^{\infty}=L^{1} \cup L^{2} \cdots  \cup L^{\infty}\\
+\text{since } L\text{ is regular so is the }L^{n}\\
+ L^{\infty}\text{ are regular because it is union of } L^n\\
+$$
 
 # 7.a
 
@@ -459,14 +490,29 @@ L = \{a^n | n \text{ is a prime number}\}
 $$
 
 $$
-
-
+a^p=\underbrace{a^{p-j-1}}_x \underbrace{a^1}_y  \underbrace{a^{j}}_z\\
+|y|\geq 1 \\
+|xy| \leq p\\
+(\forall i  \geq  0)(xy^iz \in L )\\
+\text{But }xy^0z=a^{p-j-1}a^{j}=a^{p-1}\notin L \\
+\text{Therefor this is not regular languages}
 $$
 
 # 7.d
 
 $$
 L = \{a^mb^n | gcd(m, n) = 17\}
+$$
+
+$$
+j,k\in \N \text{ and }gcd(j,k)=1 \\
+\text{ then }a^mb^n=a^{17j}b^{17k}\\
+a^mb^n=\underbrace{a^{17j-1}}_x \underbrace{a^1}_y  \underbrace{b^{17k}}_z\\
+|y|\geq 1 \\
+|xy| \leq p\\
+(\forall i  \geq  0)(xy^iz \in L )\\
+\text{But }xy^0z=a^{17j-1}b^{17k}\notin L \\
+\text{Therefor this is not regular languages}
 $$
 
 # 9.a

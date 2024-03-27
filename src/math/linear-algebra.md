@@ -142,6 +142,7 @@ $$
         1&3\\
         2&4\\
     \end{bmatrix}
+    (A^{-1})^T=(A^T)^{-1}
 $$
 
 ## innrchange (change row)
@@ -513,7 +514,7 @@ Col(A)=Row(A^T)\\
 Col(A^T)=Row(A)\\
 $$
 
-## null svfvvvvbgvvvvnvfvbnmv
+## null space
 
 $$
 \text{null space : all the solution make }  Ax=0.\\
@@ -610,11 +611,36 @@ $$
 # Eigenvector and Eigenvalue
 
 $$
-\lambda= \text{eigenvalue (nature number could be zero)}\\b## null svfvvvvbgvvvvnv
+\lambda= \text{eigenvalue (nature number could be zero)}\\
+v=\text{eigenvector(not zero vector)}\\
+Av=\lambda v\\
+Av =\lambda Iv\\
+Av − \lambda Iv = 0\\
+| A − \lambda I | = 0\\
+$$
 
-\end{bmatrix}\\ould be zero)}\\b## null svfvvvvbgvvvvnv
+## eigen value
 
+$$
+A=\begin{bmatrix}
+			6 & 9\\
+			2 & 3\\
 \end{bmatrix}\\
+det\begin{bmatrix}
+			6 & 9\\
+			2 & 3\\
+\end{bmatrix}=6*3-9*2=0\\
+| A − \lambda I | = 0\\
+det\begin{bmatrix}
+			6-\lambda & 9\\
+			2 & 3-\lambda \\
+\end{bmatrix}=(6-\lambda)(3-\lambda)-18=0\\
+\lambda =0 \ or \ 9
+$$
+
+## eigen vector
+
+$$
 \lambda =0 \ or \ 9 \\
 Av=\lambda v\\
 \begin{bmatrix}
@@ -622,21 +648,8 @@ Av=\lambda v\\
 		2 & 3\\
 \end{bmatrix}
 \begin{bmatrix}
-\end{bmatrix}=9
-\begin{bmatrix}
 		x\\
 		y\\
-\end{bmatrix}\\
-\begin{cases}
-6x+9y=9x\\bn
-2x+3y=9y\\
-\end{cases}\\
-Av=\lambda v\\
-\begin{bmatrix}
-		6 & 9\\
-		2 & 3\\
-\end{bmatrix}
-\begin{bmatrix}
 \end{bmatrix}=9
 \begin{bmatrix}
 		x\\
@@ -645,6 +658,7 @@ Av=\lambda v\\
 \begin{cases}
 6x+9y=9x\\
 2x+3y=9y\\
+\end{cases}\\
 6x=18y \rightarrow x=-3y \\
 Av=\lambda v\\
 \begin{bmatrix}
