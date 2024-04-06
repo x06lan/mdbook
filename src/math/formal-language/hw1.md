@@ -430,9 +430,9 @@ $$
 
 # 6.g
 
-todo
+If $L$ is regular language then it can convert to DFA.
 
-since $w^*$ and $L$ is regular make $(w^* \cap L)$ is regular. ([ref](https://stackoverflow.com/questions/58317350/can-the-intersection-of-two-regular-languages-be-non-regular))
+Divide a DFA to $k$ equeal part still are DFA which make it still regular.
 
 # 6.h
 
