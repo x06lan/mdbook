@@ -73,6 +73,7 @@ digraph finite_state_machine {
 ```dot process
 digraph finite_state_machine {
     rankdir=LR;
+    layout=dot;
     size="100,100"
 
 
@@ -100,8 +101,8 @@ digraph finite_state_machine {
     q02 -> q12 [ label = "1" ];//1 2
     q11 -> q12 [ label = "0" ];
 
-    q21 -> q22 [ label = "1" ];//2 2
-    q12 -> q22 [ label = "0" ];
+    q21 -> q22 [ label = "0" ];//2 2
+    q12 -> q22 [ label = "1" ];
     q22 -> q22 [ label = "1" ];
 
     q20 -> qn [ label = "0" ];
@@ -411,10 +412,18 @@ L^{(\frac{1}{3})} \text{ mean all the solution that in } L \text{ that can divid
 $$
 
 # 6.f
-
 $$
 L^{(3)}=\{w^3|w\in L\}\\
-\text{since } L \text{ is regular so is } L^3.\text{(regular closure)}
+% \text{since } L \text{ is regular so is } L^3.\text{(regular closure)}
+\text{If }L=\{ab^*,b\}\\
+L^{(3)}=\{(ab^*)^3,bbb\}=\{ab^*ab^*ab^*,bbb\}\\ \\
+w^3=\underbrace{w}_{x} \ \ \underbrace{w}_{y} \ \ \underbrace{w}_{z} \\
+\text{By pumping lemma}\\
+|y|\geq 1\\
+|xy| \leq p\\
+(\forall k  \geq  0)(xy^kz \in L )\\
+\text{But }xy^0z=ww \notin L \\
+\text{Therefor this is not regular languages}
 $$
 
 [ref (Formal definition)](https://en.wikipedia.org/wiki/Regular_language)
@@ -442,12 +451,12 @@ $$
 $$
 
 # 6.j
-
-$$
+not regular
+<!-- $$
 L^{\infty}=L^{1} \cup L^{2} \cdots  \cup L^{\infty}\\
 \text{since } L\text{ is regular so is the }L^{n}\\
  L^{\infty}\text{ are regular because it is union of } L^n\\
-$$
+$$ -->
 
 # 7.a
 
@@ -461,7 +470,7 @@ wcw=(a\cup b)^i c(a\cup b)^i\\
 \text{By pumping lemma}\\
 |y|\geq 1\\
 |xy| \leq p\\
-(\forall i  \geq  0)(xy^iz \in L )\\
+(\forall k  \geq  0)(xy^kz \in L )\\
 \text{But }xy^0z=(a\cup b)^{p-i}c(a\cup b)^p \notin L \\
 \text{Therefor this is not regular languages}
 
@@ -476,11 +485,8 @@ $$
 
 $$
 xy=\{a,b\}^p\{a,b\}^p\\
-\{a,b\}^p\{a,b\}^p=\underbrace{\{a,b\}^{p-2}}_{x} \ \ \underbrace{\{a,b\}^{2}}_{y} \ \ \underbrace{\{a,b\}^{p}}_{z}\\
-|y|\geq 1\\
-|xy| \leq p\\
-(\forall i  \geq  0)(xy^iz \in L )\\
-\text{By pumping lemma this is regular languages}
+x \text{ and } y \text{ is regular languages }\\
+w\text{ is regular languages by closure of concatenate} 
 $$
 
 # 7.c
@@ -490,11 +496,11 @@ L = \{a^n | n \text{ is a prime number}\}
 $$
 
 $$
-a^p=\underbrace{a^{p-j-1}}_x \underbrace{a^1}_y  \underbrace{a^{j}}_z\\
+a^p=\underbrace{a^{p-j-i}}_x \underbrace{a^i}_y  \underbrace{a^{j}}_z\\
 |y|\geq 1 \\
 |xy| \leq p\\
-(\forall i  \geq  0)(xy^iz \in L )\\
-\text{But }xy^0z=a^{p-j-1}a^{j}=a^{p-1}\notin L \\
+(\forall k  \geq  0)(xy^k z \in L )\\
+\text{But }xy^0z=a^{p-j-i}a^{j}=a^{p-i}\notin L \\
 \text{Therefor this is not regular languages}
 $$
 
@@ -507,12 +513,83 @@ $$
 $$
 j,k\in \N \text{ and }gcd(j,k)=1 \\
 \text{ then }a^mb^n=a^{17j}b^{17k}\\
-a^mb^n=\underbrace{a^{17j-1}}_x \underbrace{a^1}_y  \underbrace{b^{17k}}_z\\
+a^mb^n=\underbrace{a^{17j-i}}_x \underbrace{a^i}_y  \underbrace{b^{17k}}_z\\
 |y|\geq 1 \\
 |xy| \leq p\\
-(\forall i  \geq  0)(xy^iz \in L )\\
-\text{But }xy^0z=a^{17j-1}b^{17k}\notin L \\
+(\forall k  \geq  0)(xy^kz \in L )\\
+\text{But }xy^0z=a^{17j-i}b^{17k}\notin L \\
 \text{Therefor this is not regular languages}
+$$
+# 8.a
+
+$$
+% \begin{aligned}
+% \begin{split}
+\text{Base case } \\
+i=0 ,Q^{0}_r=\{ q_0\}\\
+\text{ This is trivially true since the only path of length 0 is the path that starts and ends at }q_0 \\
+
+
+\text{Inductive Step}\\
+% We aim to show that Qk+1rQk+1r​ represents the set of all reachable states from q0q0​ using paths of length k+1k+1.
+
+\text{Assume that for some }k\geq 0, Q^k_r \text{ is the set of all reachable states from } q_0 \text{ using paths of length }k.\\
+
+
+\text{By definition, }Q^{k+1}_r​ \text{ includes all states that can be reached from states in } Q^k_r  \text{ by a single transition.}\\ \\
+
+\text{By repeat }  Q^{k+1}_r​  \rightarrow Q^{k}_r \text{ until }k=0\\ 
+\text{We prove }​ (\forall i\geq 0) (Q^i_r\text{​ is the set of all reachable states from }q_0\text{​ using paths of length } i)
+
+% \end{split}
+% \end{aligned}
+$$
+# 8.b
+```dot process
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+
+    node [shape = doublecircle]; q0
+    node [shape=plaintext] s;
+    s [label=""];
+
+    node [shape = circle];
+
+    s  -> q0 [ label = "start" ];
+    q0 -> q1 [ label = "0,1" ];
+    q1 -> q2 [ label = "0,1" ];
+    q2 -> q0 [ label = "0,1" ];
+    
+}
+```
+# 8.c
+$$
+\text{Base case } \\
+Q^{0}_r=\{q_0\}\\
+\text{Inductive Step}\\
+q_0 = Q^0_r\text{ by definition}\\
+\text{Assume } (\forall i \geq 0) (q_0\in Q^i_r)\\
+Q^{i+1}_r=Q^i_r \cup  \{ q\in Q | \exist p \in Q^i_r, \exist a \in \Sigma ,q = \delta (p,a)\}\\
+\text{We can see it will repeat }  Q^{i+1}_r​  \cup  Q^{i}_r \text{ until }i=0 \text{ which will union }q_0\\ 
+
+\text{Then } (\forall i \geq 0) (q_0\in Q^i_r)\\
+
+$$
+# 8.d
+
+$M$ is DFA by definition
+
+$M_r$ is base on $M$ but modify $\delta$ function and remove some state and final state. So it still a DFA
+
+# 8.e
+
+<!-- $M$ is DFA by definition,$M_r$ is $M$ but remove all the state that cant reach by start state -->
+$$
+Q_r=\text{the state that can reach by init state}\\
+F\cap Q_r= \text{only remain the final state can be reach by init state}\\
+\text{since the state cant be reach by init state remove it will not change the language}\\
+
 $$
 
 # 9.a
@@ -558,3 +635,112 @@ digraph finite_state_machine {
 
 Because DFA each state have determine result to next state by input. We need to know all symbols is even or odd in one state.
 So each symbols have two possible (even or odd) lead to $2^n$ state
+
+# 9.c
+
+# 10.a
+## prove $M_1 \rightarrow M_3 $ are morphism
+$$
+h(q_{(0,1)})=q_{(0,2)}\\
+\text{}
+(\forall q\in Q_1,\forall a\in \Sigma)(h(\delta_1(q,a)) =\delta_2(h(q),a))\\
+
+$$
+
+
+$$
+M_1 \rightarrow M_2\\
+(\forall q\in Q_1,\forall a\in \Sigma)f(\delta_1(q,a)) =\delta_2(f(q),a)\\
+M_2 \rightarrow M_3\\
+(\forall q\in Q_2,\forall a\in \Sigma)g(\delta_2(q,a)) =\delta_3(g(q),a)\\
+M_1 \rightarrow M_3\\
+\begin{aligned}
+(\forall q\in Q_1,\forall a\in \Sigma)&g(f(\delta_1(q,a))) =\delta_3(g(f(q)),a)\\
+(\forall q\in Q_1,\forall a\in \Sigma)&g(\delta_2(f(q),a)) =\delta_3(g(f(q)),a)\\
+(\forall q\in Q_2,\forall a\in \Sigma)&g(\delta_2(q,a)) =\delta_3(g(q),a)\\
+\end{aligned}\\
+M_1 \rightarrow M_3 \text{ are morphism}
+% \\ \text{} \\
+% g(\delta_2(f(q),a))=\delta_3(g(f(q)),a)\\
+
+% \circ 
+% (\forall q\in Q_2,\forall a\in \Sigma)(g(\delta_2(q,a)) =\delta_3(g(q),a))\\
+% (\forall q\in Q_1,\forall a\in \Sigma)(g(\delta_2(f(q),a)) =\delta_3(g(f(q)),a))\\
+% \begin{aligned}
+% \delta_1(q_{(n,1)},a)&=h^{-1}(\delta_2(h(q_{(n,1)}),a))\\
+% &=\delta_2(q_{(n,2)},a)\\
+% \end{aligned}
+$$
+
+## F-map
+$$
+f(F_1)\subseteq F_2 (f \text{ is F-map})\\
+g(F_2)\subseteq F_3 (g \text{ is F-map})\\
+{}\\
+\text{Therefore }g(f(F_1))\subseteq F_3\\ 
+g\circ f \text{ is F-map too.}
+$$
+## B-map
+$$
+\begin{aligned}
+f^{-1}(F_2)&\subseteq F_1 &(f \text{ is B-map})\\
+% F_2&\subseteq f(F_1) &(f \text{ is B-map})\\
+g^{-1}(F_3)&\subseteq F_2 &(g \text{ is B-map})\\
+% F_3&\subseteq g(F_2) &(g \text{ is B-map})\\
+\end{aligned}
+{}\\
+\text{Therefore }f^{-1}(g^{-1}(F_3))\subseteq F_1\\ 
+g\circ f \text{ is B-map too.}
+$$
+# 10.b
+
+
+
+
+$$
+
+% h(\delta_1(q,w_1)) =\delta_2(h(q),w_1)\\
+\text{}\\
+
+\begin{aligned}
+% h(\delta_1(\delta_1(q,w_1),w_2))&=\delta_2(\delta_2(h(q),w_1),w_2)\\
+\hat{\delta}_2(h(q),w_n)&=h(\hat{\delta}_1(q,w_n))\\
+\delta_2(\hat{\delta}_2(h(q),w_{n-1}),a)&=h(\delta_1(\hat{\delta}_1(q,w_{n-1}),a))\\
+\delta_2(\hat{\delta}_2(h(q),w_{n-1}),a)&=\delta_2(h(\hat{\delta}_1(q,w_{n-1})),a)\\
+\hat{\delta}_2(h(q),w_{n-1})&=h(\hat{\delta}_1(q,w_{n-1}))\\
+\end{aligned}\\
+
+\text{By repeat this until } |w|=1 \text{ make }\hat{\delta}_2(q,w)=\delta_2(q,w)\\
+% h(\delta_1(q,w_1)) =\delta_2(h(q),w_1)\\
+
+\text{}\\
+\text{We prove that }
+(\forall q\in Q_1,\forall w\in \Sigma^{*})(h(\hat{\delta}_1(q,w)) =\hat{\delta}_2(h(q),w))\\
+$$
+
+# 10.c
+<!-- $$
+{\footnotesize
+\begin{CD}
+     q_{(n,1)} @>a>> \delta_1(q_{(n,1)},a)\\
+     @VhVV @. \\
+     h(q_{(n,1)})=q_{(n,2)} @>a>> \delta_2(h(q_{(n,1)}),a)
+\end{CD}
+}\\
+\Huge{\Downarrow}\\
+{\footnotesize
+\begin{CD}
+     q_{(n,1)} @>a>> \delta_1(q_{(n,1)},a)\\
+     @VhVV @VhVV \\
+     h(q_{(n,1)})=q_{(n,2)} @>a>> \delta_2(h(q_{(n,1)}),a)=h(\delta_1(q_{(n,1)},a))\\
+     @Vh^{-1}VV @Vh^{-1}VV \\
+     q_{(n,1)} @>a>> \delta_1(q_{(n,1)},a)\\
+\end{CD}
+}
+$$ -->
+$$
+\text{If is proper homomorphism then }h^{-1}(F_2)=F_1\\
+% (\forall q\in Q_1,\forall w\in \Sigma^{*})(h(\hat{\delta}_1(q,w)) =\hat{\delta}_2(h(q),w))(M_1\rightarrow M_2 \text{ is a morphism})\\
+(\forall q\in Q_1,\forall a\in \Sigma)(h(\delta_1(q,a)) =\delta_2(h(q),a))\\
+\text{Therefore } L(M_1)=L(M_2)\\
+$$

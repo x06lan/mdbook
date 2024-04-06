@@ -15,7 +15,20 @@ tags: `math`
 ![](https://imgur.com/JISgKkr.jpg)
 
 # DFA / NFA
+## DFA
+$$
+\begin{aligned}
+DFA&=(Q,\Sigma,\delta,s,F)\\
+&Q=\text{state set}\\
+&\Sigma=\text{input char domain}\\
+&\delta=\delta(Q,\Sigma)\rightarrow Q' \\
+&s=\text{start state}\\
+&F=\text{accept state set}\\
+\end{aligned}
 
+
+
+$$
 ## regular expression
 
 $$
@@ -69,3 +82,4 @@ $$
 ![](https://imgur.com/EWhpFR9.png)
 
 ## context free grammar
+
