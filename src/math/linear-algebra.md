@@ -517,13 +517,11 @@ $$
 ## null space
 
 $$
-\text{null space : all the solution make }  Ax=0.\\
+\text{null space : all the solution make }  Av=0.\\
 \text{orth to columns space}\\
-\text{Negative the not pivot columns }\\
-\text{but if the row of not pivot columns have not pivot then value of that row is 1}\\
 {\begin{cases}
     {\begin{bmatrix}
-        -0\\
+        0\\
         -2\\
         1\\
     \end{bmatrix}}
