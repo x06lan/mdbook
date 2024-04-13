@@ -46,7 +46,6 @@ common bus providing access to shared memory
     * caching(storing part of data in faster storage for performance)
     * spooling
 
-
 ## operation
 * I/O is from the device to local buffer of controller
 * CPU moves data from/to main memory to/from local buffers
@@ -63,29 +62,41 @@ common bus providing access to shared memory
 
 * The OS preserves the state of the CPU by storing the registers and the program counter
 * type of interrupt
-    * polling
-    * vectored
+  * polling
+  * vectored
 
 ![](https://imgur.com/ey7PR4G.png)
 
 
 ## I/O
-### handling I/O
-* Synchronous: After I/O starts, control returns to user program only upon I/O completion
-    * wait instruction idles the cpu until the next interrupt   `aCcf.v
-    * wait loop
 
+
+
+### handling I/O
+
+
+
+* Synchronous: After I/O starts, control returns to user program only upon I/O completion
+  * wait instruction idles the cpu until the next interrupt
+  * wait loop
 * Asynchronous: After I/O starts, control returns to user program without waiting for I/O completion
-    * system call:request to the OS to allow user to wait for I/O completion
+  * system call:request to the OS to allow user to wait for I/O completion
+
+
+
 
 ## storage structure
 
+
+
 * main memory 
-    * cpu can access directly
-    * Dynamic Random-access Memory (DRAM)
-    * Typically volatile
+  * cpu can access directly
+  * Dynamic Random-access Memory (DRAM)
+  * Typically volatile
 * HDD
 * Non-volatile memory (NVM)
+
+
 
 ![](https://imgur.com/GHJAvzl.png)
 
@@ -122,6 +133,7 @@ have different kernel
 
 ![](https://imgur.com/nSTFnOf.png)
 
+
 # Chapter 2: Operating-System Service
 
 ## System Calls
@@ -133,6 +145,7 @@ have different kernel
   * pushed, onto the stack by the program and popped off the stack by the OS
 ![](https://imgur.com/SmCvYm2.png)
 <!-- ![](https://imgur.com/oKiVXUc.png) -->
+
 
 ### Types of System Calls
 
@@ -169,7 +182,9 @@ have different kernel
   * transfer status information
   * attach and detach remote devices
 
+
 ![](https://imgur.com/WYG0IUC.png)
+
 ## program stack 
 
 ![](https://imgur.com/bNDtDUq.png)
@@ -182,6 +197,7 @@ any physical memory location – relocatable object file
 * Modern general purpose systems don’t link libraries into executables
   * Rather, dynamically linked libraries (in Windows, **DLLs**) are loaded as needed, shared by all that use the same version of that same library (loaded once
 
+
 ![](https://imgur.com/5J9qm6P.png)
 
 ## Operating System Structure
@@ -191,6 +207,7 @@ any physical memory location – relocatable object file
 * Microkernel
 * Layered
 * Hybrid
+
 
 
 ### Traditional UNIX System Structure 
@@ -334,3 +351,266 @@ Monolithic plus modular design
 | sockets                            | Remote Procedure Calls (RPC)       |
 | ---------------------------------- | ---------------------------------- |
 | ![](https://imgur.com/XZ4RMYg.png) | ![](https://imgur.com/3ROwbAf.png) |
+
+
+# Chapter 4: Threads & Concurrency
+## Concurrency vs. Parallelism
+![](https://imgur.com/k8WxgPK.png)
+## Multicore Programming
+* Data parallelism
+  * different data, same operation on each data
+* Task parallelism
+  * different operation, same data
+
+
+## Amdahl’s Law
+
+$$
+P=\text{parallel portion} \\
+\text{speed up}= \frac{1}{(1-P)+\frac{P}{N}}
+$$
+![](https://imgur.com/MLmgi8p.png)
+
+## Multithreading Models
+
+* Many-to-One
+  * One thread blocking causes all to block
+  * example
+    * solaris green threads
+    * GUN portable threads
+* One-to-One
+  * More concurrency than many-to-one
+  * example
+    * windows
+    * linux
+* Many-to-Many
+  * Windows with the ThreadFiber package
+* two-level model
+  * mix Many-to-Many and One-To-One
+
+| Many-to-One                        | ono-to-one                         | Many-to-Many                       | two-level model                    |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| ![](https://imgur.com/SKAyDBk.png) | ![](https://imgur.com/0AwwxsV.png) | ![](https://imgur.com/Qdqesbf.png) | ![](https://imgur.com/aX6oEDw.png) |
+
+## Implicit threading
+
+* Thread Pools
+  * Create a number of threads in a pool where they await work
+* Fork-Join Parallelism
+* OpenMP
+* Grand Central Dispatch
+  * dispatch queues
+  * macOS,iOS
+
+
+# Chapter 5: CPU Scheduling
+
+## CPU scheduler
+
+* CPU utilization 
+  * keep the CPU as busy as possible
+* Throughput 
+  * of processes that complete their execution per time unit
+* Turnaround time 
+  * amount of time to execute a particular process
+* Waiting time 
+  * amount of time a process has been waiting in the ready queue
+* Response time 
+  * amount of time it takes from when a request was submitted until the first response is produce
+
+
+CPU scheduling decisions may take place when a process:
+1. Switches from running to waiting state
+2. Switches from running to ready state
+3. Switches from waiting to ready
+4. Terminates
+
+
+### Preemptive
+
+* preemptive
+  * can result in race conditions 
+  * linux,windows,MacOS
+* nonpreemptive
+  * only under circumstances 1 and 4
+
+### Dispatcher
+
+* witching context
+* Switching to user mode
+* Jumping to the proper location in the user program to restart that program
+
+Dispatch latency =time it take to stop one process and start another running
+
+### Scheduling Algorithm
+* Max CPU utilization
+* Max throughput
+* Min turnaround time
+* Min waiting time
+* Min response time
+
+#### Determining Length of Next CPU Burst
+* exponential averaging
+$$
+t_n=\text{CPU burst time}\\
+\tau_n = \text{predict CPU burst time}\\
+\begin{aligned}
+\tau_0&=t_0\\ 
+\tau_{n+1}&=\alpha t_n +(1-\alpha) \tau_{n}
+\end{aligned}
+$$
+![](https://imgur.com/Xe9SWHB.png)
+
+#### First- Come, First-Served(FCFS) Scheduling
+
+![](https://imgur.com/JyiYt2l.png)
+
+$$
+\text{Waiting time }P_1 = 0, P_2 = 24, P_3 = 27\\
+\text{Average waiting time}= (0 + 24 + 27)/3 = 17
+$$
+
+* Convoy effect short process behind long process
+  * Consider one CPU-bound and many I/O-bound processesP1
+#### Shortest-Job-First(SJF) Scheduling
+* minimum average waiting time for a given set of processes
+
+#### shortest-remaining-time-first(Preemptive SJF)
+
+| process | arrival time | burst time |
+| ------- | ------------ | ---------- |
+| $P_1$   | 0            | 8          |
+| $P_2$   | 1            | 4          |
+| $P_3$   | 2            | 9          |
+| $P_4$   | 3            | 5          |
+
+![](https://imgur.com/rX2gkk8.png)
+$$
+\text{Average waiting time}= \frac{(10-1)+(1-1)+(17-2)+(5-3)}{4} = 6.5
+$$
+
+
+#### Round Robin (RR)
+
+* Each process gets a small unit of CPU time (time quantum q), usually 10-100 milliseconds
+  * After this time has elapsed, the process is preempted and added to the end of the ready queue
+* Typically, higher average turnaround than `SJF`, but better response
+
+| process | burst time |
+| ------- | ---------- |
+| $P_1$   | 8          |
+| $P_2$   | 4          |
+| $P_3$   | 9          |
+$$
+\text{Time Quantum }= 4
+$$
+![](https://imgur.com/9BuK5sE.png)
+
+
+#### Priority Scheduling
+* The CPU is allocated to the process with the highest priority
+* `SJF` is priority scheduling where priority is the inverse of predicted next CPU burst time
+
+
+| process | burst time | priority |
+| ------- | ---------- | -------- |
+| $P_1$   | 10         | 3        |
+| $P_2$   | 1          | 1        |
+| $P_3$   | 2          | 4        |
+| $P_4$   | 1          | 5        |
+| $P_5$   | 5          | 2        |
+
+![](https://imgur.com/c9WBCw6.png)
+
+$$
+\text{Average waiting time}= 8.2
+$$
+
+
+#### Priority Scheduling + Round-Robin
+
+* Run the process with the highest priority
+* Processes with the same priority run round-robin
+
+| process | burst time | priority |
+| ------- | ---------- | -------- |
+| $P_1$   | 4          | 3        |
+| $P_2$   | 5          | 2        |
+| $P_3$   | 8          | 2        |
+| $P_4$   | 7          | 1        |
+| $P_5$   | 3          | 3        |
+
+![](https://imgur.com/2APRd2W.png)
+
+#### Multilevel Queue
+
+![](https://imgur.com/dUAJQze.png)
+
+### Multiple-Processor Scheduling
+
+* Multicore CPUs
+* Multithreaded cores
+* NUMA(non-uniform memory access) systems
+* Heterogeneous multiprocessing
+
+#### SMP
+* Symmetric multiprocessing (SMP) is where each processor is self-scheduling
+  * (a) All threads may be in a common ready queue
+  * (b) Each processor may have its own private queue of threads
+* keep all CPUs loaded for efficiency
+  * Load balancing 
+    *  attempts to keep workload evenly distributed
+  * push migration
+    * pushes task from overloaded CPU to other CPUs
+  * pull migration
+    * idle processors pulls waiting task from busy processor
+* processor affinity
+  * Soft affinity 
+    * the OS attempts to keep a thread running on the same processor, but no guarantees
+  * Hard affinity 
+    * allows a process to specify a set of processors it may run on
+
+![](https://imgur.com/RoN2QeB.png)
+
+##### hyperthreading
+![](https://imgur.com/E5dFCfH.png)
+
+### real-time scheduling
+* Real-Time system
+  * soft real-time system
+    *  but no guarantee as to when tasks will be scheduled
+  * hard real-time system
+    * task must be serviced by its deadline
+* latency
+  * Interrupt latency
+    * time of stop process to another process
+  * Dispatch latency
+    * take current process off CPU and switch to another CPU
+
+#### Earliest Deadline First Scheduling (EDF)
+
+* Priorities are assigned according to deadlines:
+  * the earlier the deadline, the higher the priority
+  * the later the deadline, the lower the priority
+
+![](https://imgur.com/yJcNMLU.png)
+
+## Operating System  Examples
+### linux scheduling
+* Completely Fair Scheduler (CFS)
+  * CFS scheduler maintains per task virtual run time in variable vruntime
+  * To decide next task to run, scheduler picks task with lowest virtual run time
+* Linux supports load balancing, but is also NUMA-aware
+
+
+### solaris scheduling
+* priority-based scheduling
+* Six classes available
+  * Time sharing (default) (TS)
+  * Interactive (IA)
+  * Real time (RT)
+  * System (SYS)
+  * Fair Share (FSS)
+  * Fixed priority (FP)
+
+![](https://imgur.com/YoUCDym.png)
