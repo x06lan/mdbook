@@ -265,7 +265,7 @@ digraph finite_state_machine {
     rankdir=LR;
     size="8,5"
 
-    node [shape = doublecircle]; q3,q4;
+    node [shape = doublecircle]; q0,q3,q4;
     node [shape=plaintext] s;
     s [label=""];
     node [shape = circle];

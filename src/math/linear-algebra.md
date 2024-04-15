@@ -298,7 +298,7 @@ $$
   \end{matrix}
   \rbrace
    span
-   \text{: mean all the combinenation vecter of can combine by }v_1、v_2、v_3 .\\
+   \text{: mean all the combination vector of can combine by }v_1、v_2、v_3 .\\
 	\\
 	set\lbrace
   \begin{matrix}
@@ -306,7 +306,7 @@ $$
   \end{matrix}
   \rbrace
    span \ R^3
-   \text{: mean all the vecter can be combine by }v_1、v_2、v_3 .\\
+   \text{: mean all the vector can be combine by }v_1、v_2、v_3 .\\
        \text{b are the all the vector} \\
     \text{x are the all the possible vector} \\
 	example:\\
@@ -471,21 +471,21 @@ $$
 
 $$
 T(x)= b \\
-\text{for all b have atleast one x that T(x)=b}
+\text{for all b have at least one x that T(x)=b}
 $$
 
 ## linear transformation
 
 $$
 T(x)= b \\
-\text{for all b have atleast one x that T(x)=b}\\
+\text{for all b have at least one x that T(x)=b}\\
 T(a+b)=T(a)+T(b)
 $$
 
 # vectorspace
 
 $$
-\text{If A is vectorspace then}\\
+\text{If A is vector space then}\\
 \begin{cases}
 \text{the zero vector or zero matrix must be in side of A}\\
 \text{if u and v is inside A then (u+v) should be inside A}\\
@@ -531,7 +531,7 @@ $$
 ## columns space
 
 $$
-\text{columns space :all the  combinenation of columsn vector }\\
+\text{columns space :all the combination of column vector }\\
 Ax=b\\
 \text{The pivot columns of the origin columns.}\\
     {\begin{cases}
@@ -854,7 +854,7 @@ f_3(x_1,x_2)=a_{11}{x_1}^2+a_{12}x_1x_2+a_{21}x_1x_2+a_{22}{x_2}^2\\
 \because z \neq x \\
 $$
 
-## perjection
+## projection
 
 $$
 \hat{y}=\frac{y\cdot A}{y \cdot y}\times y\\
@@ -867,7 +867,7 @@ y=\hat{y}+z\\
 \end{cases}
 $$
 
-## curve fitting | regression | normal eqution
+## curve fitting | regression | normal equation
 
 $$
 (\dim \beta)n=2,
@@ -914,7 +914,7 @@ $$
 
 $$
 \text{Find } \beta \ let \ {|A\beta - y|}^2 \text{have} \min\\
-\text{if erivative }f^{'}(a)=0 \ then \ f(a)\text{ is max or min value }\\
+\text{if derivative }f^{'}(a)=0 \ then \ f(a)\text{ is max or min value }\\
 \frac{d}{d\beta}{|y-A\beta|}^2=0\\
 2{|y-A\beta|}\times\frac{d}{d\beta}|y-A\beta|=0\\
 2{|y-A\beta|}\times\frac{d}{d\beta}(|y|-2y\cdot A\beta+|A\beta|)=0\\
