@@ -10,8 +10,8 @@ tags `math` `linear` `algebra`
 | Row2 | value    | value    | value    |
 | Row3 | value    | value    | value    |
 
-diagoua 對角
-commtative law
+diagonal 對角
+commutative law
 associative law
 distributive law
 
@@ -121,7 +121,7 @@ A=\begin{bmatrix}
     \end{bmatrix}
 $$
 
-## indentity matrix
+## identity matrix
 
 $$
     I=\begin{bmatrix}
@@ -145,7 +145,7 @@ $$
     (A^{-1})^T=(A^T)^{-1}
 $$
 
-## innrchange (change row)
+## inner change (change row)
 
 $$
     \begin{bmatrix}
@@ -766,7 +766,7 @@ $$
 ### orthonormal
 
 $$
-\text{If column vector are orth to each other and the lenght of  column vector is 1  then is orthonormal}\\
+\text{If column vector are orth to each other and the length of  column vector is 1  then is orthonormal}\\
 \text{then is orthogonal matrix}\\
 \begin{bmatrix}
 \frac{1}{\sqrt{3}} \\
@@ -801,7 +801,7 @@ $$
 
 ## find orth basis(gram-schmidt process)
 
-## erivative of a Matrix
+## derivative of a Matrix
 
 $$
 A=\begin{bmatrix}
@@ -857,9 +857,12 @@ $$
 ## projection
 
 $$
-\hat{y}=\frac{y\cdot A}{y \cdot y}\times y\\
+\hat{y}=
+    
+\frac{A }{A^T A} \frac{A^Ty  }{A^T A}\\
+
 \text{define } z=y-\hat{y}\\
-z=y(1-\frac{y\cdot A}{y \cdot y})\\
+% z=y(1-\frac{y\cdot A}{y \cdot y})\\
 so\begin{cases}
 y=\hat{y}+z\\
 \hat{y}\perp z\\
@@ -925,11 +928,15 @@ $$
 
 $$
 \text{Find } \beta \ let \ {|A\beta - y|}^2 \text{have} \min\\
-|A^Ty-A^TA\beta|=A^T\times distance\\
-|A^T(\hat{y}+z)-A^TA\beta|=A^T\times distance\\
-|A^T\hat{y}+A^Tz-A^TA\beta|=A^T\times distance\\
-|A^T\hat{y}-A^TA\beta|=A^T\times distance\\
+\begin{aligned}
+    
+|A^Ty-A^TA\beta|&=A^T\times distance\\
+|A^T(\hat{y}+z)-A^TA\beta|&=A^T\times distance\\
+|A^T\hat{y}+A^Tz-A^TA\beta|&=A^T\times distance\\
+|A^T\hat{y}-A^TA\beta|&=A^T\times distance\\
+\end{aligned}\\
 \hat{y}\in \text{A columns space so can find }A\beta =\hat{y} \\
 |A^T\hat{y}-A^TA\beta|=0\\
 A^Ty=A^TA\beta\\
+\beta=(A^T A)^{-1}A^T y
 $$
