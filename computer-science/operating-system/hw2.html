@@ -172,7 +172,192 @@
                         </div>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="hw2"><a class="header" href="#hw2">hw2</a></h1>
-<h2 id="1"><a class="header" href="#1">1</a></h2>
+<p><a href="../../assets/pdf/operating_system_HW2.pdf">OS_HW2.pdf</a></p>
+<h2 id="48"><a class="header" href="#48">4.8</a></h2>
+<p>I/O heavy task because mulithreading not speedup I/O speed</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+#define NUM_THREADS 4
+#define ITERATIONS_PER_THREAD 10
+
+void *io_bound_task(void *thread_id) {
+    long tid;
+    tid = (long)thread_id;
+    FILE *file;
+    char filename[20];
+    sprintf(filename, &quot;file_%ld.txt&quot;, tid);
+
+    for (int i = 0; i &lt; ITERATIONS_PER_THREAD; i++) {
+        file = fopen(filename, &quot;a&quot;);
+        if (file != NULL) {
+            fprintf(file, &quot;Thread %ld writing to file %d\n&quot;, tid, i);
+            fclose(file);
+        }
+    }
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t threads[NUM_THREADS];
+    int rc;
+    long t;
+
+    for (t = 0; t &lt; NUM_THREADS; t++) {
+        rc = pthread_create(&amp;threads[t], NULL, io_bound_task, (void *)t);
+        if (rc) {
+            printf(&quot;ERROR; return code from pthread_create() is %d\n&quot;, rc);
+            exit(-1);
+        }
+    }
+
+    pthread_exit(NULL);
+}
+
+</code></pre>
+<h2 id="410"><a class="header" href="#410">4.10</a></h2>
+<ul>
+<li>B. Heap memory</li>
+<li>C. Global variables</li>
+</ul>
+<h2 id="416"><a class="header" href="#416">4.16</a></h2>
+<ul>
+<li>How many threads will you create to perform the input and output? Explain.
+<ul>
+<li>1 threads</li>
+<li>input and output require single file operation which is cant be parallel</li>
+</ul>
+</li>
+<li>How many threads will you create for the CPU-intensive portion of the application? Explain
+<ul>
+<li>4 thread</li>
+<li>since task can be parallel to reduce time </li>
+</ul>
+</li>
+</ul>
+<h2 id="514"><a class="header" href="#514">5.14</a></h2>
+<ul>
+<li>Each processing core has its own run queue
+<ul>
+<li>Advantages
+<ul>
+<li>better cache utilization</li>
+</ul>
+</li>
+<li>Disadvantages
+<ul>
+<li>increased complexity </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>single run queue
+<ul>
+<li>Advantages
+<ul>
+<li>easy balanced workload</li>
+</ul>
+</li>
+<li>Disadvantages
+<ul>
+<li>thread cache coherence </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="518"><a class="header" href="#518">5.18</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>process</th><th>priority</th><th>burst time</th><th>arrival</th></tr></thead><tbody>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>8</td><td>15</td><td>0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>3</td><td>20</td><td>0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>4</td><td>20</td><td>20</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>4</td><td>20</td><td>25</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>5</td><td>5</td><td>45</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>10</td><td>15</td><td>55</td></tr>
+</tbody></table>
+</div><!-- ## priority-based+round-robin -->
+<!-- ```mermaid
+gantt
+    title task time
+    dateFormat X
+    axisFormat %s
+
+    section P1
+      P1   : 0, 15
+    section P2
+      P2   : 0, 20
+    section P3
+      P3   : 20, 40
+    section P4
+      P4   : 25, 45
+    section P5
+      P5   : 45, 50
+    section P6
+      P6   : 55, 70
+
+``` -->
+<pre class="mermaid">---
+displayMode: compact
+---
+gantt
+    title task scheduling order
+    dateFormat X
+    axisFormat %s
+    tickInterval 5second
+
+    section P1 priority 8
+      P1   : 0, 15
+    section P2 priority 3
+      P2   : 15, 20
+      P2   : 80, 95
+    section P3 priority 4
+      P3   : 20, 30
+      P3   : 40, 45
+      P3   : 70, 75
+    section P4 priority 4
+      P4   : 30, 40
+      P4   : 50, 55
+      P4   : 75, 80
+    section P5 priority 5
+      P5   : 45, 50
+    section P6 priority 10
+      P6   : 55, 70
+
+</pre>
+<div class="table-wrapper"><table><thead><tr><th></th><th>turnaround time</th><th>waiting time</th></tr></thead><tbody>
+<tr><td>P1</td><td>15-0=15</td><td>0</td></tr>
+<tr><td>P2</td><td>95-0=95</td><td>95-20=75</td></tr>
+<tr><td>P3</td><td>75-20=55</td><td>55-20=35</td></tr>
+<tr><td>P4</td><td>80-25=55</td><td>55-20=35</td></tr>
+<tr><td>P5</td><td>50-45=5</td><td>0</td></tr>
+<tr><td>P6</td><td>70-55=15</td><td>0</td></tr>
+</tbody></table>
+</div>
+<h2 id="522"><a class="header" href="#522">5.22</a></h2>
+<h2 id="525"><a class="header" href="#525">5.25</a></h2>
+<ul>
+<li>FCFS
+<ul>
+<li>run task by arrival time</li>
+<li>doesn’t discriminate in favor of short processes</li>
+</ul>
+</li>
+<li>RR
+<ul>
+<li>keep each process be run by CPU equality </li>
+<li>doesn’t discriminate in favor of short processes</li>
+</ul>
+</li>
+<li>Multilevel Feedback queues
+<ul>
+<li>can prioritize short processes by setting </li>
+</ul>
+</li>
+</ul>
+<h2 id="67"><a class="header" href="#67">6.7</a></h2>
+<h2 id="615"><a class="header" href="#615">6.15</a></h2>
+<h2 id="618"><a class="header" href="#618">6.18</a></h2>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
