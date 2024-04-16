@@ -1,5 +1,7 @@
 # hw1
 
+[OS_HW1.pdf](../../assets/pdf/operating_system_HW1.pdf)
+
 ## 1
 
 * a.

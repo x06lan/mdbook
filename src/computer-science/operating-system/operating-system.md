@@ -413,8 +413,10 @@ $$
   * of processes that complete their execution per time unit
 * Turnaround time 
   * amount of time to execute a particular process
+  * Completion Time – Arrival Time
 * Waiting time 
   * amount of time a process has been waiting in the ready queue
+  * Turn Around Time – Burst Time
 * Response time 
   * amount of time it takes from when a request was submitted until the first response is produce
 
@@ -471,7 +473,7 @@ $$
 $$
 
 * Convoy effect short process behind long process
-  * Consider one CPU-bound and many I/O-bound processesP1
+  * Consider one CPU-bound and many I/O-bound processes
 #### Shortest-Job-First(SJF) Scheduling
 * minimum average waiting time for a given set of processes
 
@@ -501,9 +503,11 @@ $$
 | $P_1$   | 8          |
 | $P_2$   | 4          |
 | $P_3$   | 9          |
+
 $$
 \text{Time Quantum }= 4
 $$
+
 ![](https://imgur.com/9BuK5sE.png)
 
 
