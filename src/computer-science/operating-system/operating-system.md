@@ -413,12 +413,13 @@ $$
   * of processes that complete their execution per time unit
 * Turnaround time 
   * amount of time to execute a particular process
-  * Completion Time – Arrival Time
+  * turnaround time = completion time – arrival time
 * Waiting time 
   * amount of time a process has been waiting in the ready queue
-  * Turn Around Time – Burst Time
+  * waiting time = turnaround time  –  burst time
 * Response time 
   * amount of time it takes from when a request was submitted until the first response is produce
+  * response time = start time – arrival time
 
 
 CPU scheduling decisions may take place when a process:
@@ -618,3 +619,111 @@ $$
   * Fixed priority (FP)
 
 ![](https://imgur.com/YoUCDym.png)
+
+
+# Chapter 6: Synchronization Tools
+
+## Race condition
+
+![](https://imgur.com/64HhNAf.png)
+
+* `critical section` segment of code
+  * Process may be changing common variables, updating table, writing file, etc
+  * When one process in critical section, no other may be in its critical section
+
+## Critical-Section Problem 
+
+
+* Mutual Exclusion
+  * If process is executing in its critical section, then no other processes can be executing in their critical sections
+* Progress
+  * if not process in critical section and have process want to enter critical section then have to let the process
+* Bounded Waiting
+  * the time process wait to enter critical section have to limit(cant wait forever)
+
+### software solution
+* cant avoid shared variable be override value by another process
+* Entry section: disable interrupts
+* Exit section: enable interrupts
+   
+#### part of Solution
+
+
+* Assume that the `load` and `store` machine-language instructions are `atomic`
+  * Which cannot be interrupted
+  
+* `turn` indicates whose turn it is to enter the critical section
+* two process have enter critical section in turn
+![](https://imgur.com/wUlw82E.png)
+
+
+
+#### Peterson’s Solution
+
+
+* Assume that the `load` and `store` machine-language instructions are `atomic`
+  * Which cannot be interrupted
+* `turn` indicates whose turn it is to enter the critical section
+* `flag` array is used to indicate if a process is ready to enter the critical section
+* solve `critical section problem` 
+  * Mutual exclusion
+  * progress
+  * bounded-waiting
+
+
+![](https://imgur.com/HPf3Vfc.png)
+
+#### Memory Barrier
+* Memory models may be either:
+  * Strongly ordered – where a memory modification of one processor is immediately visible to all other processors
+  * Weakly ordered – where a memory modification of one processor may not be immediately visible to all other processors
+
+![](https://imgur.com/Mmz1N51.png)
+
+
+#### Mutex Locks
+* First acquire() a lock
+* Then release() the lock
+* `busy waiting`
+  * the process will be block and continuous check is lock 
+  * `spinlock` when is lock free will automatic let the waiting process know
+
+#### semaphore
+* wait()
+* signal()
+* Counting semaphore
+  * integer value can range over an unrestricted domain
+* Binary semaphore 
+  * integer value can range only between 0 and 1
+  * Same as a mutex lock
+* Must guarantee that no two processes can execute the `wait()` and `signal()` on the same semaphore at the same time
+  
+##### Semaphore Implementation with no Busy waiting
+* block()
+  * place the process invoking the operation on the appropriate waiting queue
+* wakeup()
+  * remove one of processes in the waiting queue and place it in the ready queue
+
+### Synchronization Hardware
+
+* Hardware instruction
+  * Atomic Swap()
+  * Test and Set()
+* Atomic variables
+
+#### Hardware instruction
+#### Atomic variables
+* atomic variable that provides atomic (uninterruptible) updates on basic data types such as integers and booleans
+
+
+
+## deadlock
+![](https://imgur.com/O58l3oJ.png)
+* deadlock
+  * two or more processes are waiting indefinitely for an event that can be caused by only one of the waiting processes
+  * Starvation 
+    * indefinite blocking
+    * A process may never be removed from the semaphore queue in which it is suspended
+  * Priority Inversion 
+    *  Scheduling problem when lower-priority process holds a lock needed by higher-priority process
+    * Solved via priority-inheritance protocol

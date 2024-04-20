@@ -144,9 +144,35 @@ gantt
 | P6  | 70-55=15        | 0            |
 
 ## 5.22
+### The time quantum is 1 millisecond
+$$
+\begin{aligned}
+  
+\text{CPU time}&=1+1\times 10=11 ms\\
+% \text{I/O time}&=10\times 10 =100ms\\
+\text{context switching time}&=0.1 \times 11=1.1 ms\\
+\text{total time}&=11+1.1=12.1ms\\
+\text{CPU utilization}&=\frac{\text{CPU time}}{\text{total time}}\\
+&=\frac{11}{12.1}\\
+&=90.9\%\\
+\end{aligned}
 
-
+$$
     
+### The time quantum is 10 millisecond
+$$
+\begin{aligned}
+  
+\text{CPU time}&=10+10\times 10=110 ms\\
+% \text{I/O time}&=10\times 10\times 10 =1000ms\\
+\text{context switching time}&=0.1 \times 11=1.1 ms\\
+\text{total time}&=110+1.1=111.1ms\\
+\text{CPU utilization}&=\frac{\text{CPU time}}{\text{total time}}\\
+&=\frac{110}{111.1}\\
+&=99.0\%\\
+\end{aligned}
+
+$$
 ## 5.25
 
 * FCFS
@@ -159,5 +185,129 @@ gantt
   * can prioritize short processes by setting 
 
 ## 6.7
+```c
+push(item) { 
+  if (top < SIZE) { 
+    stack[top] = item; 
+    top++; 
+  } 
+  else 
+    ERROR 
+} 
+pop() { 
+  if (lis_empty()) {
+    top--;
+    return stack[top];
+  } 
+  else 
+    ERROR 
+} 
+is_empty() { 
+  if (top == 0) 
+    return true;
+  else 
+    return false;
+}
+```
+
+* (a)
+  * `top`
+* (b)
+  * add mutex so only one process can access `top` at time
 ## 6.15
+
+* Potential Deadlocks: because process hold lock cant be interrupts
+* Loss of responsiveness: be interrupts by I/O operation
+
 ## 6.18
+
+* block()
+  * place the process invoking the operation on the appropriate waiting queue
+* wakeup()
+  * remove one of processes in the waiting queue and place it in the ready queue
+
+
+
+
+# programming problems
+
+## 4.27
+```c
+#include <pthread.h>
+#include <stdio.h>
+
+#define MAX_FIBONACCI_NUMBERS 100
+
+// Structure to hold data shared between threads
+struct ThreadData {
+    int sequence[MAX_FIBONACCI_NUMBERS];
+    int count;
+};
+
+// Function to generate Fibonacci sequence
+void *generateFibonacci(void *arg) {
+    struct ThreadData *data = (struct ThreadData *)arg;
+    int n = data->count;
+    int a = 0, b = 1;
+    
+    data->sequence[0] = a;
+    data->sequence[1] = b;
+    
+    for (int i = 2; i < n; i++) {
+        int temp = a + b;
+        data->sequence[i] = temp;
+        a = b;
+        b = temp;
+    }
+    
+    pthread_exit(NULL);
+}
+
+int main (){
+	int n;
+	printf("Fibonacci number:");
+	scanf("%d",&n);
+	pthread_t tid;
+	struct ThreadData data;
+	data.count=n;
+	pthread_create(&tid, NULL, generateFibonacci, (void *)&data);
+
+    pthread_join(tid, NULL);
+
+    printf("Fibonacci sequence:");
+    for (int i = 0; i < n; i++) {
+        printf(" %d", data.sequence[i]);
+    }
+    printf("\n");
+
+    return 0;
+
+}
+```
+## 6.33
+### a
+`available resources` variable
+### b
+decrease count
+```cpp
+available resources -= count;
+```
+increase count
+```cpp
+available resources += count;
+```
+
+
+### c
+```c
+int decrease count(int count) {
+  mutex.lock();
+  if (available resources < count)
+    return -1;
+  else {
+    available resources -= count;
+    return 0;
+  }
+  mutex.unlock();
+}
+```
