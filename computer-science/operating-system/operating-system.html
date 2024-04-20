@@ -665,18 +665,19 @@ any physical memory location – relocatable object file</li>
 <li>Turnaround time 
 <ul>
 <li>amount of time to execute a particular process</li>
-<li>Completion Time – Arrival Time</li>
+<li>turnaround time = completion time – arrival time</li>
 </ul>
 </li>
 <li>Waiting time 
 <ul>
 <li>amount of time a process has been waiting in the ready queue</li>
-<li>Turn Around Time – Burst Time</li>
+<li>waiting time = turnaround time  –  burst time</li>
 </ul>
 </li>
 <li>Response time 
 <ul>
 <li>amount of time it takes from when a request was submitted until the first response is produce</li>
+<li>response time = start time – arrival time</li>
 </ul>
 </li>
 </ul>
@@ -913,6 +914,162 @@ any physical memory location – relocatable object file</li>
 </li>
 </ul>
 <p><img src="https://imgur.com/YoUCDym.png" alt="" /></p>
+<h1 id="chapter-6-synchronization-tools"><a class="header" href="#chapter-6-synchronization-tools">Chapter 6: Synchronization Tools</a></h1>
+<h2 id="race-condition"><a class="header" href="#race-condition">Race condition</a></h2>
+<p><img src="https://imgur.com/64HhNAf.png" alt="" /></p>
+<ul>
+<li><code>critical section</code> segment of code
+<ul>
+<li>Process may be changing common variables, updating table, writing file, etc</li>
+<li>When one process in critical section, no other may be in its critical section</li>
+</ul>
+</li>
+</ul>
+<h2 id="critical-section-problem"><a class="header" href="#critical-section-problem">Critical-Section Problem</a></h2>
+<ul>
+<li>Mutual Exclusion
+<ul>
+<li>If process is executing in its critical section, then no other processes can be executing in their critical sections</li>
+</ul>
+</li>
+<li>Progress
+<ul>
+<li>if not process in critical section and have process want to enter critical section then have to let the process</li>
+</ul>
+</li>
+<li>Bounded Waiting
+<ul>
+<li>the time process wait to enter critical section have to limit(cant wait forever)</li>
+</ul>
+</li>
+</ul>
+<h3 id="software-solution"><a class="header" href="#software-solution">software solution</a></h3>
+<ul>
+<li>cant avoid shared variable be override value by another process</li>
+<li>Entry section: disable interrupts</li>
+<li>Exit section: enable interrupts</li>
+</ul>
+<h4 id="part-of-solution"><a class="header" href="#part-of-solution">part of Solution</a></h4>
+<ul>
+<li>
+<p>Assume that the <code>load</code> and <code>store</code> machine-language instructions are <code>atomic</code></p>
+<ul>
+<li>Which cannot be interrupted</li>
+</ul>
+</li>
+<li>
+<p><code>turn</code> indicates whose turn it is to enter the critical section</p>
+</li>
+<li>
+<p>two process have enter critical section in turn
+<img src="https://imgur.com/wUlw82E.png" alt="" /></p>
+</li>
+</ul>
+<h4 id="petersons-solution"><a class="header" href="#petersons-solution">Peterson’s Solution</a></h4>
+<ul>
+<li>Assume that the <code>load</code> and <code>store</code> machine-language instructions are <code>atomic</code>
+<ul>
+<li>Which cannot be interrupted</li>
+</ul>
+</li>
+<li><code>turn</code> indicates whose turn it is to enter the critical section</li>
+<li><code>flag</code> array is used to indicate if a process is ready to enter the critical section</li>
+<li>solve <code>critical section problem</code> 
+<ul>
+<li>Mutual exclusion</li>
+<li>progress</li>
+<li>bounded-waiting</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/HPf3Vfc.png" alt="" /></p>
+<h4 id="memory-barrier"><a class="header" href="#memory-barrier">Memory Barrier</a></h4>
+<ul>
+<li>Memory models may be either:
+<ul>
+<li>Strongly ordered – where a memory modification of one processor is immediately visible to all other processors</li>
+<li>Weakly ordered – where a memory modification of one processor may not be immediately visible to all other processors</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/Mmz1N51.png" alt="" /></p>
+<h4 id="mutex-locks"><a class="header" href="#mutex-locks">Mutex Locks</a></h4>
+<ul>
+<li>First acquire() a lock</li>
+<li>Then release() the lock</li>
+<li><code>busy waiting</code>
+<ul>
+<li>the process will be block and continuous check is lock </li>
+<li><code>spinlock</code> when is lock free will automatic let the waiting process know</li>
+</ul>
+</li>
+</ul>
+<h4 id="semaphore"><a class="header" href="#semaphore">semaphore</a></h4>
+<ul>
+<li>wait()</li>
+<li>signal()</li>
+<li>Counting semaphore
+<ul>
+<li>integer value can range over an unrestricted domain</li>
+</ul>
+</li>
+<li>Binary semaphore 
+<ul>
+<li>integer value can range only between 0 and 1</li>
+<li>Same as a mutex lock</li>
+</ul>
+</li>
+<li>Must guarantee that no two processes can execute the <code>wait()</code> and <code>signal()</code> on the same semaphore at the same time</li>
+</ul>
+<h5 id="semaphore-implementation-with-no-busy-waiting"><a class="header" href="#semaphore-implementation-with-no-busy-waiting">Semaphore Implementation with no Busy waiting</a></h5>
+<ul>
+<li>block()
+<ul>
+<li>place the process invoking the operation on the appropriate waiting queue</li>
+</ul>
+</li>
+<li>wakeup()
+<ul>
+<li>remove one of processes in the waiting queue and place it in the ready queue</li>
+</ul>
+</li>
+</ul>
+<h3 id="synchronization-hardware"><a class="header" href="#synchronization-hardware">Synchronization Hardware</a></h3>
+<ul>
+<li>Hardware instruction
+<ul>
+<li>Atomic Swap()</li>
+<li>Test and Set()</li>
+</ul>
+</li>
+<li>Atomic variables</li>
+</ul>
+<h4 id="hardware-instruction"><a class="header" href="#hardware-instruction">Hardware instruction</a></h4>
+<h4 id="atomic-variables"><a class="header" href="#atomic-variables">Atomic variables</a></h4>
+<ul>
+<li>atomic variable that provides atomic (uninterruptible) updates on basic data types such as integers and booleans</li>
+</ul>
+<h2 id="deadlock"><a class="header" href="#deadlock">deadlock</a></h2>
+<p><img src="https://imgur.com/O58l3oJ.png" alt="" /></p>
+<ul>
+<li>deadlock
+<ul>
+<li>two or more processes are waiting indefinitely for an event that can be caused by only one of the waiting processes</li>
+<li>Starvation 
+<ul>
+<li>indefinite blocking</li>
+<li>A process may never be removed from the semaphore queue in which it is suspended</li>
+</ul>
+</li>
+<li>Priority Inversion 
+<ul>
+<li>Scheduling problem when lower-priority process holds a lock needed by higher-priority process</li>
+<li>Solved via priority-inheritance protocol</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
