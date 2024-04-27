@@ -242,3 +242,52 @@ $$
 A=A^T\\
 A=LDU^{*}=LDL^{-1}
 $$
+
+## projection matrix(project vector to columns space)
+
+### projection vector on vector
+
+$$
+\text{project } \overrightharpoon {b} \text{ on } \overrightharpoon {a} \text{ as } \hat{a}\\
+\overrightharpoon{(b-\hat{a})} \perp \overrightharpoon{ a } \rightarrow a^T (b-\hat{a}) =0\\
+\hat{a}=x \times \overrightharpoon{a}\\
+\begin{aligned}
+a^T (b-\hat{a})& =0\\
+a^T b - a^T \hat{a}& =0\\
+a^T (\hat{a})& =a^T b\\
+a^T (x \times a)& =a^T b\\
+x\times (a^T a) & =a^T b\\
+x & =\frac{a^T b}{a^T a}\\
+\end{aligned}\\
+
+
+\begin{aligned}
+\hat{a}&=x \times \overrightharpoon{a}\\
+& =\frac{a^T b}{a^T a} \times \overrightharpoon{a}\\
+& =\underbrace{(\frac{a a^T}{a^T a})}_{P}\overrightharpoon{b}\\
+
+\end{aligned}
+$$
+
+### projection matrix
+$$
+\hat{a}=Pa\\
+a-Pa=(I-P)a\\
+$$
+### property
+* symmetric 
+$$
+P=P^T\\
+P^n=P
+$$
+
+## Pseudoinverse matrix
+
+
+$$
+\begin{aligned}
+&A^+(Ax)=x_r\\
+&A^{+}=A^T(AA^T)^{-1}\\
+&AA^+=I\\
+\end{aligned}
+$$

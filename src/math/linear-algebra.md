@@ -755,12 +755,12 @@ distance=\sum_{i=1}^{n}\sum_{j=1}^{m}{|A_{ij}-B_{ij}}|\\
 distance=\sqrt{\sum_{i=1}^{n}\sum_{j=1}^{m}{{(A_{ij}-B_{ij})}^2}}\\
 $$
 
-## orthogonal vs orthonormal matrix
+## orthogonal vs orthonormal
 
-### orthogonal
+### orthogonal matrix
 
 $$
-\text{If column vector are orth to each other}\\
+\text{If column vector are orth to each other(dot product is 0)}\\
 $$
 
 ### orthonormal
@@ -769,34 +769,33 @@ $$
 \text{If column vector are orth to each other and the length of  column vector is 1  then is orthonormal}\\
 \text{then is orthogonal matrix}\\
 \begin{bmatrix}
-\frac{1}{\sqrt{3}} \\
-\frac{1}{\sqrt{3}} \\
-\frac{1}{\sqrt{3}} \\
-\end{bmatrix} \perp
-\begin{bmatrix}
-1 \\
-1 \\
--2 \\
-\end{bmatrix} \perp
-\begin{bmatrix}
--3 \\
-3 \\
+\frac{1}{\sqrt{2}} \\
 0 \\
-\end{bmatrix}
+\frac{1}{\sqrt{2}} \\
+
+\end{bmatrix} \perp
+\begin{bmatrix}
+
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \\
+0 \\
+\end{bmatrix} \perp
+\begin{bmatrix}
+0 \\
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \\
+\end{bmatrix}\\
+
 \\
-\left|
 \begin{bmatrix}
-\frac{1}{\sqrt{3}} \\
-\frac{1}{\sqrt{3}} \\
-\frac{1}{\sqrt{3}} \\
-\end{bmatrix} \right|=1\\
-\begin{bmatrix}
-\frac{1}{\sqrt{3}} & 1 & -3\\
-\frac{1}{\sqrt{3}} & 1 & 3\\
-\frac{1}{\sqrt{3}} & -2& 0\\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0\\
+0                  & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}} & 0                  & \frac{1}{\sqrt{2}} \
 \end{bmatrix}\text{is orthogonal matrix}\\
-\text{if A is orthogonal matrix then } A^T \times A=I \\
-A^T=A^{-1}
+\text{if A is orthogonal matrix then } \\ 
+A^T \times A=I \\
+A^T=A^{-1}\\
+det(A)^2=1\\
 $$
 
 ## find orth basis(gram-schmidt process)

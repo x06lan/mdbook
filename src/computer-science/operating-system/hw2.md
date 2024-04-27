@@ -300,14 +300,29 @@ available resources += count;
 
 ### c
 ```c
-int decrease count(int count) {
-  mutex.lock();
-  if (available resources < count)
+#include <pthread.h>
+
+#define MAX_RESOURCES 5
+
+int available_resources = MAX_RESOURCES;
+
+pthread_mutex_t mutex;
+
+int decrease_count(int count) {
+  if (available_resources < count)
     return -1;
   else {
-    available resources -= count;
+    pthread_mutex_lock(&mutex);
+    available_resources -= count;
+    pthread_mutex_unlock(&mutex);
     return 0;
   }
-  mutex.unlock();
+}
+
+int increase_count(int count) {
+  pthread_mutex_lock(&mutex);
+  available_resources += count;
+  pthread_mutex_unlock(&mutex);
+  return 0;
 }
 ```
