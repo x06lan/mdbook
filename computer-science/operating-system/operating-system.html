@@ -1070,6 +1070,225 @@ any physical memory location – relocatable object file</li>
 </ul>
 </li>
 </ul>
+<h1 id="chapter-7-synchronization-examples"><a class="header" href="#chapter-7-synchronization-examples">Chapter 7: Synchronization Examples</a></h1>
+<h2 id="problems-of-synchronization"><a class="header" href="#problems-of-synchronization">Problems of Synchronization</a></h2>
+<p>Most of the synchronization problems do not exist in
+functional languages</p>
+<ul>
+<li>Bounded-Buffer Problem (Producer-consumer problem)</li>
+<li>Readers and Writers Problem</li>
+<li>Dining-Philosophers Problem</li>
+</ul>
+<h2 id="os"><a class="header" href="#os">OS</a></h2>
+<ul>
+<li>windows
+<ul>
+<li>spinlocks</li>
+<li>dispatcher object</li>
+</ul>
+</li>
+<li>linux 
+<ul>
+<li>Atomic integers</li>
+<li>Mutex locks</li>
+<li>Spinlocks, Semaphores</li>
+<li>Reader-writer versions of both</li>
+</ul>
+</li>
+<li>POSIX
+<ul>
+<li>mutex locks</li>
+<li>semaphores
+<ul>
+<li>named
+<ul>
+<li>can be used by unrelated processes</li>
+</ul>
+</li>
+<li>unnamed
+<ul>
+<li>can be used only by threads in the same process</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>condition variable</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-8-deadlocks"><a class="header" href="#chapter-8-deadlocks">Chapter 8: Deadlocks</a></h1>
+<h2 id="deadlock-characterization"><a class="header" href="#deadlock-characterization">Deadlock Characterization</a></h2>
+<ul>
+<li>Mutual exclusion
+<ul>
+<li>only one process at a time can use a resource</li>
+</ul>
+</li>
+<li>Hold and wait
+<ul>
+<li>a process holding at least one resource is waiting to acquire additional resources held by other processes</li>
+</ul>
+</li>
+<li>No preemption
+<ul>
+<li>a resource can be released only voluntarily by the process holding it, after that process has completed its task</li>
+</ul>
+</li>
+<li>Circular wait
+<ul>
+<li>there exists a set {P0, P1, …, Pn} of waiting processes such that:</li>
+</ul>
+</li>
+</ul>
+<h2 id="deadlocks-prevention"><a class="header" href="#deadlocks-prevention">Deadlocks Prevention</a></h2>
+<ul>
+<li>mutual exclusion
+<ul>
+<li>not required for sharable resources (e.g., read-only files); must hold for non-sharable resource</li>
+</ul>
+</li>
+<li>hold and wait
+<ul>
+<li>must guarantee that whenever a process requests a resource, it does not hold any other resources</li>
+</ul>
+</li>
+<li>No Preemption
+<ul>
+<li>If a process that is holding some resources requests another resource that cannot be immediately allocated to it, then all resources currently being held are released</li>
+</ul>
+</li>
+<li>Circular Wai
+<ul>
+<li>check is have circular wait or not </li>
+</ul>
+</li>
+</ul>
+<h2 id="deadlock-avoidance"><a class="header" href="#deadlock-avoidance">Deadlock Avoidance</a></h2>
+<ul>
+<li><strong>Cant do Preventon，have to check in run time</strong></li>
+<li>each process declares the maximum number of resources of each type that it may need</li>
+<li>deadlock-avoidance algorithm dynamically examines the resource-allocation state to ensure that there can never be a circular-wait condition</li>
+</ul>
+<h2 id="safe-state"><a class="header" href="#safe-state">safe state</a></h2>
+<ul>
+<li>safe state 
+<ul>
+<li>no deadlock</li>
+</ul>
+</li>
+<li>unsafe state
+<ul>
+<li>possibility of deadlock</li>
+</ul>
+</li>
+<li>Avoidance Algorithms
+<ul>
+<li>Single instance of a resource type
+<ul>
+<li><code>resource-allocation graph</code></li>
+</ul>
+</li>
+<li>Multiple instances of a resource type
+<ul>
+<li>Banker’s Algorithm</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/1fRZ96o.png" alt="" /></p>
+<h3 id="resource-allocation-graph"><a class="header" href="#resource-allocation-graph">Resource-Allocation Graph</a></h3>
+<p><img src="https://imgur.com/1pkLAOD.png" alt="" /></p>
+<ul>
+<li>graph contains no cycles
+<ul>
+<li>no deadlock</li>
+</ul>
+</li>
+<li>graph contains a cycle
+<ul>
+<li>only one instance per resource type, then deadlock</li>
+<li>several instances per resource type, possibility of deadlock</li>
+</ul>
+</li>
+</ul>
+<h3 id="bankers-algorithm"><a class="header" href="#bankers-algorithm">Banker’s Algorithm</a></h3>
+<ul>
+<li>Max: request resource count to finish task</li>
+<li>Allocation: currently occupy resource count </li>
+<li>Need: Max-Allocation resource count</li>
+<li>Available: free count of resource type </li>
+</ul>
+<h4 id="resource-request-algorithm"><a class="header" href="#resource-request-algorithm">Resource-Request Algorithm</a></h4>
+<h4 id="example"><a class="header" href="#example">example</a></h4>
+<ul>
+<li>total available A (10 instances), B (5 instances), and C (7 instances)</li>
+<li>safe sequence:<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>unsafe sequence:<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<!-- * when task finish will release allocation resource then will have more  -->
+<div class="table-wrapper"><table><thead><tr><th>task</th><th>allocation</th><th>max</th><th>need</th><th>available</th><th>order</th></tr></thead><tbody>
+<tr><td></td><td>A,B,C</td><td>A,B,C</td><td>A,B,C</td><td>A,B,C</td><td></td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>0,1,0</td><td>7,5,3</td><td>7,4,3</td><td>7,4,5=( (7,4,3) + (0,0,2) )</td><td>3</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>2,0,0</td><td>3,2,2</td><td>1,2,2</td><td>3,3,2=( (10,5,7) - (7,2,5) )</td><td>0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>3,0,2</td><td>9,0,2</td><td>6,0,2</td><td>7,5,5=( (7,4,5) + (0,1,0) )</td><td>4</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>2,1,1</td><td>2,2,2</td><td>0,1,1</td><td>5,3,2=( (3,3,2) + (2,0,0) )</td><td>1</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>0,0,2</td><td>4,3,3</td><td>4,3,1</td><td>7,4,3=( (5,3,2) + (2,1,1) )</td><td>2</td></tr>
+</tbody></table>
+</div>
+<h2 id="deadlock-detection"><a class="header" href="#deadlock-detection">Deadlock Detection</a></h2>
+<h3 id="single-instance"><a class="header" href="#single-instance">Single instance</a></h3>
+<p><img src="https://imgur.com/mhFVJYh.png" alt="" /></p>
+<h3 id="multiple-instances"><a class="header" href="#multiple-instances">Multiple instances:</a></h3>
+<ul>
+<li>Total instances: A:7, B:2, C:6</li>
+<li>Available instances: A:0, B:0, C:0</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>task</th><th>allocation</th><th>request/need</th></tr></thead><tbody>
+<tr><td></td><td>A,B,C</td><td>A,B,C</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>0,1,0</td><td>0,0,0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>2,0,0</td><td>2,0,2</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>3,0,3</td><td>0,0,0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>2,1,1</td><td>1,0,0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td>0,0,2</td><td>0,0,2</td></tr>
+</tbody></table>
+</div>
+<h2 id="deadlock-recovery"><a class="header" href="#deadlock-recovery">Deadlock Recovery</a></h2>
+<ul>
+<li>Process termination
+<ul>
+<li>Abort all deadlocked processes</li>
+<li>Abort one process at a time until the deadlock cycle is eliminated</li>
+<li>In which order should we choose to abort?
+<ul>
+<li>Priority of the process</li>
+<li>How long process has computed</li>
+<li>Resources the process has used</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Resource preemption
+<ul>
+<li>Selecting a victim 
+<ul>
+<li>minimize cost</li>
+</ul>
+</li>
+<li>Rollback
+<ul>
+<li>return to some safe state, restart process for that state</li>
+</ul>
+</li>
+<li>Starvation 
+<ul>
+<li>same process may always be picked as victim, so we should include number of rollbacks in cost factor</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-9-main-memory"><a class="header" href="#chapter-9-main-memory">Chapter 9: Main Memory</a></h1>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
