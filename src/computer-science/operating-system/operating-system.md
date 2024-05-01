@@ -727,3 +727,154 @@ $$
   * Priority Inversion 
     *  Scheduling problem when lower-priority process holds a lock needed by higher-priority process
     * Solved via priority-inheritance protocol
+
+# Chapter 7: Synchronization Examples
+## Problems of Synchronization
+
+Most of the synchronization problems do not exist in
+functional languages
+
+* Bounded-Buffer Problem (Producer-consumer problem)
+* Readers and Writers Problem
+* Dining-Philosophers Problem
+  
+
+## OS 
+* windows
+  * spinlocks
+  * dispatcher object
+* linux 
+  * Atomic integers
+  * Mutex locks
+  * Spinlocks, Semaphores
+  * Reader-writer versions of both
+* POSIX
+  * mutex locks
+  * semaphores
+    * named
+      * can be used by unrelated processes
+    * unnamed
+      * can be used only by threads in the same process
+  * condition variable
+
+
+
+
+# Chapter 8: Deadlocks
+
+## Deadlock Characterization
+
+* Mutual exclusion
+  * only one process at a time can use a resource
+* Hold and wait
+  * a process holding at least one resource is waiting to acquire additional resources held by other processes
+* No preemption
+  * a resource can be released only voluntarily by the process holding it, after that process has completed its task
+* Circular wait
+  * there exists a set {P0, P1, …, Pn} of waiting processes such that:
+
+
+
+
+## Deadlocks Prevention
+
+* mutual exclusion
+  * not required for sharable resources (e.g., read-only files); must hold for non-sharable resource
+* hold and wait
+  * must guarantee that whenever a process requests a resource, it does not hold any other resources
+* No Preemption
+  * If a process that is holding some resources requests another resource that cannot be immediately allocated to it, then all resources currently being held are released
+* Circular Wai
+  * check is have circular wait or not 
+
+## Deadlock Avoidance
+* **Cant do Preventon，have to check in run time**
+* each process declares the maximum number of resources of each type that it may need
+* deadlock-avoidance algorithm dynamically examines the resource-allocation state to ensure that there can never be a circular-wait condition
+
+## safe state
+* safe state 
+  * no deadlock
+* unsafe state
+  * possibility of deadlock
+* Avoidance Algorithms
+  * Single instance of a resource type
+    * `resource-allocation graph`
+  * Multiple instances of a resource type
+    * Banker’s Algorithm
+
+![](https://imgur.com/1fRZ96o.png)
+
+### Resource-Allocation Graph
+![](https://imgur.com/1pkLAOD.png)
+
+* graph contains no cycles
+  * no deadlock
+* graph contains a cycle
+  * only one instance per resource type, then deadlock
+  * several instances per resource type, possibility of deadlock
+
+### Banker’s Algorithm
+* Max: request resource count to finish task
+* Allocation: currently occupy resource count 
+* Need: Max-Allocation resource count
+* Available: free count of resource type 
+
+
+
+#### Resource-Request Algorithm
+
+#### example
+* total available A (10 instances), B (5 instances), and C (7 instances)
+* safe sequence:$P_1, P_3, P_4, P_0, P_2$
+* unsafe sequence:$P_1, P_2, P_4, P_0, P_3$
+<!-- * when task finish will release allocation resource then will have more  -->
+
+
+
+| task  | allocation | max   | need  | available                    | order |
+| ----- | ---------- | ----- | ----- | ---------------------------- | ----- |
+|       | A,B,C      | A,B,C | A,B,C | A,B,C                        |       |
+| $P_0$ | 0,1,0      | 7,5,3 | 7,4,3 | 7,4,5=( (7,4,3) + (0,0,2) )  | 3     |
+| $P_1$ | 2,0,0      | 3,2,2 | 1,2,2 | 3,3,2=( (10,5,7) - (7,2,5) ) | 0     |
+| $P_2$ | 3,0,2      | 9,0,2 | 6,0,2 | 7,5,5=( (7,4,5) + (0,1,0) )  | 4     |
+| $P_3$ | 2,1,1      | 2,2,2 | 0,1,1 | 5,3,2=( (3,3,2) + (2,0,0) )  | 1     |
+| $P_4$ | 0,0,2      | 4,3,3 | 4,3,1 | 7,4,3=( (5,3,2) + (2,1,1) )  | 2     |
+
+## Deadlock Detection
+### Single instance
+![](https://imgur.com/mhFVJYh.png)
+
+### Multiple instances:
+* Total instances: A:7, B:2, C:6
+* Available instances: A:0, B:0, C:0
+
+| task  | allocation | request/need |
+| ----- | ---------- | ------------ |
+|       | A,B,C      | A,B,C        |
+| $P_0$ | 0,1,0      | 0,0,0        |
+| $P_1$ | 2,0,0      | 2,0,2        |
+| $P_2$ | 3,0,3      | 0,0,0        |
+| $P_3$ | 2,1,1      | 1,0,0        |
+| $P_4$ | 0,0,2      | 0,0,2        |
+
+
+## Deadlock Recovery
+
+* Process termination
+  * Abort all deadlocked processes
+  * Abort one process at a time until the deadlock cycle is eliminated
+  * In which order should we choose to abort?
+    * Priority of the process
+    * How long process has computed
+    * Resources the process has used
+* Resource preemption
+  * Selecting a victim 
+    * minimize cost
+  * Rollback
+    * return to some safe state, restart process for that state
+  * Starvation 
+    *  same process may always be picked as victim, so we should include number of rollbacks in cost factor
+
+
+# Chapter 9: Main Memory

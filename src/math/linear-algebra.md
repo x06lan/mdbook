@@ -874,11 +874,11 @@ $$
 $$
 (\dim \beta)n=2,
 \text{(test number)}m=4\\
-\text{(x,y)   y= }\beta_0+x\beta_1\\
-\text{(2,1)   1= }\beta_0+2\beta_1\\
-\text{(5,2)   2= }\beta_0+5\beta_1\\
-\text{(7,3)   3= }\beta_0+7\beta_1\\
-\text{(8,3)   3= }\beta_0+8\beta_1\\
+\beta_0+x\beta_1 =y,\text{(x,y)   }\\
+\beta_0+2\beta_1 =1,\text{(2,1)   }\\
+\beta_0+5\beta_1 =2,\text{(5,2)   }\\
+\beta_0+7\beta_1 =3,\text{(7,3)   }\\
+\beta_0+8\beta_1 =3,\text{(8,3)   }\\
 \\
 A\times \beta=y\\
 \underset{A[m\times n]}{\begin{bmatrix}
