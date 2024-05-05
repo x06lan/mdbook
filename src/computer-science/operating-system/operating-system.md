@@ -973,7 +973,8 @@ functional languages
 ![](https://imgur.com/vPdD4cn.png)
 
 ##### Translation Look-aside Buffer (TLB)
-The two-memory access problem can be solved by the use of a special fast-lookup hardware cache called translation look-aside buffers (TLBs) (also called associative memory)
+* The two-memory access problem can be solved by the use of a special fast-lookup hardware cache called translation look-aside buffers (TLBs) (also called associative memory)
+* In this scheme every data/instruction access requires `two memory accesses`
 ![](https://imgur.com/ono9w1b.png)
 
 
