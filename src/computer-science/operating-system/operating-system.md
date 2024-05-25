@@ -1004,3 +1004,169 @@ functional languages
 
 ![](https://imgur.com/aWcluQQ.png)
 
+
+# Chapter 10: Virtual Memory
+
+* Code needs to be in memory to execute, but entire program rarely used
+* Program no longer constrained by limits of physical memory
+* Consider ability to execute partially-loaded program
+
+## virtual memory
+* Only part of the program needs to be in memory for execution
+* Logical address space can therefore be much larger than physical address space
+* Allows address spaces to be shared by several processes
+* Allows for more efficient process creation
+* More programs running concurrently
+* Less I/O needed to load or swap processes
+* Virtual memory can be implemented via:
+  * **Demand paging**
+  * **Demand segmentation**
+
+![](https://imgur.com/9dwYNmf.png)
+
+
+### Demand Paging
+
+
+* Page is needed
+* Lazy swapper
+  * never swaps a page into memory unless page will be needed
+  * store in swap(disk)
+
+![](https://imgur.com/mGdRBK7.png)
+
+#### valid-invalid bit
+* During MMU address translation, if valid–invalid bit in page table entry is i => page fault
+
+![](https://imgur.com/17xeTLe.png)
+
+
+#### page fault
+* page table that request are not in memory
+
+![](https://imgur.com/SbHL2P4.png)
+
+#### free-frame list
+
+* when page fault occurs, the OS must bring the desired page from secondary storage into main memory
+* Most OS maintain a free-frame list -- a pool of free frames for satisfying such requests
+* zero-fill-on-demand
+  * the content of the frames zeroed-out before being allocated
+![](https://imgur.com/zBA3ENF.png)
+
+#### Performance of Demand Paging
+* Memory access time = 200 nanoseconds
+* Average page-fault service time = 8000 nanoseconds
+* p = page fault probability
+* Effective Access Time = (1 – p) x 200 + p (8000)
+
+#### Demand Paging Optimizations
+* Swap space I/O faster than file system I/O even if on the same device
+ * Swap allocated in larger chunks, less management needed than file system
+#### Copy-on-Write
+* allows both parent and child processes to initially share the same pages in memory
+  * If either process modifies a shared page, only then is the page copied
+* vfork() variation on fork()system call has parent suspend and child using copy-on-write address space of parent
+  * Designed to have child call exec()
+  * Very efficient
+| origin                             | Process 1 Modifies Page C          |
+| ---------------------------------- | ---------------------------------- |
+| ![](https://imgur.com/iKfUhcA.png) | ![](https://imgur.com/iKfUhcA.png) |
+
+#### Page Replacement
+
+1. if There is no Free Frame
+1. use a page replacement algorithm to select a victim frame
+1. Write victim frame to disk if dirty
+1. Bring the desired page into the (newly) free frame; update the page and frame tables
+1. Continue the process by restarting the instruction that caused the trap
+
+![](https://imgur.com/LvuZt5C.png)
+
+##### FIFO Algorithm
+
+* first in first out
+
+![](https://imgur.com/KHG2Vip.png)
+
+##### Optimal Algorithm
+
+* Replace page that will not be used for longest period of time
+* stack algorithms
+
+![](https://imgur.com/JFrOvnS.png)
+
+##### Least Recently Used (LRU) Algorithm
+
+* Replace page that has not been used in the most amount of time
+* stack algorithms
+
+![](https://imgur.com/NBqQeog.png)
+
+##### Second-chance Algorithm
+* If page to be replaced has
+  * Reference bit = 0 -> replace it
+  * reference bit = 1 then:
+    * set reference bit 0, leave page in memory
+    * replace next page, subject to same rules
+##### Counting Algorithms
+
+* Least Frequently Used (LFU) Algorithm
+* Most Frequently Used (LFU) Algorithm
+
+#### page buffering algorithm
+* Keep a pool of free frames, always
+* possibly, keep list of modified pages
+* Possibly, keep free frame contents intact and note what is in them
+
+#### allocation of frames
+
+* fixed allocation
+* priority allocation
+
+#### Non-Uniform Memory Access 
+
+allocating memory “close to” the CPU on which the thread is scheduled
+
+![](https://imgur.com/4Y4Fqnm.png)
+
+
+#### trashing
+
+
+![](https://imgur.com/jBRolG9.png)
+
+#### Page-Fault Frequency
+
+* If actual rate too low, process loses frame
+* If actual rate too high, process gains frame
+
+![](https://imgur.com/0rls3Hd.png)
+
+
+#### Buddy System
+* Allocates memory from fixed-size segment consisting of physically-contiguous pages
+
+
+![](https://imgur.com/0H0IFxN.png)
+
+
+#### Slab Allocator
+
+* use by solaris and linux
+* Slab can be in three possible states
+  1. Full – all used
+  2. Empty – all free
+  3. Partial – mix of free and used
+* Upon request, slab allocator
+  1. Uses free struct in partial slab
+  2. If none, takes one from empty slab
+  3. If no empty slab, create new empty 
+
+![](https://imgur.com/ERv5ZOd.png)
+
+#### Priority Allocation
+
+* If process Pi generates a page fault,
+  * select for replacement one of its frames
+  * select for replacement a frame from a process with lower priority number
