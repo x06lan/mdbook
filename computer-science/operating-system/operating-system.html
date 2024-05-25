@@ -1459,6 +1459,189 @@ functional languages</p>
 </li>
 </ul>
 <p><img src="https://imgur.com/aWcluQQ.png" alt="" /></p>
+<h1 id="chapter-10-virtual-memory"><a class="header" href="#chapter-10-virtual-memory">Chapter 10: Virtual Memory</a></h1>
+<ul>
+<li>Code needs to be in memory to execute, but entire program rarely used</li>
+<li>Program no longer constrained by limits of physical memory</li>
+<li>Consider ability to execute partially-loaded program</li>
+</ul>
+<h2 id="virtual-memory"><a class="header" href="#virtual-memory">virtual memory</a></h2>
+<ul>
+<li>Only part of the program needs to be in memory for execution</li>
+<li>Logical address space can therefore be much larger than physical address space</li>
+<li>Allows address spaces to be shared by several processes</li>
+<li>Allows for more efficient process creation</li>
+<li>More programs running concurrently</li>
+<li>Less I/O needed to load or swap processes</li>
+<li>Virtual memory can be implemented via:
+<ul>
+<li><strong>Demand paging</strong></li>
+<li><strong>Demand segmentation</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/9dwYNmf.png" alt="" /></p>
+<h3 id="demand-paging"><a class="header" href="#demand-paging">Demand Paging</a></h3>
+<ul>
+<li>Page is needed</li>
+<li>Lazy swapper
+<ul>
+<li>never swaps a page into memory unless page will be needed</li>
+<li>store in swap(disk)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/mGdRBK7.png" alt="" /></p>
+<h4 id="valid-invalid-bit"><a class="header" href="#valid-invalid-bit">valid-invalid bit</a></h4>
+<ul>
+<li>During MMU address translation, if valid–invalid bit in page table entry is i =&gt; page fault</li>
+</ul>
+<p><img src="https://imgur.com/17xeTLe.png" alt="" /></p>
+<h4 id="page-fault"><a class="header" href="#page-fault">page fault</a></h4>
+<ul>
+<li>page table that request are not in memory</li>
+</ul>
+<p><img src="https://imgur.com/SbHL2P4.png" alt="" /></p>
+<h4 id="free-frame-list"><a class="header" href="#free-frame-list">free-frame list</a></h4>
+<ul>
+<li>when page fault occurs, the OS must bring the desired page from secondary storage into main memory</li>
+<li>Most OS maintain a free-frame list – a pool of free frames for satisfying such requests</li>
+<li>zero-fill-on-demand
+<ul>
+<li>the content of the frames zeroed-out before being allocated
+<img src="https://imgur.com/zBA3ENF.png" alt="" /></li>
+</ul>
+</li>
+</ul>
+<h4 id="performance-of-demand-paging"><a class="header" href="#performance-of-demand-paging">Performance of Demand Paging</a></h4>
+<ul>
+<li>Memory access time = 200 nanoseconds</li>
+<li>Average page-fault service time = 8000 nanoseconds</li>
+<li>p = page fault probability</li>
+<li>Effective Access Time = (1 – p) x 200 + p (8000)</li>
+</ul>
+<h4 id="demand-paging-optimizations"><a class="header" href="#demand-paging-optimizations">Demand Paging Optimizations</a></h4>
+<ul>
+<li>Swap space I/O faster than file system I/O even if on the same device</li>
+<li>Swap allocated in larger chunks, less management needed than file system</li>
+</ul>
+<h4 id="copy-on-write"><a class="header" href="#copy-on-write">Copy-on-Write</a></h4>
+<ul>
+<li>allows both parent and child processes to initially share the same pages in memory
+<ul>
+<li>If either process modifies a shared page, only then is the page copied</li>
+</ul>
+</li>
+<li>vfork() variation on fork()system call has parent suspend and child using copy-on-write address space of parent
+<ul>
+<li>Designed to have child call exec()</li>
+<li>Very efficient
+| origin                             | Process 1 Modifies Page C          |
+| ––––––––––––––––– | ––––––––––––––––– |
+| <img src="https://imgur.com/iKfUhcA.png" alt="" /> | <img src="https://imgur.com/iKfUhcA.png" alt="" /> |</li>
+</ul>
+</li>
+</ul>
+<h4 id="page-replacement"><a class="header" href="#page-replacement">Page Replacement</a></h4>
+<ol>
+<li>if There is no Free Frame</li>
+<li>use a page replacement algorithm to select a victim frame</li>
+<li>Write victim frame to disk if dirty</li>
+<li>Bring the desired page into the (newly) free frame; update the page and frame tables</li>
+<li>Continue the process by restarting the instruction that caused the trap</li>
+</ol>
+<p><img src="https://imgur.com/LvuZt5C.png" alt="" /></p>
+<h5 id="fifo-algorithm"><a class="header" href="#fifo-algorithm">FIFO Algorithm</a></h5>
+<ul>
+<li>first in first out</li>
+</ul>
+<p><img src="https://imgur.com/KHG2Vip.png" alt="" /></p>
+<h5 id="optimal-algorithm"><a class="header" href="#optimal-algorithm">Optimal Algorithm</a></h5>
+<ul>
+<li>Replace page that will not be used for longest period of time</li>
+<li>stack algorithms</li>
+</ul>
+<p><img src="https://imgur.com/JFrOvnS.png" alt="" /></p>
+<h5 id="least-recently-used-lru-algorithm"><a class="header" href="#least-recently-used-lru-algorithm">Least Recently Used (LRU) Algorithm</a></h5>
+<ul>
+<li>Replace page that has not been used in the most amount of time</li>
+<li>stack algorithms</li>
+</ul>
+<p><img src="https://imgur.com/NBqQeog.png" alt="" /></p>
+<h5 id="second-chance-algorithm"><a class="header" href="#second-chance-algorithm">Second-chance Algorithm</a></h5>
+<ul>
+<li>If page to be replaced has
+<ul>
+<li>Reference bit = 0 -&gt; replace it</li>
+<li>reference bit = 1 then:
+<ul>
+<li>set reference bit 0, leave page in memory</li>
+<li>replace next page, subject to same rules</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="counting-algorithms"><a class="header" href="#counting-algorithms">Counting Algorithms</a></h5>
+<ul>
+<li>Least Frequently Used (LFU) Algorithm</li>
+<li>Most Frequently Used (LFU) Algorithm</li>
+</ul>
+<h4 id="page-buffering-algorithm"><a class="header" href="#page-buffering-algorithm">page buffering algorithm</a></h4>
+<ul>
+<li>Keep a pool of free frames, always</li>
+<li>possibly, keep list of modified pages</li>
+<li>Possibly, keep free frame contents intact and note what is in them</li>
+</ul>
+<h4 id="allocation-of-frames"><a class="header" href="#allocation-of-frames">allocation of frames</a></h4>
+<ul>
+<li>fixed allocation</li>
+<li>priority allocation</li>
+</ul>
+<h4 id="non-uniform-memory-access"><a class="header" href="#non-uniform-memory-access">Non-Uniform Memory Access</a></h4>
+<p>allocating memory “close to” the CPU on which the thread is scheduled</p>
+<p><img src="https://imgur.com/4Y4Fqnm.png" alt="" /></p>
+<h4 id="trashing"><a class="header" href="#trashing">trashing</a></h4>
+<p><img src="https://imgur.com/jBRolG9.png" alt="" /></p>
+<h4 id="page-fault-frequency"><a class="header" href="#page-fault-frequency">Page-Fault Frequency</a></h4>
+<ul>
+<li>If actual rate too low, process loses frame</li>
+<li>If actual rate too high, process gains frame</li>
+</ul>
+<p><img src="https://imgur.com/0rls3Hd.png" alt="" /></p>
+<h4 id="buddy-system"><a class="header" href="#buddy-system">Buddy System</a></h4>
+<ul>
+<li>Allocates memory from fixed-size segment consisting of physically-contiguous pages</li>
+</ul>
+<p><img src="https://imgur.com/0H0IFxN.png" alt="" /></p>
+<h4 id="slab-allocator"><a class="header" href="#slab-allocator">Slab Allocator</a></h4>
+<ul>
+<li>use by solaris and linux</li>
+<li>Slab can be in three possible states
+<ol>
+<li>Full – all used</li>
+<li>Empty – all free</li>
+<li>Partial – mix of free and used</li>
+</ol>
+</li>
+<li>Upon request, slab allocator
+<ol>
+<li>Uses free struct in partial slab</li>
+<li>If none, takes one from empty slab</li>
+<li>If no empty slab, create new empty </li>
+</ol>
+</li>
+</ul>
+<p><img src="https://imgur.com/ERv5ZOd.png" alt="" /></p>
+<h4 id="priority-allocation"><a class="header" href="#priority-allocation">Priority Allocation</a></h4>
+<ul>
+<li>If process Pi generates a page fault,
+<ul>
+<li>select for replacement one of its frames</li>
+<li>select for replacement a frame from a process with lower priority number</li>
+</ul>
+</li>
+</ul>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
