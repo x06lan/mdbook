@@ -20,6 +20,7 @@
   - [matrix algebra](math/matrix-algebra/matrix-algebra.md)
     - [matrix algebra](math/matrix-algebra/matrix-algebra.md)
     - [Q2](math/matrix-algebra/Q2.md)
+    - [Q3](math/matrix-algebra/Q3.md)
   - [formal language](math/formal-language/formal-language.md)
     - [formal language](math/formal-language/formal-language.md)
     - [hw1](math/formal-language/hw1.md)

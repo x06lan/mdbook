@@ -291,3 +291,47 @@ $$
 &AA^+=I\\
 \end{aligned}
 $$
+
+## determinant
+
+$$
+\begin{aligned}
+
+det(ab)&=det(a)det(b)\\
+det(a^T)&=\frac{1}{det(a)}\\
+\end{aligned}
+$$
+
+## SVD
+
+
+$$
+A=U\Sigma V^T\\
+det(A^TA -\lambda I)=0\\
+(A^TA-\lambda I) V=0\\
+\Sigma =\text{diagonal}( \sqrt{\lambda}) \text{sort by big to small}\\
+V=\text{unit-length}(V)\\
+V^TV=I\\
+U=AV\Sigma ^{-1}\\
+$$
+
+## polar decomposition
+
+$$
+\begin{aligned}
+    
+A&=QS\\
+A&=U\Sigma V^T\\
+&=(UV^T)(V\Sigma V^T)\\
+&=QS\\
+\end{aligned}
+
+$$
+
+## Hermitian matrix
+共軛
+$$
+
+$$
+
+
