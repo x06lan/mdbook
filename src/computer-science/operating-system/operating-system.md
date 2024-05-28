@@ -1170,3 +1170,93 @@ allocating memory “close to” the CPU on which the thread is scheduled
 * If process Pi generates a page fault,
   * select for replacement one of its frames
   * select for replacement a frame from a process with lower priority number
+
+# Chapter 11: Mass-Storage Systems
+
+## HDD(hard disk drives)
+
+* Positioning time (random-access time)
+  * seek time
+    * calculated based on 1/3 of `tracks`
+    * 3ms to 12ms 
+  * rotational latency
+    * latency = 1 / (RPM / 60) =60/RPM
+    * average latency = $\frac{1}{2}$latency
+* Transfer Rate
+  * Effective Transfer Rate (real): 1Gb/sec
+* Access Latency 
+  * Access Latency=average seek time + average latency
+* Average I/O time 
+  * Average I/O time = average access time + (amount to transfer / transfer rate) + controller overhead
+
+![](https://imgur.com/uO6Anva.png)
+
+## Nonvolatile Memory Devices
+
+* type
+  * solid-state disks (SSDs)
+  * usb
+* drive writes per day (DWPD)
+  * A 1TB NAND drive with rating of 5DWPD is expected to have 5TB per day written within warrantee period without failing
+
+## Volatile Memory
+
+* RAM drives
+* RAM drives under user control
+
+## Disk Attachment
+* STAT
+* SAS
+* USB
+* FC
+* NVMe
+
+## Disk Scheduling 
+
+* OS maintains queue of requests, per disk or device
+* Minimize seek time
+* Linux implements deadline scheduler
+  * Maintains separate read and write queues, gives read priority 
+  * Because processes more likely to block on read than write
+
+### FCFS
+
+![](https://imgur.com/73QRTSh.png)
+### SCAN algorithm
+
+The disk arm starts at one end of the disk, and moves toward the other end, servicing requests until it gets to the other end of the disk, where the head movement is reversed and servicing continues
+
+
+![](https://imgur.com/cLr4IB5.png)
+
+
+### C-SCAN
+
+SCAN but when it reaches the other end, however, it immediately returns to the beginning of the disk, without servicing any requests on the return trip
+
+![](https://imgur.com/9HZO3Hk.png)
+
+## NVM Scheduling
+
+* NVM best at random I/O, HDD at sequential
+* write amplification 
+  * one write, causing garbage collection and many read/writes
+
+
+## Error Detection and Correction
+
+* CRC (checksum)
+* ECC
+
+## Swap-Space Management
+
+Used for moving entire processes (swapping), or pages (paging), from DRAM to secondary storage when DRAM not large enough for all processes
+
+## RAID Structure
+
+* Mirroring
+* Striped mirrors (RAID 1+0) or mirrored stripes (RAID 0+1) provides high performance and high reliability
+* Block interleaved parity (RAID 4, 5, 6) uses much less redundancy
+
+![](https://imgur.com/47aK3pe.png)
+
