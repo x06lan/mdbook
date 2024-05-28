@@ -1642,6 +1642,111 @@ functional languages</p>
 </ul>
 </li>
 </ul>
+<h1 id="chapter-11-mass-storage-systems"><a class="header" href="#chapter-11-mass-storage-systems">Chapter 11: Mass-Storage Systems</a></h1>
+<h2 id="hddhard-disk-drives"><a class="header" href="#hddhard-disk-drives">HDD(hard disk drives)</a></h2>
+<ul>
+<li>Positioning time (random-access time)
+<ul>
+<li>seek time
+<ul>
+<li>calculated based on 1/3 of <code>tracks</code></li>
+<li>3ms to 12ms </li>
+</ul>
+</li>
+<li>rotational latency
+<ul>
+<li>latency = 1 / (RPM / 60) =60/RPM</li>
+<li>average latency = <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>latency</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transfer Rate
+<ul>
+<li>Effective Transfer Rate (real): 1Gb/sec</li>
+</ul>
+</li>
+<li>Access Latency 
+<ul>
+<li>Access Latency=average seek time + average latency</li>
+</ul>
+</li>
+<li>Average I/O time 
+<ul>
+<li>Average I/O time = average access time + (amount to transfer / transfer rate) + controller overhead</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/uO6Anva.png" alt="" /></p>
+<h2 id="nonvolatile-memory-devices"><a class="header" href="#nonvolatile-memory-devices">Nonvolatile Memory Devices</a></h2>
+<ul>
+<li>type
+<ul>
+<li>solid-state disks (SSDs)</li>
+<li>usb</li>
+</ul>
+</li>
+<li>drive writes per day (DWPD)
+<ul>
+<li>A 1TB NAND drive with rating of 5DWPD is expected to have 5TB per day written within warrantee period without failing</li>
+</ul>
+</li>
+</ul>
+<h2 id="volatile-memory"><a class="header" href="#volatile-memory">Volatile Memory</a></h2>
+<ul>
+<li>RAM drives</li>
+<li>RAM drives under user control</li>
+</ul>
+<h2 id="disk-attachment"><a class="header" href="#disk-attachment">Disk Attachment</a></h2>
+<ul>
+<li>STAT</li>
+<li>SAS</li>
+<li>USB</li>
+<li>FC</li>
+<li>NVMe</li>
+</ul>
+<h2 id="disk-scheduling"><a class="header" href="#disk-scheduling">Disk Scheduling</a></h2>
+<ul>
+<li>OS maintains queue of requests, per disk or device</li>
+<li>Minimize seek time</li>
+<li>Linux implements deadline scheduler
+<ul>
+<li>Maintains separate read and write queues, gives read priority </li>
+<li>Because processes more likely to block on read than write</li>
+</ul>
+</li>
+</ul>
+<h3 id="fcfs"><a class="header" href="#fcfs">FCFS</a></h3>
+<p><img src="https://imgur.com/73QRTSh.png" alt="" /></p>
+<h3 id="scan-algorithm"><a class="header" href="#scan-algorithm">SCAN algorithm</a></h3>
+<p>The disk arm starts at one end of the disk, and moves toward the other end, servicing requests until it gets to the other end of the disk, where the head movement is reversed and servicing continues</p>
+<p><img src="https://imgur.com/cLr4IB5.png" alt="" /></p>
+<h3 id="c-scan"><a class="header" href="#c-scan">C-SCAN</a></h3>
+<p>SCAN but when it reaches the other end, however, it immediately returns to the beginning of the disk, without servicing any requests on the return trip</p>
+<p><img src="https://imgur.com/9HZO3Hk.png" alt="" /></p>
+<h2 id="nvm-scheduling"><a class="header" href="#nvm-scheduling">NVM Scheduling</a></h2>
+<ul>
+<li>NVM best at random I/O, HDD at sequential</li>
+<li>write amplification 
+<ul>
+<li>one write, causing garbage collection and many read/writes</li>
+</ul>
+</li>
+</ul>
+<h2 id="error-detection-and-correction"><a class="header" href="#error-detection-and-correction">Error Detection and Correction</a></h2>
+<ul>
+<li>CRC (checksum)</li>
+<li>ECC</li>
+</ul>
+<h2 id="swap-space-management"><a class="header" href="#swap-space-management">Swap-Space Management</a></h2>
+<p>Used for moving entire processes (swapping), or pages (paging), from DRAM to secondary storage when DRAM not large enough for all processes</p>
+<h2 id="raid-structure"><a class="header" href="#raid-structure">RAID Structure</a></h2>
+<ul>
+<li>Mirroring</li>
+<li>Striped mirrors (RAID 1+0) or mirrored stripes (RAID 0+1) provides high performance and high reliability</li>
+<li>Block interleaved parity (RAID 4, 5, 6) uses much less redundancy</li>
+</ul>
+<p><img src="https://imgur.com/47aK3pe.png" alt="" /></p>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
