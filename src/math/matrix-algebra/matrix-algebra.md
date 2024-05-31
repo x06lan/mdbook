@@ -313,6 +313,7 @@ det(A^TA -\lambda I)=0\\
 V=\text{unit-length}(V)\\
 V^TV=I\\
 U=AV\Sigma ^{-1}\\
+u_i=\frac{1}{\sqrt{\lambda_i}}Av_i\\
 $$
 
 ## polar decomposition
@@ -328,10 +329,10 @@ A&=U\Sigma V^T\\
 
 $$
 
-## Hermitian matrix
+<!-- ## Hermitian matrix
 共軛
 $$
 
-$$
+$$ -->
 
 

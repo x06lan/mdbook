@@ -1260,3 +1260,96 @@ Used for moving entire processes (swapping), or pages (paging), from DRAM to sec
 
 ![](https://imgur.com/47aK3pe.png)
 
+# Chapter 13: File-System Interface
+
+## file attributes
+
+Name – only information kept in human-readable form
+* Identifier 
+  * unique tag (number) identifies file within file system
+* Type 
+  *  needed for systems that support different types
+* Location 
+  *  pointer to file location on device
+* Size 
+  *  current file size
+* Protection 
+  *  controls who can do reading, writing, executing
+* Time, date, and user identification 
+  *  data for protection, security, and usage monitoring
+* Information about files are kept in the directory structure, which is maintained on the disk
+* Many variations, including extended file attributes such as file checksum
+
+## file operations
+
+* create
+* write
+* read
+* seek 
+* delete
+* truncate
+
+## file locking
+
+* Shared lock
+* Exclusive lock 
+* Mandatory
+  * access is denied depending on locks held and requested
+* Advisory
+  * processes can find status of locks and decide what to do
+## File Structure
+
+* simple record structure
+  * Lines
+  * Fixed length
+  * Variable length
+* Complex Structures
+  * Formatted document
+  * Relocatable load file
+## types of File Systems
+
+* tmpfs 
+  * memory-based volatile FS for fast, temporary I/O
+* objfs 
+  * interface into kernel memory to get kernel symbols for debugging
+* ctfs 
+  * contract file system for managing daemons
+* lofs 
+  * loopback file system allows one FS to be accessed in place of another
+* procfs 
+  * kernel interface to process structures
+* ufs, zfs 
+  * general purpose file systems
+
+## Directory structure
+
+* Naming problem
+  * convenient to users
+  * Two users can have the same name for different files
+  * The same file can have several different names
+* Grouping problem
+  *  logical grouping of files by properties,
+* Efficient 
+  *  locating a file quickly
+
+
+### Two-Level Director
+![](https://imgur.com/tJgIcdW.png)
+### Tree-Structured Directories /Acyclic-Graph Directories
+
+![](https://imgur.com/HI1YFWX.png)
+
+* guarantee no cycles?
+  * Garbage collection
+  * Every time a new link is added use a cycle detection algorithm to determine whether it is OK
+
+
+## File Sharing
+
+* User IDs 
+  * identify users, allowing permissions and protections to be per-user
+* Group IDs 
+  * allow users to be in groups, permitting group access rights
+
+![](https://imgur.com/7BJNzLj.png)
+![](https://imgur.com/kXNNJ0n.png)
