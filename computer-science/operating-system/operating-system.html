@@ -1747,6 +1747,163 @@ functional languages</p>
 <li>Block interleaved parity (RAID 4, 5, 6) uses much less redundancy</li>
 </ul>
 <p><img src="https://imgur.com/47aK3pe.png" alt="" /></p>
+<h1 id="chapter-13-file-system-interface"><a class="header" href="#chapter-13-file-system-interface">Chapter 13: File-System Interface</a></h1>
+<h2 id="file-attributes"><a class="header" href="#file-attributes">file attributes</a></h2>
+<p>Name – only information kept in human-readable form</p>
+<ul>
+<li>Identifier 
+<ul>
+<li>unique tag (number) identifies file within file system</li>
+</ul>
+</li>
+<li>Type 
+<ul>
+<li>needed for systems that support different types</li>
+</ul>
+</li>
+<li>Location 
+<ul>
+<li>pointer to file location on device</li>
+</ul>
+</li>
+<li>Size 
+<ul>
+<li>current file size</li>
+</ul>
+</li>
+<li>Protection 
+<ul>
+<li>controls who can do reading, writing, executing</li>
+</ul>
+</li>
+<li>Time, date, and user identification 
+<ul>
+<li>data for protection, security, and usage monitoring</li>
+</ul>
+</li>
+<li>Information about files are kept in the directory structure, which is maintained on the disk</li>
+<li>Many variations, including extended file attributes such as file checksum</li>
+</ul>
+<h2 id="file-operations"><a class="header" href="#file-operations">file operations</a></h2>
+<ul>
+<li>create</li>
+<li>write</li>
+<li>read</li>
+<li>seek </li>
+<li>delete</li>
+<li>truncate</li>
+</ul>
+<h2 id="file-locking"><a class="header" href="#file-locking">file locking</a></h2>
+<ul>
+<li>Shared lock</li>
+<li>Exclusive lock </li>
+<li>Mandatory
+<ul>
+<li>access is denied depending on locks held and requested</li>
+</ul>
+</li>
+<li>Advisory
+<ul>
+<li>processes can find status of locks and decide what to do</li>
+</ul>
+</li>
+</ul>
+<h2 id="file-structure"><a class="header" href="#file-structure">File Structure</a></h2>
+<ul>
+<li>simple record structure
+<ul>
+<li>Lines</li>
+<li>Fixed length</li>
+<li>Variable length</li>
+</ul>
+</li>
+<li>Complex Structures
+<ul>
+<li>Formatted document</li>
+<li>Relocatable load file</li>
+</ul>
+</li>
+</ul>
+<h2 id="types-of-file-systems"><a class="header" href="#types-of-file-systems">types of File Systems</a></h2>
+<ul>
+<li>tmpfs 
+<ul>
+<li>memory-based volatile FS for fast, temporary I/O</li>
+</ul>
+</li>
+<li>objfs 
+<ul>
+<li>interface into kernel memory to get kernel symbols for debugging</li>
+</ul>
+</li>
+<li>ctfs 
+<ul>
+<li>contract file system for managing daemons</li>
+</ul>
+</li>
+<li>lofs 
+<ul>
+<li>loopback file system allows one FS to be accessed in place of another</li>
+</ul>
+</li>
+<li>procfs 
+<ul>
+<li>kernel interface to process structures</li>
+</ul>
+</li>
+<li>ufs, zfs 
+<ul>
+<li>general purpose file systems</li>
+</ul>
+</li>
+</ul>
+<h2 id="directory-structure"><a class="header" href="#directory-structure">Directory structure</a></h2>
+<ul>
+<li>Naming problem
+<ul>
+<li>convenient to users</li>
+<li>Two users can have the same name for different files</li>
+<li>The same file can have several different names</li>
+</ul>
+</li>
+<li>Grouping problem
+<ul>
+<li>logical grouping of files by properties,</li>
+</ul>
+</li>
+<li>Efficient 
+<ul>
+<li>locating a file quickly</li>
+</ul>
+</li>
+</ul>
+<h3 id="two-level-director"><a class="header" href="#two-level-director">Two-Level Director</a></h3>
+<p><img src="https://imgur.com/tJgIcdW.png" alt="" /></p>
+<h3 id="tree-structured-directories-acyclic-graph-directories"><a class="header" href="#tree-structured-directories-acyclic-graph-directories">Tree-Structured Directories /Acyclic-Graph Directories</a></h3>
+<p><img src="https://imgur.com/HI1YFWX.png" alt="" /></p>
+<ul>
+<li>guarantee no cycles?
+<ul>
+<li>Garbage collection</li>
+<li>Every time a new link is added use a cycle detection algorithm to determine whether it is OK</li>
+</ul>
+</li>
+</ul>
+<h2 id="file-sharing"><a class="header" href="#file-sharing">File Sharing</a></h2>
+<ul>
+<li>User IDs 
+<ul>
+<li>identify users, allowing permissions and protections to be per-user</li>
+</ul>
+</li>
+<li>Group IDs 
+<ul>
+<li>allow users to be in groups, permitting group access rights</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://imgur.com/7BJNzLj.png" alt="" />
+<img src="https://imgur.com/kXNNJ0n.png" alt="" /></p>
 
                         <!-- github commet -->
                         <dir id="giscus"></dir>
