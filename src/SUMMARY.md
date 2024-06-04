@@ -51,6 +51,7 @@
     - [hw1](computer-science/operating-system/hw1.md)
     - [hw2](computer-science/operating-system/hw2.md)
     - [hw3](computer-science/operating-system/hw3.md)
+    - [hw4](computer-science/operating-system/hw4.md)
   - [BitTorrent](computer-science/BitTorrent.md)
   - [CSG(Constructive Solid Geometry) mesh boolean](computer-science/CSG.md)
   - [leetcode](computer-science/leetcode.md)

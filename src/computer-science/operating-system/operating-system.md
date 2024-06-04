@@ -1052,6 +1052,7 @@ functional languages
 * Most OS maintain a free-frame list -- a pool of free frames for satisfying such requests
 * zero-fill-on-demand
   * the content of the frames zeroed-out before being allocated
+
 ![](https://imgur.com/zBA3ENF.png)
 
 #### Performance of Demand Paging
@@ -1069,9 +1070,10 @@ functional languages
 * vfork() variation on fork()system call has parent suspend and child using copy-on-write address space of parent
   * Designed to have child call exec()
   * Very efficient
+
 | origin                             | Process 1 Modifies Page C          |
 | ---------------------------------- | ---------------------------------- |
-| ![](https://imgur.com/iKfUhcA.png) | ![](https://imgur.com/iKfUhcA.png) |
+| ![](https://imgur.com/iKfUhcA.png) | ![](https://imgur.com/F1bGgY4.png) |
 
 #### Page Replacement
 
@@ -1131,13 +1133,17 @@ allocating memory “close to” the CPU on which the thread is scheduled
 ![](https://imgur.com/4Y4Fqnm.png)
 
 
-#### trashing
+#### thrashing
 
 
 ![](https://imgur.com/jBRolG9.png)
 
 #### Page-Fault Frequency
-
+* A process is busy swapping pages in and out
+* If a process does not have “enough” pages, the page-fault rate is very high
+  * Page fault to get page
+  * Replace existing frame
+  * But quickly need replaced frame back
 * If actual rate too low, process loses frame
 * If actual rate too high, process gains frame
 
