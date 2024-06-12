@@ -59,15 +59,15 @@
   * $\text{total distance}=13011$
 * SCAN
   * 2150,2296,2800,3681,4965,2069,1618,1523,1212,544,256
-  * $\text{total distance}=7594$
+  * $\text{total distance}=7494$
 * C-SCAN
   * 2150,2296,2800,3681,4965,256,544,1212,1523,1618,2069  
-  * $\text{total distance}=9946$
+  * $\text{total distance}=9919$
 
 ## 11.20
 
 * a
-  * 2(1 block + 1 parity)
+  * 2(1 block + 1 mirror)
 * b
   * 8(7 block + 1 parity)
 
@@ -98,3 +98,253 @@ $$
 \text{block pointer }=4KB/ 4\text{ Byte }=2048=2^{11}\\
 \text{maximum size }=8KB\times (12+ 12\times 2^{11} + 12 \times 2^{22}+ 12 \times 2^{33}) \eqsim  768  GB
 $$
+
+
+
+# code
+## 10.44
+
+```bash
+g++ hw4_10.44.cpp && ./a.out  
+```
+
+```cpp
+#include <iostream>
+#include <random>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+#include <algorithm>
+#include <array>
+
+int FIFO(std::vector<int> &page_ref, int frame_size)
+{
+	std::queue<int> page_frames;
+	std::unordered_set<int> frames;
+	int page_faults = 0;
+
+	for (int page : page_ref)
+	{
+		if (frames.find(page) == frames.end())
+		{
+			page_faults++;
+			if (page_frames.size() == frame_size)
+			{
+				int front = page_frames.front();
+				page_frames.pop();
+				frames.erase(front);
+			}
+			page_frames.push(page);
+			frames.insert(page);
+		}
+	}
+
+	return page_faults;
+}
+
+int LRU(std::vector<int> &page_ref, int frame_size)
+{
+	std::vector<int> page_frames;
+	int page_faults = 0;
+	for (int i = 0; i < page_ref.size(); i++)
+	{
+		int page = page_ref[i];
+
+		for (int j = 0; j < page_frames.size(); j++)
+		{
+			if (page_frames[j] == page)
+			{
+				page_frames.push_back(page);
+				page_frames.erase(page_frames.begin() + j);
+				break;
+			}
+		}
+
+		if (page_frames.size() == 0 || page_frames.size() < frame_size && page_frames.back() != page)
+		{
+			page_faults++;
+			page_frames.push_back(page);
+			continue;
+		}
+		if (page_frames.back() != page)
+		{
+			page_faults++;
+			page_frames.erase(page_frames.begin());
+			page_frames.push_back(page);
+		}
+	}
+	return page_faults;
+}
+int OPT(std::vector<int> &page_ref, int frame_size)
+{
+	std::vector<int> page_frames;
+
+	int page_faults = 0;
+	for (int i = 0; i < page_ref.size(); i++)
+	{
+		int page = page_ref[i];
+		auto p = std::find(page_frames.begin(), page_frames.end(), page);
+		if (p == page_frames.end())
+		{
+			page_faults++;
+			if (page_frames.size() < frame_size)
+			{
+				page_frames.push_back(page);
+				continue;
+			}
+
+			int index = 0;
+			int max = page_frames.size();
+			for (int j = 0; j < page_frames.size(); j++)
+			{
+				auto f = std::find(page_ref.begin() + i, page_ref.end(), page_frames[j]);
+				if (f - page_ref.begin() > max)
+				{
+					max = f - page_ref.begin();
+					index = j;
+				}
+			}
+			page_frames[index] = page;
+		}
+	}
+	return page_faults;
+}
+int main()
+{
+	int n = 0;
+	printf("page frames:");
+	scanf("%d", &n);
+
+	std::vector<int> page_ref(50);
+	for (int i = 0; i < page_ref.size(); i++)
+		page_ref[i] = rand() % 10;
+
+	printf("page ref:");
+	for (int i = 0; i < page_ref.size(); i++)
+		printf("%d ", page_ref[i]);
+	printf("\n");
+
+	int page_faults1 = FIFO(page_ref, n);
+	int page_faults2 = LRU(page_ref, n);
+	int page_faults3 = OPT(page_ref, n);
+
+	printf("FIFO: %d\n", page_faults1);
+	printf("LRU: %d\n", page_faults2);
+	printf("OPT: %d\n", page_faults3);
+
+	return 0;
+}
+
+```
+## 11.27
+```bash
+g++ hw4_11.27.cpp && ./a.out 2150
+```
+
+```cpp
+#include <iostream>
+#include <random>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+#include <algorithm>
+#include <array>
+
+#define MAX_DISK 5000
+
+int FCFS(std::vector<int> &req, int head)
+{
+	int dis = 0;
+	for (int request : req)
+	{
+		dis += abs(request - head);
+		head = request;
+	}
+
+	return dis;
+}
+int SCAN(std::vector<int> &req, int head)
+{
+	int dis = 0;
+	std::sort(req.begin(), req.end());
+	auto it = std::lower_bound(req.begin(), req.end(), head);
+
+	std::vector<int> left(req.begin(), it);
+	std::vector<int> right(it, req.end());
+
+	for (auto it = right.begin(); it != right.end(); ++it)
+	{
+		dis += abs(*it - head);
+		head = *it;
+	}
+
+	if (!left.empty())
+	{
+		dis += abs(MAX_DISK - head);
+		head = MAX_DISK;
+
+		for (auto it = left.rbegin(); it != left.rend(); ++it)
+		{
+			dis += abs(*it - head);
+			head = *it;
+		}
+	}
+
+	return dis;
+}
+int C_SCAN(std::vector<int> &req, int head)
+{
+	int dis = 0;
+	std::sort(req.begin(), req.end());
+	auto it = std::lower_bound(req.begin(), req.end(), head);
+
+	std::vector<int> left(req.begin(), it);
+	std::vector<int> right(it, req.end());
+
+	for (auto it = right.begin(); it != right.end(); ++it)
+	{
+		dis += abs(*it - head);
+		head = *it;
+	}
+
+	if (!left.empty())
+	{
+		dis += abs(MAX_DISK - head);
+		dis += MAX_DISK;
+		head = 0;
+
+		for (auto it = left.begin(); it != left.end(); ++it)
+		{
+			dis += abs(*it - head);
+			head = *it;
+		}
+	}
+
+	return dis;
+}
+int main(int argc, char **argv)
+{
+	int n = argc > 1 ? atoi(argv[1]) : -1;
+	if (n == -1)
+	{
+		printf("Please enter init position\n");
+		return 0;
+	}
+
+	std::vector<int> req(1000);
+	for (int i = 0; i < req.size(); i++)
+		req[i] = rand() % MAX_DISK;
+
+
+	int distance1 = FCFS(req, n);
+	int distance2 = SCAN(req, n);
+	int distance3 = C_SCAN(req, n);
+
+	printf("FCFS: %d\n", distance1);
+	printf("SCAN: %d\n", distance2);
+	printf("C-SCAN: %d\n", distance3);
+
+	return 0;
+}
+
+```
