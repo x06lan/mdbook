@@ -7,7 +7,7 @@
 * replace empty frame = 8ms
 * replace modified frame = 20ms
 * probability modified = 0.7
-* Page fault service tim$(1-0.7)* 8ms + 0.7 * 20ms =16.4ms$
+* Page fault service time=$(1-0.7)* 8ms + 0.7 * 20ms =16.4ms$
 * effective access time = $(1-p)*100ns + p * (\text{Page fault service time})=16399900ns *p+100ns$
   *  16399900ns *p+100ns<200 ns
   *  p=$\frac{1}{163999}=0.00000609$
