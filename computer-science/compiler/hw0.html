@@ -1,0 +1,621 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+
+<head>
+    <!-- Book generated using mdBook -->
+    <meta charset="UTF-8">
+    <title>hw0 - something</title>
+
+
+    <!-- Custom HTML head -->
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="icon" href="../../favicon.svg">
+    <link rel="shortcut icon" href="../../favicon.png">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/chrome.css">
+    <link rel="stylesheet" href="../../css/print.css" media="print">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../fonts/fonts.css">
+
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="../../highlight.css">
+    <link rel="stylesheet" href="../../tomorrow-night.css">
+    <link rel="stylesheet" href="../../ayu-highlight.css">
+    <link rel="stylesheet" href="../../monokai.css">
+
+    <!-- Custom theme stylesheets -->
+    <link rel="stylesheet" href="../../theme/pagetoc.css">
+
+    <!-- google anagles-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4ZX8LPY4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E4ZX8LPY4F');
+        //ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> about me</a></li><li class="chapter-item "><a href="../../math/index.html"><strong aria-hidden="true">2.</strong> math</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">2.1.</strong> probability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">2.1.1.</strong> hw2</a></li><li class="chapter-item "><a href="../../math/probability/hw3.html"><strong aria-hidden="true">2.1.2.</strong> hw3</a></li><li class="chapter-item "><a href="../../math/probability/hw4.html"><strong aria-hidden="true">2.1.3.</strong> hw4</a></li><li class="chapter-item "><a href="../../math/probability/hw5.html"><strong aria-hidden="true">2.1.4.</strong> hw5</a></li><li class="chapter-item "><a href="../../math/probability/hw6.html"><strong aria-hidden="true">2.1.5.</strong> hw6</a></li><li class="chapter-item "><a href="../../math/probability/hw7.html"><strong aria-hidden="true">2.1.6.</strong> hw7</a></li><li class="chapter-item "><a href="../../math/probability/hw8.html"><strong aria-hidden="true">2.1.7.</strong> hw8</a></li><li class="chapter-item "><a href="../../math/probability/hw9.html"><strong aria-hidden="true">2.1.8.</strong> hw9</a></li></ol></li><li class="chapter-item "><a href="../../math/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">2.2.</strong> signals and systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">2.2.1.</strong> signals processing</a></li><li class="chapter-item "><a href="../../math/signals-and-systems/mid.html"><strong aria-hidden="true">2.2.2.</strong> mid</a></li><li class="chapter-item "><a href="../../math/signals-and-systems/final.html"><strong aria-hidden="true">2.2.3.</strong> final</a></li></ol></li><li class="chapter-item "><a href="../../math/linear-algebra.html"><strong aria-hidden="true">2.3.</strong> linear algebra</a></li><li class="chapter-item "><a href="../../math/matrix-algebra/matrix-algebra.html"><strong aria-hidden="true">2.4.</strong> matrix algebra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/matrix-algebra/matrix-algebra.html"><strong aria-hidden="true">2.4.1.</strong> matrix algebra</a></li><li class="chapter-item "><a href="../../math/matrix-algebra/Q2.html"><strong aria-hidden="true">2.4.2.</strong> Q2</a></li><li class="chapter-item "><a href="../../math/matrix-algebra/Q3.html"><strong aria-hidden="true">2.4.3.</strong> Q3</a></li></ol></li><li class="chapter-item "><a href="../../math/formal-language/formal-language.html"><strong aria-hidden="true">2.5.</strong> formal language</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/formal-language/formal-language.html"><strong aria-hidden="true">2.5.1.</strong> formal language</a></li><li class="chapter-item "><a href="../../math/formal-language/hw1.html"><strong aria-hidden="true">2.5.2.</strong> hw1</a></li></ol></li><li class="chapter-item "><a href="../../math/calculus.html"><strong aria-hidden="true">2.6.</strong> calculus</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/index.html"><strong aria-hidden="true">3.</strong> computer science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">3.1.</strong> data science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">3.1.1.</strong> data science</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw1.html"><strong aria-hidden="true">3.1.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw2.html"><strong aria-hidden="true">3.1.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw3.html"><strong aria-hidden="true">3.1.4.</strong> hw3</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">3.2.</strong> database systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">3.2.1.</strong> database systems</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw1.html"><strong aria-hidden="true">3.2.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw2.html"><strong aria-hidden="true">3.2.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw3.html"><strong aria-hidden="true">3.2.4.</strong> hw3</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw4.html"><strong aria-hidden="true">3.2.5.</strong> hw4</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">3.3.</strong> computer networking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">3.3.1.</strong> computer networking</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw1.html"><strong aria-hidden="true">3.3.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw2.html"><strong aria-hidden="true">3.3.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw4.html"><strong aria-hidden="true">3.3.4.</strong> hw4</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw5.html"><strong aria-hidden="true">3.3.5.</strong> hw5</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw6.html"><strong aria-hidden="true">3.3.6.</strong> hw6</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/operating-system/operating-system.html"><strong aria-hidden="true">3.4.</strong> operating system</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/operating-system/operating-system.html"><strong aria-hidden="true">3.4.1.</strong> operating system</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw1.html"><strong aria-hidden="true">3.4.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw2.html"><strong aria-hidden="true">3.4.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw3.html"><strong aria-hidden="true">3.4.4.</strong> hw3</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw4.html"><strong aria-hidden="true">3.4.5.</strong> hw4</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/compiler/compiler.html"><strong aria-hidden="true">3.5.</strong> compiler</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/compiler/compiler.html"><strong aria-hidden="true">3.5.1.</strong> compiler</a></li><li class="chapter-item expanded "><a href="../../computer-science/compiler/hw0.html" class="active"><strong aria-hidden="true">3.5.2.</strong> hw0</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw1.html"><strong aria-hidden="true">3.5.3.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw2.html"><strong aria-hidden="true">3.5.4.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw3.html"><strong aria-hidden="true">3.5.5.</strong> hw3</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/machine-learing/machine-learing.html"><strong aria-hidden="true">3.6.</strong> machine-learing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/machine-learing/model.html"><strong aria-hidden="true">3.6.1.</strong> model</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/BitTorrent.html"><strong aria-hidden="true">3.7.</strong> BitTorrent</a></li><li class="chapter-item "><a href="../../computer-science/CSG.html"><strong aria-hidden="true">3.8.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li><li class="chapter-item "><a href="../../computer-science/leetcode.html"><strong aria-hidden="true">3.9.</strong> leetcode</a></li><li class="chapter-item "><a href="../../computer-science/nerf.html"><strong aria-hidden="true">3.10.</strong> nerf</a></li></ol></li><li class="chapter-item "><a href="../../tool/index.html"><strong aria-hidden="true">4.</strong> tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../tool/git.html"><strong aria-hidden="true">4.1.</strong> git</a></li><li class="chapter-item "><a href="../../tool/vim.html"><strong aria-hidden="true">4.2.</strong> vim</a></li><li class="chapter-item "><a href="../../tool/ffmpeg.html"><strong aria-hidden="true">4.3.</strong> ffmpeg</a></li><li class="chapter-item "><a href="../../tool/shortcut.html"><strong aria-hidden="true">4.4.</strong> shortcut</a></li><li class="chapter-item "><a href="../../tool/graphviz.html"><strong aria-hidden="true">4.5.</strong> graphviz</a></li><li class="chapter-item "><a href="../../tool/shields.io.html"><strong aria-hidden="true">4.6.</strong> shields.io</a></li><li class="chapter-item "><a href="../../tool/docker.html"><strong aria-hidden="true">4.7.</strong> docker</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
+                            aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme"
+                            aria-label="Change theme" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="monokai">Monokai</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">something</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/x06lan/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="hw0"><a class="header" href="#hw0">hw0</a></h1>
+<p><a href="../../assets/pdf/compiler_HW0.pdf">compiler HW0.pdf</a></p>
+<pre><code class="language-haskell">(*print_endline &quot;Hello, World!&quot;*)
+let width=32;;
+let height=16;;
+
+(* Exercise 1 *)
+
+(* Exercise 1.a*)
+let rec  fact n= 
+    if n&lt;=1 then 
+        1
+    else 
+        n*fact(n-1);;
+
+let p_w= &quot;1.a fact(5)=&quot;^ string_of_int (fact(5) );;
+print_endline p_w;;
+
+
+(* Exercise 1.b*)
+
+let rec nb_bit_pos n= 
+    if n=0 then 
+        0
+    else if (n land 1 = 1) then 
+        1 + nb_bit_pos( n lsr 1)
+    else 
+        nb_bit_pos( n lsr 1);;
+
+let p_w= &quot;1.b nb_bit_pos(5)=&quot;  ^ string_of_int (nb_bit_pos(5) );;
+print_endline p_w;;
+
+(* Exercise 2*)
+
+let fibo n= 
+    let rec aux n a b=
+        if n=0 then
+            a
+        else
+            aux (n-1) b (a+b)
+    in
+    aux n 0 1
+
+
+let p_w= &quot;2.  fibo(6)=&quot;^ string_of_int (fibo(6));;
+print_endline p_w;;
+
+(* Exercise 3 *)
+(* Exercise 3.a *)
+
+let palindrome  m =
+    let len=String.length m  in
+    let vaild= ref true in
+    for i = 0 to (len lsr 1) do
+        if String.get m i &lt;&gt; String.get m (len-1-i) then
+            vaild:=false
+    done;
+    !vaild
+
+let p_w= &quot;3.a palindrome('aba')=&quot;^ string_of_bool (palindrome(&quot;aba&quot;)) ;;
+print_endline p_w;;
+
+(* Exercise 3.b*)
+
+let compare  m1 m2 =
+    let len1=String.length m1 in
+    let len2=String.length m2 in
+
+    let rec check i= 
+        if (i &lt; len1) &amp;&amp; (i &lt; len2 )then
+
+            let c1 =String.get m1 i in
+            let c2 =String.get m2 i in
+
+            if c1 = c2 then
+                check(i+1)
+            else if c1 &lt; c2 then
+                true
+            else
+                false
+
+        else if len1 == len2 &amp;&amp; i == len1 then
+            false
+        else if i &lt; len1 then
+            false
+        else 
+            true
+    in
+    check 0
+
+
+let p_w= &quot;3.b compare('ab','abc')=&quot;^ string_of_bool (compare &quot;ab&quot; &quot;abc&quot;) ;;
+print_endline p_w;;
+
+(* Exercise 3.c *)
+
+let factor m1 m2 =
+    let len1=String.length m1 in
+    let len2=String.length m2 in
+    
+    let vaild =ref  false in
+    for i = 0 to len2-len1 do
+        let sub=String.sub m2 i len1 in
+        if sub = m1 then 
+            vaild:=true
+    done;
+    !vaild
+
+let p_w= &quot;3.c factor('ab','abc')=&quot;^ string_of_bool (factor &quot;ac&quot; &quot;abcdfg&quot;) ;;
+print_endline p_w;;
+
+
+(* Exercise 4 *)
+
+let string_of_list l = &quot;[&quot; ^ (String.concat &quot;,&quot; (List.map string_of_int l)) ^ &quot;]&quot;
+
+let slice l start stop =
+  let rec aux i acc = function
+    | [] -&gt; List.rev acc  (* If list is empty, return the reversed accumulator *)
+    | hd :: tl -&gt;
+        if i &gt;= stop then List.rev acc  (* Stop when index reaches 'stop' *)
+        else if i &gt;= start then aux (i + 1) (hd :: acc) tl  (* Add element to accumulator if within slice *)
+        else aux (i + 1) acc tl  (* Continue without adding element *)
+  in
+  aux 0 [] l
+let split l =
+    let len = (List.length l) in
+    let mid = len lsr 1
+   in
+    (slice l 0 mid, slice l mid len)
+
+let merge l1 l2 = 
+    let rec aux acc = function
+        | (h1::t1,h2::t2) -&gt;
+            if h1 &lt; h2 then
+                aux (h1::acc) (t1,h2::t2)
+            else 
+                aux (h2::acc) (h1::t1,t2)
+        | (h1::t1,[]) -&gt; aux (h1::acc) (t1,[])
+        | ([],h2::t2) -&gt; aux (h2::acc) ([],t2)
+        | ([],[]) -&gt; List.rev acc
+    in
+    aux [] (l1,l2)
+
+let rec sort ll=
+    if List.length ll &lt;=1  then
+        ll
+    else
+        let l,r =split ll in
+        let sl,sr=sort(l),sort(r) in
+        merge sl sr
+
+
+
+
+let () =
+    let test_list = [1; 4; 3; 2; 5] in
+    let l,r =split test_list in 
+    let p_w1= &quot;4.  split&quot; ^ string_of_list (test_list) ^&quot;=&quot; ^ string_of_list (l) ^ &quot;,&quot;^ string_of_list (r) in
+    let p_w2= &quot;4.  merge&quot; ^ string_of_list (l) ^ &quot;,&quot;^ string_of_list (r) ^ &quot;=&quot; ^string_of_list ( merge l r)in
+    let p_w3= &quot;4.  sort&quot; ^ string_of_list (test_list) ^&quot;=&quot; ^ string_of_list (sort test_list) in
+    print_endline p_w1;
+    print_endline p_w2;
+    print_endline p_w3
+
+(* Exercise 5.a *)
+
+let pow m = m * m
+let square_sum m =
+    List.fold_left (+) 0 (List.map pow m)
+let () =
+    let test_list = [1; 2; 3] in
+    let p_w = &quot;5.a square_sum = &quot; ^ string_of_int (square_sum test_list) in
+    print_endline p_w
+
+(* Exercise 5.b *)
+
+let find_opt x l =
+    let rec aux i = function
+        | [] -&gt; None
+        | hd :: tl -&gt; 
+            if hd = x then 
+                Some i 
+            else 
+                aux (i + 1) tl  (* Check if head equals x, otherwise recurse *)
+    in
+    aux 0 l
+let find_opt x l=
+    let (return ,_) =List.fold_left (
+            fun (out,i) v -&gt; 
+                if v=x &amp;&amp; out ==None then 
+                    (Some i,i+1)
+                else 
+                    (None,i+1)
+        )(None,0) l  in
+    return
+
+let unwrap = function
+  | Some c -&gt; string_of_int c
+  | None -&gt; &quot;Not found&quot;
+
+let () =
+    let test_list = [1; 2; 3; 2] in
+    let result = find_opt 2 test_list in
+    let p_w = &quot;5.b find_opt 2,&quot; ^ string_of_list test_list ^ &quot; = &quot; ^ unwrap result in
+    print_endline p_w
+
+(* Exercise 6 *)
+
+let rev l =
+  let rec rev_append acc l =
+    match l with
+    | [] -&gt; acc
+    | h :: t -&gt; rev_append (h :: acc) t
+  in
+  rev_append [] l
+
+let map f l =
+  let rec aux acc l =
+    match l with
+    | [] -&gt; List.rev acc  (* Reverse the accumulator before returning *)
+    | h :: t -&gt; aux (f h :: acc) t
+  in
+  aux [] l
+
+let () =
+    (*
+    let test_list = List.init 1000001 (fun i -&gt; i) in
+    let r1= rev test_list in
+    let r2= map (fun x -&gt; x*2)test_list in
+    *)
+    let p_w1 = &quot;6.  rev ...&quot;  in
+    let p_w2 = &quot;6.  map ...&quot;  in
+    print_endline p_w1;
+    print_endline p_w2
+
+(* Exercise 7 *)
+type 'a seq =
+    | Elt of 'a
+    | Seq of 'a seq * 'a seq
+
+
+
+let (@@) x y = Seq(x, y)
+
+let rec hd x = 
+    match x with
+    | Elt s -&gt; s
+    | Seq(s1,s2) -&gt; hd s1
+
+
+let rec tl l= 
+  let rec aux find ll = 
+    match ll with
+    | Elt s -&gt; raise (Failure &quot;you entered an empty list&quot;)
+    | Seq (Elt s, Elt s1) -&gt; 
+        if find then
+            (false,Elt s1)
+        else
+            (false, Seq (Elt s, Elt s1))
+    | Seq (Elt s, s1) -&gt; 
+        if find then
+            (false,s1)
+        else
+            (false, Seq (Elt s, s1))
+    | Seq (s1, Elt s) -&gt; 
+        let find',ll=aux find s1 in
+        if find'=false then
+            (false,Seq (ll, Elt s) )
+        else
+            (false,Seq (s1, Elt s) )
+    | Seq (x1, x2 )-&gt;
+        let find',ll=aux find x1 in
+        if find'=false then
+            (false,Seq (ll,x2) )
+        else
+            (false,Seq (x1, x2 ))
+  in
+  let _,ll=aux true l in
+  ll
+
+
+
+
+
+let rec mem v =function 
+    | Elt s -&gt; s=v
+    | Seq(s1,s2) -&gt; ((mem v s1) ||  (mem v s2))
+
+let rec rev =function 
+    | Elt s -&gt; Elt s
+    | Seq(s1,s2) -&gt; Seq((rev s2),(rev s1))
+
+let rec map f = function
+  | Elt s -&gt; Elt (f s)  (* Apply f to the single element *)
+  | Seq (s1, s2) -&gt; Seq (map f s1, map f s2)  (* Recursively map over both sub-sequences *)
+
+let rec fold_left f acc = function
+  | Elt s -&gt; f acc s  (* Apply f to the accumulator and the single element *)
+  | Seq (s1, s2) -&gt; 
+      let acc' = fold_left f acc s1 in  (* Fold over the first sub-sequence *)
+      fold_left f acc' s2  (* Fold over the second sub-sequence *)
+
+let rec fold_right f seq acc =
+  match seq with
+  | Elt s -&gt; f s acc  (* Apply f to the single element and the accumulator *)
+  | Seq (s1, s2) -&gt; fold_right f s1 (fold_right f s2 acc)  (* Fold over both sub-sequences *)
+
+let seq2list seq =
+  let rec aux acc = function
+    | Elt s -&gt; s :: acc
+    | Seq (s1, s2) -&gt; aux (aux acc s1) s2
+  in
+  List.rev (aux [] seq)
+let find_opt x l=
+    let (return ,_) =fold_left (
+            fun (out,i) v -&gt; 
+                match out with 
+                | None -&gt;
+                    if v=x then
+                        (Some i,i+1)
+                    else 
+                        (None,i+1)
+                | Some k -&gt;
+                    (out,i+1)
+        )(None,0) l  in
+    return
+let nth x l=
+    
+    let (return ,_) =fold_left (
+            fun (out,i) v -&gt; 
+                match out with 
+                | None -&gt;
+                    if i=x then
+                        (Some v,i+1)
+                    else 
+                        (None,i+1)
+                | Some k -&gt;
+                    (out,i+1)
+        )(None,0) l  in
+
+    match return  with 
+    | None -&gt; raise (Failure &quot;out of range&quot;)
+    | Some v -&gt; v
+
+(*
+let print_of_something = function
+    | Int s -&gt; string_of_int s
+    | Elt s -&gt; string_of_list [s]
+    | Seq (s1,s2)-&gt; string_of_list (seq2list s1) ^ string_of_list (seq2list s2)
+*)
+
+
+
+
+let () =
+    let test_seq =
+        Seq(Seq (Elt 1,Elt 2),Seq (Seq (Elt 3,Elt 4),Elt 5)) in
+    let test_list= seq2list test_seq in
+
+    let p_w1 = &quot;7.  hd &quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_int (hd test_seq) in
+    let p_w2 = &quot;7.  tl &quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_list (seq2list (tl test_seq)) in
+    let p_w3 = &quot;7.  mem&quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_bool(mem 5 test_seq) in
+    let p_w4 = &quot;7.  rev&quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_list (seq2list ( rev test_seq)) in
+    let p_w5 = &quot;7.  map&quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_list (seq2list ( map (fun x -&gt; x *2 )test_seq)) in
+    let p_w6 = &quot;7.  fold_right&quot;  ^ string_of_list test_list  ^&quot;=&quot; ^ string_of_int( fold_left (+) 0 test_seq  ) in
+    let p_w7 = &quot;7.  find_opt &quot;  ^ string_of_int  3 ^ string_of_list test_list  ^&quot;=&quot; ^ (unwrap( find_opt 3 test_seq  ) )in
+    let p_w8 = &quot;7.  nth &quot;  ^ string_of_int  3 ^ string_of_list test_list  ^&quot;=&quot; ^ (string_of_int( nth 3 test_seq  ) )in
+    print_endline p_w1;
+    print_endline p_w2;
+    print_endline p_w3;
+    print_endline p_w4;
+    print_endline p_w5;
+    print_endline p_w6;
+    print_endline p_w7;
+    print_endline p_w8
+</code></pre>
+
+                        <!-- github commet -->
+                        <dir id="giscus"></dir>
+                        <script>
+                            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+                            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                                var giscusScript = document.createElement('script');
+                                giscusScript.src = "https://giscus.app/client.js";
+                                giscusScript.setAttribute('data-repo', 'x06lan/mdbook');
+                                giscusScript.setAttribute('data-repo-id', 'R_kgDOJxZ6mQ');
+                                giscusScript.setAttribute('data-category-id', 'DIC_kwDOJxZ6mc4CXeJ6');
+                                giscusScript.setAttribute('data-mapping', 'pathname');
+                                giscusScript.setAttribute('data-strict', '0');
+                                giscusScript.setAttribute('data-reactions-enabled', '1');
+                                giscusScript.setAttribute('data-emit-metadata', '0');
+                                giscusScript.setAttribute('data-input-position', 'bottom');
+                                giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
+                                giscusScript.setAttribute('data-lang', 'zh-TW');
+                                giscusScript.setAttribute('crossorigin', 'anonymous');
+                                giscusScript.async = true;
+                                let giscusDiv = document.getElementById('giscus');
+                                giscusDiv.appendChild(giscusScript);
+                            }
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+</body>
+
+</html>
