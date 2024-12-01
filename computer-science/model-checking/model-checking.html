@@ -1,0 +1,609 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+
+<head>
+    <!-- Book generated using mdBook -->
+    <meta charset="UTF-8">
+    <title>model-checking - something</title>
+
+
+    <!-- Custom HTML head -->
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="icon" href="../../favicon.svg">
+    <link rel="shortcut icon" href="../../favicon.png">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/chrome.css">
+    <link rel="stylesheet" href="../../css/print.css" media="print">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../fonts/fonts.css">
+
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="../../highlight.css">
+    <link rel="stylesheet" href="../../tomorrow-night.css">
+    <link rel="stylesheet" href="../../ayu-highlight.css">
+    <link rel="stylesheet" href="../../monokai.css">
+
+    <!-- Custom theme stylesheets -->
+    <link rel="stylesheet" href="../../theme/pagetoc.css">
+
+    <!-- google anagles-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4ZX8LPY4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E4ZX8LPY4F');
+        //ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../math/index.html"><strong aria-hidden="true">1.</strong> math</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/calculus.html"><strong aria-hidden="true">1.1.</strong> calculus</a></li><li class="chapter-item "><a href="../../math/formal-language/formal-language.html"><strong aria-hidden="true">1.2.</strong> formal language</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/formal-language/formal-language.html"><strong aria-hidden="true">1.2.1.</strong> formal language</a></li><li class="chapter-item "><a href="../../math/formal-language/hw1.html"><strong aria-hidden="true">1.2.2.</strong> hw1</a></li></ol></li><li class="chapter-item "><a href="../../math/linear-algebra.html"><strong aria-hidden="true">1.3.</strong> linear algebra</a></li><li class="chapter-item "><a href="../../math/math-modeling/math-modeling.html"><strong aria-hidden="true">1.4.</strong> math-modeling</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/math-modeling/round-robin-tournament.html"><strong aria-hidden="true">1.4.1.</strong> round-robin-tournament</a></li></ol></li><li class="chapter-item "><a href="../../math/matrix-algebra/matrix-algebra.html"><strong aria-hidden="true">1.5.</strong> matrix algebra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/matrix-algebra/matrix-algebra.html"><strong aria-hidden="true">1.5.1.</strong> matrix algebra</a></li><li class="chapter-item "><a href="../../math/matrix-algebra/Q2.html"><strong aria-hidden="true">1.5.2.</strong> Q2</a></li><li class="chapter-item "><a href="../../math/matrix-algebra/Q3.html"><strong aria-hidden="true">1.5.3.</strong> Q3</a></li></ol></li><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">1.6.</strong> probability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/probability/hw2.html"><strong aria-hidden="true">1.6.1.</strong> hw2</a></li><li class="chapter-item "><a href="../../math/probability/hw3.html"><strong aria-hidden="true">1.6.2.</strong> hw3</a></li><li class="chapter-item "><a href="../../math/probability/hw4.html"><strong aria-hidden="true">1.6.3.</strong> hw4</a></li><li class="chapter-item "><a href="../../math/probability/hw5.html"><strong aria-hidden="true">1.6.4.</strong> hw5</a></li><li class="chapter-item "><a href="../../math/probability/hw6.html"><strong aria-hidden="true">1.6.5.</strong> hw6</a></li><li class="chapter-item "><a href="../../math/probability/hw7.html"><strong aria-hidden="true">1.6.6.</strong> hw7</a></li><li class="chapter-item "><a href="../../math/probability/hw8.html"><strong aria-hidden="true">1.6.7.</strong> hw8</a></li><li class="chapter-item "><a href="../../math/probability/hw9.html"><strong aria-hidden="true">1.6.8.</strong> hw9</a></li></ol></li><li class="chapter-item "><a href="../../math/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">1.7.</strong> signals and systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../math/signals-and-systems/signals-and-systems.html"><strong aria-hidden="true">1.7.1.</strong> signals processing</a></li><li class="chapter-item "><a href="../../math/signals-and-systems/mid.html"><strong aria-hidden="true">1.7.2.</strong> mid</a></li><li class="chapter-item "><a href="../../math/signals-and-systems/final.html"><strong aria-hidden="true">1.7.3.</strong> final</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/index.html"><strong aria-hidden="true">2.</strong> computer science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/compiler/compiler.html"><strong aria-hidden="true">2.1.</strong> compiler</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/compiler/compiler.html"><strong aria-hidden="true">2.1.1.</strong> compiler</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw0.html"><strong aria-hidden="true">2.1.2.</strong> hw0</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw1.html"><strong aria-hidden="true">2.1.3.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw2.html"><strong aria-hidden="true">2.1.4.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/compiler/hw3.html"><strong aria-hidden="true">2.1.5.</strong> hw3</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/computer-graphics/computer-graphics.html"><strong aria-hidden="true">2.2.</strong> computer-graphics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/computer-graphics/deferred-rendering.html"><strong aria-hidden="true">2.2.1.</strong> deferred-rendering</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">2.3.</strong> computer networking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/computer-network/computer-network.html"><strong aria-hidden="true">2.3.1.</strong> computer networking</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw1.html"><strong aria-hidden="true">2.3.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw2.html"><strong aria-hidden="true">2.3.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw4.html"><strong aria-hidden="true">2.3.4.</strong> hw4</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw5.html"><strong aria-hidden="true">2.3.5.</strong> hw5</a></li><li class="chapter-item "><a href="../../computer-science/computer-network/hw6.html"><strong aria-hidden="true">2.3.6.</strong> hw6</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/CSG.html"><strong aria-hidden="true">2.4.</strong> CSG(Constructive Solid Geometry) mesh boolean</a></li><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">2.5.</strong> data science</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/data-science/data-science.html"><strong aria-hidden="true">2.5.1.</strong> data science</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw1.html"><strong aria-hidden="true">2.5.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw2.html"><strong aria-hidden="true">2.5.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/data-science/hw3.html"><strong aria-hidden="true">2.5.4.</strong> hw3</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">2.6.</strong> database systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/database-systems/database-systems.html"><strong aria-hidden="true">2.6.1.</strong> database systems</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw1.html"><strong aria-hidden="true">2.6.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw2.html"><strong aria-hidden="true">2.6.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw3.html"><strong aria-hidden="true">2.6.4.</strong> hw3</a></li><li class="chapter-item "><a href="../../computer-science/database-systems/hw4.html"><strong aria-hidden="true">2.6.5.</strong> hw4</a></li></ol></li><li class="chapter-item "><a href="../../computer-science/leetcode.html"><strong aria-hidden="true">2.7.</strong> leetcode</a></li><li class="chapter-item "><a href="../../computer-science/machine-learing/machine-learing.html"><strong aria-hidden="true">2.8.</strong> machine-learing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/machine-learing/model.html"><strong aria-hidden="true">2.8.1.</strong> model</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science/model-checking/model-checking.html" class="active"><strong aria-hidden="true">2.9.</strong> model-checking</a></li><li class="chapter-item "><a href="../../computer-science/nerf.html"><strong aria-hidden="true">2.10.</strong> nerf</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/operating-system.html"><strong aria-hidden="true">2.11.</strong> operating system</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../computer-science/operating-system/operating-system.html"><strong aria-hidden="true">2.11.1.</strong> operating system</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw1.html"><strong aria-hidden="true">2.11.2.</strong> hw1</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw2.html"><strong aria-hidden="true">2.11.3.</strong> hw2</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw3.html"><strong aria-hidden="true">2.11.4.</strong> hw3</a></li><li class="chapter-item "><a href="../../computer-science/operating-system/hw4.html"><strong aria-hidden="true">2.11.5.</strong> hw4</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../tool/index.html"><strong aria-hidden="true">3.</strong> tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../tool/BitTorrent.html"><strong aria-hidden="true">3.1.</strong> BitTorrent</a></li><li class="chapter-item "><a href="../../tool/docker.html"><strong aria-hidden="true">3.2.</strong> docker</a></li><li class="chapter-item "><a href="../../tool/ffmpeg.html"><strong aria-hidden="true">3.3.</strong> ffmpeg</a></li><li class="chapter-item "><a href="../../tool/git.html"><strong aria-hidden="true">3.4.</strong> git</a></li><li class="chapter-item "><a href="../../tool/graphviz.html"><strong aria-hidden="true">3.5.</strong> graphviz</a></li><li class="chapter-item "><a href="../../tool/shields.io.html"><strong aria-hidden="true">3.6.</strong> shields.io</a></li><li class="chapter-item "><a href="../../tool/shortcut.html"><strong aria-hidden="true">3.7.</strong> shortcut</a></li><li class="chapter-item "><a href="../../tool/vim.html"><strong aria-hidden="true">3.8.</strong> vim</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
+                            aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme"
+                            aria-label="Change theme" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="monokai">Monokai</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S"
+                            aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">something</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/x06lan/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                            aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<!-- ---
+title: cbmc(C bounded model checking) 
+tags: Templates, Talk
+description: View the slide with "Slide Mode".
+--- -->
+<style>
+    .markdown-body b {
+        font-weight: 700;
+    }
+    .markdown-body code,
+    code,
+	pre
+	{
+		max-height:80% !important;
+        font-size: 14px;
+        line-height: 115%;
+        color: #99999 !important;
+        background-color: #ffe9e5;
+    }
+    .reveal {
+      font-size: 20px;
+    }
+</style>
+<h1 id="cbmcc-bounded-model-checking"><a class="header" href="#cbmcc-bounded-model-checking">CBMC(C Bounded Model Checking)</a></h1>
+<!-- Put the link to this slide here so people can follow -->
+<!-- slide: https://hackmd.io/p/template-Talk-slide -->
+<hr />
+<p>model checking  is a method for checking whether a finite-state model of a system meets a given specification.</p>
+<hr />
+<h2 id="cbmc-overview"><a class="header" href="#cbmc-overview">CBMC overview</a></h2>
+<p><img src="https://hackmd.io/_uploads/HkmlzF-S0.png" alt="image" /></p>
+<hr />
+<p>program into a control flow graph</p>
+<p><img src="https://hackmd.io/_uploads/B1jm7t-rA.png" alt="image" /></p>
+<hr />
+<h2 id="program"><a class="header" href="#program">program</a></h2>
+<pre><code class="language-c">if ( (0 &lt;= t) &amp;&amp; (t &lt;= 79) )
+{
+    switch ( t / 20 )
+    {
+        case 0:
+            TEMP2 = ( (B AND C) OR (~B AND D) );
+            break;
+        case 1:
+            TEMP2 = ( (B XOR C XOR D) );
+            break;
+        case 2:
+            TEMP2 = ( (B AND C) OR (B AND D) OR (C AND D) );
+            break;
+        case 3:
+            TEMP2 = ( B XOR C XOR D );
+            break;
+        default:
+    }
+    assert(TEMP2&gt;0);
+    
+}
+
+</code></pre>
+<hr />
+<h1 id="code-flow-graph"><a class="header" href="#code-flow-graph">code flow graph</a></h1>
+<p><img src="https://hackmd.io/_uploads/HyZU7tZBR.png" alt="image" /></p>
+<hr />
+<h1 id="linear-temporal-logic"><a class="header" href="#linear-temporal-logic">Linear temporal logic</a></h1>
+<ul>
+<li>Linear temporal logic
+<ul>
+<li><strong>G</strong> for always (globally)</li>
+<li><strong>F</strong> for finally</li>
+<li><strong>R</strong> for release</li>
+<li><strong>W</strong> for weak until</li>
+<li><strong>M</strong> for mighty release</li>
+</ul>
+</li>
+<li>Computation tree logic
+<ul>
+<li><strong>A</strong> – <strong>A</strong>ll</li>
+<li><strong>E</strong> – <strong>E</strong>xists</li>
+<li><strong>X</strong> - Ne<strong>X</strong>t</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BydQDt-HC.png" alt="image" /></p>
+<hr />
+<h1 id="goal-check-properties-of-the-form-ag-p-satisfy-assertions"><a class="header" href="#goal-check-properties-of-the-form-ag-p-satisfy-assertions">Goal: check properties of the form AG p, satisfy assertions.</a></h1>
+<hr />
+<h2 id="sat-solver"><a class="header" href="#sat-solver">SAT solver</a></h2>
+<p>https://www.inf.ufpr.br/dpasqualin/d3-dpll/
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:4.32em;vertical-align:-1.91em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35em;"><span style="top:-2.2em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-2.192em;"><span class="pstrut" style="height:3.15em;"></span><span style="height:0.316em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.8889em' height='0.316em' style='width:0.8889em' viewBox='0 0 888.89 316' preserveAspectRatio='xMinYMin'><path d='M384 0 H504 V316 H384z M384 0 H504 V316 H384z'/></svg></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.292em;"><span class="pstrut" style="height:3.15em;"></span><span style="height:0.316em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.8889em' height='0.316em' style='width:0.8889em' viewBox='0 0 888.89 316' preserveAspectRatio='xMinYMin'><path d='M384 0 H504 V316 H384z M384 0 H504 V316 H384z'/></svg></span></span><span style="top:-4.6em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.85em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.41em;"><span style="top:-4.41em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">b</span></span></span><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">¬</span><span class="mord mathnormal">a</span></span></span><span style="top:-1.53em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">¬</span><span class="mord mathnormal">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.91em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+SAT solver will find instance that satisfy all <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> cases</p>
+<hr />
+<p>But SAT only can solve pure boolean satisfiability problem</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">79</span><span class="mclose">)</span></span></span></span> is boolean but <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> is INT32 or INT8 how to convert it to pure boolean probleam</p>
+<hr />
+<h3 id="convert-code-to-conjunctive-normal-form-for-sat-solver"><a class="header" href="#convert-code-to-conjunctive-normal-form-for-sat-solver">convert code to conjunctive normal form for SAT solver</a></h3>
+<p><img src="https://hackmd.io/_uploads/Hy5MhtZB0.png" alt="image" /></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">79</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord">/20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord">/20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">TEMP2</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord text"><span class="mord"> XOR </span></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord text"><span class="mord"> XOR </span></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></span></p>
+<hr />
+<p>SAT will try to find the counter of 
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">79</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord">/20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord">/20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">TEMP2</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord text"><span class="mord"> XOR </span></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord text"><span class="mord"> XOR </span></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord text"><span class="mord">TEMP2</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="we-can-check-is-exist-counter-example-of-the-form-ag-p"><a class="header" href="#we-can-check-is-exist-counter-example-of-the-form-ag-p">we can check is exist counter example of the form AG p</a></h3>
+<hr />
+<h3 id="convert-to-pure-boolean"><a class="header" href="#convert-to-pure-boolean">convert to pure boolean</a></h3>
+<p>digital logic 
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0433em;vertical-align:-1.2717em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7717em;"><span style="top:-3.7717em;"><span class="pstrut" style="height:2.8833em;"></span><span class="mord"></span></span><span style="top:-2.2717em;"><span class="pstrut" style="height:2.8833em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2717em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7717em;"><span style="top:-3.8883em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.3883em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">¬</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord">¬</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">¬</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">¬</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2717em;"><span></span></span></span></span></span></span></span></span></span></span></span>
+<img src="https://hackmd.io/_uploads/SJej8iZBR.png" alt="image" /></p>
+<hr />
+<h2 id="loop"><a class="header" href="#loop">loop</a></h2>
+<pre><code class="language-clike">while(cond){
+    a++;
+    assert(a&lt;0);
+}
+</code></pre>
+<hr />
+<h2 id="unrolling"><a class="header" href="#unrolling">unrolling</a></h2>
+<p>bounded model checking bounded how deep we can unrolling</p>
+<pre><code class="language-clike">if(cond){
+    a++;
+    assert(a&lt;0);
+    if(cond){
+        a++;
+        assert(a&lt;0);
+        if(cond){
+            a++;
+            assert(a&lt;0);
+            if(cond){
+                a++;
+                assert(a&lt;0);
+                ....
+            }
+        }
+    }
+}
+</code></pre>
+<hr />
+<h2 id="unrolling-optimization"><a class="header" href="#unrolling-optimization">unrolling optimization</a></h2>
+<p><img src="https://hackmd.io/_uploads/HJtpYnZB0.png" alt="image" /></p>
+<hr />
+<h2 id="pointer-bound"><a class="header" href="#pointer-bound">pointer bound</a></h2>
+<pre><code class="language-c">int n;
+int ∗p;
+p=malloc(sizeof(int)∗5);
+p[n]=100;
+</code></pre>
+<pre><code class="language-c">int n;
+int ∗p;
+p=malloc(sizeof(int)∗5);
+
+assert(0&lt;=n &amp;&amp; n&lt;5);
+p[n]=100;
+</code></pre>
+<hr />
+<h2 id="code-example-overflow"><a class="header" href="#code-example-overflow">code example overflow</a></h2>
+<!-- 
+```bash!
+ cbmc -function f01 example.c --compact-trace --drop-unused-functions  --bounds-check --pointer-check  --memory-leak-check --float-overflow-check --pointer-overflow-check --reachability-slice --unwind 128 
+```
+-->
+<pre><code class="language-c">void f00 (int x, int y, int z) {
+  if (x &lt; y) {
+    int firstSum = x + z;
+    int secondSum = y + z;
+    assert(firstSum &lt; secondSum);
+  }
+}
+</code></pre>
+<pre><code>example.c function f00
+[f00.assertion.1] line 16 assertion firstSum &lt; secondSum: FAILURE
+
+Trace for f00.assertion.1:
+
+↳ example.c:12 f00(-1275228454, 1113655513, -1157894487)
+  14: firstSum=1861844355 (01101110 11111001 01111101 10000011)
+  15: secondSum=-44238974 (11111101 01011100 11110111 10000010)
+
+Violated property:
+  file example.c function f00 line 16 thread 0
+  assertion firstSum &lt; secondSum
+  firstSum &lt; secondSum
+</code></pre>
+<hr />
+<h2 id="code-example-pointer"><a class="header" href="#code-example-pointer">code example pointer</a></h2>
+<pre><code class="language-c">void f15 (int x, int y) {
+  int a[5]={1,2,3,4,5};
+
+  int *b= (int *)malloc(5 * sizeof(int));
+  for(int i=0;i&lt;5;i++)
+    b[i]=i;
+
+  int *p=a;
+
+  if(x==1 &amp;&amp; y==1){
+    // p=b+1; 
+    p=&amp;b[1];
+    p[4]=5;
+  }
+  for(int i=0;i&lt;5;i++){
+    assert(a[i] == p[i]);
+  }
+  free(b);
+}
+</code></pre>
+<hr />
+<h2 id="code-example-pointer-1"><a class="header" href="#code-example-pointer-1">code example pointer</a></h2>
+<pre><code>Trace for f15.pointer_dereference.12:
+
+↳ example.c:143 f15(1, 1)
+  144: a={ 1, 2, 3, 4, 5 } ({ 00000000 00000000 00000000 00000001, 00000000 00000000 00000000 00000010, 00000000 00000000 00000000 00000011, 00000000 00000000 00000000 00000100, 00000000 00000000 00000000 00000101 })
+  144: a[0l]=1 (00000000 00000000 00000000 00000001)
+  144: a[1l]=2 (00000000 00000000 00000000 00000010)
+  144: a[2l]=3 (00000000 00000000 00000000 00000011)
+  144: a[3l]=4 (00000000 00000000 00000000 00000100)
+  144: a[4l]=5 (00000000 00000000 00000000 00000101)
+
+↳ example.c:146 malloc(sizeof(signed int) * 5ul /*20ul*/ )
+  12: dynamic_object1[0l]=0 (00000000 00000000 00000000 00000000)
+  12: dynamic_object1[1l]=0 (00000000 00000000 00000000 00000000)
+  12: dynamic_object1[2l]=0 (00000000 00000000 00000000 00000000)
+  12: dynamic_object1[3l]=0 (00000000 00000000 00000000 00000000)
+  12: dynamic_object1[4l]=0 (00000000 00000000 00000000 00000000)
+  146: b=dynamic_object1 (00000010 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+  147: i=0 (00000000 00000000 00000000 00000000)
+  148: dynamic_object1[0l]=0 (00000000 00000000 00000000 00000000)
+  147: i=1 (00000000 00000000 00000000 00000001)
+  148: dynamic_object1[1l]=1 (00000000 00000000 00000000 00000001)
+  147: i=2 (00000000 00000000 00000000 00000010)
+  148: dynamic_object1[2l]=2 (00000000 00000000 00000000 00000010)
+  147: i=3 (00000000 00000000 00000000 00000011)
+  148: dynamic_object1[3l]=3 (00000000 00000000 00000000 00000011)
+  147: i=4 (00000000 00000000 00000000 00000100)
+  148: dynamic_object1[4l]=4 (00000000 00000000 00000000 00000100)
+  147: i=5 (00000000 00000000 00000000 00000101)
+  150: p=((signed int *)NULL) (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+  151: p=a!0@1 (00000011 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+  155: p=dynamic_object1 + 1l (00000010 00000000 00000000 00000000 00000000 00000000 00000000 00000100)
+
+Violated property:
+  file example.c function f15 line 156 thread 0
+  dereference failure: pointer outside dynamic object bounds in p[(signed long int)4]
+  16l + POINTER_OFFSET(p) &gt;= 0l &amp;&amp; __CPROVER_malloc_size &gt;= 20ul + (unsigned long int)POINTER_OFFSET(p) || !(POINTER_OBJECT(p) == POINTER_OBJECT(__CPROVER_malloc_object))
+
+</code></pre>
+<hr />
+<h2 id="code-example-multiple"><a class="header" href="#code-example-multiple">code example multiple</a></h2>
+<pre><code class="language-c">void f14 (int x, int y) {
+    int a = x;
+    int b = y;
+    assert(a*b == x*y);
+}
+</code></pre>
+<hr />
+<h2 id="code-example-multiple-minisat"><a class="header" href="#code-example-multiple-minisat">code example multiple MiniSAT</a></h2>
+<pre><code>CBMC version 5.12 (cbmc-5.12) 64-bit x86_64 linux
+Parsing example.c
+Converting
+Type-checking example
+Generating GOTO Program
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Generic Property Instrumentation
+Removing unused functions
+Dropping 14 of 17 functions (3 used)
+Performing a reachability slice
+Running with 8 object bits, 56 offset bits (default)
+Starting Bounded Model Checking
+size of program expression: 47 steps
+simple slicing removed 4 assignments
+Generated 2 VCC(s), 1 remaining after simplification
+Passing problem to propositional reduction
+converting SSA
+Running propositional reduction
+Post-processing
+Solving with MiniSAT 2.2.1 with simplifier
+3817 variables, 18930 clauses
+SAT checker: instance is UNSATISFIABLE
+Runtime decision procedure: 477.908s
+
+** Results:
+function __CPROVER__start
+[__CPROVER__start.memory-leak.1] dynamically allocated memory never freed in __CPROVER_memory_leak == NULL: SUCCESS
+
+example.c function f14
+[f14.assertion.1] line 140 assertion a*b == x*y: SUCCESS
+
+** 0 of 2 failed (1 iterations)
+VERIFICATION SUCCESSFUL
+</code></pre>
+<hr />
+<h2 id="code-example-multiple-z3"><a class="header" href="#code-example-multiple-z3">code example multiple Z3</a></h2>
+<pre><code>CBMC version 5.12 (cbmc-5.12) 64-bit x86_64 linux
+Parsing example.c
+Converting
+Type-checking example
+Generating GOTO Program
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Generic Property Instrumentation
+Removing unused functions
+Dropping 15 of 18 functions (3 used)
+Performing a reachability slice
+Running with 8 object bits, 56 offset bits (default)
+Starting Bounded Model Checking
+size of program expression: 47 steps
+simple slicing removed 4 assignments
+Generated 2 VCC(s), 1 remaining after simplification
+Passing problem to SMT2 QF_AUFBV using Z3
+converting SSA
+Running SMT2 QF_AUFBV using Z3
+Runtime decision procedure: 0.00870986s
+
+** Results:
+function __CPROVER__start
+[__CPROVER__start.memory-leak.1] dynamically allocated memory never freed in __CPROVER_memory_leak == NULL: SUCCESS
+
+example.c function f14
+[f14.assertion.1] line 140 assertion a*b == x*y: SUCCESS
+
+** 0 of 2 failed (1 iterations)
+VERIFICATION SUCCESSFUL
+</code></pre>
+<hr />
+<h1 id="spin"><a class="header" href="#spin">SPIN</a></h1>
+<hr />
+<h2 id="spin-1"><a class="header" href="#spin-1">SPIN</a></h2>
+<ul>
+<li>promela language</li>
+<li>deadlock deletction</li>
+</ul>
+<hr />
+<p><img src="https://hackmd.io/_uploads/BJWG38oSA.png" alt="image" /></p>
+<hr />
+<h3 id="promela-language"><a class="header" href="#promela-language">promela language</a></h3>
+<p><img src="https://hackmd.io/_uploads/r15mQTcH0.png" alt="image" /></p>
+<hr />
+<p><img src="https://hackmd.io/_uploads/SJe6N6crC.png" alt="image" /></p>
+<hr />
+<h2 id="two-process-fsm"><a class="header" href="#two-process-fsm">two process FSM</a></h2>
+<div><!-- Generated by graphviz version 2.43.0 (0)
+ --><!-- Title: G Pages: 1 --><svg width="576pt" height="209pt"
+ viewBox="0.00 0.00 576.00 208.91" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="graph0" class="graph" transform="scale(0.47 0.47) rotate(0) translate(4 436)"><title>G</title><polygon fill="white" stroke="transparent" points="-4,4 -4,-436 1209.14,-436 1209.14,4 -4,4"/><g id="clust1" class="cluster"><title>cluster_P1</title><polygon fill="none" stroke="black" points="8,-8 8,-213 1197.14,-213 1197.14,-8 8,-8"/><text text-anchor="middle" x="602.57" y="-197.8" font-family="Times,serif" font-size="14.00">Process P1</text></g><g id="clust2" class="cluster"><title>cluster_P2</title><polygon fill="none" stroke="black" points="8,-221 8,-424 1196.49,-424 1196.49,-221 8,-221"/><text text-anchor="middle" x="602.24" y="-408.8" font-family="Times,serif" font-size="14.00">Process P2</text></g><!-- S5 --><g id="node1" class="node"><title>S5</title><ellipse fill="none" stroke="black" cx="1118.84" cy="-99" rx="66.1" ry="66.1"/><ellipse fill="none" stroke="black" cx="1118.84" cy="-99" rx="70.09" ry="70.09"/><text text-anchor="middle" x="1118.84" y="-95.3" font-family="Times,serif" font-size="14.00">S5: Hold R2</text></g><!-- T5 --><g id="node2" class="node"><title>T5</title><ellipse fill="none" stroke="black" cx="1118.84" cy="-311" rx="65.78" ry="65.78"/><ellipse fill="none" stroke="black" cx="1118.84" cy="-311" rx="69.79" ry="69.79"/><text text-anchor="middle" x="1118.84" y="-307.3" font-family="Times,serif" font-size="14.00">T5: Hold R1</text></g><!-- S1 --><g id="node3" class="node"><title>S1</title><ellipse fill="none" stroke="black" cx="71.9" cy="-99" rx="55.79" ry="55.79"/><text text-anchor="middle" x="71.9" y="-95.3" font-family="Times,serif" font-size="14.00">S1: Initial</text></g><!-- S2 --><g id="node4" class="node"><title>S2</title><ellipse fill="none" stroke="black" cx="325.33" cy="-99" rx="82.59" ry="82.59"/><text text-anchor="middle" x="325.33" y="-95.3" font-family="Times,serif" font-size="14.00">S2: Request R1</text></g><!-- S1&#45;&gt;S2 --><g id="edge1" class="edge"><title>S1&#45;&gt;S2</title><path fill="none" stroke="black" d="M128.07,-99C158.6,-99 197.33,-99 232.3,-99"/><polygon fill="black" stroke="black" points="232.54,-102.5 242.54,-99 232.54,-95.5 232.54,-102.5"/><text text-anchor="middle" x="185.29" y="-102.8" font-family="Times,serif" font-size="14.00">request R1</text></g><!-- S3 --><g id="node5" class="node"><title>S3</title><ellipse fill="none" stroke="black" cx="588.17" cy="-99" rx="66.09" ry="66.09"/><text text-anchor="middle" x="588.17" y="-95.3" font-family="Times,serif" font-size="14.00">S3: Hold R1</text></g><!-- S2&#45;&gt;S3 --><g id="edge2" class="edge"><title>S2&#45;&gt;S3</title><path fill="none" stroke="black" d="M408.15,-99C441.18,-99 479.06,-99 511.45,-99"/><polygon fill="black" stroke="black" points="511.76,-102.5 521.76,-99 511.76,-95.5 511.76,-102.5"/><text text-anchor="middle" x="464.88" y="-102.8" font-family="Times,serif" font-size="14.00">acquire R1</text></g><!-- S4 --><g id="node6" class="node"><title>S4</title><ellipse fill="none" stroke="black" cx="852.01" cy="-99" rx="82.59" ry="82.59"/><text text-anchor="middle" x="852.01" y="-95.3" font-family="Times,serif" font-size="14.00">S4: Request R2</text></g><!-- S3&#45;&gt;S4 --><g id="edge3" class="edge"><title>S3&#45;&gt;S4</title><path fill="none" stroke="black" d="M654.57,-99C686.14,-99 724.56,-99 759.02,-99"/><polygon fill="black" stroke="black" points="759.1,-102.5 769.1,-99 759.1,-95.5 759.1,-102.5"/><text text-anchor="middle" x="711.96" y="-102.8" font-family="Times,serif" font-size="14.00">request R2</text></g><!-- S4&#45;&gt;S5 --><g id="edge4" class="edge"><title>S4&#45;&gt;S5</title><path fill="none" stroke="black" d="M934.63,-99C967.68,-99 1005.72,-99 1038.54,-99"/><polygon fill="black" stroke="black" points="1038.54,-102.5 1048.54,-99 1038.54,-95.5 1038.54,-102.5"/><text text-anchor="middle" x="991.55" y="-102.8" font-family="Times,serif" font-size="14.00">acquire R2</text></g><!-- T1 --><g id="node7" class="node"><title>T1</title><ellipse fill="none" stroke="black" cx="71.9" cy="-311" rx="55.79" ry="55.79"/><text text-anchor="middle" x="71.9" y="-307.3" font-family="Times,serif" font-size="14.00">T1: Initial</text></g><!-- T2 --><g id="node8" class="node"><title>T2</title><ellipse fill="none" stroke="black" cx="325.33" cy="-311" rx="81.79" ry="81.79"/><text text-anchor="middle" x="325.33" y="-307.3" font-family="Times,serif" font-size="14.00">T2: Request R2</text></g><!-- T1&#45;&gt;T2 --><g id="edge5" class="edge"><title>T1&#45;&gt;T2</title><path fill="none" stroke="black" d="M128.07,-311C158.73,-311 197.66,-311 232.75,-311"/><polygon fill="black" stroke="black" points="233.02,-314.5 243.02,-311 233.02,-307.5 233.02,-314.5"/><text text-anchor="middle" x="185.29" y="-314.8" font-family="Times,serif" font-size="14.00">request R2</text></g><!-- T3 --><g id="node9" class="node"><title>T3</title><ellipse fill="none" stroke="black" cx="588.17" cy="-311" rx="65.79" ry="65.79"/><text text-anchor="middle" x="588.17" y="-307.3" font-family="Times,serif" font-size="14.00">T3: Hold R2</text></g><!-- T2&#45;&gt;T3 --><g id="edge6" class="edge"><title>T2&#45;&gt;T3</title><path fill="none" stroke="black" d="M407.43,-311C440.76,-311 479.14,-311 511.84,-311"/><polygon fill="black" stroke="black" points="512.25,-314.5 522.25,-311 512.25,-307.5 512.25,-314.5"/><text text-anchor="middle" x="464.88" y="-314.8" font-family="Times,serif" font-size="14.00">acquire R2</text></g><!-- T4 --><g id="node10" class="node"><title>T4</title><ellipse fill="none" stroke="black" cx="852.01" cy="-311" rx="81.79" ry="81.79"/><text text-anchor="middle" x="852.01" y="-307.3" font-family="Times,serif" font-size="14.00">T4: Request R1</text></g><!-- T3&#45;&gt;T4 --><g id="edge7" class="edge"><title>T3&#45;&gt;T4</title><path fill="none" stroke="black" d="M653.89,-311C685.73,-311 724.66,-311 759.49,-311"/><polygon fill="black" stroke="black" points="759.67,-314.5 769.67,-311 759.67,-307.5 759.67,-314.5"/><text text-anchor="middle" x="711.96" y="-314.8" font-family="Times,serif" font-size="14.00">request R1</text></g><!-- T4&#45;&gt;T5 --><g id="edge8" class="edge"><title>T4&#45;&gt;T5</title><path fill="none" stroke="black" d="M933.91,-311C967.27,-311 1005.8,-311 1038.95,-311"/><polygon fill="black" stroke="black" points="1039.05,-314.5 1049.05,-311 1039.05,-307.5 1039.05,-314.5"/><text text-anchor="middle" x="991.55" y="-314.8" font-family="Times,serif" font-size="14.00">acquire R1</text></g></g></svg></div>
+<hr />
+<h2 id="the-state-that-is-not-final-state-but-have-no-next-state-is-the-deadlock-state"><a class="header" href="#the-state-that-is-not-final-state-but-have-no-next-state-is-the-deadlock-state">the state that is not final state but have no next state is the deadlock state</a></h2>
+<div><!-- Generated by graphviz version 2.43.0 (0)
+ --><!-- Title: G Pages: 1 --><svg width="576pt" height="217pt"
+ viewBox="0.00 0.00 576.00 217.15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="graph0" class="graph" transform="scale(0.48 0.48) rotate(0) translate(4 445.14)"><title>G</title><polygon fill="white" stroke="transparent" points="-4,4 -4,-445.14 1187.36,-445.14 1187.36,4 -4,4"/><!-- S5T1 --><g id="node1" class="node"><title>S5T1</title><ellipse fill="none" stroke="black" cx="915.27" cy="-399.45" rx="37.88" ry="37.88"/><ellipse fill="none" stroke="black" cx="915.27" cy="-399.45" rx="41.89" ry="41.89"/><text text-anchor="middle" x="915.27" y="-395.75" font-family="Times,serif" font-size="14.00">S5,T1</text></g><!-- S1T5 --><g id="node2" class="node"><title>S1T5</title><ellipse fill="none" stroke="black" cx="915.27" cy="-38.45" rx="34.4" ry="34.4"/><ellipse fill="none" stroke="black" cx="915.27" cy="-38.45" rx="38.39" ry="38.39"/><text text-anchor="middle" x="915.27" y="-34.75" font-family="Times,serif" font-size="14.00">S1T5</text></g><!-- S2T5 --><g id="node3" class="node"><title>S2T5</title><ellipse fill="none" stroke="black" cx="1141.66" cy="-116.45" rx="34.4" ry="34.4"/><ellipse fill="none" stroke="black" cx="1141.66" cy="-116.45" rx="38.39" ry="38.39"/><text text-anchor="middle" x="1141.66" y="-112.75" font-family="Times,serif" font-size="14.00">S2T5</text></g><!-- S5T2 --><g id="node4" class="node"><title>S5T2</title><ellipse fill="none" stroke="black" cx="1141.66" cy="-367.45" rx="37.88" ry="37.88"/><ellipse fill="none" stroke="black" cx="1141.66" cy="-367.45" rx="41.89" ry="41.89"/><text text-anchor="middle" x="1141.66" y="-363.75" font-family="Times,serif" font-size="14.00">S5,T2</text></g><!-- S1T1 --><g id="node5" class="node"><title>S1T1</title><ellipse fill="none" stroke="black" cx="37.7" cy="-209.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="37.7" y="-205.75" font-family="Times,serif" font-size="14.00">S1,T1</text></g><!-- S2T1 --><g id="node6" class="node"><title>S2T1</title><ellipse fill="none" stroke="black" cx="256.09" cy="-251.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="256.09" y="-247.75" font-family="Times,serif" font-size="14.00">S2,T1</text></g><!-- S1T1&#45;&gt;S2T1 --><g id="edge1" class="edge"><title>S1T1&#45;&gt;S2T1</title><path fill="none" stroke="black" d="M74.92,-216.48C111.66,-223.61 168.68,-234.68 208.71,-242.44"/><polygon fill="black" stroke="black" points="208.27,-245.92 218.75,-244.39 209.6,-239.05 208.27,-245.92"/><text text-anchor="middle" x="146.89" y="-244.25" font-family="Times,serif" font-size="14.00">P1: request R1</text></g><!-- S1T2 --><g id="node9" class="node"><title>S1T2</title><ellipse fill="none" stroke="black" cx="256.09" cy="-169.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="256.09" y="-165.75" font-family="Times,serif" font-size="14.00">S1,T2</text></g><!-- S1T1&#45;&gt;S1T2 --><g id="edge5" class="edge"><title>S1T1&#45;&gt;S1T2</title><path fill="none" stroke="black" d="M74.92,-202.75C111.66,-195.96 168.68,-185.42 208.71,-178.02"/><polygon fill="black" stroke="black" points="209.56,-181.42 218.75,-176.16 208.28,-174.54 209.56,-181.42"/><text text-anchor="middle" x="146.89" y="-203.25" font-family="Times,serif" font-size="14.00">P2: request R2</text></g><!-- S3T1 --><g id="node7" class="node"><title>S3T1</title><ellipse fill="none" stroke="black" cx="474.48" cy="-297.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="474.48" y="-293.75" font-family="Times,serif" font-size="14.00">S3,T1</text></g><!-- S2T1&#45;&gt;S3T1 --><g id="edge2" class="edge"><title>S2T1&#45;&gt;S3T1</title><path fill="none" stroke="black" d="M293.31,-259.15C330.24,-267 387.66,-279.2 427.72,-287.72"/><polygon fill="black" stroke="black" points="427,-291.14 437.51,-289.8 428.45,-284.3 427,-291.14"/><text text-anchor="middle" x="365.29" y="-288.25" font-family="Times,serif" font-size="14.00">P1: acquire R1</text></g><!-- S2T2 --><g id="node10" class="node"><title>S2T2</title><ellipse fill="none" stroke="black" cx="474.48" cy="-215.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="474.48" y="-211.75" font-family="Times,serif" font-size="14.00">S2,T2</text></g><!-- S2T1&#45;&gt;S2T2 --><g id="edge13" class="edge"><title>S2T1&#45;&gt;S2T2</title><path fill="none" stroke="black" d="M293.31,-245.42C330.06,-239.31 387.07,-229.82 427.1,-223.16"/><polygon fill="black" stroke="black" points="427.86,-226.59 437.15,-221.49 426.71,-219.68 427.86,-226.59"/><text text-anchor="middle" x="365.29" y="-246.25" font-family="Times,serif" font-size="14.00">P2: request R2</text></g><!-- S4T1 --><g id="node8" class="node"><title>S4T1</title><ellipse fill="none" stroke="black" cx="692.88" cy="-348.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="692.88" y="-344.75" font-family="Times,serif" font-size="14.00">S4,T1</text></g><!-- S3T1&#45;&gt;S4T1 --><g id="edge3" class="edge"><title>S3T1&#45;&gt;S4T1</title><path fill="none" stroke="black" d="M511.7,-305.98C548.64,-314.69 606.05,-328.22 646.11,-337.66"/><polygon fill="black" stroke="black" points="645.36,-341.08 655.9,-339.97 646.97,-334.27 645.36,-341.08"/><text text-anchor="middle" x="583.68" y="-338.25" font-family="Times,serif" font-size="14.00">P1: request R2</text></g><!-- S3T2 --><g id="node15" class="node"><title>S3T2</title><ellipse fill="none" stroke="black" cx="692.88" cy="-266.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="692.88" y="-262.75" font-family="Times,serif" font-size="14.00">S3,T2</text></g><!-- S3T1&#45;&gt;S3T2 --><g id="edge17" class="edge"><title>S3T1&#45;&gt;S3T2</title><path fill="none" stroke="black" d="M511.96,-292.09C518.05,-291.2 524.29,-290.3 530.18,-289.45 568.93,-283.86 612.91,-277.61 645.21,-273.04"/><polygon fill="black" stroke="black" points="645.85,-276.48 655.27,-271.61 644.87,-269.55 645.85,-276.48"/><text text-anchor="middle" x="583.68" y="-293.25" font-family="Times,serif" font-size="14.00">P2: request R2</text></g><!-- S4T1&#45;&gt;S5T1 --><g id="edge4" class="edge"><title>S4T1&#45;&gt;S5T1</title><path fill="none" stroke="black" d="M729.78,-356.75C766.4,-365.23 823.51,-378.45 864.49,-387.93"/><polygon fill="black" stroke="black" points="863.75,-391.35 874.28,-390.19 865.33,-384.53 863.75,-391.35"/><text text-anchor="middle" x="802.07" y="-389.25" font-family="Times,serif" font-size="14.00">P1: acquire R2</text></g><!-- S4T2 --><g id="node16" class="node"><title>S4T2</title><ellipse fill="none" stroke="black" cx="915.27" cy="-313.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="915.27" y="-309.75" font-family="Times,serif" font-size="14.00">S4,T2</text></g><!-- S4T1&#45;&gt;S4T2 --><g id="edge20" class="edge"><title>S4T1&#45;&gt;S4T2</title><path fill="none" stroke="black" d="M730.27,-342.67C767.92,-336.69 826.83,-327.33 867.81,-320.82"/><polygon fill="black" stroke="black" points="868.5,-324.26 877.82,-319.24 867.4,-317.35 868.5,-324.26"/><text text-anchor="middle" x="802.07" y="-342.25" font-family="Times,serif" font-size="14.00">P2: request R2</text></g><!-- S1T2&#45;&gt;S2T2 --><g id="edge9" class="edge"><title>S1T2&#45;&gt;S2T2</title><path fill="none" stroke="black" d="M293.31,-177.15C330.24,-185 387.66,-197.2 427.72,-205.72"/><polygon fill="black" stroke="black" points="427,-209.14 437.51,-207.8 428.45,-202.3 427,-209.14"/><text text-anchor="middle" x="365.29" y="-207.25" font-family="Times,serif" font-size="14.00">P1: request R1</text></g><!-- S1T3 --><g id="node11" class="node"><title>S1T3</title><ellipse fill="none" stroke="black" cx="474.48" cy="-133.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="474.48" y="-129.75" font-family="Times,serif" font-size="14.00">S1,T3</text></g><!-- S1T2&#45;&gt;S1T3 --><g id="edge6" class="edge"><title>S1T2&#45;&gt;S1T3</title><path fill="none" stroke="black" d="M293.31,-163.42C330.06,-157.31 387.07,-147.82 427.1,-141.16"/><polygon fill="black" stroke="black" points="427.86,-144.59 437.15,-139.49 426.71,-137.68 427.86,-144.59"/><text text-anchor="middle" x="365.29" y="-164.25" font-family="Times,serif" font-size="14.00">P2: acquire R2</text></g><!-- S2T3 --><g id="node13" class="node"><title>S2T3</title><ellipse fill="none" stroke="black" cx="692.88" cy="-184.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="692.88" y="-180.75" font-family="Times,serif" font-size="14.00">S2,T3</text></g><!-- S2T2&#45;&gt;S2T3 --><g id="edge14" class="edge"><title>S2T2&#45;&gt;S2T3</title><path fill="none" stroke="black" d="M512.19,-210.19C548.91,-204.93 605.5,-196.82 645.35,-191.11"/><polygon fill="black" stroke="black" points="645.95,-194.56 655.35,-189.68 644.95,-187.63 645.95,-194.56"/><text text-anchor="middle" x="583.68" y="-211.25" font-family="Times,serif" font-size="14.00">P2: acquire R2</text></g><!-- S2T2&#45;&gt;S3T2 --><g id="edge10" class="edge"><title>S2T2&#45;&gt;S3T2</title><path fill="none" stroke="black" d="M511.7,-223.98C548.64,-232.69 606.05,-246.22 646.11,-255.66"/><polygon fill="black" stroke="black" points="645.36,-259.08 655.9,-257.97 646.97,-252.27 645.36,-259.08"/><text text-anchor="middle" x="583.68" y="-256.25" font-family="Times,serif" font-size="14.00">P1: acquire R1</text></g><!-- S1T4 --><g id="node12" class="node"><title>S1T4</title><ellipse fill="none" stroke="black" cx="692.88" cy="-102.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="692.88" y="-98.75" font-family="Times,serif" font-size="14.00">S1,T4</text></g><!-- S1T3&#45;&gt;S1T4 --><g id="edge7" class="edge"><title>S1T3&#45;&gt;S1T4</title><path fill="none" stroke="black" d="M512.19,-128.19C548.91,-122.93 605.5,-114.82 645.35,-109.11"/><polygon fill="black" stroke="black" points="645.95,-112.56 655.35,-107.68 644.95,-105.63 645.95,-112.56"/><text text-anchor="middle" x="583.68" y="-129.25" font-family="Times,serif" font-size="14.00">P2: request R1</text></g><!-- S1T3&#45;&gt;S2T3 --><g id="edge23" class="edge"><title>S1T3&#45;&gt;S2T3</title><path fill="none" stroke="black" d="M511.7,-141.98C548.64,-150.69 606.05,-164.22 646.11,-173.66"/><polygon fill="black" stroke="black" points="645.36,-177.08 655.9,-175.97 646.97,-170.27 645.36,-177.08"/><text text-anchor="middle" x="583.68" y="-175.25" font-family="Times,serif" font-size="14.00">P1: acquire R1</text></g><!-- S1T4&#45;&gt;S1T5 --><g id="edge8" class="edge"><title>S1T4&#45;&gt;S1T5</title><path fill="none" stroke="black" d="M729.29,-92.16C767.06,-81.2 827.02,-63.78 868.39,-51.77"/><polygon fill="black" stroke="black" points="869.59,-55.07 878.22,-48.92 867.64,-48.34 869.59,-55.07"/><text text-anchor="middle" x="802.07" y="-89.25" font-family="Times,serif" font-size="14.00">P2: acquire R1</text></g><!-- S2T4 --><g id="node14" class="node"><title>S2T4</title><ellipse fill="none" stroke="black" cx="915.27" cy="-121.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="915.27" y="-117.75" font-family="Times,serif" font-size="14.00">S2,T4</text></g><!-- S1T4&#45;&gt;S2T4 --><g id="edge24" class="edge"><title>S1T4&#45;&gt;S2T4</title><path fill="none" stroke="black" d="M730.77,-105.63C768.38,-108.87 826.86,-113.91 867.66,-117.43"/><polygon fill="black" stroke="black" points="867.36,-120.92 877.63,-118.29 867.97,-113.94 867.36,-120.92"/><text text-anchor="middle" x="802.07" y="-120.25" font-family="Times,serif" font-size="14.00">P1: request R1</text></g><!-- S2T3&#45;&gt;S2T4 --><g id="edge15" class="edge"><title>S2T3&#45;&gt;S2T4</title><path fill="none" stroke="black" d="M729.29,-174.32C767.28,-163.46 827.74,-146.18 869.12,-134.35"/><polygon fill="black" stroke="black" points="870.29,-137.66 878.95,-131.54 868.37,-130.93 870.29,-137.66"/><text text-anchor="middle" x="802.07" y="-172.25" font-family="Times,serif" font-size="14.00">P2: request R1</text></g><!-- S3T3 --><g id="node17" class="node"><title>S3T3</title><ellipse fill="none" stroke="black" cx="915.27" cy="-208.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="915.27" y="-204.75" font-family="Times,serif" font-size="14.00">S3,T3</text></g><!-- S2T3&#45;&gt;S3T3 --><g id="edge21" class="edge"><title>S2T3&#45;&gt;S3T3</title><path fill="none" stroke="black" d="M730.77,-188.46C768.38,-192.56 826.86,-198.93 867.66,-203.37"/><polygon fill="black" stroke="black" points="867.31,-206.85 877.63,-204.46 868.07,-199.89 867.31,-206.85"/><text text-anchor="middle" x="802.07" y="-206.25" font-family="Times,serif" font-size="14.00">P1: acquire R1</text></g><!-- S2T4&#45;&gt;S2T5 --><g id="edge16" class="edge"><title>S2T4&#45;&gt;S2T5</title><path fill="none" stroke="black" d="M953.32,-120.62C991.54,-119.77 1051.27,-118.44 1092.99,-117.51"/><polygon fill="black" stroke="black" points="1093.26,-121 1103.18,-117.28 1093.1,-114.01 1093.26,-121"/><text text-anchor="middle" x="1028.47" y="-124.25" font-family="Times,serif" font-size="14.00">P2: acquire R1</text></g><!-- S3T2&#45;&gt;S4T2 --><g id="edge11" class="edge"><title>S3T2&#45;&gt;S4T2</title><path fill="none" stroke="black" d="M730.27,-274.21C768.03,-282.26 827.18,-294.87 868.18,-303.62"/><polygon fill="black" stroke="black" points="867.68,-307.09 878.19,-305.75 869.14,-300.24 867.68,-307.09"/><text text-anchor="middle" x="802.07" y="-304.25" font-family="Times,serif" font-size="14.00">P1: request R2</text></g><!-- S3T2&#45;&gt;S3T3 --><g id="edge18" class="edge"><title>S3T2&#45;&gt;S3T3</title><path fill="none" stroke="black" d="M729.78,-257C767.75,-247.01 827.76,-231.21 868.96,-220.37"/><polygon fill="black" stroke="black" points="869.97,-223.72 878.75,-217.79 868.19,-216.95 869.97,-223.72"/><text text-anchor="middle" x="802.07" y="-255.25" font-family="Times,serif" font-size="14.00">P2: acquire R2</text></g><!-- S4T2&#45;&gt;S5T2 --><g id="edge12" class="edge"><title>S4T2&#45;&gt;S5T2</title><path fill="none" stroke="black" d="M952.32,-322.12C989.94,-331.18 1049.19,-345.43 1091.17,-355.54"/><polygon fill="black" stroke="black" points="1090.38,-358.95 1100.92,-357.88 1092.01,-352.14 1090.38,-358.95"/><text text-anchor="middle" x="1028.47" y="-356.25" font-family="Times,serif" font-size="14.00">P1: acquire R2</text></g><!-- S4T3 --><g id="node18" class="node"><title>S4T3</title><ellipse fill="none" stroke="red" cx="1141.66" cy="-281.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="1141.66" y="-277.75" font-family="Times,serif" font-size="14.00">S4,T3</text></g><!-- S3T3&#45;&gt;S4T3 --><g id="edge22" class="edge"><title>S3T3&#45;&gt;S4T3</title><path fill="none" stroke="red" d="M951.33,-219.85C990.33,-232.54 1053.42,-253.06 1095.94,-266.9"/><polygon fill="red" stroke="red" points="1094.89,-270.24 1105.48,-270 1097.05,-263.58 1094.89,-270.24"/><text text-anchor="middle" x="1028.47" y="-265.25" font-family="Times,serif" font-size="14.00">P1: request R2</text></g><!-- S3T4 --><g id="node19" class="node"><title>S3T4</title><ellipse fill="none" stroke="red" cx="1141.66" cy="-199.45" rx="37.89" ry="37.89"/><text text-anchor="middle" x="1141.66" y="-195.75" font-family="Times,serif" font-size="14.00">S3,T4</text></g><!-- S3T3&#45;&gt;S3T4 --><g id="edge19" class="edge"><title>S3T3&#45;&gt;S3T4</title><path fill="none" stroke="red" d="M953.32,-206.96C991.77,-205.42 1051.99,-203 1093.74,-201.33"/><polygon fill="red" stroke="red" points="1094.08,-204.82 1103.93,-200.92 1093.79,-197.82 1094.08,-204.82"/><text text-anchor="middle" x="1028.47" y="-210.25" font-family="Times,serif" font-size="14.00">P2: request R1</text></g></g></svg></div>
+<hr />
+<h2 id="convert-property-check-to-ltl-expression"><a class="header" href="#convert-property-check-to-ltl-expression">convert property check to LTL expression</a></h2>
+<p><img src="https://hackmd.io/_uploads/HJFrHUsH0.png" alt="image" /></p>
+<hr />
+<h2 id="alot-of-work-are-try-reduce-computation-to-save-time"><a class="header" href="#alot-of-work-are-try-reduce-computation-to-save-time">alot of work are try reduce computation to save time</a></h2>
+<hr />
+<h2 id="summary"><a class="header" href="#summary">summary</a></h2>
+<ul>
+<li>use interactive and random simulations get the all reachable states and transction</li>
+<li>use the states and transction build finite-state machine</li>
+<li>check the is any counter example of assert</li>
+<li>property check to LTL to check all the reachable state is fit the property</li>
+</ul>
+<hr />
+<h2 id="ref"><a class="header" href="#ref">ref</a></h2>
+<ul>
+<li>https://www.cprover.org/cbmc/doc/cbmc-slides.pdf</li>
+<li>https://spinroot.com/spin/Doc/Spin_tutorial_2004.pdf</li>
+<li>https://www.cs.cmu.edu/~aldrich/courses/654-sp05/handouts/model-checking-5.pdf</li>
+</ul>
+
+                        <!-- github commet -->
+                        <dir id="giscus"></dir>
+                        <script>
+                            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+                            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                                var giscusScript = document.createElement('script');
+                                giscusScript.src = "https://giscus.app/client.js";
+                                giscusScript.setAttribute('data-repo', 'x06lan/mdbook');
+                                giscusScript.setAttribute('data-repo-id', 'R_kgDOJxZ6mQ');
+                                giscusScript.setAttribute('data-category-id', 'DIC_kwDOJxZ6mc4CXeJ6');
+                                giscusScript.setAttribute('data-mapping', 'pathname');
+                                giscusScript.setAttribute('data-strict', '0');
+                                giscusScript.setAttribute('data-reactions-enabled', '1');
+                                giscusScript.setAttribute('data-emit-metadata', '0');
+                                giscusScript.setAttribute('data-input-position', 'bottom');
+                                giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
+                                giscusScript.setAttribute('data-lang', 'zh-TW');
+                                giscusScript.setAttribute('crossorigin', 'anonymous');
+                                giscusScript.async = true;
+                                let giscusDiv = document.getElementById('giscus');
+                                giscusDiv.appendChild(giscusScript);
+                            }
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+</body>
+
+</html>
