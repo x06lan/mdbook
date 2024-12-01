@@ -1,8 +1,8 @@
----
+<!-- ---
 title: cbmc(C bounded model checking) 
 tags: Templates, Talk
 description: View the slide with "Slide Mode".
----
+--- -->
 
 
 <style>
@@ -463,7 +463,7 @@ VERIFICATION SUCCESSFUL
 
 ## two process FSM
 
-```graphviz
+```dot process
 digraph G {
     nodesep=0.1
     rankdir="LR"
@@ -514,7 +514,7 @@ digraph G {
 ## the state that is not final state but have no next state is the deadlock state
 
 
-```graphviz
+```dot process
 digraph G {
     nodesep=0.1
     rankdir="LR"

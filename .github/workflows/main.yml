@@ -21,7 +21,7 @@ jobs:
       # - run: (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.4" mdbook)
       # - run: sudo apt install cargo
       - run: sudo apt-get install graphviz
-      - run: ./mdbook build && ./mdbook test # In case of custom book path: mdbook build path/to/mybook && mdbook test path/to/mybook
+      - run: ./mdbook build # In case of custom book path: mdbook build path/to/mybook && mdbook test path/to/mybook
       - run: ls -all
       - uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
