@@ -56,7 +56,7 @@
     - [hw4](computer-science/database-systems/hw4.md)
   - [leetcode](computer-science/leetcode.md)
   - [machine-learing](computer-science/machine-learing/machine-learing.md)
-    - [model](computer-science/machine-learing/model.md)
+    - [machine-learing](computer-science/machine-learing/machine-learing.md)
   - [model-checking](computer-science/model-checking/model-checking.md)
   - [nerf](computer-science/nerf.md)
   - [operating system](computer-science/operating-system/operating-system.md)
