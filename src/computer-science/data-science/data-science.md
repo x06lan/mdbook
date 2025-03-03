@@ -109,13 +109,13 @@ $$
 * Wrapper methods
 * Embedded methods
 
-<image src="https://imgur.com/4Kv4iL6.png" width="80%">
+<image src="https://imgur.com/rOftykb.png" width="80%">
 
 
 # Classification
 
 ## Decision Tree 
-<image src="https://imgur.com/vdxbW5E.png" width="80%">
+<image src="https://imgur.com/KTDL0lG.png" width="80%">
 
 
 ### entropy(熵)
@@ -131,9 +131,8 @@ $$GI(S,A)=1-\sum_i ^{A\in S} P(i|S)^2 $$
 ### random forest(Bootstrap Aggregation for decision tree)
 
 use mutilple random Decision Tree to vote asnwer
-<image src="https://imgur.com/ISGENWw.png" width="80%">
+<image src="https://imgur.com/nHPGY4Z.png" width="80%">
 
-<image src="https://imgur.com/XLte186.png" width="80%">
 
 ## naive bayes 
 
@@ -162,12 +161,12 @@ Bayesian networks are directed and acyclic, whereas Markov networks are undirect
 <image src="https://imgur.com/BOIczf9.png" width="80%">
 
 ### linear separable SVM
-<image src="https://imgur.com/DbyeGOz.png" width="80%">
+<image src="https://imgur.com/8LbEV7Q.png" width="80%">
 
 ### linear inseparable SVM
 map data to higher dimension 
 
-<image src="https://imgur.com/FTRlnAw.png" width="80%">
+<image src="https://imgur.com/p1nTcZm.png" width="80%">
 
 
 ## KNN( K Nearest Neighbor)
@@ -183,12 +182,12 @@ map data to higher dimension
 $$\frac{y}{1-y}= w^T x + b$$
 
 ### Gradient Descent
-<image src="https://imgur.com/iaNLmgC.png" width="80%">
+<image src="https://imgur.com/4InC7iN.png" width="80%">
 
 ### Coordinate Descent
 Coordinate descent updates one parameter at a time, while gradient descent attempts to update all parameters at once
 
-<image src="https://imgur.com/hr0emoK.png" width="80%">
+<image src="https://imgur.com/vUiDtn1.png" width="80%">
 
 ## Improve Classification Accuracy
 ### Bagging:Bootstrap aggregating
@@ -288,11 +287,8 @@ use point number of group as weight or averge two group distance
 # pattern mining
 
 ## FP tree
-<image src="https://imgur.com/AwWn0IU.png" width="80%">
+<image src="https://imgur.com/lOUTubT.png" width="80%">
 
-<image src="https://imgur.com/i0hjUGG.png" width="80%">
-
-<image src="https://imgur.com/UTtd0PT.png" width="80%">
 
 ## rule (is the itemset are frequent itemset)
 * $$\text{support}(A \rightarrow B)=P(A\cap B)$$
