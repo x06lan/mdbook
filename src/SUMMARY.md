@@ -56,7 +56,11 @@
     - [hw4](computer-science/database-systems/hw4.md)
   - [leetcode](computer-science/leetcode.md)
   - [machine-learing](computer-science/machine-learing/machine-learing.md)
-    - [machine-learing](computer-science/machine-learing/machine-learing.md)
+    <!-- - [machine-learing](computer-science/machine-learing/machine-learing.md) -->
+    - [auto-encoder](computer-science/machine-learing/auto-encoder.md)
+    - [reinforcement-learning](computer-science/machine-learing/reinforcement-learning.md)
+    - [transformer](computer-science/machine-learing/transformer.md)
+    - [gan](computer-science/machine-learing/gan.md)
   - [model-checking](computer-science/model-checking/model-checking.md)
   - [nerf](computer-science/nerf.md)
   - [operating system](computer-science/operating-system/operating-system.md)
