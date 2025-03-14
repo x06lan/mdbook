@@ -79,3 +79,4 @@
   - [shields.io](tool/shields.io.md)
   - [shortcut](tool/shortcut.md)
   - [vim](tool/vim.md)
+- [japanese](concept/japanese.md)
