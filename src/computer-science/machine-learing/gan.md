@@ -29,9 +29,9 @@ $$
 \begin{aligned}
 |f(x)−f(y)| &\leq K|| x−y || \\
 |f'(c)\times (x-y)| &\leq K || x−y || \\
-||f'(c)|| \times| x-y| &\leq K\times || x−y || \\
-||f'(\alpha (x-y)+y)|| \times| x-y| &\leq K\times || x−y || \\
-||f'(\alpha (x-y)+y)|| \times| x-y| &\leq || x−y || \\
+||f'(c)|| \times| x-y| &\leq K\times || x−y ||  \quad &\text{(Cauchy–Schwarz inequality)} \\
+||f'(\alpha (x-y)+y)|| \times| x-y| &\leq K\times || x−y ||  \\
+||f'(\alpha (x-y)+y)|| &\leq K \\
 \end{aligned}
 $$
 
